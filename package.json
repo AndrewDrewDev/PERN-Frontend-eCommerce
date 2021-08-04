@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "scripts": {
+    "dev:client": "cd client && npm run dev"
+  }
+}
