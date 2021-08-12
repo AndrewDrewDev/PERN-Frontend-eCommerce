@@ -45,7 +45,7 @@ export const publicRoutes: RoutesType[] = [
     component: PaymentPage,
   },
   {
-    path: INFO_ROUTE,
+    path: INFO_ROUTE + '/:id',
     component: InfoPage,
   },
   {

@@ -31,7 +31,7 @@ export type ShopConfigType = {
   d600_exShopSiteNewCards: string
 }
 
-class ShopConfigStore implements IShopConfigStore {
+class ShopConfigStore {
   private _shopConfig: ShopConfigType
 
   constructor() {
