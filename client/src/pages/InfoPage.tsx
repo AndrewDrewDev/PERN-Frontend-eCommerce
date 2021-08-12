@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import { InfoContent } from '../component/user/Info/InfoContent'
+import { InfoContent } from '../component/user/info/InfoContent'
 import { INFO_ROUTE } from '../utils/consts'
 
 const InfoPage: FC = (): ReactElement => {

@@ -1,8 +1,17 @@
+import { CategoryWrapper } from "../component/user/common/CategoryWrapper"
+import { MainSlider } from "../component/user/main/MainSlider"
+
 const MainPage = () => {
+  
   return (
-    <>
-      <h1>MainPage</h1>
-    </>
+    <div className="container mx-auto">
+      <MainSlider />
+      {/* <CategoryWrapper 
+        name={'fsdf'}
+        count={4}
+        goods={['111','222','333']}
+      /> */}
+    </div>
   )
 }
 

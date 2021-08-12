@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AppRouter } from './component/AppRouter'
-import { Footer } from './component/user/Footer/Footer'
-import { Header } from './component/user/Header/Header'
+import { Footer } from './component/user/footer/Footer'
+import { Header } from './component/user/header/Header'
 
 function App() {
   return (
