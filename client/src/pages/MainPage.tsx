@@ -1,4 +1,5 @@
 import { CategoryWrapper } from "../component/user/common/CategoryWrapper"
+import { CloudTags } from "../component/user/common/CloudTags"
 import { MainSlider } from "../component/user/main/MainSlider"
 import { mainPageStore } from "../store/MainPageStore"
 
@@ -16,6 +17,7 @@ const MainPage = () => {
         count={4}
         products={mainPageStore.newProducts}
       />
+      <CloudTags />
     </div>
   )
 }

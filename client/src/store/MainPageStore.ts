@@ -231,7 +231,7 @@ class MainPageStore {
   }
 
   get discountProducts() {
-    return this._newProducts
+    return this._discountProducts
   }
 
 }
