@@ -1,13 +1,15 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
+import { TMainProductsData } from '../../../store/MainPageStore'
+import { ProductCard } from './ProductCard'
 
 type TCategoryWrapper = {
   name: string,
   count: number
-  products: string[]
+  products: TMainProductsData[]
 }
 
-const CategoryWrapper: FC<TCategoryWrapper> = ({name, count, products}): ReactElement => {
+const CategoryWrapper: FC<TCategoryWrapper> = ({ name, count, products }): ReactElement => {
   return (
     <>
       <div className="py-2">
@@ -19,8 +21,7 @@ const CategoryWrapper: FC<TCategoryWrapper> = ({name, count, products}): ReactEl
         </a>
         <span className="mt-3 text-sm text-gray-600">{count} + Единиц товара</span>
         <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-          {JSON.stringify(products)}
-
+          {products.map(product => <ProductCard data={product} />)}
         </div>
       </div>
     </>

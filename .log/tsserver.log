@@ -1,0 +1,74 @@
+Info 0    [22:10:19.110] Starting TS Server
+Info 1    [22:10:19.111] Version: 4.3.5
+Info 2    [22:10:19.111] Arguments: /home/user1/.config/nvm/16.1.0/bin/node /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/node_modules/.bin/tsserver --logFile /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/.log/tsserver.log --logVerbosity info --cancellationPipeName /tmp/5f93e82d4c9bdf8e7fd579a75c732f60/tscancellation*
+Info 3    [22:10:19.111] Platform: linux NodeVersion: 16 CaseSensitive: true
+Info 4    [22:10:19.111] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [22:10:19.140] Search path: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/main
+Info 6    [22:10:19.142] For info: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/main/MainSlider.tsx :: Config file name: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json
+Info 7    [22:10:19.143] Creating configuration project /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json
+Info 8    [22:10:19.184] Config: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json : {
+ "rootNames": [
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/App.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/index.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/react-app-env.d.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/reportWebVitals.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/routes.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/setupTests.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/AppRouter.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/common/CategoryWrapper.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/common/ProductCard.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/footer/Footer.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/Header.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/HeaderCartBarButton.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/HeaderInputSearchBySite.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/HeaderMenuBarButton.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/HeaderNavPanel.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/header/HeaderTitle.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/info/InfoContent.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/component/user/main/MainSlider.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/AdminPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/AuthPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/InfoPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/MainPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/PaymentPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/pages/ProductPage.tsx",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/store/InfoPagesStore.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/store/MainPageStore.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/store/ShopConfigStore.ts",
+  "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/src/utils/consts.ts"
+ ],
+ "options": {
+  "target": 1,
+  "lib": [
+   "lib.dom.d.ts",
+   "lib.dom.iterable.d.ts",
+   "lib.esnext.d.ts"
+  ],
+  "allowJs": true,
+  "skipLibCheck": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "strict": true,
+  "forceConsistentCasingInFileNames": true,
+  "noFallthroughCasesInSwitch": true,
+  "module": 99,
+  "moduleResolution": 2,
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "noEmit": true,
+  "jsx": 4,
+  "configFilePath": "/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json"
+ }
+}
+Info 9    [22:10:19.283] Starting updateGraphWorker: Project: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json
+Info 10   [22:10:24.303] Finishing updateGraphWorker: Project: /home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json Version: 1 structureChanged: true Elapsed: 5020.299258708954ms
+Info 11   [22:10:24.303] Project '/home/user1/DA/Job-Projects/PERN-Front-eCcomerce/client/tsconfig.json' (Configured)
+Info 12   [22:10:24.304] 	Files (254)
+
+Info 13   [22:10:24.304] -----------------------------------------------
+Info 14   [22:10:24.344] Starting updateGraphWorker: Project: /dev/null/autoImportProviderProject1*
+Info 15   [22:10:24.909] Finishing updateGraphWorker: Project: /dev/null/autoImportProviderProject1* Version: 1 structureChanged: true Elapsed: 564.2732877731323ms
+Info 16   [22:10:24.909] Project '/dev/null/autoImportProviderProject1*' (AutoImportProvider)
+Info 17   [22:10:24.909] 	Files (97)
+
+Info 18   [22:10:24.909] -----------------------------------------------
