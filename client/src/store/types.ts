@@ -1,4 +1,4 @@
-type TImgUrlProductData = {
+export type TImgUrlProductData = {
   preview: string;
   other: string[];
 };

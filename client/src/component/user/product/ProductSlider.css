@@ -1,0 +1,30 @@
+.slick-slider {
+  position: relative;
+}
+
+.slick-dots {
+  display: flex !important;
+  overflow: auto;
+}
+
+.slick-prev {
+  display: flex !important;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5rem;
+}
+
+.slick-next {
+  display: flex !important;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  right: 0;
+  margin-bottom: 5rem;
+}

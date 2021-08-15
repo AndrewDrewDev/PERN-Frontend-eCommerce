@@ -15,6 +15,8 @@ const MainSlider: FC = (): ReactElement => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    fade: true,
+    cssEase: 'linear',
   }
 
   return (
