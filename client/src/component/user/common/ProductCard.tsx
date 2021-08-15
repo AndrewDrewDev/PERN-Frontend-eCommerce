@@ -1,17 +1,17 @@
-import { ReactElement } from "react";
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { TMainProductsData } from "../../../store/MainPageStore";
-import { PRODUCT_ROUTE } from "../../../utils/consts";
+import { ReactElement } from 'react'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { PRODUCT_ROUTE } from '../../../routes'
+import { TMainProductsData } from '../../../types'
 
 type TProductCard = {
-  data: TMainProductsData;
-};
+  data: TMainProductsData
+}
 
 type TLabelNewOrDiscount = {
-  discountTag: string;
-  newTag: string;
-};
+  discountTag: string
+  newTag: string
+}
 
 const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
   const LabelNewOrDiscount: FC<TLabelNewOrDiscount> = ({
@@ -27,7 +27,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
         >
           акция
         </div>
-      );
+      )
     } else if (newTag) {
       return (
         <div
@@ -37,11 +37,11 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
         >
           новинка
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
-  };
+  }
 
   return (
     <>
@@ -53,7 +53,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
           <Link
             className="transform scale-100 hover:scale-110 duration-500 
             ease-in-out"
-            to={PRODUCT_ROUTE + "/" + data.d720_exProductID}
+            to={PRODUCT_ROUTE + '/' + data.d720_exProductID}
           >
             <img
               className="object-contain w-full m-auto h-64"
@@ -71,7 +71,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
           bg-blue-600 text-white hover:bg-blue-500 focus:outline-none
           focus:bg-blue-500"
             style={{
-              marginRight: "6rem",
+              marginRight: '6rem',
             }}
           >
             <svg
@@ -100,7 +100,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
              bottom-0 right-0 -mb-4 p-2 rounded-full bg-blue-600 text-white
               hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
             style={{
-              marginRight: "3.5rem",
+              marginRight: '3.5rem',
             }}
           >
             <svg
@@ -123,7 +123,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
             bottom-0 right-0 -mb-4 p-2 rounded-full bg-blue-600 text-white
           hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
             style={{
-              marginRight: "1rem",
+              marginRight: '1rem',
             }}
           >
             <svg
@@ -154,7 +154,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export { ProductCard };
+export { ProductCard }

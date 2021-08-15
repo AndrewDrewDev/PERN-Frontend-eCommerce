@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { FC } from 'react'
 import { useLocation } from 'react-router-dom'
-import { infoPagesStore, TPageData } from '../../../store/InfoPagesStore'
+import { infoPagesStore } from '../../../store/InfoPagesStore'
+import { TPageData } from '../../../types'
 
 const InfoContent: FC = (): ReactElement => {
   const [data, setData] = useState<TPageData | null>(null)
@@ -41,25 +42,24 @@ const InfoContent: FC = (): ReactElement => {
       <hr className="mb-3" />
       {data?.imgUrlFloatLeftTop ? (
         <img
-        className="lazy w-full mx-auto lg:float-left px-4 entered loaded"
-        style={{
-          width: '450px',
-        }}
-        alt="О магазине"
-        src={data?.imgUrlFloatLeftTop}
-      />
+          className="lazy w-full mx-auto lg:float-left px-4 entered loaded"
+          style={{
+            width: '450px',
+          }}
+          alt="О магазине"
+          src={data?.imgUrlFloatLeftTop}
+        />
       ) : null}
       {data?.content}
       {data?.imgUrlWidthFullBottom ? (
         <img
-        className="lazy mx-auto entered loaded w-4/5"
-        data-src="img/about-2.svg"
-        alt="О нас"
-        data-ll-status="loaded"
-        src={data?.imgUrlWidthFullBottom}
-      />
+          className="lazy mx-auto entered loaded w-4/5"
+          data-src="img/about-2.svg"
+          alt="О нас"
+          data-ll-status="loaded"
+          src={data?.imgUrlWidthFullBottom}
+        />
       ) : null}
-      
     </div>
   )
 }

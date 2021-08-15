@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { InfoContent } from '../component/user/info/InfoContent'
-import { INFO_ROUTE } from '../utils/consts'
+import { INFO_ROUTE } from '../routes'
 
 const InfoPage: FC = (): ReactElement => {
   // TODO: Add to shopConfig and excel file
@@ -18,7 +18,11 @@ const InfoPage: FC = (): ReactElement => {
   return (
     <Switch>
       {infoPagesNames.map(name => (
-        <Route key={name} path={INFO_ROUTE + '/' + name} component={InfoContent} />
+        <Route
+          key={name}
+          path={INFO_ROUTE + '/' + name}
+          component={InfoContent}
+        />
       ))}
       <Redirect to="/" />
     </Switch>

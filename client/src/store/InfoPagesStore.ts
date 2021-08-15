@@ -1,14 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-
-export type TPageData = {
-  id: string
-  title: string
-  content: string
-  imgUrlFloatLeftTop?: string
-  imgUrlFloatRightTop?: string // TODO: Add
-  imgUrlWidthFullTop?: string // TODO: Add
-  imgUrlWidthFullBottom?: string
-}
+import { TPageData } from '../types'
 
 class InfoPagesStore {
   private _aboutData: TPageData

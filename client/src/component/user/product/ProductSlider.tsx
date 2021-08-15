@@ -58,8 +58,8 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
     customPaging: index => {
       return (
         <button
-          className="border focus:outline-none w-24 h-24 md:w-28 md:h-28
-         flex items-center justify-center p-1 rounded-lg"
+          className="border-2 focus:outline-none w-24 h-24 md:w-28 md:h-28
+         flex items-center justify-center p-1 m-1 rounded-lg"
         >
           <img className="object-contain h-full" src={images[index]} alt="" />
         </button>
@@ -68,11 +68,18 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
   }
 
   return (
-    <Slider className="rounded-lg  mb-4 border shadow-lg" {...settings}>
-      {images.map(img => (
-        <img className="h-64 md:h-80 object-contain" src={img} alt="" />
-      ))}
-    </Slider>
+    <div className="lg:w-1/2 w-full object-cover object-center">
+      <Slider className="rounded-lg  mb-4 border shadow-lg" {...settings}>
+        {images.map(img => (
+          <img
+            id={img}
+            className="h-64 md:h-80 object-contain"
+            src={img}
+            alt=""
+          />
+        ))}
+      </Slider>
+    </div>
   )
 }
 

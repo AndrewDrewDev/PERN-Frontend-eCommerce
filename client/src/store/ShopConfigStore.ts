@@ -1,35 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-
-export type IShopConfigStore = {
-  shopConfig: ShopConfigType
-}
-
-export type ShopConfigType = {
-  d582_exShopSiteTitle: string
-  d583_exShopSiteSubTitle: string
-  d580_exShopSiteID: string
-  d581_exShopSiteBaseLink: string
-  d584_exShopSiteAddress: string
-  d585_exShopSitePhone: string
-  d586_exShopSiteEmail: string
-  d587_exShopSitePaginationNumber: string
-  d589_exShopSiteCurrency: string
-  d588_exShopSiteCatalogPage: string
-  d590_exShopSiteCategoryNumber: string
-  d593_exShopSiteTheme: string
-  d591_exShopSiteCopyright: string
-  d594_exShopSiteSocialNetwork: string
-  d595_exShopSiteCategoryCloudNumber: string
-  d601_exShopSiteCardView: string
-  d602_exShopSiteGridView: string
-  d603_exShopSiteDetailView: string
-  d691_exCategory1: string
-  d692_exCategory2: string
-  d693_exCategory3: string
-  d592_exShopSiteSliderHeader: string
-  d599_exShopSiteDiscountCards: string
-  d600_exShopSiteNewCards: string
-}
+import { ShopConfigType } from '../types'
 
 class ShopConfigStore {
   private _shopConfig: ShopConfigType

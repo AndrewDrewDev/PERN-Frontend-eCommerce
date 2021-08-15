@@ -1,33 +1,27 @@
-import { FC } from 'react'
 import { AdminPage } from './pages/AdminPage'
 import { AuthPage } from './pages/AuthPage'
 import { InfoPage } from './pages/InfoPage'
 import { MainPage } from './pages/MainPage'
 import { PaymentPage } from './pages/PaymentPage'
 import { ProductPage } from './pages/ProductPage'
-import {
-  ADMIN_ROUTE,
-  INFO_ROUTE,
-  LOGIN_ROUTE,
-  MAIN_ROUTE,
-  PAYMENT_ROUTE,
-  PRODUCT_ROUTE,
-  REGISTRATION_ROUTE,
-} from './utils/consts'
+import { TRoutes } from './types'
 
-export type RoutesType = {
-  path: string
-  component: FC
-}
+export const ADMIN_ROUTE: string = '/admin'
+export const LOGIN_ROUTE: string = '/login'
+export const REGISTRATION_ROUTE: string = '/registration'
+export const PRODUCT_ROUTE: string = '/product'
+export const PAYMENT_ROUTE: string = '/payment'
+export const INFO_ROUTE: string = '/info'
+export const MAIN_ROUTE: string = '/'
 
-export const authRoutes: RoutesType[] = [
+export const authRoutes: TRoutes[] = [
   {
     path: ADMIN_ROUTE,
     component: AdminPage,
   },
 ]
 
-export const publicRoutes: RoutesType[] = [
+export const publicRoutes: TRoutes[] = [
   {
     path: LOGIN_ROUTE,
     component: AuthPage,
@@ -51,5 +45,5 @@ export const publicRoutes: RoutesType[] = [
   {
     path: MAIN_ROUTE,
     component: MainPage,
-  }
+  },
 ]
