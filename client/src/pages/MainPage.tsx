@@ -1,9 +1,10 @@
-import { CategoryWrapper } from "../component/user/common/CategoryWrapper"
-import { CloudTags } from "../component/user/common/CloudTags"
-import { MainSlider } from "../component/user/main/MainSlider"
-import { mainPageStore } from "../store/MainPageStore"
+import { FC, ReactElement } from 'react'
+import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
+import { CloudTags } from '../component/user/common/CloudTags'
+import { MainSlider } from '../component/user/main/MainSlider'
+import { mainPageStore } from '../store/MainPageStore'
 
-const MainPage = () => {
+const MainPage: FC = (): ReactElement => {
   return (
     <div className="container mx-auto">
       <MainSlider />

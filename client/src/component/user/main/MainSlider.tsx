@@ -3,7 +3,7 @@ import { FC } from 'react'
 import Slider, { Settings } from 'react-slick'
 import { mainPageStore } from '../../../store/MainPageStore'
 
-import './slickSliderTheme.css'
+import './MainSlider.css'
 
 const MainSlider: FC = (): ReactElement => {
   // Slider config
