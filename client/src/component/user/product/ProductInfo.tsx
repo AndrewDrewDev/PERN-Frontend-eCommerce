@@ -1,7 +1,10 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { TFullProductData } from '../../../types'
+import { ProductCounter } from './ProductCounter'
 import { ProductInStock } from './ProductInStock'
+import { ProductOldPrice } from './ProductOldPrice'
+import { ProductPrice } from './ProductPrice'
 
 type TDescription = { data: TFullProductData }
 
@@ -11,73 +14,15 @@ const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
             <div className="flex mb-1 mt-1 text-sm text-green-600 mx-auto">
                 <ProductInStock status={data.d722_exProductInStock} />
             </div>
-            {/* <ProductOldPrice/> */}
-            <div className="mx-auto mb-1">
-                <div className="text-xl text-gray-700">
-                    Цена:{' '}
-                    <span
-                        className="item_price title-font font-medium text-2xl
-           text-red-500"
-                    >
-                        2699.00 руб.
-                    </span>
-                </div>
-            </div>
+            {data.d803_exPriceOldSell ? <ProductOldPrice price={data.d803_exPriceOldSell} /> : null}
+            <ProductPrice price={data.d802_exPriceSell} />
             <div className="my-1">
-                <div className="">
-                    Производитель: <span className="">Tupperware</span>
-                </div>
-                <div className="">Код поставщика: G47</div>
+                {data.d738_exProductManufacturer ? <div>Производитель: {data.d738_exProductManufacturer}</div> : null}
+                {data.d747_exProductCodeVender ? <div>Код поставщика: {data.d747_exProductCodeVender}</div> : null}
             </div>
             <div className="border"></div>
-            <div className="flex items-center my-2">
-                <div className="flex flex-col mb-1 mr-4" x-data="{quantity: 1}">
-                    <p className="text-xs font-bold">Укажите количество:</p>
-                    <div className="flex">
-                        <button
-                            className="flex p-1 justify-center items-center border
-            rounded-l-lg focus:outline-none hover:text-gray-600"
-                        >
-                            <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                ></path>
-                            </svg>
-                        </button>
-                        <input
-                            className="item_quantity w-12 border text-center p-1
-              focus:outline-none"
-                            type="text"
-                        />
-                        <button
-                            className="border flex p-1 justify-center items-center
-             rounded-r-lg focus:outline-none hover:text-gray-600"
-                        >
-                            <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                ></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <ProductCounter />
+
             <div className="flex flex-wrap my-2">
                 <button
                     className="item_add border-2 border-blue-600

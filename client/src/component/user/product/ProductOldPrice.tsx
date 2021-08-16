@@ -1,7 +1,12 @@
 import { FC } from "react"
 import { ReactElement } from "react"
+import { Td803_exPriceOldSell } from "../../../types"
 
-const ProductOldPrice: FC = (): ReactElement => {
+type TProductOldPrice = {
+    price: Td803_exPriceOldSell
+}
+
+const ProductOldPrice: FC<TProductOldPrice> = ({ price }): ReactElement => {
     return (
         <div className="mx-auto mt-1" >
             <div className="text-lg text-gray-700">
@@ -10,9 +15,13 @@ const ProductOldPrice: FC = (): ReactElement => {
                     className="title-font ml-2 line-through font-medium text-xl
            text-gray-600"
                 >
-                    2969.00 руб.
+                    {price} руб.
                 </span>
             </div>
         </div >
     )
+}
+
+export {
+    ProductOldPrice
 }

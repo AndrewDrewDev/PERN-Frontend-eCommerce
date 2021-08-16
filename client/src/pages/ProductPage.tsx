@@ -26,9 +26,9 @@ const ProductPage: FC = (): ReactElement => {
         d723_exProductDescription: 'Описание товара',
         d748_exProductAmountRemaind: '',
         d722_exProductInStock: '?',
-        d747_exProductCodeVender: '',
+        d747_exProductCodeVender: 'G111',
         d803_exPriceOldSell: '400.00',
-        d738_exProductManufacturer: '',
+        d738_exProductManufacturer: 'Tupeprlksfdg;jksgfdk',
         REST_imgUrl: {
             preview:
                 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
