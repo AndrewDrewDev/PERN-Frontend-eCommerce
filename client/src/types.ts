@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction } from 'react'
 
 export type TRoutes = {
   path: string
@@ -73,24 +73,24 @@ export type TImgUrlProductData = {
   other: string[]
 }
 
-export type Td691_exCategory1            = string
-export type Td692_exCategory2            = string
-export type Td693_exCategory3            = string
-export type Td691_exCategory1EN          = string
-export type Td692_exCategory2EN          = string
-export type Td693_exCategory3EN          = string
-export type Td720_exProductID            = string
-export type Td721_exProductName          = string
-export type Td734_exProductNew           = '@' | ''
-export type Td735_exProductDiscounts     = '@' | ''
-export type Td802_exPriceSell            = string
-export type Td781_exEd                   = string
-export type Td723_exProductDescription   = string
+export type Td691_exCategory1 = string
+export type Td692_exCategory2 = string
+export type Td693_exCategory3 = string
+export type Td691_exCategory1EN = string
+export type Td692_exCategory2EN = string
+export type Td693_exCategory3EN = string
+export type Td720_exProductID = string
+export type Td721_exProductName = string
+export type Td734_exProductNew = '@' | ''
+export type Td735_exProductDiscounts = '@' | ''
+export type Td802_exPriceSell = string
+export type Td781_exEd = string
+export type Td723_exProductDescription = string
 export type Td748_exProductAmountRemaind = string
-export type Td722_exProductInStock       = '+' | '-' | '?' | ''
-export type Td747_exProductCodeVender    = string
-export type Td803_exPriceOldSell         = string
-export type Td738_exProductManufacturer  = string
+export type Td722_exProductInStock = '+' | '-' | '?' | ''
+export type Td747_exProductCodeVender = string
+export type Td803_exPriceOldSell = string
+export type Td738_exProductManufacturer = string
 
 export type TFullProductData = {
   d691_exCategory1: Td691_exCategory1
@@ -112,4 +112,9 @@ export type TFullProductData = {
   d803_exPriceOldSell: Td803_exPriceOldSell
   d738_exProductManufacturer: Td738_exProductManufacturer
   REST_imgUrl: TImgUrlProductData
+}
+
+export type TShowHideComponent = {
+  show: boolean
+  setShow: Dispatch<SetStateAction<boolean>>
 }

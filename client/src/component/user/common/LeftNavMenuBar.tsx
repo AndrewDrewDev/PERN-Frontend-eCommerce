@@ -1,15 +1,8 @@
-import { Dispatch } from 'react'
-import { SetStateAction } from 'react'
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { categoriesPageStore } from '../../../store/CategoriesPageStore'
-import { TCategoryData } from '../../../types'
-
-type TLeftNavMenuBar = {
-  show: boolean
-  setShow: Dispatch<SetStateAction<boolean>>
-}
+import { TCategoryData, TShowHideComponent } from '../../../types'
 
 type TnavLinks = {
   name: string
@@ -17,7 +10,7 @@ type TnavLinks = {
   svg: ReactElement
 }
 
-const LeftNavMenuBar: FC<TLeftNavMenuBar> = ({
+const LeftNavMenuBar: FC<TShowHideComponent> = ({
   show,
   setShow,
 }): ReactElement => {

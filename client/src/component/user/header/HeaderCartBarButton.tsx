@@ -1,10 +1,19 @@
-import { ReactElement } from 'react'
+import { MouseEventHandler, ReactElement } from 'react'
 import { FC } from 'react'
- 
-const HeaderCartBarButton: FC = (): ReactElement => {
+
+type THeaderCartBarButton = {
+  onClick: MouseEventHandler
+}
+
+const HeaderCartBarButton: FC<THeaderCartBarButton> = ({
+  onClick,
+}): ReactElement => {
   return (
     <div className="flex items-center justify-end w-full">
-      <button className="fixed p-1 duration-500 hover:bg-blue-500 border-2 border-blue-600 shadow hover:shadow-lg focus:outline-none sm:mx-0 rounded-full flex items-center justify-center bg-blue-600 text-white z-30">
+      <button
+        className="fixed p-1 duration-500 hover:bg-blue-500 border-2 border-blue-600 shadow hover:shadow-lg focus:outline-none sm:mx-0 rounded-full flex items-center justify-center bg-blue-600 text-white z-30"
+        onClick={onClick}
+      >
         <svg
           className="h-6 w-6"
           fill="none"
