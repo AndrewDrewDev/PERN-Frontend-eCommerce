@@ -1,10 +1,17 @@
-import { FC, ReactElement } from 'react'
+import { FC, MouseEventHandler, ReactElement } from 'react'
 
-const HeaderMenuBarButton: FC = (): ReactElement => {
+type THeaderMenuBarButton = {
+  onClick: MouseEventHandler
+}
+
+const HeaderMenuBarButton: FC<THeaderMenuBarButton> = ({
+  onClick,
+}): ReactElement => {
   return (
     <div className="w-full text-gray-600 md:flex md:items-center">
       <div className="flex">
         <button
+          onClick={onClick}
           type="button"
           className="fixed -mt-3 md:-mt-2 text-gray-700 hover:text-gray-600 rounded-lg duration-500 focus:outline-none focus:text-gray-600 z-30"
           aria-label="toggle menu"
@@ -21,6 +28,4 @@ const HeaderMenuBarButton: FC = (): ReactElement => {
   )
 }
 
-export {
-  HeaderMenuBarButton
-}
+export { HeaderMenuBarButton }

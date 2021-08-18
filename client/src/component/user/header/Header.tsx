@@ -6,14 +6,22 @@ import { HeaderMenuBarButton } from './HeaderMenuBarButton'
 import { HeaderCartBarButton } from './HeaderCartBarButton'
 import { HeaderNavPanel } from './HeaderNavPanel'
 import { HeaderInputSearchBySite } from './HeaderInputSearchBySite'
+import { LeftNavMenuBar } from '../common/LeftNavMenuBar'
+import { useState } from 'react'
 
 const Header: FC = (): ReactElement => {
+  let [showLeftNavMenuBar, setShowLeftNavMenuBar] = useState(false)
+
   const { shopConfig } = shopConfigStore
 
   return (
     <header>
       <div className="relative container mx-auto px-6 py-3 flex items-center justify-between">
-        <HeaderMenuBarButton />
+        <HeaderMenuBarButton onClick={() => setShowLeftNavMenuBar(true)} />
+        <LeftNavMenuBar
+          show={showLeftNavMenuBar}
+          setShow={setShowLeftNavMenuBar}
+        />
         <HeaderTitle
           title={shopConfig.d582_exShopSiteTitle}
           subtitle={shopConfig.d583_exShopSiteSubTitle}

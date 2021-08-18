@@ -16,7 +16,7 @@ const TabsPanel: FC<TTabsPanel> = (data): ReactElement => {
   const tabStyle: string =
     'text-gray-600 py-4 px-6 block hover:text-blue-500 border-b-2 border-white focus:outline-none'
 
-  const selectedTabStyle =
+  const selectedTabStyle: string =
     'text-blue-500 font-medium border-blue-500 duration-500'
 
   return (
