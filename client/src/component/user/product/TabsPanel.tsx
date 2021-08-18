@@ -16,7 +16,8 @@ const TabsPanel: FC<TTabsPanel> = (data): ReactElement => {
   const tabStyle: string =
     'text-gray-600 py-4 px-6 block hover:text-blue-500 border-b-2 border-white focus:outline-none'
 
-  const selectedTabStyle = 'text-blue-500 font-medium border-blue-500'
+  const selectedTabStyle =
+    'text-blue-500 font-medium border-blue-500 duration-500'
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
@@ -35,10 +36,30 @@ const TabsPanel: FC<TTabsPanel> = (data): ReactElement => {
         </Tab>
       </TabList>
       <div className="my-4 text-gray-600">
-        <TabPanel>{data.description}</TabPanel>
-        <TabPanel>{data.info}</TabPanel>
-        <TabPanel>{data.paymentDelivery}</TabPanel>
-        <TabPanel>{data.reviews}</TabPanel>
+        <TabPanel
+          selectedClassName="opacity-100 duration-1000"
+          className="opacity-0"
+        >
+          {data.description}
+        </TabPanel>
+        <TabPanel
+          selectedClassName="opacity-100 duration-1000"
+          className="opacity-0"
+        >
+          {data.info}
+        </TabPanel>
+        <TabPanel
+          selectedClassName="opacity-100 duration-1000"
+          className="opacity-0"
+        >
+          {data.paymentDelivery}
+        </TabPanel>
+        <TabPanel
+          selectedClassName="opacity-100 duration-1000"
+          className="opacity-0"
+        >
+          {data.reviews}
+        </TabPanel>
       </div>
     </Tabs>
   )
