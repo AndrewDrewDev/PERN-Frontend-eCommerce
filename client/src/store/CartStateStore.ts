@@ -19,7 +19,17 @@ class CartStore {
     this._finalTotal = '0.00'
     this._finalCount = 0
     this._items = []
+    this.restoreCartFromLocalStore()
     makeAutoObservable(this)
+  }
+
+  private restoreCartFromLocalStore() {
+    const LSdata: string | null = localStorage.getItem('CartStore')
+    if (typeof LSdata === 'string') this._items = JSON.parse(LSdata)
+  }
+
+  private saveCartToLocalStore() {
+    localStorage.setItem('CartStore', JSON.stringify(this._items))
   }
 
   public set addItem({ id, name, price, img }: TAddItemCartStore) {
@@ -65,6 +75,8 @@ class CartStore {
         count: 1,
       })
     }
+
+    this.saveCartToLocalStore()
   }
   public removeItem(id: string) {}
   public decreaceItem(id: string) {}

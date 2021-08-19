@@ -5,12 +5,26 @@ import { Breadcrumb } from '../component/user/product/Breadcrumb'
 import { ProductInfo } from '../component/user/product/ProductInfo'
 import { ProductSlider } from '../component/user/product/ProductSlider'
 import { TabsPanel } from '../component/user/product/TabsPanel'
-// import { cartStore } from '../store/CartStateStore'
+import { cartStore } from '../store/CartStateStore'
 import { mainPageStore } from '../store/MainPageStore'
 import { TFullProductData } from '../types'
 
 const ProductPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
+
+  const test = {
+    id: '0115-0101-00001',
+    name: 'Название товара',
+    price: '20.00',
+    img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+  }
+  const test1 = {
+    id: '0115-0101-0000122',
+    name: 'Название товара',
+    price: '10.00',
+    img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+  }
+  console.log(JSON.stringify(cartStore.getItems))
 
   const data: TFullProductData = {
     d691_exCategory1: 'Категория1',
