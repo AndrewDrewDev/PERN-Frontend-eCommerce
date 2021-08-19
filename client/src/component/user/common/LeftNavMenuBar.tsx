@@ -202,7 +202,6 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
         >
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-medium text-gray-700">Навигация</h3>
-            {/* Hide modal */}
             <button
               className="border-2 duration-500 border-white focus:outline-none
             hover:border-red-500 p-1 hover:text-white hover:bg-red-400

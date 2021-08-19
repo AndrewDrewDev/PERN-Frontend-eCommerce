@@ -37,6 +37,13 @@ export type TMainProductsData = {
   REST_img: string
 }
 
+export type TAddItemCartStore = {
+  id: string
+  name: string
+  price: string
+  img: string
+}
+
 export type IShopConfigStore = {
   shopConfig: ShopConfigType
 }

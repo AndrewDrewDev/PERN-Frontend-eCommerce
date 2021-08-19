@@ -5,6 +5,7 @@ import { Breadcrumb } from '../component/user/product/Breadcrumb'
 import { ProductInfo } from '../component/user/product/ProductInfo'
 import { ProductSlider } from '../component/user/product/ProductSlider'
 import { TabsPanel } from '../component/user/product/TabsPanel'
+// import { cartStore } from '../store/CartStateStore'
 import { mainPageStore } from '../store/MainPageStore'
 import { TFullProductData } from '../types'
 
