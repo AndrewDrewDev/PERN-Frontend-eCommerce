@@ -1,14 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { TAddItemCartStore } from '../types'
-
-type TItemsCartStore = {
-  id: string
-  name: string
-  price: string
-  priceAll: string
-  img: string
-  count: number
-}
+import { TAddItemCartStore, TItemsCartStore } from '../types'
 
 class CartStore {
   private _finalTotal: string
@@ -20,7 +11,14 @@ class CartStore {
     this._finalCount = 0
     this._items = []
     this.restoreCartFromLocalStore()
+    this.updateCart()
     makeAutoObservable(this)
+  }
+
+  private updateCart() {
+    this.saveCartToLocalStore()
+    this.refreshFinalTotal()
+    this.refreshFinalCount()
   }
 
   private restoreCartFromLocalStore() {
@@ -30,6 +28,24 @@ class CartStore {
 
   private saveCartToLocalStore() {
     localStorage.setItem('CartStore', JSON.stringify(this._items))
+  }
+
+  private refreshFinalTotal() {
+    let result: number = 0
+
+    for (const item of this._items) {
+      result += Number(item.price) + Number(item.priceAll)
+    }
+
+    this._finalTotal = result.toFixed(2)
+  }
+
+  private refreshFinalCount() {
+    let result: number = 0
+    for (const item of this._items) {
+      result += item.count
+    }
+    this._finalCount = result
   }
 
   public set addItem({ id, name, price, img }: TAddItemCartStore) {
@@ -43,6 +59,7 @@ class CartStore {
         priceAll: price,
         count: 1,
       })
+      this.updateCart()
       return
     }
 
@@ -75,13 +92,41 @@ class CartStore {
         count: 1,
       })
     }
-
-    this.saveCartToLocalStore()
+    this.updateCart()
   }
-  public removeItem(id: string) {}
-  public decreaceItem(id: string) {}
-  public increaceItem(id: string) {}
-  public refreshFinalTotal(arr: TItemsCartStore) {}
+
+  public set removeItem(id: string) {
+    for (var i = 0; i < this._items.length; i++) {
+      const item = this._items[i]
+      if (item.id === id) {
+        this._items.splice(i, 1)
+      }
+    }
+    this.updateCart()
+  }
+
+  public set decreaceItem(id: string) {
+    for (let i = 0; i < this._items.length; i++) {
+      const item = this._items[i]
+      if (item.id === id) {
+        item.count--
+        item.priceAll = (Number(item.priceAll) - Number(item.price)).toFixed(2)
+        if (item.count === 0) this.removeItem = id
+      }
+    }
+    this.updateCart()
+  }
+
+  public set increaceItem(id: string) {
+    for (let i = 0; i < this._items.length; i++) {
+      const item = this._items[i]
+      if (item.id === id) {
+        item.count++
+        item.priceAll = (Number(item.priceAll) + Number(item.price)).toFixed(2)
+      }
+    }
+    this.updateCart()
+  }
 
   public get getItems() {
     return this._items

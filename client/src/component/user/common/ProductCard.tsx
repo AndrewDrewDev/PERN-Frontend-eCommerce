@@ -2,7 +2,8 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { PRODUCT_ROUTE } from '../../../routes'
-import { TMainProductsData } from '../../../types'
+import { cartStore } from '../../../store/CartStateStore'
+import { TAddItemCartStore, TMainProductsData } from '../../../types'
 
 type TProductCard = {
   data: TMainProductsData
@@ -14,6 +15,13 @@ type TLabelNewOrDiscount = {
 }
 
 const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
+  const cartData: TAddItemCartStore = {
+    id: data.d720_exProductID,
+    name: data.d721_exProductName,
+    img: data.REST_img,
+    price: data.d802_exPriceSell,
+  }
+
   const LabelNewOrDiscount: FC<TLabelNewOrDiscount> = ({
     discountTag,
     newTag,
@@ -125,6 +133,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
             style={{
               marginRight: '1rem',
             }}
+            onClick={() => (cartStore.addItem = cartData)}
           >
             <svg
               className="h-5 w-5"

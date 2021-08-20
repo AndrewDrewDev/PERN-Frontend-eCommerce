@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { categoriesPageStore } from '../../../store/CategoriesPageStore'
 import { TCategoryData, TShowHideComponent } from '../../../types'
 
-type TnavLinks = {
+type TNavLinks = {
   name: string
   url: string
   svg: ReactElement
@@ -14,7 +14,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
   show,
   setShow,
 }): ReactElement => {
-  const navLinks: TnavLinks[] = [
+  const navLinks: TNavLinks[] = [
     {
       name: 'Главная',
       url: 'blyt',
@@ -140,12 +140,12 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
   ]
 
-  const NavLinkItem: FC<TnavLinks> = ({ name, url, svg }): ReactElement => {
+  const NavLinkItem: FC<TNavLinks> = ({ name, url, svg }): ReactElement => {
     return (
       <Link
         className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 
-        bg-gray-200 rounded-lg hover:underline hover:bg-blue-200 shadow-lg
-         border-2 border-gray-200 hover:border-blue-300 duration-500"
+      bg-gray-200 rounded-lg hover:underline hover:bg-blue-200 shadow-lg
+        border-2 border-gray-200 hover:border-blue-300 duration-500"
         to={url}
       >
         <div className="flex items-center">

@@ -125,3 +125,12 @@ export type TShowHideComponent = {
   show: boolean
   setShow: Dispatch<SetStateAction<boolean>>
 }
+
+export type TItemsCartStore = {
+  id: string
+  name: string
+  price: string
+  priceAll: string
+  img: string
+  count: number
+}

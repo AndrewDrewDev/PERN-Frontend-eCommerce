@@ -12,20 +12,6 @@ import { TFullProductData } from '../types'
 const ProductPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
 
-  const test = {
-    id: '0115-0101-00001',
-    name: 'Название товара',
-    price: '20.00',
-    img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
-  }
-  const test1 = {
-    id: '0115-0101-0000122',
-    name: 'Название товара',
-    price: '10.00',
-    img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
-  }
-  console.log(JSON.stringify(cartStore.getItems))
-
   const data: TFullProductData = {
     d691_exCategory1: 'Категория1',
     d692_exCategory2: 'Категория2',
@@ -37,13 +23,13 @@ const ProductPage: FC = (): ReactElement => {
     d721_exProductName: 'Название товара',
     d734_exProductNew: '',
     d735_exProductDiscounts: '@',
-    d802_exPriceSell: '310.00',
+    d802_exPriceSell: '310.73',
     d781_exEd: 'шт.',
     d723_exProductDescription: 'Описание товара',
     d748_exProductAmountRemaind: '',
     d722_exProductInStock: '?',
     d747_exProductCodeVender: 'G111',
-    d803_exPriceOldSell: '400.00',
+    d803_exPriceOldSell: '400.73',
     d738_exProductManufacturer: 'Tupeprlksfdg;jksgfdk',
     REST_imgUrl: {
       preview:
