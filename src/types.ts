@@ -80,45 +80,28 @@ export type TImgUrlProductData = {
   other: string[]
 }
 
-export type Td691_exCategory1 = string
-export type Td692_exCategory2 = string
-export type Td693_exCategory3 = string
-export type Td691_exCategory1EN = string
-export type Td692_exCategory2EN = string
-export type Td693_exCategory3EN = string
-export type Td720_exProductID = string
-export type Td721_exProductName = string
-export type Td734_exProductNew = '@' | ''
-export type Td735_exProductDiscounts = '@' | ''
-export type Td802_exPriceSell = string
-export type Td781_exEd = string
-export type Td723_exProductDescription = string
-export type Td748_exProductAmountRemaind = string
-export type Td722_exProductInStock = '+' | '-' | '?' | ''
-export type Td747_exProductCodeVender = string
-export type Td803_exPriceOldSell = string
-export type Td738_exProductManufacturer = string
+export type TProductPageDataStatus = 'да' | 'нет' | 'подзаказ'
 
-export type TFullProductData = {
-  d691_exCategory1: Td691_exCategory1
-  d692_exCategory2: Td692_exCategory2
-  d693_exCategory3: Td693_exCategory3
-  d691_exCategory1EN: Td691_exCategory1EN
-  d692_exCategory2EN: Td692_exCategory2EN
-  d693_exCategory3EN: Td693_exCategory3EN
-  d720_exProductID: Td720_exProductID
-  d721_exProductName: Td721_exProductName
-  d734_exProductNew: Td734_exProductNew
-  d735_exProductDiscounts: Td735_exProductDiscounts
-  d802_exPriceSell: Td802_exPriceSell
-  d781_exEd: Td781_exEd
-  d723_exProductDescription: Td723_exProductDescription
-  d748_exProductAmountRemaind: Td748_exProductAmountRemaind
-  d722_exProductInStock: Td722_exProductInStock
-  d747_exProductCodeVender: Td747_exProductCodeVender
-  d803_exPriceOldSell: Td803_exPriceOldSell
-  d738_exProductManufacturer: Td738_exProductManufacturer
-  REST_imgUrl: TImgUrlProductData
+export type TProductPageData = {
+  categories: {
+    name: string
+    url: string
+  }[]
+  images: {
+    preview: string
+    big: string[]
+  }
+  name: string
+  label: 'Акции' | 'Новинки'
+  unit: string
+  supplier: string
+  id: string
+  vendorId: string
+  description: string
+  price: string
+  oldPrice: string
+  amount: number
+  status: TProductPageDataStatus
 }
 
 export type TShowHideComponent = {

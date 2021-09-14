@@ -5,7 +5,6 @@ import { InfoContent } from '../component/user/info/InfoContent'
 import { INFO_ROUTE } from '../routes'
 
 const InfoPage: FC = (): ReactElement => {
-  // TODO: Add to shopConfig and excel file
   const infoPagesNames: string[] = [
     'about',
     'delivery',

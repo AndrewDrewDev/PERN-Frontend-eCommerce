@@ -2,14 +2,9 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-type TBreadcrumb = {
-  category1: string
-  category1EN: string
-  category2: string
-  category2EN: string
-  category3: string
-  category3EN: string
-  finalName: string
+export type TBreadcrumb = {
+  categories: { name: string; url: string }[]
+  lastName?: string
 }
 
 type TBreadcrumbItem = {
@@ -17,14 +12,13 @@ type TBreadcrumbItem = {
   url: string
 }
 
+type TLastNameItem = {
+  name: string
+}
+
 const Breadcrumb: FC<TBreadcrumb> = ({
-  category1,
-  category1EN,
-  category2,
-  category2EN,
-  category3,
-  category3EN,
-  finalName,
+  categories,
+  lastName,
 }): ReactElement => {
   const Arrow: ReactElement = (
     <svg
@@ -45,6 +39,10 @@ const Breadcrumb: FC<TBreadcrumb> = ({
         {Arrow}
       </li>
     )
+  }
+
+  const LastNameItem: FC<TLastNameItem> = ({ name }): ReactElement => {
+    return <li className="mt-2 md:mt-0 truncate text-gray-600">{name}</li>
   }
 
   return (
@@ -82,14 +80,12 @@ const Breadcrumb: FC<TBreadcrumb> = ({
             </Link>
             {Arrow}
           </li>
-          <BreadcrumbItem name={category1} url={category1EN} />
-          {category2 ? (
-            <BreadcrumbItem name={category2} url={category2EN} />
-          ) : null}
-          {category3 ? (
-            <BreadcrumbItem name={category3} url={category3EN} />
-          ) : null}
-          <li className="mt-2 md:mt-0 truncate text-gray-600">{finalName}</li>
+          {categories.map((c, i) => {
+            if (!lastName && ++i === categories.length)
+              return LastNameItem({ name: c.name })
+            return <BreadcrumbItem name={c.name} url={c.url} />
+          })}
+          {lastName ? LastNameItem({ name: lastName }) : null}
         </ol>
       </nav>
     </>

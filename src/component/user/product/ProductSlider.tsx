@@ -2,6 +2,7 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import Slider, { Settings } from 'react-slick'
 import './ProductSlider.css'
+import config from '../../../config'
 
 type TProductSlider = {
   images: string[]
@@ -61,7 +62,11 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
           className="border-2 focus:outline-none w-24 h-24 md:w-28 md:h-28
          flex items-center justify-center p-1 m-1 rounded-lg"
         >
-          <img className="object-contain h-full" src={images[index]} alt="" />
+          <img
+            className="object-contain h-full"
+            src={config.SERVER_API_URL + images[index]}
+            alt=""
+          />
         </button>
       )
     },
@@ -74,7 +79,7 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
           <img
             id={img}
             className="h-64 md:h-80 object-contain"
-            src={img}
+            src={config.SERVER_API_URL + img}
             alt=""
           />
         ))}

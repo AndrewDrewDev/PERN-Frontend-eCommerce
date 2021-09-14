@@ -2,74 +2,62 @@ import { FC, ReactElement } from 'react'
 import { useParams } from 'react-router-dom'
 import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
 import { Breadcrumb } from '../component/user/product/Breadcrumb'
-import { ProductInfo } from '../component/user/product/ProductInfo'
-import { ProductSlider } from '../component/user/product/ProductSlider'
-import { TabsPanel } from '../component/user/product/TabsPanel'
-import { cartStore } from '../store/CartStateStore'
 import { mainPageStore } from '../store/MainPageStore'
-import { TFullProductData } from '../types'
+import { TProductPageData } from '../types'
+import { ProductSlider } from '../component/user/product/ProductSlider'
+import ProductInfo from '../component/user/product/ProductInfo'
+import { TabsPanel } from '../component/user/product/TabsPanel'
 
 const ProductPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
 
-  const data: TFullProductData = {
-    d691_exCategory1: 'Категория1',
-    d692_exCategory2: 'Категория2',
-    d693_exCategory3: 'Категория3',
-    d691_exCategory1EN: 'Kategoria1',
-    d692_exCategory2EN: 'Kategoria2',
-    d693_exCategory3EN: 'Kategoria3',
-    d720_exProductID: '0115-0101-00016',
-    d721_exProductName: 'Название товара',
-    d734_exProductNew: '',
-    d735_exProductDiscounts: '@',
-    d802_exPriceSell: '310.73',
-    d781_exEd: 'шт.',
-    d723_exProductDescription: 'Описание товара',
-    d748_exProductAmountRemaind: '',
-    d722_exProductInStock: '?',
-    d747_exProductCodeVender: 'G111',
-    d803_exPriceOldSell: '400.73',
-    d738_exProductManufacturer: 'Tupeprlksfdg;jksgfdk',
-    REST_imgUrl: {
-      preview:
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
-      other: [
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-1b.jpg',
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-2b.jpg',
-        'https://siteup.com.ua/demo/msk/child-safety/img-product/790557-1b.jpg',
-        'https://siteup.com.ua/demo/msk/child-safety/img-product/790557-2b.jpg',
-        'https://siteup.com.ua/demo/msk/child-safety/img-product/790557-3b.jpg',
-        'https://siteup.com.ua/demo/msk/child-safety/img-product/790557-4b.jpg',
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/B19-1b.jpg',
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/B19-2b.jpg',
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/B19-3b.jpg',
-        'https://siteup.com.ua/demo/msk/tupperware/img-product/B19-4b.jpg',
-      ],
+  const data: TProductPageData = JSON.parse(`{
+    "categories": [
+        {
+            "name": "Классика",
+            "url": "Klassika"
+        },
+        {
+            "name": "Классика «Tupperware»",
+            "url": "Klassika-«Tupperware»"
+        },
+        {
+            "name": "Контейнеры",
+            "url": "Konteinery"
+        }
+    ],
+    "images": {
+        "preview": "1ba81a9b-eb74-48db-8419-3718352baf40.jpg",
+        "big": [
+            "827f0c8a-4bde-40b8-9d4b-3c8ea07e9229.jpg",
+            "281c8a4a-fb45-461e-bfa8-833c212b69e5.jpg"
+        ]
     },
-  }
+    "name": "Контейнер «Свежесть» (5,5 л)",
+    "label": "Акции",
+    "unit": "шт.",
+    "supplier": "Tupperware",
+    "id": "A03",
+    "vendorId": "G47",
+    "description": "**Преимущества**: \\n\\n- Открывающаяся вверх, скошенная часть крышки имеет небольшие отверстия, обеспечивающие циркуляцию воздуха в контейнере, что позволяет хранить продукты максимально долгое время.\\n- Непрозрачная поверхность защищает продукт от воздействия солнечных лучей.\\n- Легко разбирать и собирать.\\n- На подвижной части крышки располагается фиксатор, который предотвращает ее случайное открытие.\\n- Легкий доступ к содержимому – достаточно открыть подвижную часть крышки с отверстиями.\\nВозможности использования:\\nКонтейнер «Свежесть» предназначен для хранения картофеля, моркови, свеклы и других овощей и фруктов.",
+    "price": "2699.44",
+    "oldPrice": "2969.00",
+    "amount": 80,
+    "status": "да"
+}`)
 
   return (
     <div className="container mx-auto">
       <h1 className="text-gray-700 text-3xl title-font font-medium mb-1">
-        {data.d721_exProductName}
+        {data.name}
       </h1>
-
-      <Breadcrumb
-        category1={data.d691_exCategory1}
-        category1EN={data.d691_exCategory1EN}
-        category2={data.d692_exCategory2}
-        category2EN={data.d692_exCategory2EN}
-        category3={data.d693_exCategory3}
-        category3EN={data.d693_exCategory3EN}
-        finalName={data.d721_exProductName}
-      />
+      <Breadcrumb categories={data.categories} lastName={data.name} />
       <div className="mx-auto flex flex-wrap">
-        <ProductSlider images={data.REST_imgUrl.other} />
+        <ProductSlider images={data.images.big} />
         <ProductInfo data={data} />
       </div>
       <TabsPanel
-        description={data.d723_exProductDescription}
+        description={data.description}
         info={
           'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, fugit aliquid assumenda exercitationem doloremque vitae tempore tempora ex sequi! Eos soluta praesentium error neque nesciunt consectetur voluptates quidem. Fuga, laboriosam.'
         }

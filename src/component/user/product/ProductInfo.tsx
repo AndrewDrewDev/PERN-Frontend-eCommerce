@@ -1,38 +1,32 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
-import { TAddItemCartStore, TFullProductData } from '../../../types'
+import { TAddItemCartStore, TProductPageData } from '../../../types'
 import { ProductCounter } from './ProductCounter'
 import { ProductInStock } from './ProductInStock'
 import { ProductOldPrice } from './ProductOldPrice'
 import { ProductPrice } from './ProductPrice'
 
-type TDescription = { data: TFullProductData }
+type TDescription = { data: TProductPageData }
 
 const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
   const cartData: TAddItemCartStore = {
-    id: data.d720_exProductID,
-    name: data.d721_exProductName,
-    img: data.REST_imgUrl.preview,
-    price: data.d802_exPriceSell,
+    id: data.id,
+    name: data.name,
+    img: data.images.preview,
+    price: data.price,
   }
 
   return (
     <div className="lg:w-1/2 w-full lg:pl-10 mt-6 lg:mt-0 text-gray-600">
       <div className="flex mb-1 mt-1 text-sm text-green-600 mx-auto">
-        <ProductInStock status={data.d722_exProductInStock} />
+        <ProductInStock status={data.status} />
       </div>
-      {data.d803_exPriceOldSell ? (
-        <ProductOldPrice price={data.d803_exPriceOldSell} />
-      ) : null}
-      <ProductPrice price={data.d802_exPriceSell} />
+      {data.oldPrice ? <ProductOldPrice price={data.oldPrice} /> : null}
+      <ProductPrice price={data.price} />
       <div className="my-1">
-        {data.d738_exProductManufacturer ? (
-          <div>Производитель: {data.d738_exProductManufacturer}</div>
-        ) : null}
-        {data.d747_exProductCodeVender ? (
-          <div>Код поставщика: {data.d747_exProductCodeVender}</div>
-        ) : null}
+        {data.supplier ? <div>Производитель: {data.supplier}</div> : null}
+        {data.vendorId ? <div>Код поставщика: {data.vendorId}</div> : null}
       </div>
       <div className="border"></div>
       <ProductCounter />
@@ -110,4 +104,4 @@ const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
   )
 }
 
-export { ProductInfo }
+export default ProductInfo

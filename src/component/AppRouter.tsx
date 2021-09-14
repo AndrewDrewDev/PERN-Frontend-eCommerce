@@ -6,7 +6,7 @@ import { MAIN_ROUTE } from '../routes'
 import { TRoutes } from '../types'
 
 const AppRouter: FC = (): ReactElement => {
-  // const isAuth: boolean = false // TODO: Add Auth routers
+  // const isAuth: boolean = false
   return (
     <>
       <Switch>
