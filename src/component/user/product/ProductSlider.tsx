@@ -64,7 +64,7 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
         >
           <img
             className="object-contain h-full"
-            src={config.SERVER_API_URL + images[index]}
+            src={config.REACT_API_URL + images[index]}
             alt=""
           />
         </button>
@@ -79,7 +79,7 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
           <img
             id={img}
             className="h-64 md:h-80 object-contain"
-            src={config.SERVER_API_URL + img}
+            src={config.REACT_API_URL + img}
             alt=""
           />
         ))}
