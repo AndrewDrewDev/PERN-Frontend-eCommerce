@@ -10,7 +10,12 @@ type TTabsPanel = {
   reviews: string
 }
 
-const TabsPanel: FC<TTabsPanel> = (data): ReactElement => {
+const TabsPanel: FC<TTabsPanel> = ({
+  info,
+  description,
+  paymentDelivery,
+  reviews,
+}): ReactElement => {
   const [tabIndex, setTabIndex] = useState(0)
 
   const tabStyle: string =
@@ -40,25 +45,25 @@ const TabsPanel: FC<TTabsPanel> = (data): ReactElement => {
           selectedClassName="opacity-100 duration-1000"
           className="opacity-0"
         >
-          {data.description}
+          {description ? description : 'Описание отсутствует'}
         </TabPanel>
         <TabPanel
           selectedClassName="opacity-100 duration-1000"
           className="opacity-0"
         >
-          {data.info}
+          {info}
         </TabPanel>
         <TabPanel
           selectedClassName="opacity-100 duration-1000"
           className="opacity-0"
         >
-          {data.paymentDelivery}
+          {paymentDelivery}
         </TabPanel>
         <TabPanel
           selectedClassName="opacity-100 duration-1000"
           className="opacity-0"
         >
-          {data.reviews}
+          {reviews}
         </TabPanel>
       </div>
     </Tabs>

@@ -8,17 +8,21 @@ import { ProductSlider } from '../component/user/product/ProductSlider'
 import ProductInfo from '../component/user/product/ProductInfo'
 import { TabsPanel } from '../component/user/product/TabsPanel'
 import ProductApi from '../http/ProductApi'
+import Spinner from '../component/user/common/Spinner'
+import { PageNotFound } from '../pages/PageNotFound'
 
 const ProductPage: FC = (): ReactElement => {
-  const [product, setProduct] = useState<TProductPageData | undefined>()
+  const [product, setProduct] = useState<TProductPageData | null | undefined>(
+    undefined
+  )
   const { id }: { id: string } = useParams()
 
   useEffect(() => {
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
   }, [])
 
-  // TODO Add product page content not fount
-  if (!product) return <div>TODO Add product page content not fount</div>
+  if (product === undefined) return <Spinner />
+  if (product === null) return <PageNotFound title={'Продукт не найден'} />
 
   return (
     <div className="container mx-auto">

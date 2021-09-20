@@ -14,7 +14,9 @@ const AppRouter: FC = (): ReactElement => {
           <Route key={path} path={path} component={component} exact />
         ))}
         {/* <Redirect to={MAIN_ROUTE} /> */}
-        <Route path="/404" component={PageNotFound} exact />
+        <Route path="/404" exact>
+          <PageNotFound title={'Страница не найдена'} />
+        </Route>
         <Redirect to="/404" />
       </Switch>
     </>
