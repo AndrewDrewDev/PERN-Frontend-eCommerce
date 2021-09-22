@@ -5,12 +5,6 @@ export type TRoutes = {
   component: FC
 }
 
-export type TCategoryData = {
-  name: string
-  id: string
-  count: number
-}
-
 export type TPageData = {
   id: string
   title: string
@@ -26,22 +20,21 @@ export type TMainSliderData = {
   title: string
 }
 
+export type TMainProductsDataLable = 'Новинки' | 'Акции'
 export type TMainProductsData = {
-  d720_exProductID: string
-  d721_exProductName: string
-  d734_exProductNew: string
-  d735_exProductDiscounts: string
-  d802_exPriceSell: string
-  d722_exProductInStock: string
-  d803_exPriceOldSell: string
-  REST_img: string
+  id: string
+  name: string
+  label: TMainProductsDataLable
+  price: string
+  oldprice: string
+  image: string
 }
 
 export type TAddItemCartStore = {
   id: string
   name: string
   price: string
-  img: string
+  image: string
 }
 
 export type IShopConfigStore = {
@@ -114,6 +107,23 @@ export type TItemsCartStore = {
   name: string
   price: string
   priceAll: string
-  img: string
+  image: string
   count: number
+}
+
+export type TCategoryProducts = {
+  count: number
+  name: string
+  id: string
+  price: string
+  oldprice: string
+  status: string
+  label: string
+  img: string
+}
+
+export type TCategoryInfoByLevel = {
+  count: string
+  name: string
+  url: string
 }

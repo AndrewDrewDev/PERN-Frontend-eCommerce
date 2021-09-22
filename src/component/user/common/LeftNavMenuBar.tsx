@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { categoriesPageStore } from '../../../store/CategoriesPageStore'
+import { categoriesPageStore } from '../../../store/CategoryStore'
 import { TCategoryData, TShowHideComponent } from '../../../types'
 
 type TNavLinks = {

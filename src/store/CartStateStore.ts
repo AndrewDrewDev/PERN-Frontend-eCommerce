@@ -48,14 +48,14 @@ class CartStore {
     this._finalCount = result
   }
 
-  public set addItem({ id, name, price, img }: TAddItemCartStore) {
+  public set addItem({ id, name, price, image }: TAddItemCartStore) {
     // add first item if array is empty
     if (this._items.length === 0) {
       this._items.push({
         id,
         name,
         price,
-        img,
+        image,
         priceAll: price,
         count: 1,
       })
@@ -87,7 +87,7 @@ class CartStore {
         id,
         name,
         price,
-        img,
+        image,
         priceAll: price,
         count: 1,
       })

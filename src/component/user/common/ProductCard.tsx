@@ -3,30 +3,34 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { PRODUCT_ROUTE } from '../../../routes'
 import { cartStore } from '../../../store/CartStateStore'
-import { TAddItemCartStore, TMainProductsData } from '../../../types'
+import {
+  TAddItemCartStore,
+  TMainProductsData,
+  TMainProductsDataLable,
+} from '../../../types'
 
 type TProductCard = {
-  data: TMainProductsData
+  product: TMainProductsData
 }
 
 type TLabelNewOrDiscount = {
-  discountTag: string
-  newTag: string
+  label: TMainProductsDataLable
 }
 
-const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
+const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
+  const { name, image, price, id, label, oldprice } = product
+
   const cartData: TAddItemCartStore = {
-    id: data.d720_exProductID,
-    name: data.d721_exProductName,
-    img: data.REST_img,
-    price: data.d802_exPriceSell,
+    id,
+    name,
+    image,
+    price,
   }
 
   const LabelNewOrDiscount: FC<TLabelNewOrDiscount> = ({
-    discountTag,
-    newTag,
+    label,
   }): ReactElement | null => {
-    if (discountTag) {
+    if (label === 'Акции') {
       return (
         <div
           className="absolute top-0 left-0 -mx-8 my-8 px-12 transform 
@@ -36,7 +40,7 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
           акция
         </div>
       )
-    } else if (newTag) {
+    } else if (label === 'Новинки') {
       return (
         <div
           className="absolute top-0 left-0 -mx-8 my-8 px-12 transform 
@@ -61,18 +65,15 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
           <Link
             className="transform scale-100 hover:scale-110 duration-500 
             ease-in-out"
-            to={PRODUCT_ROUTE + '/' + data.d720_exProductID}
+            to={PRODUCT_ROUTE + '/' + id}
           >
             <img
               className="object-contain w-full m-auto h-64"
               alt="Loading..."
-              src={data.REST_img}
+              src={image}
             />
           </Link>
-          <LabelNewOrDiscount
-            discountTag={data.d735_exProductDiscounts}
-            newTag={data.d734_exProductNew}
-          />
+          <LabelNewOrDiscount label={label} />
           <button
             className="invisible shadow hover:shadow-lg duration-500 lg:visible
             absolute z-20 bottom-0 right-0 -mb-4 p-2 rounded-full
@@ -150,14 +151,12 @@ const ProductCard: FC<TProductCard> = ({ data }): ReactElement => {
         </div>
         <div className="px-5 py-3 bg-white relative z-10">
           <a href="#">
-            <h3 className="text-gray-700">{data.d721_exProductName}</h3>
+            <h3 className="text-gray-700">{name}</h3>
           </a>
-          <span className="font-bold text-gray-800 mt-2">
-            ${data.d802_exPriceSell} руб.
-          </span>
-          {data.d803_exPriceOldSell ? (
+          <span className="font-bold text-gray-800 mt-2">${price} руб.</span>
+          {oldprice ? (
             <span className="mx-1 line-through text-gray-600 mt-2">
-              {data.d803_exPriceOldSell} руб.
+              {oldprice} руб.
             </span>
           ) : null}
         </div>
