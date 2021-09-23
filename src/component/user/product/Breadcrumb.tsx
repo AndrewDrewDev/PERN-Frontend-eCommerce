@@ -2,12 +2,12 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-export type TBreadcrumb = {
+export type TBreadcrumbComponent = {
   categories: { name: string; url: string }[]
   lastName?: string
 }
 
-type TBreadcrumbItem = {
+export type TBreadcrumbComponentItem = {
   name: string
   url: string
 }
@@ -16,7 +16,7 @@ type TLastNameItem = {
   name: string
 }
 
-const Breadcrumb: FC<TBreadcrumb> = ({
+const Breadcrumb: FC<TBreadcrumbComponent> = ({
   categories,
   lastName,
 }): ReactElement => {
@@ -30,7 +30,10 @@ const Breadcrumb: FC<TBreadcrumb> = ({
     </svg>
   )
 
-  const BreadcrumbItem: FC<TBreadcrumbItem> = ({ name, url }): ReactElement => {
+  const BreadcrumbItem: FC<TBreadcrumbComponentItem> = ({
+    name,
+    url,
+  }): ReactElement => {
     return (
       <li className="flex mt-2 md:mt-0 items-center text-gray-700 hover:underline">
         <Link className="truncate" to={url}>

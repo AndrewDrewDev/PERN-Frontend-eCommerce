@@ -7,6 +7,10 @@ import ReactPaginate from 'react-paginate'
 import Spinner from '../component/user/common/Spinner'
 import { PageNotFound } from './PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
+import {
+  Breadcrumb,
+  TBreadcrumbComponentItem,
+} from '../component/user/product/Breadcrumb'
 
 const CategoryPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -18,9 +22,13 @@ const CategoryPage: FC = (): ReactElement => {
   const [products, setProducts] = useState<
     TMainProductsData[] | null | undefined
   >()
+
   const [page, setPage] = useState(1)
 
+  const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
+
   const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
+
   useEffect(() => {
     CategoryApi.fetchProducts({
       name: id,
@@ -29,9 +37,11 @@ const CategoryPage: FC = (): ReactElement => {
     })
       .then(data => setProducts(data))
       .then(() => setCategoryInfo(categoriesPageStore.infoByUrl(id)))
-  }, [page])
 
-  // Get curesnt selected number of pagination
+    CategoryApi.fetchBreadcrumb(id).then(data => setBreadcrumb(data))
+  }, [page, id])
+
+  // Get current selected number of pagination
   const selectedItem = (data: any) => {
     const { selected } = data
     setPage(selected + 1)
@@ -43,15 +53,18 @@ const CategoryPage: FC = (): ReactElement => {
         <PageNotFound title={'Категория не найдена'} />
       </>
     )
+
   if (products === undefined)
     return (
       <>
         <Spinner />
       </>
     )
+
   return (
     <>
       <div className="container mx-auto">
+        {breadcrumb ? <Breadcrumb categories={breadcrumb} /> : null}
         <CategoryWrapper
           name={categoryInfo.name}
           count={categoryInfo.count}

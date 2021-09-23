@@ -15,7 +15,7 @@ const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
 
   return (
     <>
-      <Link to={url}>
+      <Link to={'/category/' + url}>
         <li
           className="inline-flex px-1 duration-500 hover:underline rounded-full
      hover:text-white hover:bg-blue-600"
