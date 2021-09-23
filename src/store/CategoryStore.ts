@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx'
-import { TCategoryInfoByLevel } from '../types'
+import { TCategoryInfoByLevel, TCSInfoByUrl, TCSInfoByUrlData } from '../types'
 import CategoryApi from '../http/CategoryApi'
 
 class CategoryStore {
@@ -8,11 +8,34 @@ class CategoryStore {
   private _category1: TCategoryInfoByLevel[] | null = []
   private _category2: TCategoryInfoByLevel[] | null = []
   private _category3: TCategoryInfoByLevel[] | null = []
+  private _infoByUrl: TCSInfoByUrl = {}
+
   constructor() {
     CategoryApi.fetchInfoByLevel(1).then(data => (this._category1 = data))
     CategoryApi.fetchInfoByLevel(2).then(data => (this._category2 = data))
-    CategoryApi.fetchInfoByLevel(3).then(data => (this._category3 = data))
+    CategoryApi.fetchInfoByLevel(3)
+      .then(data => (this._category3 = data))
+      .then(() => (this._infoByUrl = this.joinAllCategory()))
     makeAutoObservable(this)
+  }
+
+  // Join all category
+  private joinAllCategory(): TCSInfoByUrl {
+    const result: TCSInfoByUrl = {}
+    let data: TCategoryInfoByLevel[] = []
+    if (this._category1) data = [...data, ...this._category1]
+    if (this._category2) data = [...data, ...this._category2]
+    if (this._category3) data = [...data, ...this._category3]
+
+    for (const i of data) {
+      result[i.url] = { name: i.name, url: i.url, count: i.count }
+    }
+
+    return result
+  }
+
+  public infoByUrl(url: string): TCSInfoByUrlData {
+    return this._infoByUrl[url]
   }
 
   public get currentName() {

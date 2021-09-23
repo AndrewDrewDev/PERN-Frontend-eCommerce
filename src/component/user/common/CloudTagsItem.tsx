@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
 import { TCategoryInfoByLevel } from '../../../types'
-import LinkToCategory from './LinkToCategory'
+import { Link } from 'react-router-dom'
 
 type TCloudTagsItem = {
   item: TCategoryInfoByLevel
@@ -15,7 +15,7 @@ const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
 
   return (
     <>
-      <LinkToCategory name={name} url={url} count={count}>
+      <Link to={url}>
         <li
           className="inline-flex px-1 duration-500 hover:underline rounded-full
      hover:text-white hover:bg-blue-600"
@@ -25,7 +25,7 @@ const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
         >
           {name}({count})
         </li>
-      </LinkToCategory>
+      </Link>
     </>
   )
 }

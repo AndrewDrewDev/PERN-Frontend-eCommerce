@@ -3,7 +3,6 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { categoriesPageStore } from '../../../store/CategoryStore'
 import { TCategoryInfoByLevel, TShowHideComponent } from '../../../types'
-import LinkToCategory from './LinkToCategory'
 
 type TNavLinks = {
   name: string
@@ -169,7 +168,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
            hover:bg-blue-500 border-2 border-blue-500 hover:border-blue-400
            duration-500 shadow-lg"
       >
-        <LinkToCategory url={url} name={name} count={count}>
+        <Link to={url}>
           <div className="flex items-center">
             <svg
               className="w-6 h-6"
@@ -189,7 +188,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
               {name} ({count}+)
             </span>
           </div>
-        </LinkToCategory>
+        </Link>
       </div>
     )
   }

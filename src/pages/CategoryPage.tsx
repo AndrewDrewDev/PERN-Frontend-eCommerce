@@ -2,30 +2,33 @@ import { FC, ReactElement, useEffect, useState } from 'react'
 import CategoryApi from '../http/CategoryApi'
 import { useParams } from 'react-router-dom'
 import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
-import { TMainProductsData } from '../types'
-import useQuery from '../hooks/useQuery'
+import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
 import Spinner from '../component/user/common/Spinner'
 import { PageNotFound } from './PageNotFound'
+import { categoriesPageStore } from '../store/CategoryStore'
 
 const CategoryPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
+  const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>({
+    name: 'Category not found!',
+    url: 'Url not found!',
+    count: '0',
+  })
   const [products, setProducts] = useState<
     TMainProductsData[] | null | undefined
   >()
   const [page, setPage] = useState(1)
 
-  const query = useQuery()
-  const categoryName: string = query.get('name') ?? 'Категория не определена'
-  const categoryCount: string =
-    query.get('count') ?? 'Количество не опеределено'
-  const pageCount = Math.ceil(Number(categoryCount) / 20)
+  const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
   useEffect(() => {
     CategoryApi.fetchProducts({
       name: id,
       limit: 20,
       page,
-    }).then(data => setProducts(data))
+    })
+      .then(data => setProducts(data))
+      .then(() => setCategoryInfo(categoriesPageStore.infoByUrl(id)))
   }, [page])
 
   // Get curesnt selected number of pagination
@@ -50,8 +53,8 @@ const CategoryPage: FC = (): ReactElement => {
     <>
       <div className="container mx-auto">
         <CategoryWrapper
-          name={categoryName}
-          count={categoryCount}
+          name={categoryInfo.name}
+          count={categoryInfo.count}
           products={products}
         />
         <div className="my-5">

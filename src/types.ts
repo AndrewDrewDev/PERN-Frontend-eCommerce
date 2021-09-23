@@ -116,3 +116,13 @@ export type TCategoryInfoByLevel = {
   name: string
   url: string
 }
+
+export type TCSInfoByUrlData = {
+  name: string
+  url: string
+  count: string
+}
+
+export type TCSInfoByUrl = {
+  [key: string]: TCSInfoByUrlData
+}
