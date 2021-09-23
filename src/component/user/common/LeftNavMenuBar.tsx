@@ -2,7 +2,8 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { categoriesPageStore } from '../../../store/CategoryStore'
-import { TCategoryData, TShowHideComponent } from '../../../types'
+import { TCategoryInfoByLevel, TShowHideComponent } from '../../../types'
+import LinkToCategory from './LinkToCategory'
 
 type TNavLinks = {
   name: string
@@ -156,39 +157,40 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     )
   }
 
-  const CategoryLinkItem: FC<TCategoryData> = ({
+  const CategoryLinkItem: FC<TCategoryInfoByLevel> = ({
     name,
-    id,
+    url,
     count,
   }): ReactElement => {
     return (
-      <Link
+      <div
         className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900
-      bg-gray-200 rounded-lg hover:underline hover:text-white 
-      hover:bg-blue-500 border-2 border-blue-500 hover:border-blue-400
-      duration-500 shadow-lg"
-        to={'#' + id}
+           bg-gray-200 rounded-lg hover:underline hover:text-white
+           hover:bg-blue-500 border-2 border-blue-500 hover:border-blue-400
+           duration-500 shadow-lg"
       >
-        <div className="flex items-center">
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-            ></path>
-          </svg>
-          <span className="pl-2">
-            {name} ({count}+)
-          </span>
-        </div>
-      </Link>
+        <LinkToCategory url={url} name={name} count={count}>
+          <div className="flex items-center">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+              ></path>
+            </svg>
+            <span className="pl-2">
+              {name} ({count}+)
+            </span>
+          </div>
+        </LinkToCategory>
+      </div>
     )
   }
 
@@ -232,9 +234,11 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                 <h3 className="text-xl font-medium text-gray-700">
                   Основные категории:
                 </h3>
-                {categoriesPageStore.category1.map(category =>
-                  CategoryLinkItem(category)
-                )}
+                {categoriesPageStore.category1
+                  ? categoriesPageStore.category1.map(category =>
+                      CategoryLinkItem(category)
+                    )
+                  : null}
               </div>
             </nav>
           </div>

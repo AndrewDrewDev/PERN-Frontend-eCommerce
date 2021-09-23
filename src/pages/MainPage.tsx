@@ -10,12 +10,12 @@ const MainPage: FC = (): ReactElement => {
       <MainSlider />
       <CategoryWrapper
         name={'Акции'}
-            count={4}
+        count={'4'}
         products={mainPageStore.discountProducts}
       />
       <CategoryWrapper
         name={'Новинки'}
-        count={4}
+        count={'4'}
         products={mainPageStore.newProducts}
       />
       <CloudTags />

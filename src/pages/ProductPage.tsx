@@ -48,12 +48,12 @@ const ProductPage: FC = (): ReactElement => {
       />
       <CategoryWrapper
         name={'Акции'}
-        count={4}
+        count={'4'}
         products={mainPageStore.discountProducts}
       />
       <CategoryWrapper
         name={'Новинки'}
-        count={4}
+        count={'4'}
         products={mainPageStore.newProducts}
       />
     </div>

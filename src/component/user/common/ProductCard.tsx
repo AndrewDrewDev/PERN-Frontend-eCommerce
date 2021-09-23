@@ -8,6 +8,7 @@ import {
   TMainProductsData,
   TMainProductsDataLable,
 } from '../../../types'
+import config from '../../../config'
 
 type TProductCard = {
   product: TMainProductsData
@@ -18,12 +19,12 @@ type TLabelNewOrDiscount = {
 }
 
 const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
-  const { name, image, price, id, label, oldprice } = product
+  const { name, img, price, id, label, oldprice } = product
 
   const cartData: TAddItemCartStore = {
     id,
     name,
-    image,
+    img,
     price,
   }
 
@@ -70,7 +71,7 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
             <img
               className="object-contain w-full m-auto h-64"
               alt="Loading..."
-              src={image}
+              src={config.REACT_API_URL + img}
             />
           </Link>
           <LabelNewOrDiscount label={label} />

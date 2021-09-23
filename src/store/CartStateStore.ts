@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { TAddItemCartStore, TItemsCartStore } from '../types'
+import config from '../config'
 
 class CartStore {
   private _finalTotal: string
@@ -48,14 +49,14 @@ class CartStore {
     this._finalCount = result
   }
 
-  public set addItem({ id, name, price, image }: TAddItemCartStore) {
+  public set addItem({ id, name, price, img }: TAddItemCartStore) {
     // add first item if array is empty
     if (this._items.length === 0) {
       this._items.push({
         id,
         name,
         price,
-        image,
+        img,
         priceAll: price,
         count: 1,
       })
@@ -87,7 +88,7 @@ class CartStore {
         id,
         name,
         price,
-        image,
+        img,
         priceAll: price,
         count: 1,
       })

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { PRODUCT_ROUTE } from '../../../routes'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TShowHideComponent } from '../../../types'
+import config from '../../../config'
 
 const RightCartMenuBar: FC<TShowHideComponent> = observer(
   ({ show, setShow }): ReactElement => {
@@ -25,7 +26,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                 <Link className="cursor-pointer" to={PRODUCT_ROUTE + '/' + id}>
                   <img
                     alt="Placeholder"
-                    src={img}
+                    src={config.REACT_API_URL + img}
                     style={{
                       maxHeight: '20mm',
                       minWidth: '20mm',

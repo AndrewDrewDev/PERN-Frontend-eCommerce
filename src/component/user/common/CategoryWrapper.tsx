@@ -5,7 +5,7 @@ import { ProductCard } from './ProductCard'
 
 type TCategoryWrapper = {
   name: string
-  count: number
+  count: string
   products: TMainProductsData[]
 }
 

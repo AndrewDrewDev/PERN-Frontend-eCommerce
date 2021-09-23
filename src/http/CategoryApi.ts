@@ -1,5 +1,5 @@
 import { $host } from './index'
-import { TCategoryInfoByLevel, TCategoryProducts } from '../types'
+import { TCategoryInfoByLevel, TMainProductsData } from '../types'
 
 type TfetchProducts = {
   name: string
@@ -17,14 +17,15 @@ class CategoryApi {
     name,
     limit,
     page,
-  }: TfetchProducts): Promise<TCategoryProducts[]> {
-    return await $host.get('api/category', {
+  }: TfetchProducts): Promise<TMainProductsData[]> {
+    const { data } = await $host.get('api/category', {
       params: {
         name,
         limit,
         page,
       },
     })
+    return data
   }
 
   public async fetchInfoByLevel(

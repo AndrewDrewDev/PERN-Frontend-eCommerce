@@ -1,19 +1,21 @@
 import { FC, ReactElement } from 'react'
 import { TCategoryInfoByLevel } from '../../../types'
-import { Link } from 'react-router-dom'
+import LinkToCategory from './LinkToCategory'
 
 type TCloudTagsItem = {
   item: TCategoryInfoByLevel
 }
 
 const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
+  const { name, url, count } = item
+
   const getRandomValue = (max: number): number => {
     return Math.floor(Math.random() * max) + 1
   }
 
   return (
     <>
-      <Link to={`/category/?name=${item.url}&limit=5&page=1`}>
+      <LinkToCategory name={name} url={url} count={count}>
         <li
           className="inline-flex px-1 duration-500 hover:underline rounded-full
      hover:text-white hover:bg-blue-600"
@@ -21,9 +23,9 @@ const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
             fontSize: `1.${getRandomValue(3)}rem`,
           }}
         >
-          {item.name}({item.count})
+          {name}({count})
         </li>
-      </Link>
+      </LinkToCategory>
     </>
   )
 }

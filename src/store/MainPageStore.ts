@@ -42,90 +42,73 @@ class MainPageStore {
       {
         id: '0115-0101-00001',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00002',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
+
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00003',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00004',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00005',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00006',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00007',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00008',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
     ]
 
@@ -133,90 +116,75 @@ class MainPageStore {
       {
         id: '0115-0101-00009',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00010',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00011',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00012',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00013',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00014',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
+
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00015',
         name: 'Название товара',
-        label: '@',
-        d735_exProductDiscounts: '',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '400.00',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '400.00',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
       {
         id: '0115-0101-00016',
         name: 'Название товара',
-        label: '',
-        d735_exProductDiscounts: '@',
+        label: 'Акции',
         price: '310.00',
-        inStock: 'да',
-        oldPrice: '',
-        image:
-          'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
+
+        oldprice: '',
+        img: 'https://siteup.com.ua/demo/msk/tupperware/img-product/A03-0m.jpg',
       },
     ]
 

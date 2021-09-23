@@ -13,7 +13,7 @@ const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
   const cartData: TAddItemCartStore = {
     id: data.id,
     name: data.name,
-    image: data.images.preview,
+    img: data.images.preview,
     price: data.price,
   }
 

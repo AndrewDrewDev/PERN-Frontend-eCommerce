@@ -20,21 +20,11 @@ export type TMainSliderData = {
   title: string
 }
 
-export type TMainProductsDataLable = 'Новинки' | 'Акции'
-export type TMainProductsData = {
-  id: string
-  name: string
-  label: TMainProductsDataLable
-  price: string
-  oldprice: string
-  image: string
-}
-
 export type TAddItemCartStore = {
   id: string
   name: string
   price: string
-  image: string
+  img: string
 }
 
 export type IShopConfigStore = {
@@ -107,18 +97,17 @@ export type TItemsCartStore = {
   name: string
   price: string
   priceAll: string
-  image: string
+  img: string
   count: number
 }
 
-export type TCategoryProducts = {
-  count: number
-  name: string
+export type TMainProductsDataLable = 'Новинки' | 'Акции'
+export type TMainProductsData = {
   id: string
+  name: string
+  label: TMainProductsDataLable
   price: string
   oldprice: string
-  status: string
-  label: string
   img: string
 }
 
