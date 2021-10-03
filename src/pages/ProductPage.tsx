@@ -12,10 +12,11 @@ import Spinner from '../component/user/common/Spinner'
 import { PageNotFound } from '../pages/PageNotFound'
 
 const ProductPage: FC = (): ReactElement => {
+  const { id }: { id: string } = useParams()
+
   const [product, setProduct] = useState<TProductPageData | null | undefined>(
     undefined
   )
-  const { id }: { id: string } = useParams()
 
   useEffect(() => {
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))

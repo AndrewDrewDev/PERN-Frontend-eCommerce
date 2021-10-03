@@ -1,30 +1,27 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { FC } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import Spinner from '../component/user/common/Spinner'
 import { InfoContent } from '../component/user/info/InfoContent'
-import { INFO_ROUTE } from '../routes'
+import { TInfoPagesData } from '../types'
+import infoApi from '../http/infoApi'
+import { PageNotFound } from './PageNotFound'
 
 const InfoPage: FC = (): ReactElement => {
-  const infoPagesNames: string[] = [
-    'about',
-    'delivery',
-    'faqs',
-    'payment',
-    'public-offer',
-    'warranty',
-  ]
+  const { id }: { id: string } = useParams()
+  const [data, setData] = useState<TInfoPagesData | null | undefined>()
+
+  useEffect(() => {
+    infoApi.fetchInfoPagesData(id).then(data => setData(data))
+  }, [id])
+
+  if (data === undefined) return <Spinner />
+  if (data === null) return <PageNotFound title={'Страница не найдена'} />
 
   return (
-    <Switch>
-      {infoPagesNames.map(name => (
-        <Route
-          key={name}
-          path={INFO_ROUTE + '/' + name}
-          component={InfoContent}
-        />
-      ))}
-      <Redirect to="/" />
-    </Switch>
+    <>
+      <InfoContent title={data.name} content={data.content} img={data.img} />
+    </>
   )
 }
 

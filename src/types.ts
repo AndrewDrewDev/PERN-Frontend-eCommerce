@@ -6,13 +6,9 @@ export type TRoutes = {
 }
 
 export type TPageData = {
-  id: string
   title: string
   content: string
-  imgUrlFloatLeftTop?: string
-  imgUrlFloatRightTop?: string // TODO: Add
-  imgUrlWidthFullTop?: string // TODO: Add
-  imgUrlWidthFullBottom?: string
+  img: string[] | null
 }
 
 export type TMainSliderData = {
@@ -125,4 +121,11 @@ export type TCSInfoByUrlData = {
 
 export type TCSInfoByUrl = {
   [key: string]: TCSInfoByUrlData
+}
+
+export type TInfoPagesData = {
+  name: string
+  url: string
+  content: string
+  img: string[] | null
 }
