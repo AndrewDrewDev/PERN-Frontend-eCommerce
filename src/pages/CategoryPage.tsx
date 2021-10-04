@@ -34,6 +34,7 @@ const CategoryPage: FC = (): ReactElement => {
       name: id,
       limit: 20,
       page,
+      type: 'common',
     })
       .then(data => setProducts(data))
       .then(() => setCategoryInfo(categoriesPageStore.infoByUrl(id)))

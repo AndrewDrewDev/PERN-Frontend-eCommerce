@@ -2,15 +2,16 @@ import { $host } from './index'
 import { TCategoryInfoByLevel, TMainProductsData } from '../types'
 import { TBreadcrumbComponentItem } from '../component/user/product/Breadcrumb'
 
-type TfetchProducts = {
+type TFetchProducts = {
   name: string
   limit: number
   page: number
+  type: 'custom' | 'common'
 }
 
-type TFetchInfo = {
-  name: string
-  count: string
+type TFetchProductsUrls = {
+  common: string
+  custom: string
 }
 
 class CategoryApi {
@@ -18,8 +19,13 @@ class CategoryApi {
     name,
     limit,
     page,
-  }: TfetchProducts): Promise<TMainProductsData[]> {
-    const { data } = await $host.get('api/category', {
+    type,
+  }: TFetchProducts): Promise<TMainProductsData[]> {
+    const urls: TFetchProductsUrls = {
+      common: 'api/category',
+      custom: 'api/category/custom',
+    }
+    const { data } = await $host.get(urls[type], {
       params: {
         name,
         limit,
@@ -33,6 +39,13 @@ class CategoryApi {
     level: number
   ): Promise<TCategoryInfoByLevel[]> {
     const { data } = await $host.get('api/category/cloud/' + level)
+    return data
+  }
+
+  public async fetchCustomInfoByLevel(
+    url: string
+  ): Promise<TCategoryInfoByLevel[]> {
+    const { data } = await $host.get('api/category/custom/' + url)
     return data
   }
 

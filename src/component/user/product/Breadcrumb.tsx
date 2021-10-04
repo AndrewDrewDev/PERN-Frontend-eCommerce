@@ -36,7 +36,7 @@ const Breadcrumb: FC<TBreadcrumbComponent> = ({
   }): ReactElement => {
     return (
       <li className="flex mt-2 md:mt-0 items-center text-gray-700 hover:underline">
-        <Link className="truncate" to={url}>
+        <Link className="truncate" to={'/category/' + url}>
           {name}
         </Link>
         {Arrow}
@@ -78,7 +78,7 @@ const Breadcrumb: FC<TBreadcrumbComponent> = ({
             {Arrow}
           </li>
           <li className="flex mt-2 md:mt-0 items-center text-gray-700 hover:underline">
-            <Link className="truncate" to="#">
+            <Link className="truncate" to="/category">
               Каталог товаров
             </Link>
             {Arrow}

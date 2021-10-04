@@ -2,7 +2,6 @@ import { FC, ReactElement, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
 import { Breadcrumb } from '../component/user/product/Breadcrumb'
-import { mainPageStore } from '../store/MainPageStore'
 import { TProductPageData } from '../types'
 import { ProductSlider } from '../component/user/product/ProductSlider'
 import ProductInfo from '../component/user/product/ProductInfo'
@@ -10,6 +9,8 @@ import { TabsPanel } from '../component/user/product/TabsPanel'
 import ProductApi from '../http/ProductApi'
 import Spinner from '../component/user/common/Spinner'
 import { PageNotFound } from '../pages/PageNotFound'
+import { categoriesPageStore } from '../store/CategoryStore'
+import { CloudTags } from '../component/user/common/CloudTags'
 
 const ProductPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -20,7 +21,7 @@ const ProductPage: FC = (): ReactElement => {
 
   useEffect(() => {
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
-  }, [])
+  }, [id])
 
   if (product === undefined) return <Spinner />
   if (product === null) return <PageNotFound title={'Продукт не найден'} />
@@ -48,15 +49,18 @@ const ProductPage: FC = (): ReactElement => {
         }
       />
       <CategoryWrapper
-        name={'Акции'}
-        count={'4'}
-        products={mainPageStore.discountProducts}
+        name={categoriesPageStore.infoByUrl('Aktsii').name}
+        count={categoriesPageStore.infoByUrl('Aktsii').count}
+        products={categoriesPageStore.categoryDiscountProducts}
+        limit={4}
       />
       <CategoryWrapper
-        name={'Новинки'}
-        count={'4'}
-        products={mainPageStore.newProducts}
+        name={categoriesPageStore.infoByUrl('Novinki').name}
+        count={categoriesPageStore.infoByUrl('Novinki').count}
+        products={categoriesPageStore.categoryNewProducts}
+        limit={4}
       />
+      <CloudTags />
     </div>
   )
 }

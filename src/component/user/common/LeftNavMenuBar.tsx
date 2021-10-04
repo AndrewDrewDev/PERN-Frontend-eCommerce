@@ -233,8 +233,8 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                 <h3 className="text-xl font-medium text-gray-700">
                   Основные категории:
                 </h3>
-                {categoriesPageStore.category1
-                  ? categoriesPageStore.category1.map(category =>
+                {categoriesPageStore.category1Info
+                  ? categoriesPageStore.category1Info.map(category =>
                       CategoryLinkItem(category)
                     )
                   : null}

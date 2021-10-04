@@ -2,6 +2,7 @@ import { ReactElement } from 'react'
 import { useState } from 'react'
 import { FC } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
+import textToHtml from '../../../utils/textToHtml'
 
 type TTabsPanel = {
   description: string
@@ -45,7 +46,7 @@ const TabsPanel: FC<TTabsPanel> = ({
           selectedClassName="opacity-100 duration-1000"
           className="opacity-0"
         >
-          {description ? description : 'Описание отсутствует'}
+          {description ? textToHtml(description) : 'Описание отсутствует'}
         </TabPanel>
         <TabPanel
           selectedClassName="opacity-100 duration-1000"
