@@ -75,8 +75,9 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
   return (
     <div className="lg:w-1/2 w-full object-cover object-center">
       <Slider className="rounded-lg  mb-4 border shadow-lg" {...settings}>
-        {images.map(img => (
+        {images.map((img, i) => (
           <img
+            key={i}
             id={img}
             className="h-64 md:h-80 object-contain"
             src={config.REACT_API_URL + img}

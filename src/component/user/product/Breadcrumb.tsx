@@ -86,7 +86,7 @@ const Breadcrumb: FC<TBreadcrumbComponent> = ({
           {categories.map((c, i) => {
             if (!lastName && ++i === categories.length)
               return LastNameItem({ name: c.name })
-            return <BreadcrumbItem name={c.name} url={c.url} />
+            return <BreadcrumbItem key={i} name={c.name} url={c.url} />
           })}
           {lastName ? LastNameItem({ name: lastName }) : null}
         </ol>

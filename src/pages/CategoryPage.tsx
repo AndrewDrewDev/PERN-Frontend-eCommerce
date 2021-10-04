@@ -1,6 +1,6 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import CategoryApi from '../http/CategoryApi'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
@@ -14,6 +14,7 @@ import {
 
 const CategoryPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
+  const location = useLocation()
   const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>({
     name: 'Category not found!',
     url: 'Url not found!',
@@ -27,14 +28,12 @@ const CategoryPage: FC = (): ReactElement => {
 
   const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
 
-  const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
-
   useEffect(() => {
     CategoryApi.fetchProducts({
       name: id,
       limit: 20,
       page,
-      type: 'common',
+      type: location.pathname.match('custom') ? 'custom' : 'common',
     })
       .then(data => setProducts(data))
       .then(() => setCategoryInfo(categoriesPageStore.infoById(id)))
@@ -61,6 +60,8 @@ const CategoryPage: FC = (): ReactElement => {
         <Spinner />
       </>
     )
+
+  const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
 
   return (
     <>
