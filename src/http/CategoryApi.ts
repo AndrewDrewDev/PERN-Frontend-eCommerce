@@ -9,11 +9,6 @@ type TFetchProducts = {
   type: 'custom' | 'common'
 }
 
-type TFetchProductsUrls = {
-  common: string
-  custom: string
-}
-
 class CategoryApi {
   public async fetchProducts({
     name,
@@ -21,15 +16,12 @@ class CategoryApi {
     page,
     type,
   }: TFetchProducts): Promise<TMainProductsData[]> {
-    const urls: TFetchProductsUrls = {
-      common: 'api/category',
-      custom: 'api/category/custom',
-    }
-    const { data } = await $host.get(urls[type], {
+    const { data } = await $host.get('api/category', {
       params: {
         name,
         limit,
         page,
+        type,
       },
     })
     return data
