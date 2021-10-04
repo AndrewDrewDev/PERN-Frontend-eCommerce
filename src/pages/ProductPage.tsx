@@ -49,14 +49,14 @@ const ProductPage: FC = (): ReactElement => {
         }
       />
       <CategoryWrapper
-        name={categoriesPageStore.infoByUrl('Aktsii').name}
-        count={categoriesPageStore.infoByUrl('Aktsii').count}
+        name={categoriesPageStore.infoById('Aktsii').name}
+        count={categoriesPageStore.infoById('Aktsii').count}
         products={categoriesPageStore.categoryDiscountProducts}
         limit={4}
       />
       <CategoryWrapper
-        name={categoriesPageStore.infoByUrl('Novinki').name}
-        count={categoriesPageStore.infoByUrl('Novinki').count}
+        name={categoriesPageStore.infoById('Novinki').name}
+        count={categoriesPageStore.infoById('Novinki').count}
         products={categoriesPageStore.categoryNewProducts}
         limit={4}
       />

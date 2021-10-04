@@ -62,8 +62,8 @@ class CategoryStore {
     return result
   }
 
-  public infoByUrl(url: string): TCSInfoByUrlData {
-    return this._infoByUrl[url]
+  public infoById(id: string): TCSInfoByUrlData {
+    return this._infoByUrl[id]
   }
 
   public get category1Info() {

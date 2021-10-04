@@ -37,7 +37,7 @@ const CategoryPage: FC = (): ReactElement => {
       type: 'common',
     })
       .then(data => setProducts(data))
-      .then(() => setCategoryInfo(categoriesPageStore.infoByUrl(id)))
+      .then(() => setCategoryInfo(categoriesPageStore.infoById(id)))
 
     CategoryApi.fetchBreadcrumb(id).then(data => setBreadcrumb(data))
   }, [page, id])
