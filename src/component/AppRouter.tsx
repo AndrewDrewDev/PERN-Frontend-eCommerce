@@ -6,7 +6,7 @@ import { TRoutes } from '../types'
 
 const AppRouter: FC = (): ReactElement => {
   return (
-    <>
+    <div className="container mx-auto px-6 my-3">
       <Switch>
         {publicRoutes.map(({ path, component }: TRoutes) => (
           <Route key={path} path={path} component={component} exact />
@@ -16,7 +16,7 @@ const AppRouter: FC = (): ReactElement => {
         </Route>
         <Redirect to="/404" />
       </Switch>
-    </>
+    </div>
   )
 }
 

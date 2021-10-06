@@ -100,6 +100,7 @@ export type TCategoryInfoByLevel = {
   count: string
   name: string
   url: string
+  img: string | null
 }
 
 export type TCSInfoByUrlData = {

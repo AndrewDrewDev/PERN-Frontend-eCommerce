@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 export type TBreadcrumbComponent = {
-  categories: { name: string; url: string }[]
+  categories?: { name: string; url: string }[]
   lastName?: string
 }
 
@@ -78,16 +78,17 @@ const Breadcrumb: FC<TBreadcrumbComponent> = ({
             {Arrow}
           </li>
           <li className="flex mt-2 md:mt-0 items-center text-gray-700 hover:underline">
-            <Link className="truncate" to="/category">
+            <Link to="/catalog" className="truncate">
               Каталог товаров
             </Link>
-            {Arrow}
+            {categories ? Arrow : null}
           </li>
-          {categories.map((c, i) => {
-            if (!lastName && ++i === categories.length)
-              return LastNameItem({ name: c.name })
-            return <BreadcrumbItem key={i} name={c.name} url={c.url} />
-          })}
+          {categories &&
+            categories.map((c, i) => {
+              if (!lastName && ++i === categories.length)
+                return LastNameItem({ name: c.name })
+              return <BreadcrumbItem key={i} name={c.name} url={c.url} />
+            })}
           {lastName ? LastNameItem({ name: lastName }) : null}
         </ol>
       </nav>
