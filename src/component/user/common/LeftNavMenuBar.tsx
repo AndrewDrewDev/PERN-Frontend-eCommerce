@@ -17,7 +17,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
   const navLinks: TNavLinks[] = [
     {
       name: 'Главная',
-      url: 'blyt',
+      url: '/',
       svg: (
         <svg
           className="w-5 h-5"
@@ -31,7 +31,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
     {
       name: 'Каталог',
-      url: 'blyt',
+      url: '/catalog',
       svg: (
         <svg
           className="w-5 h-5"
@@ -49,7 +49,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
     {
       name: 'Акции',
-      url: 'blyt',
+      url: '/custom/Aktsii',
       svg: (
         <svg className="w-6 h-6" viewBox="0 0 24 24">
           <path d="M21,5h-1h-2H6H4H3C2.447,5,2,5.447,2,6v1v1.938V10h0.893c0.996,0,1.92,0.681,2.08,1.664C5.177,12.917,4.215,14,3,14H2 v1.062V17v1c0,0.553,0.447,1,1,1h1h2h12h2h1c0.553,0,1-0.447,1-1v-1v-1.938V14c0,0-0.447,0-1,0c-1.215,0-2.177-1.083-1.973-2.336 c0.16-0.983,1.084-1.664,2.08-1.664H22V8.938V7V6C22,5.447,21.553,5,21,5z M9,9c0.553,0,1,0.447,1,1s-0.447,1-1,1s-1-0.447-1-1 S8.447,9,9,9z M8.2,15.4l6-8L15.8,8.6l-6,8L8.2,15.4z M15,15c-0.553,0-1-0.447-1-1s0.447-1,1-1s1,0.447,1,1S15.553,15,15,15z"></path>
@@ -57,8 +57,8 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
       ),
     },
     {
-      name: 'О магазине',
-      url: 'blyt',
+      name: 'Новинки',
+      url: '/custom/Novinki',
       svg: (
         <svg
           className="w-6 h-6"
@@ -70,8 +70,8 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
       ),
     },
     {
-      name: 'Главная',
-      url: 'blyt',
+      name: 'О магазине',
+      url: '/info/about',
       svg: (
         <svg
           className="w-6 h-6"
@@ -89,7 +89,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
     {
       name: 'Оплата',
-      url: 'blyt',
+      url: '/info/payment',
       svg: (
         <svg
           className="w-6 h-6"
@@ -107,7 +107,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
     {
       name: 'Доставка',
-      url: 'blyt',
+      url: '/info/delivery',
       svg: (
         <svg
           className="w-6 h-6"
@@ -156,11 +156,8 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     )
   }
 
-  const CategoryLinkItem: FC<TCategoryInfoByLevel> = ({
-    name,
-    url,
-    count,
-  }): ReactElement => {
+  const CategoryLinkItem: FC<TCategoryInfoByLevel> = (props): ReactElement => {
+    const { name, url, count } = props
     return (
       <div
         className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900
@@ -168,7 +165,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
            hover:bg-blue-500 border-2 border-blue-500 hover:border-blue-400
            duration-500 shadow-lg"
       >
-        <Link to={url}>
+        <Link to={'/category/' + url}>
           <div className="flex items-center">
             <svg
               className="w-6 h-6"
@@ -234,9 +231,9 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                   Основные категории:
                 </h3>
                 {categoriesPageStore.category1Info
-                  ? categoriesPageStore.category1Info.map(category =>
-                      CategoryLinkItem(category)
-                    )
+                  ? categoriesPageStore.category1Info.map((category, i) => (
+                      <CategoryLinkItem key={i} {...category} />
+                    ))
                   : null}
               </div>
             </nav>

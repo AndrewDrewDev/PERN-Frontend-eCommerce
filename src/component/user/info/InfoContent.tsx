@@ -11,7 +11,7 @@ const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {
   if (img && img[1]) imgBigBottomWFull = img[1]
 
   return (
-    <div className="container relative mx-auto px-6 text-gray-600 my-3">
+    <div className="relative text-gray-600">
       <h1 className="mt-2 text-gray-700 text-2xl font-medium md:text-center">
         {title}
       </h1>

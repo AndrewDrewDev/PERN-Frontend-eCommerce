@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite'
 
 const MainPage: FC = observer((): ReactElement => {
   return (
-    <div className="container mx-auto">
+    <>
       <MainSlider />
       {categoriesPageStore.infoById('Aktsii') ? (
         <CategoryWrapper
@@ -26,7 +26,7 @@ const MainPage: FC = observer((): ReactElement => {
         />
       ) : null}
       <CloudTags />
-    </div>
+    </>
   )
 })
 

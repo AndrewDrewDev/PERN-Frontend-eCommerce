@@ -160,8 +160,9 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
              hover:border-blue-700 shadow hover:shadow-lg duration-500 mt-3 
              px-1 py-0.5 bg-blue-600 text-white text-sm font-medium rounded
               hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+              onClick={() => cartStore.removeAll()}
             >
-              <span>Очистить Корзину</span>
+              Очистить Корзину
             </button>
             <div className="mt-3 text-gray-700">
               <div>Сумма Товара: {cartStore.getFinalTotal}₽</div>

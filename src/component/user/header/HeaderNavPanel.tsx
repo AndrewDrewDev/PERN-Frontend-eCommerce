@@ -1,51 +1,32 @@
 import { FC, ReactElement } from 'react'
+import { Link } from 'react-router-dom'
+
 import { HeaderNavPanelCartButton } from './HeaderNavPanelCartButton'
 
 const HeaderNavPanel: FC = (): ReactElement => {
   return (
     <nav className="hidden md:flex justify-center items-center whitespace-nowrap font-semibold text-gray-600">
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/"
-      >
+      <Link to="/" className="hover:underline mt-1 mx-2">
         Главная
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/catalog/grid4.html"
-      >
+      </Link>
+      <Link to="/catalog" className="hover:underline mt-1 mx-2">
         Каталог
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/discount"
-      >
+      </Link>
+      <Link to="/custom/Aktsii" className="hover:underline mt-1 mx-2">
         Акции
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/new"
-      >
+      </Link>
+      <Link to="/custom/Novinki" className="hover:underline mt-1 mx-2">
         Новинки
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/page/about"
-      >
+      </Link>
+      <Link to="/info/about" className="hover:underline mt-1 mx-2">
         О Магазине
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/page/payment"
-      >
+      </Link>
+      <Link to="/info/payment" className="hover:underline mt-1 mx-2">
         Оплата
-      </a>
-      <a
-        className="hover:underline mt-1 mx-2"
-        href="https://siteup.com.ua/demo/msk/tupperware/page/delivery"
-      >
+      </Link>
+      <Link to="/info/delivery" className="hover:underline mt-1 mx-2">
         Доставка
-      </a>
+      </Link>
       <HeaderNavPanelCartButton />
     </nav>
   )

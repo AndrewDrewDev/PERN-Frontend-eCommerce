@@ -27,7 +27,7 @@ const ProductPage: FC = (): ReactElement => {
   if (product === null) return <PageNotFound title={'Продукт не найден'} />
 
   return (
-    <div className="container mx-auto">
+    <>
       <h1 className="text-gray-700 text-3xl title-font font-medium mb-1">
         {product.name}
       </h1>
@@ -61,7 +61,7 @@ const ProductPage: FC = (): ReactElement => {
         limit={4}
       />
       <CloudTags />
-    </div>
+    </>
   )
 }
 

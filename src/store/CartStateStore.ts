@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx'
 import { TAddItemCartStore, TItemsCartStore } from '../types'
-import config from '../config'
 
 class CartStore {
   private _finalTotal: string
@@ -97,7 +96,7 @@ class CartStore {
   }
 
   public set removeItem(id: string) {
-    for (var i = 0; i < this._items.length; i++) {
+    for (let i = 0; i < this._items.length; i++) {
       const item = this._items[i]
       if (item.id === id) {
         this._items.splice(i, 1)
@@ -126,6 +125,11 @@ class CartStore {
         item.priceAll = (Number(item.priceAll) + Number(item.price)).toFixed(2)
       }
     }
+    this.updateCart()
+  }
+
+  public removeAll() {
+    this._items = []
     this.updateCart()
   }
 
