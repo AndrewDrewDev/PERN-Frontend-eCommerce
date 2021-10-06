@@ -5,7 +5,6 @@ import { publicRoutes } from '../routes'
 import { TRoutes } from '../types'
 
 const AppRouter: FC = (): ReactElement => {
-  // const isAuth: boolean = false
   return (
     <>
       <Switch>

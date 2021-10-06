@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 const Footer: FC = (): ReactElement => {
-  const { shopConfig } = shopConfigStore
+  const { config } = shopConfigStore
 
   return (
     <footer className="bg-gray-200 mt-3">
@@ -189,7 +189,7 @@ const Footer: FC = (): ReactElement => {
               ></path>
             </svg>{' '}
             <span className="mx-6 text-md whitespace-nowrap">
-              {shopConfig.d584_exShopSiteAddress}
+              {config.address}
             </span>
           </div>
           <div className="relative mt-2">
@@ -208,16 +208,14 @@ const Footer: FC = (): ReactElement => {
               ></path>
             </svg>{' '}
             <span className="mx-6 text-md whitespace-nowrap">
-              {shopConfig.d585_exShopSitePhone}
+              {config.phone}
             </span>
           </div>
         </div>
       </div>
       <hr />
       <div className="container mx-auto px-6 py-3 flex flex-col justify-between items-center">
-        <p className="py-2 text-gray-600 sm:py-0">
-          {shopConfig.d591_exShopSiteCopyright}
-        </p>
+        <p className="py-2 text-gray-600 sm:py-0">{config.copyright}</p>
         <p className="font-sx py-2 text-xs text-gray-600 sm:py-0">
           React Build: v05:{Date.now()}
         </p>

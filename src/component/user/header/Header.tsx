@@ -14,7 +14,7 @@ const Header: FC = (): ReactElement => {
   let [showLeftNavMenuBar, setShowLeftNavMenuBar] = useState(false)
   let [showRightCartMenuBar, setShowRightMenuBar] = useState(false)
 
-  const { shopConfig } = shopConfigStore
+  const { config } = shopConfigStore
 
   return (
     <header>
@@ -31,10 +31,10 @@ const Header: FC = (): ReactElement => {
           setShow={setShowRightMenuBar}
         />
         <HeaderTitle
-          title={shopConfig.d582_exShopSiteTitle}
-          subtitle={shopConfig.d583_exShopSiteSubTitle}
-          address={shopConfig.d584_exShopSiteAddress}
-          phone={shopConfig.d585_exShopSitePhone}
+          title={config.title}
+          subtitle={config.sub_title}
+          address={config.address}
+          phone={config.phone}
         />
         <HeaderCartBarButton
           onClick={() => setShowRightMenuBar(!showRightCartMenuBar)}
