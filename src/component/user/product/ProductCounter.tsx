@@ -1,8 +1,16 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ReactElement } from 'react'
 
-const ProductCounter: FC = (): ReactElement => {
+type TProductCounter = {
+  callback: (value: number) => void
+}
+
+const ProductCounter: FC<TProductCounter> = ({ callback }): ReactElement => {
   const [value, setValue] = useState(1)
+
+  useEffect(() => {
+    callback(value)
+  }, [value])
 
   return (
     <div className="flex items-center my-2">

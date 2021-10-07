@@ -47,7 +47,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
               <div className="flex items-center mt-2">
                 <button
                   className="text-gray-600 focus:outline-none focus:text-gray-600"
-                  onClick={() => (cartStore.increaceItem = id)}
+                  onClick={() => (cartStore.increaseItem = id)}
                 >
                   <svg
                     className="h-5 w-5"
@@ -65,7 +65,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                 <button
                   className=" text-gray-600 focus:outline-none 
                   focus:text-gray-600"
-                  onClick={() => (cartStore.decreaceItem = id)}
+                  onClick={() => (cartStore.decreaseItem = id)}
                 >
                   <svg
                     className="h-5 w-5"

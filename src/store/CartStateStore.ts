@@ -34,7 +34,7 @@ class CartStore {
     let result: number = 0
 
     for (const item of this._items) {
-      result += Number(item.price) + Number(item.priceAll)
+      result += Number(item.priceAll)
     }
 
     this._finalTotal = result.toFixed(2)
@@ -48,7 +48,8 @@ class CartStore {
     this._finalCount = result
   }
 
-  public set addItem({ id, name, price, img }: TAddItemCartStore) {
+  public set addItem({ id, name, price, img, count }: TAddItemCartStore) {
+    count = count ? count : 1
     // add first item if array is empty
     if (this._items.length === 0) {
       this._items.push({
@@ -56,8 +57,8 @@ class CartStore {
         name,
         price,
         img,
-        priceAll: price,
-        count: 1,
+        priceAll: (Number(price) * count).toFixed(2),
+        count,
       })
       this.updateCart()
       return
@@ -75,9 +76,10 @@ class CartStore {
       for (let i = 0; i < this._items.length; i++) {
         const item = this._items[i]
         if (item.id === id) {
-          this._items[i].count++
+          this._items[i].count += count
           this._items[i].priceAll = (
-            Number(this._items[i].priceAll) + Number(this._items[i].price)
+            Number(this._items[i].priceAll) +
+            Number(this._items[i].price) * count
           ).toFixed(2)
           break
         }
@@ -105,7 +107,7 @@ class CartStore {
     this.updateCart()
   }
 
-  public set decreaceItem(id: string) {
+  public set decreaseItem(id: string) {
     for (let i = 0; i < this._items.length; i++) {
       const item = this._items[i]
       if (item.id === id) {
@@ -117,7 +119,7 @@ class CartStore {
     this.updateCart()
   }
 
-  public set increaceItem(id: string) {
+  public set increaseItem(id: string) {
     for (let i = 0; i < this._items.length; i++) {
       const item = this._items[i]
       if (item.id === id) {

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
 import { TAddItemCartStore, TProductPageData } from '../../../types'
@@ -10,11 +10,18 @@ import { ProductPrice } from './ProductPrice'
 type TDescription = { data: TProductPageData }
 
 const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
-  const cartData: TAddItemCartStore = {
+  const [cartData, setCartData] = useState<TAddItemCartStore>({
     id: data.id,
     name: data.name,
     img: data.images.preview,
     price: data.price,
+    count: 1,
+  })
+
+  const setCount = (value: number): void => {
+    const newObj = { ...cartData }
+    newObj.count = value
+    setCartData(newObj)
   }
 
   return (
@@ -29,7 +36,7 @@ const ProductInfo: FC<TDescription> = ({ data }): ReactElement => {
         {data.vendorId ? <div>Код поставщика: {data.vendorId}</div> : null}
       </div>
       <div className="border"></div>
-      <ProductCounter />
+      <ProductCounter callback={setCount} />
 
       <div className="flex flex-wrap my-2">
         <button
