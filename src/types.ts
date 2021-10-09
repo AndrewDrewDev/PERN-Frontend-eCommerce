@@ -11,12 +11,6 @@ export type TPageData = {
   img: string[] | null
 }
 
-// Если все работает потом удалить
-// export type TMainSliderData = {
-//   url: string
-//   title: string
-// }
-
 export type TAddItemCartStore = {
   id: string
   name: string
@@ -125,4 +119,17 @@ export type TInfoPagesData = {
 export type TShopSlider = {
   title: string
   img: string
+}
+
+export type TPaymentCheckoutOrderData = {
+  orderId: string
+  finalCount: string
+  finalTotal: string
+  products: TItemsCartStore[]
+  fullName: string
+  type: 'quick' | 'common'
+  email: string
+  phone: string
+  address: string
+  comment: string
 }

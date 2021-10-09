@@ -122,7 +122,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     },
     {
       name: 'Корзина',
-      url: 'blyt',
+      url: '/payment',
       svg: (
         <svg
           className="w-6 h-6"

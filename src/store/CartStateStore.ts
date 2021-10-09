@@ -3,12 +3,12 @@ import { TAddItemCartStore, TItemsCartStore } from '../types'
 
 class CartStore {
   private _finalTotal: string
-  private _finalCount: number
+  private _finalCount: string
   private _items: TItemsCartStore[]
 
   constructor() {
     this._finalTotal = '0.00'
-    this._finalCount = 0
+    this._finalCount = '0'
     this._items = []
     this.restoreCartFromLocalStore()
     this.updateCart()
@@ -43,9 +43,9 @@ class CartStore {
   private refreshFinalCount() {
     let result: number = 0
     for (const item of this._items) {
-      result += item.count
+      result += Number(item.count)
     }
-    this._finalCount = result
+    this._finalCount = result.toString()
   }
 
   public set addItem({ id, name, price, img, count }: TAddItemCartStore) {

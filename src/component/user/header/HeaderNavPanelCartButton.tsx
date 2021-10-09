@@ -2,11 +2,13 @@ import { observer } from 'mobx-react-lite'
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
+import { Link } from 'react-router-dom'
 
 const HeaderNavPanelCartButton: FC = observer((): ReactElement => {
   return (
     <>
-      <a
+      <Link
+        to="/payment"
         className="hover:underline mt-1 mx-2 relative"
         href="https://siteup.com.ua/demo/msk/tupperware/checkout"
       >
@@ -26,7 +28,7 @@ const HeaderNavPanelCartButton: FC = observer((): ReactElement => {
           <span>{cartStore.getFinalCount} шт.</span>
           <span>{cartStore.getFinalTotal} ₽</span>
         </div>
-      </a>
+      </Link>
     </>
   )
 })
