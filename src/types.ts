@@ -46,15 +46,17 @@ export type TImgUrlProductData = {
 
 export type TProductPageDataStatus = 'да' | 'нет' | 'подзаказ'
 
+export type TProductPageDataImages = {
+  preview: string
+  big: string[]
+}
+
 export type TProductPageData = {
   categories: {
     name: string
     url: string
   }[]
-  images: {
-    preview: string
-    big: string[]
-  }
+  images: TProductPageDataImages
   name: string
   label: 'Акции' | 'Новинки'
   unit: string

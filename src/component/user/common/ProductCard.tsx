@@ -9,6 +9,7 @@ import {
   TMainProductsDataLable,
 } from '../../../types'
 import config from '../../../config'
+import { modalStateStore } from '../../../store/ModalStateStore'
 
 type TProductCard = {
   product: TMainProductsData
@@ -112,6 +113,12 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
             style={{
               marginRight: '3.5rem',
             }}
+            onClick={() =>
+              (modalStateStore.productSliderWidgetState = {
+                isShowing: true,
+                productId: id,
+              })
+            }
           >
             <svg
               className="w-5 h-5"
@@ -154,7 +161,7 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
           <a href="#">
             <h3 className="text-gray-700">{name}</h3>
           </a>
-          <span className="font-bold text-gray-800 mt-2">${price} руб.</span>
+          <span className="font-bold text-gray-800 mt-2">{price} руб.</span>
           {oldprice ? (
             <span className="mx-1 line-through text-gray-600 mt-2">
               {oldprice} руб.

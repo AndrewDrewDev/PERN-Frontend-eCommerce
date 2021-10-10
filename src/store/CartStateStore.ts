@@ -22,8 +22,8 @@ class CartStore {
   }
 
   private restoreCartFromLocalStore() {
-    const LSdata: string | null = localStorage.getItem('CartStore')
-    if (typeof LSdata === 'string') this._items = JSON.parse(LSdata)
+    const LSData: string | null = localStorage.getItem('CartStore')
+    if (typeof LSData === 'string') this._items = JSON.parse(LSData)
   }
 
   private saveCartToLocalStore() {
