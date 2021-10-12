@@ -15,6 +15,7 @@ export const PRODUCT_ROUTE: string = '/product'
 export const CATEGORY_ROUTE: string = '/category'
 export const CATALOG_ROUTE: string = '/catalog'
 export const CUSTOM_CATEGORY_ROUTE: string = '/custom'
+export const ALL_CATEGORY_ROUTE: string = '/category/all'
 export const PAYMENT_ROUTE: string = '/payment'
 export const INFO_ROUTE: string = '/info'
 export const MAIN_ROUTE: string = '/'
@@ -49,6 +50,10 @@ export const publicRoutes: TRoutes[] = [
   },
   {
     path: CUSTOM_CATEGORY_ROUTE + '/:id',
+    component: CategoryPage,
+  },
+  {
+    path: ALL_CATEGORY_ROUTE,
     component: CategoryPage,
   },
   {

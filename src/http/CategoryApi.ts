@@ -6,7 +6,7 @@ type TFetchProducts = {
   name: string
   limit: number
   page: number
-  type: 'custom' | 'common'
+  type: 'custom' | 'common' | 'all'
 }
 
 class CategoryApi {
@@ -30,14 +30,19 @@ class CategoryApi {
   public async fetchInfoByLevel(
     level: number
   ): Promise<TCategoryInfoByLevel[]> {
-    const { data } = await $host.get('api/category/cloud/' + level)
+    const { data } = await $host.get('api/category/info/cloud/' + level)
     return data
   }
 
-  public async fetchCustomInfoByLevel(
+  public async fetchCustomInfoById(
     url: string
   ): Promise<TCategoryInfoByLevel[]> {
-    const { data } = await $host.get('api/category/custom/' + url)
+    const { data } = await $host.get('api/category/info/custom/' + url)
+    return data
+  }
+
+  public async fetchAllInfoById(): Promise<TCategoryInfoByLevel[]> {
+    const { data } = await $host.get('api/category/info/all/')
     return data
   }
 

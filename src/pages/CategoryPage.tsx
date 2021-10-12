@@ -11,6 +11,7 @@ import {
   Breadcrumb,
   TBreadcrumbComponentItem,
 } from '../component/user/product/Breadcrumb'
+import { CloudTags } from '../component/user/common/CloudTags'
 
 const CategoryPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -33,11 +34,10 @@ const CategoryPage: FC = (): ReactElement => {
       name: id,
       limit: 20,
       page,
-      type: location.pathname.match('custom') ? 'custom' : 'common',
+      type: defineTypeOfPageByUrl(location.pathname),
     })
       .then(data => setProducts(data))
       .then(() => setCategoryInfo(categoriesPageStore.infoById(id)))
-
     CategoryApi.fetchBreadcrumb(id).then(data => setBreadcrumb(data))
   }, [page, id])
 
@@ -105,8 +105,19 @@ const CategoryPage: FC = (): ReactElement => {
           />
         </div>
       </div>
+      <CloudTags />
     </>
   )
+}
+
+const defineTypeOfPageByUrl = (
+  location: string
+): 'custom' | 'common' | 'all' => {
+  const splitLocation = location.split('/')
+
+  if (splitLocation.includes('custom')) return 'custom'
+  if (splitLocation.includes('all')) return 'all'
+  return 'common'
 }
 
 export { CategoryPage }

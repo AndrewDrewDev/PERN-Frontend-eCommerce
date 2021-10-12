@@ -13,6 +13,7 @@ class CategoryStore {
   private _category3Info: TCategoryInfoByLevel[] | null = []
   private _categoryDiscountInfo: TCategoryInfoByLevel[] | null = []
   private _categoryNewInfo: TCategoryInfoByLevel[] | null = []
+  private _categoryAllInfo: TCategoryInfoByLevel[] | null = []
   private _categoryDiscountProducts: TMainProductsData[] | null = []
   private _categoryNewProducts: TMainProductsData[] | null = []
   private _infoByUrl: TCSInfoByUrl = {}
@@ -30,12 +31,13 @@ class CategoryStore {
       page: 1,
       type: 'custom',
     }).then(data => (this._categoryDiscountProducts = data))
-    CategoryApi.fetchCustomInfoByLevel('Novinki').then(
+    CategoryApi.fetchCustomInfoById('Novinki').then(
       data => (this._categoryNewInfo = data)
     )
-    CategoryApi.fetchCustomInfoByLevel('Aktsii').then(
+    CategoryApi.fetchCustomInfoById('Aktsii').then(
       data => (this._categoryDiscountInfo = data)
     )
+    CategoryApi.fetchAllInfoById().then(data => (this._categoryAllInfo = data))
     CategoryApi.fetchInfoByLevel(1).then(data => (this._category1Info = data))
     CategoryApi.fetchInfoByLevel(2).then(data => (this._category2Info = data))
     CategoryApi.fetchInfoByLevel(3)
@@ -54,6 +56,7 @@ class CategoryStore {
     if (this._categoryNewInfo) data = [...data, ...this._categoryNewInfo]
     if (this._categoryDiscountInfo)
       data = [...data, ...this._categoryDiscountInfo]
+    if (this._categoryAllInfo) data = [...data, ...this._categoryAllInfo]
 
     for (const i of data) {
       result[i.url] = { name: i.name, url: i.url, count: i.count }
