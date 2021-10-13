@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 const Footer: FC = (): ReactElement => {
@@ -12,70 +13,43 @@ const Footer: FC = (): ReactElement => {
           <div className="text-xs uppercase text-gray-700 font-medium">
             Основные Разделы
           </div>
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/about"
-          >
+          <Link className="mt-2 hover:underline block" to="/info/about">
             О Магазине
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/public-offer"
-          >
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/info/public-offer">
             Публичная оферта
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/warranty"
-          >
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/info/warranty">
             Гарантия
-          </a>
+          </Link>
         </div>
         <div className="p-5 w-48">
           <div className="text-xs uppercase text-gray-700 font-medium">
             Каталог
           </div>
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/catalog/grid4.html"
-          >
+          <Link className="mt-2 hover:underline block" to="/catalog">
             Каталог Товаров
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/discount"
-          >
-            Акция-Скидки<span className="text-teal-600 text-xs p-1">New</span>
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/new"
-          >
-            Новинки<span className="text-teal-600 text-xs p-1">New</span>
-          </a>
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/custom/Aktsii">
+            Акция-Скидки
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/custom/Novinki">
+            Новинки
+          </Link>
         </div>
         <div className="p-5 w-48">
           <div className="text-xs uppercase text-gray-700 font-medium">
             Оплата-Доставка
           </div>
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/faqs"
-          >
-            Вопросы-Ответы<span className="text-teal-600 text-xs p-1"></span>
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/delivery"
-          >
+          <Link className="mt-2 hover:underline block" to="/info/faqs">
+            Вопросы-Ответы
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/info/delivery">
             Доставка
-          </a>{' '}
-          <a
-            className="mt-2 hover:underline block"
-            href="https://siteup.com.ua/demo/msk/tupperware/page/payment"
-          >
-            Оплата<span className="text-teal-600 text-xs p-1"></span>
-          </a>
+          </Link>{' '}
+          <Link className="mt-2 hover:underline block" to="/info/payment">
+            Оплата
+          </Link>
         </div>
         <div className="p-5 w-48">
           <div className="text-xs uppercase text-gray-700 font-medium text-center">
