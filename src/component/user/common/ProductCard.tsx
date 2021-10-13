@@ -10,6 +10,8 @@ import {
 } from '../../../types'
 import config from '../../../config'
 import { modalStateStore } from '../../../store/ModalStateStore'
+import { observer } from 'mobx-react-lite'
+import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 type TProductCard = {
   product: TMainProductsData
@@ -19,7 +21,7 @@ type TLabelNewOrDiscount = {
   label: TMainProductsDataLable
 }
 
-const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
+const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
   const { name, img, price, id, label, oldprice } = product
 
   const cartData: TAddItemCartStore = {
@@ -35,8 +37,8 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
     if (label === 'Акции') {
       return (
         <div
-          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform 
-        -rotate-45 bg-red-500 text-sm whitespace-no-wrap text-white 
+          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform
+        -rotate-45 bg-red-500 text-sm whitespace-no-wrap text-white
         uppercase font-medium border-2 border-red-800"
         >
           акция
@@ -45,7 +47,7 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
     } else if (label === 'Новинки') {
       return (
         <div
-          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform 
+          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform
         -rotate-45 bg-blue-500 text-sm whitespace-no-wrap text-white
          uppercase font-medium border-2 border-blue-800"
         >
@@ -60,12 +62,12 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
   return (
     <>
       <div
-        className="container mx-auto max-w-xs rounded-lg overflow-hidden 
+        className="container mx-auto max-w-xs rounded-lg overflow-hidden
       shadow-lg bg-white"
       >
         <div className="relative flex items-end justify-center min-h-64 h-64">
           <Link
-            className="transform scale-100 hover:scale-110 duration-500 
+            className="transform scale-100 hover:scale-110 duration-500
             ease-in-out"
             to={PRODUCT_ROUTE + '/' + id}
           >
@@ -167,16 +169,18 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
           <a href="#">
             <h3 className="text-gray-700">{name}</h3>
           </a>
-          <span className="font-bold text-gray-800 mt-2">{price} руб.</span>
+          <span className="font-bold text-gray-800 mt-2">
+            {price} {shopConfigStore.config.currency}
+          </span>
           {oldprice ? (
             <span className="mx-1 line-through text-gray-600 mt-2">
-              {oldprice} руб.
+              {oldprice} {shopConfigStore.config.currency}
             </span>
           ) : null}
         </div>
       </div>
     </>
   )
-}
+})
 
 export { ProductCard }

@@ -30,6 +30,7 @@ const CategoryPage: FC = (): ReactElement => {
   const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     CategoryApi.fetchProducts({
       name: id,
       limit: 20,

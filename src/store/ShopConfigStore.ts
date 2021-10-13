@@ -22,5 +22,4 @@ class ShopConfigStore {
 }
 
 const shopConfigStore = new ShopConfigStore()
-
 export { shopConfigStore }

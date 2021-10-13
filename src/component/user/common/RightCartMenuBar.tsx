@@ -6,6 +6,7 @@ import { PRODUCT_ROUTE } from '../../../routes'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TShowHideComponent } from '../../../types'
 import config from '../../../config'
+import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 const RightCartMenuBar: FC<TShowHideComponent> = observer(
   ({ show, setShow }): ReactElement => {
@@ -99,8 +100,12 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                   </svg>
                 </button>
               </div>
-              <span className="block text-gray-600">Цена: {price}</span>
-              <span className="block text-gray-600">Всего: {priceAll}</span>
+              <span className="block text-gray-600">
+                Цена: {price} {shopConfigStore.config.currency}
+              </span>
+              <span className="block text-gray-600">
+                Всего: {priceAll} {shopConfigStore.config.currency}
+              </span>
             </div>
           </div>
         </div>
@@ -164,10 +169,16 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
               Очистить Корзину
             </button>
             <div className="mt-3 text-gray-700">
-              <div>Сумма Товара: {cartStore.getFinalTotal}₽</div>
+              <div>
+                Сумма Товара: {cartStore.getFinalTotal}{' '}
+                {shopConfigStore.config.currency}
+              </div>
               <div className="">Количество: {cartStore.getFinalCount} шт.</div>
               <hr className="mt-1 mb-1" />
-              <div className="">Итого: {cartStore.getFinalTotal}₽</div>
+              <div className="">
+                Итого: {cartStore.getFinalTotal}{' '}
+                {shopConfigStore.config.currency}
+              </div>
             </div>
 
             <Link

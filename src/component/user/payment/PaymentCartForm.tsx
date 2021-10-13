@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 import config from '../../../config'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
+import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 type TPaymentCartForm = {
   handleSetPageName: Dispatch<SetStateAction<TPaymentPageNames>>
@@ -132,7 +133,8 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                     <div>
                       <span>К оплате: </span>
                       <span className="text-red-600">
-                        {cartStore.getFinalTotal}
+                        {cartStore.getFinalTotal}{' '}
+                        {shopConfigStore.config.currency}
                       </span>
                     </div>
                     <div className="flex justify-center md:justify-end mt-2">
@@ -306,7 +308,8 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                     <div>
                       <span>К оплате: </span>
                       <span className="text-red-600">
-                        {cartStore.getFinalTotal}
+                        {cartStore.getFinalTotal}{' '}
+                        {shopConfigStore.config.currency}
                       </span>
                     </div>
                     <div className="flex justify-center md:justify-end mt-2">
@@ -410,9 +413,10 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
               {name}
             </div>
           </Link>
-          <div className="text-2xl text-center md:text-left text-red-600">
-            <span className="inline text-base text-gray-700">Цена: </span>
-            <span>{price}</span>
+          <div className=" text-center md:text-left text-gray-700">
+            <span className="inline text-base ">Цена: </span>
+            <span className="text-2xl text-red-600">{price} </span>
+            <span className="">{shopConfigStore.config.currency}</span>
           </div>
           <div className="flex justify-center md:justify-start">
             <button
@@ -453,9 +457,10 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
           </div>
         </div>
         <div className="my-auto text-center md:mb-auto">
-          <div className="itemTotal text-2xl text-red-600">
-            <span className="inline text-base text-gray-700">Всего: </span>
-            <span>{priceAll}</span>
+          <div className="text-gray-700">
+            <span className="inline">Всего: </span>
+            <span className="text-2xl text-red-600">{priceAll} </span>
+            <span>{shopConfigStore.config.currency}</span>
           </div>
         </div>
         <button

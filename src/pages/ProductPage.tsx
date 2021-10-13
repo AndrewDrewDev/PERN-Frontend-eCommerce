@@ -20,6 +20,7 @@ const ProductPage: FC = (): ReactElement => {
   )
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
   }, [id])
 

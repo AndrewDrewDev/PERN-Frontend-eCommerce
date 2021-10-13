@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
 import { Link } from 'react-router-dom'
+import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 const HeaderNavPanelCartButton: FC = observer((): ReactElement => {
   return (
@@ -21,8 +22,10 @@ const HeaderNavPanelCartButton: FC = observer((): ReactElement => {
           ></path>
         </svg>
         <div className="mx-6">
-          <span>{cartStore.getFinalCount} шт.</span>
-          <span>{cartStore.getFinalTotal} ₽</span>
+          <span>{cartStore.getFinalCount} шт. </span>
+          <span>
+            {cartStore.getFinalTotal} {shopConfigStore.config.currency}
+          </span>
         </div>
       </Link>
     </>
