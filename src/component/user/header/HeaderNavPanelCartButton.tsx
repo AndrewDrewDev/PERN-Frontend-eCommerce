@@ -7,11 +7,7 @@ import { Link } from 'react-router-dom'
 const HeaderNavPanelCartButton: FC = observer((): ReactElement => {
   return (
     <>
-      <Link
-        to="/payment"
-        className="hover:underline mt-1 mx-2 relative"
-        href="https://siteup.com.ua/demo/msk/tupperware/checkout"
-      >
+      <Link to="/payment" className="hover:underline mt-1 mx-2 relative">
         <svg
           className="absolute w-6 h-6"
           fill="currentColor"

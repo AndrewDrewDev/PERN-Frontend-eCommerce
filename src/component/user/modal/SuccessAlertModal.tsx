@@ -7,7 +7,7 @@ type TSuccessModalAlert = {
   message: string
 }
 
-const SuccessModalAlert: FC<TSuccessModalAlert> = ({
+const SuccessAlertModal: FC<TSuccessModalAlert> = ({
   show,
   onHide,
   title,
@@ -46,4 +46,4 @@ const SuccessModalAlert: FC<TSuccessModalAlert> = ({
   )
 }
 
-export { SuccessModalAlert }
+export { SuccessAlertModal }

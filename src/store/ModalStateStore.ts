@@ -1,12 +1,16 @@
 import { makeAutoObservable } from 'mobx'
 
-export type TProductSliderWidgetState = {
+export type TProductModalById = {
   isShowing: boolean
   productId: string
 }
 
 class ModalStateStore {
-  private _productSliderWidgetState: TProductSliderWidgetState = {
+  private _productSliderWidgetState: TProductModalById = {
+    isShowing: false,
+    productId: '',
+  }
+  private _productQuickViewWidgetState: TProductModalById = {
     isShowing: false,
     productId: '',
   }
@@ -21,6 +25,14 @@ class ModalStateStore {
 
   set productSliderWidgetState(newState) {
     this._productSliderWidgetState = newState
+  }
+
+  get productQuickViewWidgetState() {
+    return this._productQuickViewWidgetState
+  }
+
+  set productQuickViewWidgetState(newState) {
+    this._productQuickViewWidgetState = newState
   }
 }
 

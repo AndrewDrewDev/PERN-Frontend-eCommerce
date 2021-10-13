@@ -1,6 +1,6 @@
 import { Dispatch, FC, ReactElement, SetStateAction, useState } from 'react'
 import { TItemsCartStore, TPaymentCheckoutOrderData } from '../../../types'
-import { SuccessModalAlert } from '../common/SuccessModalAlert'
+import { SuccessAlertModal } from '../modal/SuccessAlertModal'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
 import { Link } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ const PaymentCheckout: FC<TPaymentCheckout> = ({
   const [showModal, setShowModal] = useState(true)
   return (
     <>
-      <SuccessModalAlert
+      <SuccessAlertModal
         show={showModal}
         onHide={() => setShowModal(false)}
         title="Заказ успешно отправлен!"

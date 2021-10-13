@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite'
-import { useEffect } from 'react'
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
@@ -171,8 +170,8 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
               <div className="">Итого: {cartStore.getFinalTotal}₽</div>
             </div>
 
-            <a
-              href="https://siteup.com.ua/demo/msk/tupperware/checkout"
+            <Link
+              to="/payment"
               className="flex border-2 border-blue-600 hover:border-blue-700
                shadow hover:shadow-lg duration-500 mb-5 text-lg items-center
                 justify-center mt-4 px-3 py-1 bg-blue-600 text-white text-sm
@@ -191,7 +190,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
               >
                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
-            </a>
+            </Link>
           </div>
         ) : null}
       </>

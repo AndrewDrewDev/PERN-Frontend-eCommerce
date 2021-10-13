@@ -84,6 +84,12 @@ const ProductCard: FC<TProductCard> = ({ product }): ReactElement => {
             style={{
               marginRight: '6rem',
             }}
+            onClick={() =>
+              (modalStateStore.productQuickViewWidgetState = {
+                isShowing: true,
+                productId: id,
+              })
+            }
           >
             <svg
               className="w-5 h-5"

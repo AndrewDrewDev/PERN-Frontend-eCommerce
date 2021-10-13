@@ -7,9 +7,9 @@ import config from '../../../../config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 
-import './ProductSliderWidget.css'
+import './ProductSliderModal.css'
 
-const ProductSliderWidget: FC = observer((): ReactElement => {
+const ProductSliderModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productSliderWidgetState.isShowing
   const productId = modalStateStore.productSliderWidgetState.productId
   const [images, setImages] = useState<TProductPageDataImages>()
@@ -75,4 +75,4 @@ const ProductSliderWidget: FC = observer((): ReactElement => {
   return <></>
 })
 
-export { ProductSliderWidget }
+export { ProductSliderModal }

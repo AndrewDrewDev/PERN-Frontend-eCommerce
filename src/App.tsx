@@ -5,7 +5,8 @@ import { observer } from 'mobx-react-lite'
 import { FC, ReactElement } from 'react'
 import { shopConfigStore } from './store/ShopConfigStore'
 import { BrowserRouter } from 'react-router-dom'
-import { ProductSliderWidget } from './component/user/common/ProductSliderWidget/ProductSliderWidget'
+import { ProductSliderModal } from './component/user/modal/ProductSliderModal/ProductSliderModal'
+import { ProductQuickViewModal } from './component/user/modal/ProductQuickViewModal'
 
 const App: FC = observer((): ReactElement => {
   return (
@@ -15,7 +16,8 @@ const App: FC = observer((): ReactElement => {
           <Header />
           <AppRouter />
           <Footer />
-          <ProductSliderWidget />
+          <ProductSliderModal />
+          <ProductQuickViewModal />
         </>
       ) : null}
     </BrowserRouter>

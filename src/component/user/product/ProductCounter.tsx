@@ -39,8 +39,9 @@ const ProductCounter: FC<TProductCounter> = ({ callback }): ReactElement => {
           <input
             className="item_quantity w-12 border text-center p-1
               focus:outline-none"
-            type="text"
+            type="number"
             value={value}
+            onChange={e => setValue(Number(e.target.value))}
           />
           <button
             className="border flex p-1 justify-center items-center

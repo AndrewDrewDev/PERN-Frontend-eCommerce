@@ -4,6 +4,7 @@ import { TCategoryInfoByLevel } from '../types'
 import { Link } from 'react-router-dom'
 import config from '../config'
 import { Breadcrumb } from '../component/user/product/Breadcrumb'
+import { CloudTags } from '../component/user/common/CloudTags'
 
 const CatalogPage: FC = (): ReactElement => {
   return (
@@ -11,16 +12,20 @@ const CatalogPage: FC = (): ReactElement => {
       {categoriesPageStore.category1Info ? (
         <>
           <Breadcrumb />
-          <h1 className="text-gray-600 text-2xl text-center font-medium">
+          <h1 className="text-gray-700 text-2xl text-center font-medium">
             Основные Категории Каталога Товаров
           </h1>
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+
+          <div className="border-2 rounded-full border-gray-600 my-2"></div>
+
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
             {categoriesPageStore.category1Info.map((category, i) => (
               <CategoryCard key={i} {...category} />
             ))}
           </div>
         </>
       ) : null}
+      <CloudTags />
     </>
   )
 }
