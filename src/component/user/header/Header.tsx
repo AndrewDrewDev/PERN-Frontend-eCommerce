@@ -5,7 +5,7 @@ import { HeaderTitle } from './HeaderTitle'
 import { HeaderMenuBarButton } from './HeaderMenuBarButton'
 import { HeaderCartBarButton } from './HeaderCartBarButton'
 import { HeaderNavPanel } from './HeaderNavPanel'
-import { HeaderInputSearchBySite } from './HeaderInputSearchBySite'
+import { HeaderInputSearchBySitePopup } from './HeaderInputSearchBySitePopup'
 import { LeftNavMenuBar } from '../common/LeftNavMenuBar'
 import { useState } from 'react'
 import { RightCartMenuBar } from '../common/RightCartMenuBar'
@@ -41,7 +41,7 @@ const Header: FC = (): ReactElement => {
         />
       </div>
       <HeaderNavPanel />
-      <HeaderInputSearchBySite />
+      <HeaderInputSearchBySitePopup />
     </header>
   )
 }

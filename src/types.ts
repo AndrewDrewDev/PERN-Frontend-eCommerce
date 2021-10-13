@@ -135,3 +135,10 @@ export type TPaymentCheckoutOrderData = {
   address: string
   comment: string
 }
+
+export type TProductSearchByNameResult = {
+  name: string
+  id: string
+  price: string
+  img: string
+}
