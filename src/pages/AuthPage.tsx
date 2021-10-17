@@ -1,11 +1,12 @@
 import { FC, FormEvent, ReactElement, useState } from 'react'
 import { login, registration } from '../http/userApi'
-import { Link, useLocation } from 'react-router-dom'
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../routes'
+import { Link, useHistory, useLocation } from 'react-router-dom'
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../routes'
 import { shopConfigStore } from '../store/ShopConfigStore'
 
 const AuthPage: FC = (): ReactElement => {
   const location = useLocation()
+  const history = useHistory()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const isLogin = location.pathname === LOGIN_ROUTE
@@ -13,18 +14,21 @@ const AuthPage: FC = (): ReactElement => {
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault()
+
       if (isLogin) {
         const data = await login(email, password)
         shopConfigStore.userAccountData = {
           email: data.email,
           role: data.role,
         }
+        history.push(MAIN_ROUTE)
       } else {
         const data = await registration(email, password)
         shopConfigStore.userAccountData = {
           email: data.email,
           role: data.role,
         }
+        history.push(MAIN_ROUTE)
       }
     } catch (e: any) {
       alert(e.response.data.message)
