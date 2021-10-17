@@ -35,7 +35,7 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
         </svg>
       </span>
       <input
-        className="w-full border-2 border-gray-400 rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
+        className="w-full duration-300 border-2 border-gray-400 rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
         type="text"
         placeholder="Поиск по сайту"
         value={query}

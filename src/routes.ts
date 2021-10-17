@@ -1,4 +1,3 @@
-import { AdminPage } from './pages/AdminPage'
 import { AuthPage } from './pages/AuthPage'
 import { InfoPage } from './pages/InfoPage'
 import { MainPage } from './pages/MainPage'
@@ -8,8 +7,7 @@ import { TRoutes } from './types'
 import { CategoryPage } from './pages/CategoryPage'
 import { CatalogPage } from './pages/CatalogPage'
 
-export const ADMIN_ROUTE: string = '/admin'
-export const AUTH_ROUTE: string = '/auth'
+export const LOGIN_ROUTE: string = '/login'
 export const REGISTRATION_ROUTE: string = '/registration'
 export const PRODUCT_ROUTE: string = '/product'
 export const CATEGORY_ROUTE: string = '/category'
@@ -20,16 +18,9 @@ export const PAYMENT_ROUTE: string = '/payment'
 export const INFO_ROUTE: string = '/info'
 export const MAIN_ROUTE: string = '/'
 
-export const authRoutes: TRoutes[] = [
-  {
-    path: ADMIN_ROUTE,
-    component: AdminPage,
-  },
-]
-
 export const publicRoutes: TRoutes[] = [
   {
-    path: AUTH_ROUTE,
+    path: LOGIN_ROUTE,
     component: AuthPage,
   },
   {

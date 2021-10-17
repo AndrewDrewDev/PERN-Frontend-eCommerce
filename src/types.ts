@@ -142,3 +142,8 @@ export type TProductSearchByNameResult = {
   price: string
   img: string
 }
+
+export type TUserAccountData = {
+  email: string
+  role: 'USER' | 'ADMIN'
+}
