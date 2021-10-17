@@ -7,6 +7,7 @@ import { shopConfigStore } from './store/ShopConfigStore'
 import { BrowserRouter } from 'react-router-dom'
 import { ProductSliderModal } from './component/user/modal/ProductSliderModal/ProductSliderModal'
 import { ProductQuickViewModal } from './component/user/modal/ProductQuickViewModal'
+import Spinner from './component/user/common/Spinner'
 
 const App: FC = observer((): ReactElement => {
   return (
@@ -19,7 +20,9 @@ const App: FC = observer((): ReactElement => {
           <ProductSliderModal />
           <ProductQuickViewModal />
         </>
-      ) : null}
+      ) : (
+        <Spinner />
+      )}
     </BrowserRouter>
   )
 })

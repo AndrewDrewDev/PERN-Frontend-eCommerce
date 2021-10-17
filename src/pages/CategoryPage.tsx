@@ -12,6 +12,7 @@ import {
   TBreadcrumbComponentItem,
 } from '../component/user/product/Breadcrumb'
 import { CloudTags } from '../component/user/common/CloudTags'
+import { modalStateStore } from '../store/ModalStateStore'
 
 const CategoryPage: FC = (): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -31,6 +32,7 @@ const CategoryPage: FC = (): ReactElement => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    modalStateStore.closeAll()
     CategoryApi.fetchProducts({
       name: id,
       limit: 20,

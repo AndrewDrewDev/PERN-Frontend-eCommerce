@@ -19,6 +19,17 @@ class ModalStateStore {
     makeAutoObservable(this)
   }
 
+  public closeAll() {
+    this._productSliderWidgetState = {
+      isShowing: false,
+      productId: '',
+    }
+    this._productQuickViewWidgetState = {
+      isShowing: false,
+      productId: '',
+    }
+  }
+
   get productSliderWidgetState() {
     return this._productSliderWidgetState
   }

@@ -22,7 +22,7 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
   }
 
   return (
-    <div className="relative mt-6 w-11/12 max-w-lg mx-auto text-gray-600">
+    <div className="relative mt-6 w-11/12 max-w-lg mx-auto text-gray-700">
       <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
         <svg className="h-5 w-5 text-gray-600" viewBox="0 0 24 24" fill="none">
           <path

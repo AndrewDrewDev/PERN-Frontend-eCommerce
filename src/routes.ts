@@ -9,7 +9,7 @@ import { CategoryPage } from './pages/CategoryPage'
 import { CatalogPage } from './pages/CatalogPage'
 
 export const ADMIN_ROUTE: string = '/admin'
-export const LOGIN_ROUTE: string = '/login'
+export const AUTH_ROUTE: string = '/auth'
 export const REGISTRATION_ROUTE: string = '/registration'
 export const PRODUCT_ROUTE: string = '/product'
 export const CATEGORY_ROUTE: string = '/category'
@@ -29,7 +29,7 @@ export const authRoutes: TRoutes[] = [
 
 export const publicRoutes: TRoutes[] = [
   {
-    path: LOGIN_ROUTE,
+    path: AUTH_ROUTE,
     component: AuthPage,
   },
   {
