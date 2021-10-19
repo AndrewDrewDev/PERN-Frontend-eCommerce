@@ -8,7 +8,7 @@ const HeaderLoginStatus: FC<TUserAccountData> = ({
 }): ReactElement => {
   return (
     <>
-      {shopConfigStore.userAccountData ? (
+      {shopConfigStore.userAccount ? (
         <div className=" py-1 flex justify-center items-center bg-blue-600 text-white text-center">
           <div className="">
             <span className="font-bold">email: </span>

@@ -1,4 +1,6 @@
 import { FC, ReactElement } from 'react'
+import { Link } from 'react-router-dom'
+import { EditProductButton } from '../button/EditProductButton'
 
 type TProps = {
   title: string
@@ -15,14 +17,18 @@ const HeaderTitle: FC<TProps> = ({
 }: TProps): ReactElement => {
   return (
     <div className="block">
-      <a href="https://siteup.com.ua/demo/msk/tupperware/">
-        <div className="w-full text-gray-700 text-center text-2xl md:text-3xl font-semibold">
-          {title}
+      <div className="flex justify-center items-center w-full text-gray-700 text-center text-2xl md:text-3xl font-semibold">
+        <Link to="/">{title}</Link>
+        <div className="ml-3">
+          <EditProductButton
+            id={'22'}
+            onClickHandler={() => console.log('2222')}
+          />
         </div>
-        <div className="w-full text-gray-700 text-center text-lg md:text-xl font-oswald md:whitespace-nowrap">
-          {subtitle}
-        </div>
-      </a>
+      </div>
+      <div className="w-full text-gray-700 text-center text-lg md:text-xl font-oswald md:whitespace-nowrap">
+        {subtitle}
+      </div>
       <div className="w-full text-gray-600 text-xs flex md:text-sm md:flex md:items-center justify-center">
         <svg
           className="h-5 w-5 mt-2"

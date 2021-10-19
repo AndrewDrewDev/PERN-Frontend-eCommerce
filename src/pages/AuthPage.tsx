@@ -17,14 +17,14 @@ const AuthPage: FC = (): ReactElement => {
 
       if (isLogin) {
         const data = await login(email, password)
-        shopConfigStore.userAccountData = {
+        shopConfigStore.userAccount = {
           email: data.email,
           role: data.role,
         }
         history.push(MAIN_ROUTE)
       } else {
         const data = await registration(email, password)
-        shopConfigStore.userAccountData = {
+        shopConfigStore.userAccount = {
           email: data.email,
           role: data.role,
         }

@@ -3,7 +3,7 @@ import { TShopConfig, TShopSlider, TUserAccountData } from '../types'
 import ShopApi from '../http/ShopApi'
 
 class ShopConfigStore {
-  private _userAccountData: TUserAccountData | null = null
+  private _userAccount: TUserAccountData | null = null
   private _config: TShopConfig = {} as any
   private _slider: TShopSlider[] = []
 
@@ -13,12 +13,12 @@ class ShopConfigStore {
     makeAutoObservable(this)
   }
 
-  get userAccountData() {
-    return this._userAccountData
+  get userAccount() {
+    return this._userAccount
   }
 
-  set userAccountData(newData) {
-    this._userAccountData = newData
+  set userAccount(newData) {
+    this._userAccount = newData
   }
 
   get config() {
