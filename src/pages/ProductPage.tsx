@@ -11,8 +11,10 @@ import Spinner from '../component/user/common/Spinner'
 import { PageNotFound } from '../pages/PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import { CloudTags } from '../component/user/common/CloudTags'
+import { observer } from 'mobx-react-lite'
+import { modalStateStore } from '../store/ModalStateStore'
 
-const ProductPage: FC = (): ReactElement => {
+const ProductPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
 
   const [product, setProduct] = useState<TProductPageData | null | undefined>(
@@ -22,7 +24,7 @@ const ProductPage: FC = (): ReactElement => {
   useEffect(() => {
     window.scrollTo(0, 0)
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
-  }, [id])
+  }, [id, modalStateStore.productEditModalState])
 
   if (product === undefined) return <Spinner />
   if (product === null) return <PageNotFound title={'Продукт не найден'} />
@@ -64,6 +66,6 @@ const ProductPage: FC = (): ReactElement => {
       <CloudTags />
     </>
   )
-}
+})
 
 export { ProductPage }

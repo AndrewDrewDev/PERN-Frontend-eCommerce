@@ -1,4 +1,4 @@
-import { $host } from './index'
+import { $authHost, $host } from './index'
 import { TProductPageData, TProductSearchByNameResult } from '../types'
 
 class ProductApi {
@@ -11,6 +11,14 @@ class ProductApi {
     name: string
   ): Promise<TProductSearchByNameResult[] | null> {
     const { data } = await $host.get('api/product/search/' + name)
+    return data
+  }
+
+  public async updateProductById(
+    id: string,
+    body: any
+  ): Promise<TProductPageData> {
+    const { data } = await $authHost.put('api/product/' + id, body)
     return data
   }
 }

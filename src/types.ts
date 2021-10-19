@@ -66,7 +66,7 @@ export type TProductPageData = {
   description: string
   price: string
   oldPrice: string
-  amount: number
+  amount: string
   status: TProductPageDataStatus
 }
 
@@ -84,11 +84,11 @@ export type TItemsCartStore = {
   count: number
 }
 
-export type TMainProductsDataLable = 'Новинки' | 'Акции'
+export type TMainProductsDataLabel = 'Новинки' | 'Акции'
 export type TMainProductsData = {
   id: string
   name: string
-  label: TMainProductsDataLable
+  label: TMainProductsDataLabel
   price: string
   oldprice: string
   img: string

@@ -13,8 +13,9 @@ import {
 } from '../component/user/product/Breadcrumb'
 import { CloudTags } from '../component/user/common/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
+import { observer } from 'mobx-react-lite'
 
-const CategoryPage: FC = (): ReactElement => {
+const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
   const location = useLocation()
   const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>({
@@ -42,7 +43,7 @@ const CategoryPage: FC = (): ReactElement => {
       .then(data => setProducts(data))
       .then(() => setCategoryInfo(categoriesPageStore.infoById(id)))
     CategoryApi.fetchBreadcrumb(id).then(data => setBreadcrumb(data))
-  }, [page, id])
+  }, [page, id, modalStateStore.productEditModalState])
 
   // Get current selected number of pagination
   const selectedItem = (data: any) => {
@@ -111,7 +112,7 @@ const CategoryPage: FC = (): ReactElement => {
       <CloudTags />
     </>
   )
-}
+})
 
 const defineTypeOfPageByUrl = (
   location: string

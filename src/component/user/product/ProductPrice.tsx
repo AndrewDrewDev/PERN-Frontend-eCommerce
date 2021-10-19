@@ -11,7 +11,7 @@ const ProductPrice: FC<TProductPrice> = observer(({ price }): ReactElement => {
   return (
     <div className="mx-auto mb-1">
       <div className="text-xl text-gray-700">
-        Цена:
+        <span>Цена: </span>
         <span
           className="item_price title-font font-medium text-2xl
           text-red-500"
