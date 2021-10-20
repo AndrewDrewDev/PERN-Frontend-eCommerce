@@ -8,9 +8,13 @@ class ShopConfigStore {
   private _slider: TShopSlider[] = []
 
   constructor() {
+    this.updateFetchData()
+    makeAutoObservable(this)
+  }
+
+  public updateFetchData() {
     ShopApi.fetchConfig().then(data => (this._config = data))
     ShopApi.fetchSlider().then(data => (this._slider = data))
-    makeAutoObservable(this)
   }
 
   get userAccount() {

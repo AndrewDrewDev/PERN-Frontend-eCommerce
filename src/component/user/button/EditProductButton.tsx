@@ -2,9 +2,9 @@ import { FC } from 'react'
 import { observer } from 'mobx-react-lite'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 
-type TEditProductButton = { id: string; onClickHandler: () => void }
+type TEditProductButton = { onClickHandler: () => void }
 const EditProductButton: FC<TEditProductButton> = observer(
-  ({ id, onClickHandler }) => {
+  ({ onClickHandler }) => {
     if (shopConfigStore.userAccount?.role === 'ADMIN')
       return (
         <button

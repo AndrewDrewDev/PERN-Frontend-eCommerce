@@ -4,6 +4,7 @@ import { modalStateStore } from '../../../store/ModalStateStore'
 import ProductApi from '../../../http/ProductApi'
 import { observer } from 'mobx-react-lite'
 import Spinner from '../common/Spinner'
+import { ModalInputItem, ModalWrapper } from './ModalComponents'
 
 const ProductEditModal = observer(() => {
   const [product, setProduct] = useState<TProductPageData | null | undefined>()
@@ -27,26 +28,12 @@ const ProductEditModal = observer(() => {
 
   if (isShowing)
     return (
-      <div
-        className="fixed inset-0 w-full h-screen flex justify-center
-          items-center z-50 bg-black bg-opacity-50 duration-300
-          overflow-y-hidden"
-        onClick={() => close()}
-      >
-        <div
-          className="relative text-gray-700 bg-white my-5 py-5 px-5 rounded w-11/12
-            md:w-4/5 overflow-auto bg-gray-200"
-          onClick={e => e.stopPropagation()}
-          style={{
-            maxHeight: '95%',
-          }}
-        >
-          {isShowing && product ? (
-            <ProductEditModalBody product={product} />
-          ) : null}
-          {product === null ? <Spinner /> : null}
-        </div>
-      </div>
+      <ModalWrapper closeHandler={close}>
+        {isShowing && product ? (
+          <ProductEditModalBody product={product} />
+        ) : null}
+        {product === null ? <Spinner /> : null}
+      </ModalWrapper>
     )
   return <></>
 })
@@ -91,21 +78,25 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <InputItem
+        <ModalInputItem
           name="Название"
           value={name}
           setValue={setName}
           autoFocus={true}
         />
-        <InputItem name="Цена" value={price} setValue={setPrice} />
-        <InputItem name="Старая цена" value={oldPrice} setValue={setOldPrice} />
-        <InputItem
+        <ModalInputItem name="Цена" value={price} setValue={setPrice} />
+        <ModalInputItem
+          name="Старая цена"
+          value={oldPrice}
+          setValue={setOldPrice}
+        />
+        <ModalInputItem
           name="ID-код поставщика"
           value={vendorId}
           setValue={setVendorId}
         />
-        <InputItem name="Количество" value={amount} setValue={setAmount} />
-        <InputItem
+        <ModalInputItem name="Количество" value={amount} setValue={setAmount} />
+        <ModalInputItem
           inputType={'textarea'}
           name="Описание"
           value={description}
@@ -115,55 +106,6 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
           Применить изменения
         </button>
       </form>
-    </>
-  )
-}
-
-type TInputItem = {
-  inputType?: 'input' | 'textarea'
-  name: string
-  value: string
-  setValue: (newValue: string) => void
-  autoFocus?: boolean
-}
-const InputItem: FC<TInputItem> = ({
-  inputType,
-  name,
-  value,
-  setValue,
-  autoFocus,
-}) => {
-  if (!inputType) inputType = 'input'
-  return (
-    <>
-      <div className="px-4 py-2 w-3/4 ">
-        <label htmlFor={name} className="text-lg font-bold text-gray-700">
-          {name}
-        </label>
-        {inputType === 'input' ? (
-          <input
-            id={name}
-            className="mt-2 w-full px-2 duration-300 py-1 border-2
-            focus:border-blue-500 focus:outline-none focus:shadow-outline
-            rounded-md focus:ring-4 flex-grow outline-none text-gray-700
-            focus:text-blue-700"
-            type="text"
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            placeholder="Введите текст"
-            autoFocus={autoFocus}
-          />
-        ) : (
-          <textarea
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            className="h-96 mt-2 w-full px-2 duration-300 py-1 border-2
-            focus:border-blue-500 focus:outline-none focus:shadow-outline
-            rounded-md focus:ring-4 flex-grow outline-none text-gray-700
-            focus:text-blue-700"
-          />
-        )}
-      </div>
     </>
   )
 }

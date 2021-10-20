@@ -1,5 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 
+export type TBaseModalState = {
+  isShowing: boolean
+}
+
 export type TProductModalState = {
   isShowing: boolean
   productId: string
@@ -20,6 +24,10 @@ class ModalStateStore {
     productId: '',
   }
 
+  private _shopConfigEditModalState: TBaseModalState = {
+    isShowing: false,
+  }
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -33,6 +41,14 @@ class ModalStateStore {
       isShowing: false,
       productId: '',
     }
+  }
+
+  get shopConfigEditModalState() {
+    return this._shopConfigEditModalState
+  }
+
+  set shopConfigEditModalState(newState) {
+    this._shopConfigEditModalState = newState
   }
 
   get productEditModalState() {

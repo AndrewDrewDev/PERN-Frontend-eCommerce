@@ -87,7 +87,6 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             }}
           >
             <EditProductButton
-              id={id}
               onClickHandler={() =>
                 (modalStateStore.productEditModalState = {
                   isShowing: true,

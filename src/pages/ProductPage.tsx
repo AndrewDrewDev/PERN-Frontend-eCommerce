@@ -36,14 +36,13 @@ const ProductPage: FC = observer((): ReactElement => {
         {product.name}
         <div className="ml-5">
           <EditProductButton
-            id={id}
             onClickHandler={() =>
               (modalStateStore.productEditModalState = {
                 isShowing: true,
                 productId: id,
               })
             }
-          ></EditProductButton>
+          />
         </div>
       </h1>
       <Breadcrumb categories={product.categories} lastName={product.name} />

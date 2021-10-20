@@ -139,7 +139,7 @@ const Footer: FC = (): ReactElement => {
               ></path>
             </svg>{' '}
             <a className="mx-6 text-md whitespace-nowrap" href="#">
-              contact@company.com
+              {shopConfigStore.config.email}
             </a>
           </div>
           <div className="relative mt-2">

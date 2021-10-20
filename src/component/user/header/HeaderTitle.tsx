@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import { EditProductButton } from '../button/EditProductButton'
+import { modalStateStore } from '../../../store/ModalStateStore'
 
 type TProps = {
   title: string
@@ -21,8 +22,9 @@ const HeaderTitle: FC<TProps> = ({
         <Link to="/">{title}</Link>
         <div className="ml-3">
           <EditProductButton
-            id={'22'}
-            onClickHandler={() => console.log('2222')}
+            onClickHandler={() =>
+              (modalStateStore.shopConfigEditModalState.isShowing = true)
+            }
           />
         </div>
       </div>

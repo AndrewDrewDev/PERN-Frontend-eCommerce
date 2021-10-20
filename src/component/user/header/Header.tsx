@@ -16,11 +16,11 @@ const Header: FC = observer((): ReactElement => {
   let [showLeftNavMenuBar, setShowLeftNavMenuBar] = useState(false)
   let [showRightCartMenuBar, setShowRightMenuBar] = useState(false)
 
-  const { config, userAccountData } = shopConfigStore
+  const { config, userAccount } = shopConfigStore
 
   return (
     <header>
-      {userAccountData ? <HeaderLoginStatus {...userAccountData} /> : null}
+      {userAccount ? <HeaderLoginStatus {...userAccount} /> : null}
       <div className="relative container mx-auto px-6 py-3 flex items-center justify-between">
         <HeaderMenuBarButton
           onClick={() => setShowLeftNavMenuBar(!showLeftNavMenuBar)}
