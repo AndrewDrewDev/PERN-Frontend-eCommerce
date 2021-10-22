@@ -12,9 +12,13 @@ class ShopConfigStore {
     makeAutoObservable(this)
   }
 
-  public updateFetchData() {
+  private fetchData() {
     ShopApi.fetchConfig().then(data => (this._config = data))
     ShopApi.fetchSlider().then(data => (this._slider = data))
+  }
+
+  public updateFetchData() {
+    this.fetchData()
   }
 
   get userAccount() {

@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { TShopCustomCategoryProducts } from '../../../../types'
 import ShopApi from '../../../../http/ShopApi'
 import config from '../../../../config'
+import { categoriesPageStore } from '../../../../store/CategoryStore'
 
 type TEditCustomCategoryProducts = {
   categoryName: string
@@ -36,6 +37,7 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
   const createProductItem = async (id: string) => {
     await ShopApi.createCustomCategoryProduct(categoryName, { data: id }).then(
       () => {
+        categoriesPageStore.updateFetchData()
         setPopupShow(false)
         setUpdate(!update)
       }
@@ -44,13 +46,19 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
 
   const updateProductItem = async (newProducts: string[]) => {
     await ShopApi.updateCustomCategoryProducts(categoryName, newProducts).then(
-      () => setUpdate(!update)
+      () => {
+        categoriesPageStore.updateFetchData()
+        setUpdate(!update)
+      }
     )
   }
 
   const deleteProductItem = async (id: string) => {
     await ShopApi.deleteCustomCategoryProduct(categoryName, { data: id }).then(
-      () => setUpdate(!update)
+      () => {
+        categoriesPageStore.updateFetchData()
+        setUpdate(!update)
+      }
     )
   }
 

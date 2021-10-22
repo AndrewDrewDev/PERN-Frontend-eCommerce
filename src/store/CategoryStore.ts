@@ -19,6 +19,11 @@ class CategoryStore {
   private _infoByUrl: TCSInfoByUrl = {}
 
   constructor() {
+    this.updateFetchData()
+    makeAutoObservable(this)
+  }
+
+  private fetchData() {
     CategoryApi.fetchProducts({
       name: 'Novinki',
       limit: 8,
@@ -43,7 +48,6 @@ class CategoryStore {
     CategoryApi.fetchInfoByLevel(3)
       .then(data => (this._category3Info = data))
       .then(() => (this._infoByUrl = this.joinAllCategory()))
-    makeAutoObservable(this)
   }
 
   // Join all category
@@ -63,6 +67,10 @@ class CategoryStore {
     }
 
     return result
+  }
+
+  public updateFetchData() {
+    this.fetchData()
   }
 
   public infoById(id: string): TCSInfoByUrlData {
