@@ -1,7 +1,7 @@
 import { ProductSliderModal } from './ProductSliderModal/ProductSliderModal'
 import { ProductQuickViewModal } from './ProductQuickViewModal'
 import { ProductEditModal } from './ProductEditModal'
-import { ShopConfigEditModal } from './ShopConfigEditModal'
+import { ShopConfigEditModal } from './ShopConfigEditModal/'
 
 const CommonModals = () => {
   return (
