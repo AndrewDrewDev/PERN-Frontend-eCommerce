@@ -52,6 +52,17 @@ class ShopApi {
     )
     return data
   }
+
+  public async updateCustomCategoryProducts(
+    name: string,
+    body: string[]
+  ): Promise<TShopCustomCategoryProducts> {
+    const { data } = await $authHost.put(
+      '/api/shop/custom_category_products/' + name,
+      { data: body }
+    )
+    return data
+  }
 }
 
 export default new ShopApi()

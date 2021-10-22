@@ -247,15 +247,16 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
     )
   }, [update])
 
-  const reorderProducts = (from: number, to: number) => {
+  const reorderProducts = async (from: number, to: number) => {
     if (from < 0 || to < 0) return
     if (products) {
-      const newProduct = [...products]
+      const newProducts = [...products]
       // Delete the item from it's current position
-      const item = newProduct.splice(from, 1)
+      const item = newProducts.splice(from, 1)
       // Move the item to its new position
-      newProduct.splice(to, 0, item[0])
-      setProducts(newProduct)
+      newProducts.splice(to, 0, item[0])
+
+      await updateProductItem(newProducts.map(product => product.id))
     }
   }
 
@@ -265,6 +266,12 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
         setPopupShow(false)
         setUpdate(!update)
       }
+    )
+  }
+
+  const updateProductItem = async (newProducts: string[]) => {
+    await ShopApi.updateCustomCategoryProducts(categoryName, newProducts).then(
+      () => setUpdate(!update)
     )
   }
 
