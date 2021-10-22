@@ -7,6 +7,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+
 import { TShopConfig, TShopCustomCategoryProducts } from '../../../types'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import { ModalInputItem, ModalWrapper } from './ModalComponents'
@@ -32,7 +33,7 @@ const ShopConfigEditModal = observer(() => {
   const [shopConfig, setShopConfig] = useState<TShopConfig | null | undefined>()
 
   const isShowing = modalStateStore.shopConfigEditModalState.isShowing
-  console.log(isShowing)
+
   const close = () => {
     modalStateStore.shopConfigEditModalState.isShowing = false
     setShopConfig(undefined)
@@ -246,6 +247,18 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
     )
   }, [update])
 
+  const reorderProducts = (from: number, to: number) => {
+    if (from < 0 || to < 0) return
+    if (products) {
+      const newProduct = [...products]
+      // Delete the item from it's current position
+      const item = newProduct.splice(from, 1)
+      // Move the item to its new position
+      newProduct.splice(to, 0, item[0])
+      setProducts(newProduct)
+    }
+  }
+
   const createProductItem = async (id: string) => {
     await ShopApi.createCustomCategoryProduct(categoryName, { data: id }).then(
       () => {
@@ -338,6 +351,49 @@ const EditCustomCategoryProducts: FC<TEditCustomCategoryProducts> = ({
                   <span className=" px-2 flex justify-center w-full">
                     {product.name}
                   </span>
+                  <div className="flex text-white items-center justify-center flex-col">
+                    <button
+                      className="px-1 bg-green-500 hover:bg-green-700"
+                      type="button"
+                      onClick={() => reorderProducts(i, --i)}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M5 15l7-7 7 7"
+                        ></path>
+                      </svg>
+                    </button>
+                    <button
+                      className="px-1 bg-green-500 hover:bg-green-700"
+                      type="button"
+                      onClick={() => reorderProducts(i, ++i)}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+
                   <button
                     className="flex items-center bg-red-500 border-2 border-red-600 rounded-r-lg text-white w-10 h-10"
                     title="Удалить"
