@@ -21,7 +21,7 @@ const MainPage: FC = observer((): ReactElement => {
         <CategoryWrapper
           name={categoriesPageStore.infoById('Novinki').name}
           count={categoriesPageStore.infoById('Novinki').count}
-          products={categoriesPageStore.categoryDiscountProducts}
+          products={categoriesPageStore.categoryNewProducts}
           limit={8}
         />
       ) : null}

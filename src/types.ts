@@ -147,3 +147,13 @@ export type TUserAccountData = {
   email: string
   role: 'USER' | 'ADMIN'
 }
+
+export type TShopCustomCategoryProducts = {
+  category_name: string
+  category_url: string
+  name: string
+  id: string
+  img: string
+}[]
+
+export type TUpdateCustomCategoryProductsBody = { data: string }

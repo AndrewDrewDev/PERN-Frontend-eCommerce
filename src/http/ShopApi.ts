@@ -1,5 +1,10 @@
 import { $authHost, $host } from './index'
-import { TShopConfig, TShopSlider } from '../types'
+import {
+  TShopConfig,
+  TShopCustomCategoryProducts,
+  TShopSlider,
+  TUpdateCustomCategoryProductsBody,
+} from '../types'
 
 class ShopApi {
   public async fetchConfig(): Promise<TShopConfig> {
@@ -14,6 +19,37 @@ class ShopApi {
 
   public async fetchSlider(): Promise<TShopSlider[]> {
     const { data } = await $host.get('/api/shop/slider')
+    return data
+  }
+
+  public async fetchCustomCategoryProducts(
+    name: string
+  ): Promise<TShopCustomCategoryProducts> {
+    const { data } = await $host.get(
+      '/api/shop/custom_category_products/' + name
+    )
+    return data
+  }
+
+  public async createCustomCategoryProduct(
+    name: string,
+    body: TUpdateCustomCategoryProductsBody
+  ): Promise<TShopCustomCategoryProducts> {
+    const { data } = await $authHost.post(
+      '/api/shop/custom_category_products/' + name,
+      body
+    )
+    return data
+  }
+
+  public async deleteCustomCategoryProduct(
+    name: string,
+    body: TUpdateCustomCategoryProductsBody
+  ): Promise<TShopCustomCategoryProducts> {
+    const { data } = await $authHost.delete(
+      '/api/shop/custom_category_products/' + name,
+      { data: body }
+    )
     return data
   }
 }
