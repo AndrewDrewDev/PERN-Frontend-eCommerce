@@ -116,10 +116,10 @@ const CategoryPage: FC = observer((): ReactElement => {
 
 const defineTypeOfPageByUrl = (
   location: string
-): 'custom' | 'common' | 'all' => {
+): 'custom' | 'common' | 'label' | 'all' => {
   const splitLocation = location.split('/')
 
-  if (splitLocation.includes('custom')) return 'custom'
+  if (splitLocation.includes('custom')) return 'label'
   if (splitLocation.includes('all')) return 'all'
   return 'common'
 }

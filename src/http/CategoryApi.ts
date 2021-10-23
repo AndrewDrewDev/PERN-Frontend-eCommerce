@@ -6,7 +6,7 @@ type TFetchProducts = {
   name: string
   limit: number
   page: number
-  type: 'custom' | 'common' | 'all'
+  type: 'custom' | 'common' | 'label' | 'all'
 }
 
 class CategoryApi {
