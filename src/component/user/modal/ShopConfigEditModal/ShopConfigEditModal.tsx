@@ -8,7 +8,7 @@ import Spinner from '../../common/Spinner'
 import ShopApi from '../../../../http/ShopApi'
 import { Dispatch } from 'react'
 import { SetStateAction } from 'react'
-import { ProductEditModalBody } from './ProductEditModalBody'
+import { ShopConfigEditModalBody } from './ShopConfigEditModalBody'
 
 type TShopConfigEditModalContext = {
   shopConfig: TShopConfig
@@ -44,7 +44,7 @@ const ShopConfigEditModal = observer(() => {
       >
         <ModalWrapper closeHandler={close}>
           {isShowing && shopConfig ? (
-            <ProductEditModalBody shopConfig={shopConfig} />
+            <ShopConfigEditModalBody shopConfig={shopConfig} />
           ) : null}
           {shopConfig === null ? <Spinner /> : null}
         </ModalWrapper>
