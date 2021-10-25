@@ -1,29 +1,38 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, useEffect, useState } from 'react'
 import ShopApi from '../../../../http/ShopApi'
 import { modalStateStore } from '../../../../store/ModalStateStore'
 import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
-import { ModalInputItem } from '../ModalComponents'
-import { EditCustomCategoryProducts } from './EditCustomCategoryProducts'
+import { ShopConfigEditModalBaseInfoCustomCategory } from './ShopConfigEditModalBaseInfoCustomCategory'
+import { AdminFormInput } from '../../../admin/modal/AdminFormInput'
 
-type TProductEditModalBody = { shopConfig: TShopConfig }
-const ShopConfigEditModalBody: FC<TProductEditModalBody> = ({ shopConfig }) => {
+const ShopConfigEditModalBaseInfoTabBody: FC = () => {
   // Define base shop config field
-  const [title, setTitle] = useState(shopConfig.title)
-  const [sub_title, setSub_title] = useState(shopConfig.sub_title)
-  const [address, setAddress] = useState(shopConfig.address)
-  const [phone, setPhone] = useState(shopConfig.phone)
-  const [email, setEmail] = useState(shopConfig.email)
-  const [pagination_number, setPagination_number] = useState(
-    shopConfig.pagination_number
-  )
-  const [currency, setCurrency] = useState(shopConfig.currency)
+  const [title, setTitle] = useState('')
+  const [sub_title, setSub_title] = useState('')
+  const [address, setAddress] = useState('')
+  const [phone, setPhone] = useState('')
+  const [email, setEmail] = useState('')
+  const [pagination_number, setPagination_number] = useState('')
+  const [currency, setCurrency] = useState('')
 
-  const [copyright, setCopyright] = useState(shopConfig.copyright)
+  const [copyright, setCopyright] = useState('')
 
-  const [category_cloud_number, setCategory_cloud_number] = useState(
-    shopConfig.category_cloud_number
-  )
+  const [category_cloud_number, setCategory_cloud_number] = useState('')
+
+  useEffect(() => {
+    ShopApi.fetchConfig().then(data => {
+      setTitle(data.title)
+      setSub_title(data.sub_title)
+      setAddress(data.address)
+      setPhone(data.phone)
+      setEmail(data.email)
+      setPagination_number(data.pagination_number)
+      setCurrency(data.currency)
+      setCopyright(data.copyright)
+      setCategory_cloud_number(data.category_cloud_number)
+    })
+  }, [])
 
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -57,46 +66,46 @@ const ShopConfigEditModalBody: FC<TProductEditModalBody> = ({ shopConfig }) => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <EditCustomCategoryProducts categoryName="Акции" />
-        <EditCustomCategoryProducts categoryName="Новинки" />
-        <ModalInputItem
+        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Акции" />
+        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Новинки" />
+        <AdminFormInput
           name="Название магазина"
           value={title}
           setValue={setTitle}
           autoFocus={true}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="Манифест магазина"
           value={sub_title}
           setValue={setSub_title}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="Адрес магазина"
           value={address}
           setValue={setAddress}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="Телефон магазина"
           value={phone}
           setValue={setPhone}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="Email магазина"
           value={email}
           setValue={setEmail}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="Количество товара на странице категории"
           value={pagination_number}
           setValue={setPagination_number}
         />
-        <ModalInputItem name="Валюта" value={currency} setValue={setCurrency} />
-        <ModalInputItem
+        <AdminFormInput name="Валюта" value={currency} setValue={setCurrency} />
+        <AdminFormInput
           name="Copyright | Авторские права"
           value={copyright}
           setValue={setCopyright}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="category_cloud_number"
           value={category_cloud_number}
           setValue={setCategory_cloud_number}
@@ -109,4 +118,4 @@ const ShopConfigEditModalBody: FC<TProductEditModalBody> = ({ shopConfig }) => {
   )
 }
 
-export { ShopConfigEditModalBody }
+export { ShopConfigEditModalBaseInfoTabBody }

@@ -4,11 +4,9 @@ import { modalStateStore } from '../../../store/ModalStateStore'
 import ProductApi from '../../../http/ProductApi'
 import { observer } from 'mobx-react-lite'
 import Spinner from '../common/Spinner'
-import {
-  ModalInputItem,
-  ModalSelectItem,
-  ModalWrapper,
-} from './ModalComponents'
+import { WideModalWrapper } from './WideModalWrapper'
+import { AdminFormInput } from '../../admin/modal/AdminFormInput'
+import { AdminFormSelect } from '../../admin/modal/AdminFormSelect'
 
 const ProductEditModal = observer(() => {
   const [product, setProduct] = useState<TProductPageData | null | undefined>()
@@ -32,12 +30,12 @@ const ProductEditModal = observer(() => {
 
   if (isShowing)
     return (
-      <ModalWrapper closeHandler={close}>
+      <WideModalWrapper active={isShowing} setActive={close}>
         {isShowing && product ? (
           <ProductEditModalBody product={product} />
         ) : null}
         {product === null ? <Spinner /> : null}
-      </ModalWrapper>
+      </WideModalWrapper>
     )
   return <></>
 })
@@ -106,54 +104,54 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <ModalInputItem
+        <AdminFormInput
           name="Название"
           value={name}
           setValue={setName}
           autoFocus={true}
         />
-        <ModalInputItem name="Цена" value={price} setValue={setPrice} />
-        <ModalInputItem
+        <AdminFormInput name="Цена" value={price} setValue={setPrice} />
+        <AdminFormInput
           name="Старая цена"
           value={oldPrice}
           setValue={setOldPrice}
         />
-        <ModalInputItem
+        <AdminFormInput
           name="ID-код поставщика"
           value={vendorId}
           setValue={setVendorId}
         />
-        <ModalInputItem name="Количество" value={amount} setValue={setAmount} />
+        <AdminFormInput name="Количество" value={amount} setValue={setAmount} />
 
-        <ModalSelectItem
+        <AdminFormSelect
           title="Ярлык :: Бирка"
           options={optionsLabels}
           selected={label}
           selectedHandle={setLabel}
         />
 
-        <ModalSelectItem
+        <AdminFormSelect
           title="Статус"
           options={optionsStatuses}
           selected={status}
           selectedHandle={setStatus}
         />
 
-        <ModalSelectItem
+        <AdminFormSelect
           title="Поставщик"
           options={optionsSuppliers}
           selected={supplier}
           selectedHandle={setSupplier}
         />
 
-        <ModalSelectItem
+        <AdminFormSelect
           title="Единица измерения"
           options={optionsUtils}
           selected={unit}
           selectedHandle={setUnit}
         />
 
-        <ModalInputItem
+        <AdminFormInput
           inputType={'textarea'}
           name="Описание"
           value={description}
