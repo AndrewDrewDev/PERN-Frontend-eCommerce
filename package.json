@@ -59,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-motion": "^0.0.31",
     "@types/react-paginate": "^7.1.1",
     "autoprefixer": "^9.8.6",
     "live-server": "^1.2.1",

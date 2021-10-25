@@ -13,7 +13,7 @@ import { categoriesPageStore } from '../store/CategoryStore'
 import { CloudTags } from '../component/user/common/CloudTags'
 import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../store/ModalStateStore'
-import { EditProductButton } from '../component/user/button/EditProductButton'
+import { AdminEditBotton } from '../component/admin/button/AdminEditBotton'
 
 const ProductPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -35,7 +35,7 @@ const ProductPage: FC = observer((): ReactElement => {
       <h1 className="flex text-gray-700 text-3xl title-font font-medium mb-1">
         {product.name}
         <div className="ml-5">
-          <EditProductButton
+          <AdminEditBotton
             onClickHandler={() =>
               (modalStateStore.productEditModalState = {
                 isShowing: true,

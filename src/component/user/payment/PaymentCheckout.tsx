@@ -100,10 +100,6 @@ const PaymentCheckout: FC<TPaymentCheckout> = ({
   )
 }
 
-type TTableProductItem = {
-  item: TItemsCartStore
-}
-
 const TableProductItem: FC<TItemsCartStore> = ({
   name,
   count,

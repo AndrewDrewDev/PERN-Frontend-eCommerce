@@ -12,7 +12,7 @@ import config from '../../../config'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import { observer } from 'mobx-react-lite'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
-import { EditProductButton } from '../button/EditProductButton'
+import { AdminEditBotton } from '../../admin/button/AdminEditBotton'
 
 type TProductCard = {
   product: TMainProductsData
@@ -86,7 +86,7 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
               marginRight: '8.5rem',
             }}
           >
-            <EditProductButton
+            <AdminEditBotton
               onClickHandler={() =>
                 (modalStateStore.productEditModalState = {
                   isShowing: true,

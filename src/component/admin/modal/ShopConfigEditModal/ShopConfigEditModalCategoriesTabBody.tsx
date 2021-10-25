@@ -2,15 +2,13 @@ import { FC, FormEvent, useState } from 'react'
 import config from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
-import { SomethingWhenWrong } from '../../common/SomethingWhenWrong'
-import { WideModalWrapper } from '../GlobalModals'
+import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
+import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
+import { AdminFormInput } from '../../form/AdminFormInput'
+import { type } from 'os'
 
 const ShopConfigEditModalCategoriesTabBody: FC = () => {
   const categories = categoriesPageStore.category1Info
-
-  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-  }
 
   return (
     <>
@@ -18,10 +16,7 @@ const ShopConfigEditModalCategoriesTabBody: FC = () => {
         <span className="font-bold">Управление Категориями</span>
       </h3>
       <hr className="border-2 rounded-full border-gray-700 my-2" />
-      <form
-        onSubmit={e => handleOnSubmit(e)}
-        className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
-      >
+      <div className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
           {categories ? (
             categories.map((categoryItem, i) => (
@@ -31,7 +26,7 @@ const ShopConfigEditModalCategoriesTabBody: FC = () => {
             <SomethingWhenWrong />
           )}
         </div>
-      </form>
+      </div>
     </>
   )
 }
@@ -99,10 +94,55 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
         </div>
       </div>
       {showModal ? (
-        <WideModalWrapper active={showModal} setActive={setShowModal}>
-          <>22323</>
-        </WideModalWrapper>
+        <FlexModalWrapper
+          active={showModal}
+          setActive={setShowModal}
+          scale={'block'}
+        >
+          <EditForm categoryName={name} categoryImg={img} />
+        </FlexModalWrapper>
       ) : null}
+    </>
+  )
+}
+
+type TEditForm = { categoryName: string; categoryImg: string | null }
+const EditForm: FC<TEditForm> = ({ categoryName, categoryImg }) => {
+  const [name, setName] = useState(categoryName)
+  const [img, setImg] = useState(categoryImg)
+  const handleOnSubmit = async (event: any) => {
+    event.preventDefault()
+    const formData = new FormData()
+    formData.append('name', name)
+    if (img) formData.append('img', img)
+  }
+
+  return (
+    <>
+      <form className="flex flex-col items-center">
+        <h3 className="text-lg text-center">Редактирование категории</h3>
+        <AdminFormInput
+          name="Название категории"
+          value={name}
+          autoFocus
+          inputType={'input'}
+          setValue={setName}
+        />
+        <AdminFormInput
+          name="Картинка категории"
+          value={name}
+          autoFocus
+          inputType={'file'}
+          setValue={setImg}
+        />
+        <button
+          type="submit"
+          className="p-2 mt-5 text-white bg-blue-500"
+          onClick={e => handleOnSubmit(e)}
+        >
+          Сохранить
+        </button>
+      </form>
     </>
   )
 }

@@ -1,8 +1,5 @@
 import { ReactElement, FC } from 'react'
 
-// width="22pt"
-// height="22pt"
-
 const Spinner: FC = (): ReactElement => {
   return (
     <>

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 type TEditProductButton = { onClickHandler: () => void }
-const EditProductButton: FC<TEditProductButton> = observer(
+const AdminEditBotton: FC<TEditProductButton> = observer(
   ({ onClickHandler }) => {
     if (shopConfigStore.userAccount?.role === 'ADMIN')
       return (
@@ -34,4 +34,4 @@ const EditProductButton: FC<TEditProductButton> = observer(
   }
 )
 
-export { EditProductButton }
+export { AdminEditBotton }

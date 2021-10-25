@@ -1,6 +1,6 @@
 import { FC, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
-import { EditProductButton } from '../button/EditProductButton'
+import { AdminEditBotton } from '../../admin/button/AdminEditBotton'
 import { modalStateStore } from '../../../store/ModalStateStore'
 
 type TProps = {
@@ -21,7 +21,7 @@ const HeaderTitle: FC<TProps> = ({
       <div className="flex justify-center items-center w-full text-gray-700 text-center text-2xl md:text-3xl font-semibold">
         <Link to="/">{title}</Link>
         <div className="ml-3">
-          <EditProductButton
+          <AdminEditBotton
             onClickHandler={() =>
               (modalStateStore.shopConfigEditModalState.isShowing = true)
             }

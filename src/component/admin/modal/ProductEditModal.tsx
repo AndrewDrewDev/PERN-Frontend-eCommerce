@@ -3,10 +3,10 @@ import { TProductPageData } from '../../../types'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import ProductApi from '../../../http/ProductApi'
 import { observer } from 'mobx-react-lite'
-import Spinner from '../common/Spinner'
-import { WideModalWrapper } from './WideModalWrapper'
-import { AdminFormInput } from '../../admin/modal/AdminFormInput'
-import { AdminFormSelect } from '../../admin/modal/AdminFormSelect'
+import Spinner from '../../user/common/Spinner'
+import { WideModalWrapper } from '../../user/modal/WideModalWrapper'
+import { AdminFormInput } from '../form/AdminFormInput'
+import { AdminFormSelect } from '../form/AdminFormSelect'
 
 const ProductEditModal = observer(() => {
   const [product, setProduct] = useState<TProductPageData | null | undefined>()

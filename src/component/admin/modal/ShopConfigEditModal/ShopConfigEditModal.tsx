@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import { modalStateStore } from '../../../../store/ModalStateStore'
-import { WideModalWrapper } from '../WideModalWrapper'
+import { WideModalWrapper } from '../../../user/modal/WideModalWrapper'
 import { ShopConfigEditModalBaseInfoTabBody } from './ShopConfigEditModalBaseInfoTabBody'
 import { ShopConfigEditModalCategoriesTabBody } from './ShopConfigEditModalCategoriesTabBody'
 

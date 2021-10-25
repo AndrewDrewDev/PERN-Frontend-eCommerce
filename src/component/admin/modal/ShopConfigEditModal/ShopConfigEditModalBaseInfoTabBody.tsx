@@ -4,7 +4,7 @@ import { modalStateStore } from '../../../../store/ModalStateStore'
 import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
 import { ShopConfigEditModalBaseInfoCustomCategory } from './ShopConfigEditModalBaseInfoCustomCategory'
-import { AdminFormInput } from '../../../admin/modal/AdminFormInput'
+import { AdminFormInput } from '../../form/AdminFormInput'
 
 const ShopConfigEditModalBaseInfoTabBody: FC = () => {
   // Define base shop config field

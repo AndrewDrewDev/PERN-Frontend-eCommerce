@@ -157,3 +157,8 @@ export type TShopCustomCategoryProducts = {
 }[]
 
 export type TUpdateCustomCategoryProductsBody = { data: string }
+
+export interface IModalWrapper {
+  active: boolean
+  setActive: Dispatch<SetStateAction<boolean>>
+}
