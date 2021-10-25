@@ -7,6 +7,7 @@ import Spinner from '../../user/common/Spinner'
 import { WideModalWrapper } from '../../user/modal/WideModalWrapper'
 import { AdminFormInput } from '../form/AdminFormInput'
 import { AdminFormSelect } from '../form/AdminFormSelect'
+import { AdminFormTextArea } from '../form/AdminFormTextArea'
 
 const ProductEditModal = observer(() => {
   const [product, setProduct] = useState<TProductPageData | null | undefined>()
@@ -54,7 +55,7 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
   const [supplier, setSupplier] = useState(product.supplier)
   const [unit, setUnit] = useState(product.unit)
 
-  // Load & Store data for opnions in select html tags
+  // Load & Store data for options in select html tags
   type TOptionsX = string[]
   const [optionsLabels, setOptionsLabels] = useState<TOptionsX>()
   const [optionsStatuses, setOptionsStatuses] = useState<TOptionsX>()
@@ -151,8 +152,7 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
           selectedHandle={setUnit}
         />
 
-        <AdminFormInput
-          inputType={'textarea'}
+        <AdminFormTextArea
           name="Описание"
           value={description}
           setValue={setDescription}

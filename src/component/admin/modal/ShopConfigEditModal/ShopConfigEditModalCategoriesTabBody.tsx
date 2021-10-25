@@ -1,13 +1,17 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC, useState } from 'react'
 import config from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import { AdminFormInput } from '../../form/AdminFormInput'
-import { type } from 'os'
+import { useFetching } from '../../../../hooks/useFetching'
+import Spinner from '../../../user/common/Spinner'
+import CategoryApi from '../../../../http/CategoryApi'
+import { AdminFormInputFile } from '../../form/AdminFormInputFile'
+import { observer } from 'mobx-react-lite'
 
-const ShopConfigEditModalCategoriesTabBody: FC = () => {
+const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
   const categories = categoriesPageStore.category1Info
 
   return (
@@ -20,7 +24,7 @@ const ShopConfigEditModalCategoriesTabBody: FC = () => {
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
           {categories ? (
             categories.map((categoryItem, i) => (
-              <CategoryCard {...categoryItem} />
+              <CategoryCard key={i} {...categoryItem} />
             ))
           ) : (
             <SomethingWhenWrong />
@@ -29,7 +33,7 @@ const ShopConfigEditModalCategoriesTabBody: FC = () => {
       </div>
     </>
   )
-}
+})
 
 const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
   const [showEdit, setShowEdit] = useState(false)
@@ -41,12 +45,12 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
         onMouseEnter={() => setShowEdit(true)}
         onMouseLeave={() => setShowEdit(false)}
         onClick={() => setShowModal(!showModal)}
-        className="flex my-3 relative max-w-xs bg-white shadow-lg rounded-lg mx-auto w-full "
+        className="my-3 relative max-w-xs rounded-lg  bg-white shadow-xl  mx-auto w-full "
       >
-        <div className="relative z-20">
+        <div className="relative z-20 ">
           {showEdit ? (
             <>
-              <div className="absolute cursor-pointer inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"></div>
+              <div className="absolute rounded-lg cursor-pointer inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"></div>
               <div className="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
                 <button className="p-5 bg-gray-500 rounded-full">
                   <svg
@@ -68,7 +72,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
             </>
           ) : null}
 
-          <div className="px-4 py-2 bg-blue-500 flex-auto relative z-10">
+          <div className=" rounded-t-lg px-4 py-2 bg-blue-500 flex-auto relative z-10">
             <h2 className="font-bold text-white text-xl text-center ">
               {name}
             </h2>
@@ -77,7 +81,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
             </div>
           </div>
           <div
-            className="relative flex items-center justify-center"
+            className=" relative flex items-center justify-center"
             style={{ minHeight: 300 + 'px' }}
           >
             <div>
@@ -88,6 +92,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
                   maxHeight: 300 + 'px',
                   maxWidth: 100 + '%',
                 }}
+                alt={name}
               />
             </div>
           </div>
@@ -99,24 +104,34 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
           setActive={setShowModal}
           scale={'block'}
         >
-          <EditForm categoryName={name} categoryImg={img} />
+          <EditForm categoryName={name} />
         </FlexModalWrapper>
       ) : null}
     </>
   )
 }
 
-type TEditForm = { categoryName: string; categoryImg: string | null }
-const EditForm: FC<TEditForm> = ({ categoryName, categoryImg }) => {
+type TEditForm = { categoryName: string }
+const EditForm: FC<TEditForm> = ({ categoryName }) => {
   const [name, setName] = useState(categoryName)
-  const [img, setImg] = useState(categoryImg)
+  const [img, setImg] = useState<File | null>(null)
+  const [fetching, isLoading, error] = useFetching(async formData => {
+    await CategoryApi.updateCategoryById(categoryName, formData)
+  })
   const handleOnSubmit = async (event: any) => {
     event.preventDefault()
+    // Prepare data for submit
     const formData = new FormData()
     formData.append('name', name)
     if (img) formData.append('img', img)
+
+    await fetching(formData)
+
+    categoriesPageStore.updateFetchData()
   }
 
+  if (error) return <>{error}</> // <SomethingWhenWrong />
+  if (isLoading) return <Spinner />
   return (
     <>
       <form className="flex flex-col items-center">
@@ -125,16 +140,9 @@ const EditForm: FC<TEditForm> = ({ categoryName, categoryImg }) => {
           name="Название категории"
           value={name}
           autoFocus
-          inputType={'input'}
           setValue={setName}
         />
-        <AdminFormInput
-          name="Картинка категории"
-          value={name}
-          autoFocus
-          inputType={'file'}
-          setValue={setImg}
-        />
+        <AdminFormInputFile name="Картинка категории" setValue={setImg} />
         <button
           type="submit"
           className="p-2 mt-5 text-white bg-blue-500"

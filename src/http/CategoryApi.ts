@@ -1,4 +1,4 @@
-import { $host } from './index'
+import { $authHost, $host } from './index'
 import { TCategoryInfoByLevel, TMainProductsData } from '../types'
 import { TBreadcrumbComponentItem } from '../component/user/product/Breadcrumb'
 
@@ -24,6 +24,11 @@ class CategoryApi {
         type,
       },
     })
+    return data
+  }
+
+  public async updateCategoryById(id: string, formData: FormData) {
+    const { data } = await $authHost.put('api/category/' + id, formData)
     return data
   }
 
