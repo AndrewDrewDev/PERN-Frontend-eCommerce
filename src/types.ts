@@ -62,10 +62,10 @@ export type TProductPageData = {
   unit: string
   supplier: string
   id: string
-  vendorId: string
+  vendor_id: string
   description: string
   price: string
-  oldPrice: string
+  old_price: string
   amount: string
   status: TProductPageDataStatus
 }
@@ -90,7 +90,7 @@ export type TMainProductsData = {
   name: string
   label: TMainProductsDataLabel
   price: string
-  oldprice: string
+  old_price: string
   img: string
 }
 

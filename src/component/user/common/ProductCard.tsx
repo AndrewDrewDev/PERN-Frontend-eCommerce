@@ -23,7 +23,7 @@ type TLabelNewOrDiscount = {
 }
 
 const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
-  const { name, img, price, id, label, oldprice } = product
+  const { name, img, price, id, label, old_price } = product
 
   const cartData: TAddItemCartStore = {
     id,
@@ -190,9 +190,9 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
           <span className="font-bold text-gray-800 mt-2">
             {price} {shopConfigStore.config.currency}
           </span>
-          {oldprice ? (
+          {old_price ? (
             <span className="mx-1 line-through text-gray-600 mt-2">
-              {oldprice} {shopConfigStore.config.currency}
+              {old_price} {shopConfigStore.config.currency}
             </span>
           ) : null}
         </div>

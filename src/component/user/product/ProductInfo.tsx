@@ -29,11 +29,11 @@ const ProductInfo: FC<TProductInfo> = ({ data }): ReactElement => {
       <div className="flex mb-1 mt-1 text-sm text-green-600 mx-auto">
         <ProductInStock status={data.status} />
       </div>
-      {data.oldPrice ? <ProductOldPrice price={data.oldPrice} /> : null}
+      {data.old_price ? <ProductOldPrice price={data.old_price} /> : null}
       <ProductPrice price={data.price} />
       <div className="my-1">
         {data.supplier ? <div>Производитель: {data.supplier}</div> : null}
-        {data.vendorId ? <div>Код поставщика: {data.vendorId}</div> : null}
+        {data.vendor_id ? <div>Код поставщика: {data.vendor_id}</div> : null}
       </div>
       <div className="border"></div>
       <ProductCounter callback={setCount} />

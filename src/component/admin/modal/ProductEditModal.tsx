@@ -46,8 +46,8 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
   // Store product data for submit
   const [name, setName] = useState(product.name)
   const [price, setPrice] = useState(product.price)
-  const [oldPrice, setOldPrice] = useState(product.oldPrice)
-  const [vendorId, setVendorId] = useState(product.vendorId)
+  const [oldPrice, setOldPrice] = useState(product.old_price)
+  const [vendorId, setVendorId] = useState(product.vendor_id)
   const [description, setDescription] = useState(product.description)
   const [amount, setAmount] = useState(product.amount)
   const [label, setLabel] = useState(product.label)

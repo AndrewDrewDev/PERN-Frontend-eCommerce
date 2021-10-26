@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import config from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
@@ -10,9 +10,20 @@ import Spinner from '../../../user/common/Spinner'
 import CategoryApi from '../../../../http/CategoryApi'
 import { AdminFormInputFile } from '../../form/AdminFormInputFile'
 import { observer } from 'mobx-react-lite'
+import { useDragDrop } from '../../../../hooks/useDragDrop'
 
 const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
-  const categories = categoriesPageStore.category1Info
+  const categoryInfo = categoriesPageStore.category1Info ?? []
+
+  const [
+    categories,
+    setCategories,
+    dragStartHandler,
+    dragOverHandler,
+    dragDropHandler,
+  ] = useDragDrop(categoryInfo)
+
+  useEffect(() => {}, [categories])
 
   return (
     <>
@@ -20,11 +31,25 @@ const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
         <span className="font-bold">Управление Категориями</span>
       </h3>
       <hr className="border-2 rounded-full border-gray-700 my-2" />
-      <div className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg">
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
+      <div
+        className="relative flex flex-col justify-center items-center
+      bg-gray-300 rounded-lg"
+      >
+        <div
+          className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+        xl:grid-cols-4 my-4"
+        >
           {categories ? (
             categories.map((categoryItem, i) => (
-              <CategoryCard key={i} {...categoryItem} />
+              <div
+                onDragStart={e => dragStartHandler(e, i)}
+                onDragOver={e => dragOverHandler(e, i)}
+                onDrop={e => dragDropHandler(e, i)}
+                key={i}
+                draggable={true}
+              >
+                <CategoryCard {...categoryItem} />
+              </div>
             ))
           ) : (
             <SomethingWhenWrong />
@@ -45,13 +70,20 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
         onMouseEnter={() => setShowEdit(true)}
         onMouseLeave={() => setShowEdit(false)}
         onClick={() => setShowModal(!showModal)}
-        className="my-3 relative max-w-xs rounded-lg  bg-white shadow-xl  mx-auto w-full "
+        className="my-3 relative max-w-xs rounded-lg  bg-white shadow-xl
+        mx-auto w-full "
       >
         <div className="relative z-20 ">
           {showEdit ? (
             <>
-              <div className="absolute rounded-lg cursor-pointer inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"></div>
-              <div className="absolute z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+              <div
+                className="absolute cursor-move rounded-lg cursor-pointer
+              inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"
+              ></div>
+              <div
+                className="absolute cursor-pointer z-20 top-1/2 left-1/2
+              transform -translate-x-1/2 -translate-y-1/2 "
+              >
                 <button className="p-5 bg-gray-500 rounded-full">
                   <svg
                     className="w-24 h-24 text-white"
@@ -72,7 +104,10 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
             </>
           ) : null}
 
-          <div className=" rounded-t-lg px-4 py-2 bg-blue-500 flex-auto relative z-10">
+          <div
+            className=" rounded-t-lg px-4 py-2 bg-blue-500 flex-auto
+          relative z-10"
+          >
             <h2 className="font-bold text-white text-xl text-center ">
               {name}
             </h2>
@@ -86,7 +121,8 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
           >
             <div>
               <img
-                className="transform scale-100 hover:scale-110 duration-500 ease-in-out m-auto w-full"
+                className="transform scale-100 hover:scale-110 duration-500
+                ease-in-out m-auto w-full"
                 src={config.REACT_API_URL + img}
                 style={{
                   maxHeight: 300 + 'px',
@@ -104,20 +140,24 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
           setActive={setShowModal}
           scale={'block'}
         >
-          <EditForm categoryName={name} />
+          <EditForm categoryName={name} closeModalCallback={setShowModal} />
         </FlexModalWrapper>
       ) : null}
     </>
   )
 }
 
-type TEditForm = { categoryName: string }
-const EditForm: FC<TEditForm> = ({ categoryName }) => {
+type TEditForm = {
+  categoryName: string
+  closeModalCallback: Dispatch<SetStateAction<boolean>>
+}
+const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
   const [name, setName] = useState(categoryName)
   const [img, setImg] = useState<File | null>(null)
   const [fetching, isLoading, error] = useFetching(async formData => {
     await CategoryApi.updateCategoryById(categoryName, formData)
   })
+
   const handleOnSubmit = async (event: any) => {
     event.preventDefault()
     // Prepare data for submit
@@ -125,9 +165,14 @@ const EditForm: FC<TEditForm> = ({ categoryName }) => {
     formData.append('name', name)
     if (img) formData.append('img', img)
 
+    // fetch data
     await fetching(formData)
 
+    // update category view
     categoriesPageStore.updateFetchData()
+
+    // close modal
+    closeModalCallback(false)
   }
 
   if (error) return <>{error}</> // <SomethingWhenWrong />
