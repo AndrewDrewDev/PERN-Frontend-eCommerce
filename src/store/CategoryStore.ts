@@ -23,29 +23,35 @@ class CategoryStore {
     makeAutoObservable(this)
   }
 
-  private fetchData() {
-    CategoryApi.fetchProducts({
+  private async fetchData() {
+    await CategoryApi.fetchProducts({
       name: 'Novinki',
       limit: 8,
       page: 1,
       type: 'custom',
     }).then(data => (this._categoryNewProducts = data))
-    CategoryApi.fetchProducts({
+    await CategoryApi.fetchProducts({
       name: 'Aktsii',
       limit: 8,
       page: 1,
       type: 'custom',
     }).then(data => (this._categoryDiscountProducts = data))
-    CategoryApi.fetchCustomInfoById('Novinki').then(
+    await CategoryApi.fetchCustomInfoById('Novinki').then(
       data => (this._categoryNewInfo = data)
     )
-    CategoryApi.fetchCustomInfoById('Aktsii').then(
+    await CategoryApi.fetchCustomInfoById('Aktsii').then(
       data => (this._categoryDiscountInfo = data)
     )
-    CategoryApi.fetchAllInfoById().then(data => (this._categoryAllInfo = data))
-    CategoryApi.fetchInfoByLevel(1).then(data => (this._category1Info = data))
-    CategoryApi.fetchInfoByLevel(2).then(data => (this._category2Info = data))
-    CategoryApi.fetchInfoByLevel(3)
+    await CategoryApi.fetchAllInfoById().then(
+      data => (this._categoryAllInfo = data)
+    )
+    await CategoryApi.fetchInfoByLevel(1).then(
+      data => (this._category1Info = data)
+    )
+    await CategoryApi.fetchInfoByLevel(2).then(
+      data => (this._category2Info = data)
+    )
+    await CategoryApi.fetchInfoByLevel(3)
       .then(data => (this._category3Info = data))
       .then(() => (this._infoByUrl = this.joinAllCategory()))
   }
@@ -69,8 +75,8 @@ class CategoryStore {
     return result
   }
 
-  public updateFetchData() {
-    this.fetchData()
+  public async updateFetchData() {
+    await this.fetchData()
   }
 
   public infoById(id: string): TCSInfoByUrlData {

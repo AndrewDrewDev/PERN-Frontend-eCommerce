@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 import config from '../config'
 import { Breadcrumb } from '../component/user/product/Breadcrumb'
 import { CloudTags } from '../component/user/common/CloudTags'
+import { observer } from 'mobx-react-lite'
 
-const CatalogPage: FC = (): ReactElement => {
+const CatalogPage: FC = observer((): ReactElement => {
   return (
     <>
       {categoriesPageStore.category1Info ? (
@@ -28,7 +29,7 @@ const CatalogPage: FC = (): ReactElement => {
       <CloudTags />
     </>
   )
-}
+})
 
 const CategoryCard: FC<TCategoryInfoByLevel> = (props): ReactElement => {
   const { name, count, img, url } = props

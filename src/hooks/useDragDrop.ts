@@ -9,9 +9,9 @@ type TUseDragDropReturn = [
   (e: DragEvent<HTMLDivElement>, index: number) => void,
   (e: DragEvent<HTMLDivElement>, index: number) => void
 ]
-const useDragDrop = (
+const useDragDrop = <TCallback = any>(
   sourceArray: TData,
-  callback?: (updatedData: any[]) => any
+  callback?: (updatedData: TCallback[]) => any
 ): TUseDragDropReturn => {
   const [data, setData] = useState<TData>(sourceArray)
   const [currentIndex, setCurrentIndex] = useState<number>(0)

@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
 import config from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
@@ -13,17 +13,20 @@ import { observer } from 'mobx-react-lite'
 import { useDragDrop } from '../../../../hooks/useDragDrop'
 
 const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
-  const categoryInfo = categoriesPageStore.category1Info ?? []
-
   const [
     categories,
     setCategories,
     dragStartHandler,
     dragOverHandler,
     dragDropHandler,
-  ] = useDragDrop(categoryInfo)
-
-  useEffect(() => {}, [categories])
+  ] = useDragDrop(categoriesPageStore.category1Info, updatedData => {
+    const updateData = updatedData.map((item, i) => {
+      return { name: item.name, index: ++i }
+    })
+    CategoryApi.updateOrder({
+      data: updateData,
+    }).then(() => categoriesPageStore.updateFetchData())
+  })
 
   return (
     <>
@@ -39,8 +42,8 @@ const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
           className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
         xl:grid-cols-4 my-4"
         >
-          {categories ? (
-            categories.map((categoryItem, i) => (
+          {categoriesPageStore.category1Info ? (
+            categoriesPageStore.category1Info.map((categoryItem, i) => (
               <div
                 onDragStart={e => dragStartHandler(e, i)}
                 onDragOver={e => dragOverHandler(e, i)}
@@ -169,7 +172,7 @@ const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
     await fetching(formData)
 
     // update category view
-    categoriesPageStore.updateFetchData()
+    await categoriesPageStore.updateFetchData()
 
     // close modal
     closeModalCallback(false)

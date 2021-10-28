@@ -9,6 +9,15 @@ type TFetchProducts = {
   type: 'custom' | 'common' | 'label' | 'all'
 }
 
+export type TUpdateOrderValue = {
+  name: string
+  index: number
+}
+
+export type TUpdateOrder = {
+  data: TUpdateOrderValue[]
+}
+
 class CategoryApi {
   public async fetchProducts({
     name,
@@ -16,7 +25,7 @@ class CategoryApi {
     page,
     type,
   }: TFetchProducts): Promise<TMainProductsData[]> {
-    const { data } = await $host.get('api/category', {
+    const { data } = await $host.get('api/category/products', {
       params: {
         name,
         limit,
@@ -28,7 +37,12 @@ class CategoryApi {
   }
 
   public async updateCategoryById(id: string, formData: FormData) {
-    const { data } = await $authHost.put('api/category/' + id, formData)
+    const { data } = await $authHost.put('api/category/item/' + id, formData)
+    return data
+  }
+
+  public async updateOrder(updateData: TUpdateOrder) {
+    const { data } = await $authHost.put('api/category/order', updateData)
     return data
   }
 
