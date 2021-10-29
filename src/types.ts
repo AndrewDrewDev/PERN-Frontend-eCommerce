@@ -162,3 +162,9 @@ export interface IModalWrapper {
   active: boolean
   setActive: Dispatch<SetStateAction<boolean>>
 }
+
+export type TResponseMessage = {
+  code?: number
+  status: 'OK' | 'FAILED'
+  message?: string
+}

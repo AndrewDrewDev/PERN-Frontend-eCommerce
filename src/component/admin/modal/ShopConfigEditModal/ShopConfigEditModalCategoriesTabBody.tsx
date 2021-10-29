@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
 import config from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
@@ -161,7 +161,7 @@ const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
     await CategoryApi.updateCategoryById(categoryName, formData)
   })
 
-  const handleOnSubmit = async (event: any) => {
+  const handleOnSubmit = async (event: MouseEvent) => {
     event.preventDefault()
     // Prepare data for submit
     const formData = new FormData()
@@ -183,7 +183,9 @@ const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
   return (
     <>
       <form className="flex flex-col items-center">
-        <h3 className="text-lg text-center">Редактирование категории</h3>
+        <h3 className="text-center text-xl font-medium border-b-2 border-gray-700">
+          Редактирование категории
+        </h3>
         <AdminFormInput
           name="Название категории"
           value={name}

@@ -66,8 +66,6 @@ const ShopConfigEditModalBaseInfoTabBody: FC = () => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Акции" />
-        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Новинки" />
         <AdminFormInput
           name="Название магазина"
           value={title}
@@ -110,6 +108,8 @@ const ShopConfigEditModalBaseInfoTabBody: FC = () => {
           value={category_cloud_number}
           setValue={setCategory_cloud_number}
         />
+        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Акции" />
+        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Новинки" />
         <button type="submit" className=" my-5 p-2 bg-blue-500 text-white">
           Применить изменения
         </button>

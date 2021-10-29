@@ -5,6 +5,7 @@ import { modalStateStore } from '../../../../store/ModalStateStore'
 import { WideModalWrapper } from '../../../user/modal/WideModalWrapper'
 import { ShopConfigEditModalBaseInfoTabBody } from './ShopConfigEditModalBaseInfoTabBody'
 import { ShopConfigEditModalCategoriesTabBody } from './ShopConfigEditModalCategoriesTabBody'
+import { ShopConfigEditModalInfoPagesTabBody } from './ShopConfigEditModalInfoPagesTabBody'
 
 const ShopConfigEditModal = observer(() => {
   const isShowing = modalStateStore.shopConfigEditModalState.isShowing
@@ -27,9 +28,12 @@ const ShopConfigEditModal = observer(() => {
             <Tab selectedClassName={styleActiveTab} className={styleTab}>
               Управление категориями
             </Tab>
+            <Tab selectedClassName={styleActiveTab} className={styleTab}>
+              Редактирование Info Pages
+            </Tab>
           </TabList>
           <TabPanel
-            selectedClassName="opacity-100 duration-1000"
+            selectedClassName="opacity-100 duration-500"
             className="opacity-0"
           >
             {isShowing ? (
@@ -41,10 +45,13 @@ const ShopConfigEditModal = observer(() => {
             )}
           </TabPanel>
           <TabPanel
-            selectedClassName="opacity-100 duration-1000"
+            selectedClassName="opacity-100 duration-500"
             className="opacity-0"
           >
             <ShopConfigEditModalCategoriesTabBody />
+          </TabPanel>
+          <TabPanel>
+            <ShopConfigEditModalInfoPagesTabBody />
           </TabPanel>
         </Tabs>
       </WideModalWrapper>
