@@ -5,7 +5,7 @@ import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
 import { BaseInfoCustomCategory } from './BaseInfoCustomCategory'
 import { FormInput } from '../../form/FormInput'
-import BlueButton from '../../button/BlueButton'
+import Button from '../../../../common/button/Button'
 
 const BaseInfoTabBody: FC = () => {
   // Define base shop config field
@@ -103,7 +103,7 @@ const BaseInfoTabBody: FC = () => {
         />
         <BaseInfoCustomCategory categoryName="Акции" />
         <BaseInfoCustomCategory categoryName="Новинки" />
-        <BlueButton type="submit" content="Применить изменения" />
+        <Button type="submit" content="Применить изменения" />
       </form>
     </>
   )

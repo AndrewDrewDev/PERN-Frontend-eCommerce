@@ -67,6 +67,11 @@ class ProductApi {
     const { data } = await $authHost.post('api/product/add/img/' + id, formData)
     return data
   }
+
+  public async deleteImageByName(name: string) {
+    const { data } = await $authHost.delete('api/product/delete/img/' + name)
+    return data
+  }
 }
 
 export default new ProductApi()

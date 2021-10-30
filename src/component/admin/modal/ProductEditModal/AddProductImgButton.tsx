@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import { FormInputFile } from '../../form/FormInputFile'
-import BlueButton from '../../button/BlueButton'
+import Button from '../../../../common/button/Button'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import { productEditModalState } from './ProductEditModalState'
@@ -70,7 +70,7 @@ const AddProductImgButton: FC<TAddProductImgButton> = ({ productId }) => {
               setValue={setNewImage}
               autoFocus={true}
             />
-            <BlueButton
+            <Button
               type="button"
               content="Применить изменения"
               onClickHandler={onSubmitHandler}

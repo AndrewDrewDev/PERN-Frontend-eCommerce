@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import { FormInputFile } from '../../form/FormInputFile'
-import BlueButton from '../../button/BlueButton'
+import Button from '../../../../common/button/Button'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import Spinner from '../../../user/common/Spinner'
@@ -32,6 +32,12 @@ const ProductImgButton: FC<TProductImgButton> = ({ img, preview }) => {
     await updateImage(formData)
     setShowModal(false)
     productEditModalState.updating()
+  }
+
+  const onDeleteHandler = async () => {
+    await ProductApi.deleteImageByName(img)
+    await productEditModalState.updating()
+    setShowModal(false)
   }
 
   return (
@@ -90,11 +96,19 @@ const ProductImgButton: FC<TProductImgButton> = ({ img, preview }) => {
               setValue={setNewImage}
               autoFocus={true}
             />
-            <BlueButton
-              type="button"
-              content="Применить изменения"
-              onClickHandler={onSubmitHandler}
-            />
+            <div className="flex justify-between">
+              <Button
+                type="button"
+                content="Применить изменения"
+                onClickHandler={onSubmitHandler}
+              />
+              <Button
+                type="button"
+                content="Удалить элемент"
+                color="red"
+                onClickHandler={onDeleteHandler}
+              />
+            </div>
           </div>
         </FlexModalWrapper>
       )}

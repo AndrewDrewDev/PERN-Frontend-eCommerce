@@ -10,10 +10,7 @@ import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import infoApi from '../../../../http/infoApi'
 import { FormInput } from '../../form/FormInput'
 import { FormTextArea } from '../../form/FormTextArea'
-import { useFetching } from '../../../../hooks/useFetching'
-import Spinner from '../../../user/common/Spinner'
-import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
-import BlueButton from '../../button/BlueButton'
+import Button from '../../../../common/button/Button'
 
 const InfoPagesTabBody: FC = () => {
   const [selectedCategoryUrl, setSelectedCategoryUrl] = useState('')
@@ -82,19 +79,14 @@ type TEditForm = {
 const EditForm: FC<TEditForm> = ({ categoryUrl, closeModal }) => {
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
-  const [fetching, isLoading, error] = useFetching(async args => {
-    const [id, formData] = args
-    infoApi.updateInfoPagesData(id, formData).then(() => {
-      closeModal(false)
-    })
-  })
   const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData()
     formData.append('name', name)
     formData.append('content', content)
 
-    await fetching(categoryUrl, formData)
+    await infoApi.updateInfoPagesData(categoryUrl, formData)
+    closeModal(false)
   }
 
   useEffect(() => {
@@ -104,8 +96,6 @@ const EditForm: FC<TEditForm> = ({ categoryUrl, closeModal }) => {
     })
   }, [])
 
-  if (isLoading) return <Spinner />
-  if (error) return <SomethingWhenWrong title={error} />
   return (
     <>
       <form
@@ -126,7 +116,7 @@ const EditForm: FC<TEditForm> = ({ categoryUrl, closeModal }) => {
         />
         <FormTextArea name="Контент" value={content} setValue={setContent} />
         <div className="flex items-center justify-center">
-          <BlueButton type="submit" content="Применить изменения" />
+          <Button type="submit" content="Применить изменения" />
         </div>
       </form>
     </>

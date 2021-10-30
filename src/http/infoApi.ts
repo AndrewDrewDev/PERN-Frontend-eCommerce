@@ -1,11 +1,6 @@
 import { $authHost, $host } from './index'
 import { TInfoPagesData, TResponseMessage } from '../types'
 
-type TUpdateInfoPagesData = {
-  name: string
-  content: string
-}
-
 class InfoApi {
   public async fetchInfoPagesData(id: string): Promise<TInfoPagesData> {
     const { data } = await $host.get('api/info/' + id)
@@ -14,9 +9,9 @@ class InfoApi {
 
   public async updateInfoPagesData(
     id: string,
-    updateData: TUpdateInfoPagesData
+    updateData: FormData
   ): Promise<TResponseMessage> {
-    const { data } = await $authHost.put('api/info/' + id + '22', updateData)
+    const { data } = await $authHost.put('api/info/' + id, updateData)
     return data
   }
 }

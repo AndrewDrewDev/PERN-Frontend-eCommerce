@@ -6,7 +6,7 @@ import { ManageImagesPreview } from './ManageImagesPreview'
 import { FormInput } from '../../form/FormInput'
 import { FormSelect } from '../../form/FormSelect'
 import { FormTextArea } from '../../form/FormTextArea'
-import BlueButton from '../../button/BlueButton'
+import Button from '../../../../common/button/Button'
 import { ManageImagesBig } from './ManageImagesBig'
 
 type TProductEditModalBody = { product: TProductPageData }
@@ -126,7 +126,7 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
           value={description}
           setValue={setDescription}
         />
-        <BlueButton type="submit" content="Применить изменения" />
+        <Button type="submit" content="Применить изменения" />
       </form>
     </>
   )

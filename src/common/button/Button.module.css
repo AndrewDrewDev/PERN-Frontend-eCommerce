@@ -1,0 +1,11 @@
+.btn {
+  @apply my-3 font-medium p-2 text-white duration-500 rounded-lg border;
+}
+
+.btn__red {
+  @apply bg-red-500 hover:bg-red-600 border-red-600;
+}
+
+.btn__blue {
+  @apply bg-blue-500 hover:bg-blue-600 border-blue-600;
+}
