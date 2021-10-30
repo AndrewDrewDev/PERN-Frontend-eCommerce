@@ -2,11 +2,12 @@ import { TProductPageData } from '../../../../types'
 import { FC, FormEvent, useEffect, useState } from 'react'
 import ProductApi from '../../../../http/ProductApi'
 import { modalStateStore } from '../../../../store/ModalStateStore'
-import { ManageImagesPreview } from '../ProductEditModal/ManageImagesPreview'
+import { ManageImagesPreview } from './ManageImagesPreview'
 import { FormInput } from '../../form/FormInput'
 import { FormSelect } from '../../form/FormSelect'
 import { FormTextArea } from '../../form/FormTextArea'
 import BlueButton from '../../button/BlueButton'
+import { ManageImagesBig } from './ManageImagesBig'
 
 type TProductEditModalBody = { product: TProductPageData }
 const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
@@ -72,7 +73,10 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
         <div className="my-5 w-3/4">
-          <ManageImagesPreview preview={product.images.preview} />
+          <ManageImagesPreview image={product.images.preview} />
+        </div>
+        <div className="my-5 w-3/4">
+          <ManageImagesBig images={product.images.big} />
         </div>
         <FormInput
           name="Название"

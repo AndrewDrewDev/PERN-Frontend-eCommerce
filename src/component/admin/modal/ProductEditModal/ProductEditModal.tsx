@@ -5,8 +5,8 @@ import ProductApi from '../../../../http/ProductApi'
 import { observer } from 'mobx-react-lite'
 import Spinner from '../../../user/common/Spinner'
 import { WideModalWrapper } from '../../../user/modal/WideModalWrapper'
-import { productEditModalState } from '../ShopConfigEditModal/ProductEditModalState'
-import { ProductEditModalBody } from '../ShopConfigEditModal/ProductEditModalBody'
+import { productEditModalState } from './ProductEditModalState'
+import { ProductEditModalBody } from './ProductEditModalBody'
 
 const ProductEditModal = observer(() => {
   const [product, setProduct] = useState<TProductPageData | null | undefined>()
@@ -25,7 +25,9 @@ const ProductEditModal = observer(() => {
   useEffect(() => {
     setProduct(null)
     if (productId)
-      ProductApi.fetchOneProduct(productId).then(data => setProduct(data))
+      ProductApi.fetchOneProduct(productId).then(data => {
+        setProduct(data)
+      })
   }, [productId, productEditModalState.update])
 
   if (isShowing)

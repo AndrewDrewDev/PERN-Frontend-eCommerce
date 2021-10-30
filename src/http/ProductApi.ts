@@ -7,6 +7,11 @@ export type TUpdateImageById = {
   img: File
 }
 
+export type TUpdateOrderImagesBody = {
+  name: string
+  order: number
+}
+
 class ProductApi {
   public async fetchOneProduct(id: string): Promise<TProductPageData> {
     const { data } = await $host.get('api/product/' + id)
@@ -50,6 +55,11 @@ class ProductApi {
 
   public async updateImage(body: TUpdateImageById) {
     const { data } = await $authHost.put('api/product/update/img', body)
+    return data
+  }
+
+  public async updateOrderImages(body: TUpdateOrderImagesBody[]) {
+    const { data } = await $authHost.put('api/product/update/order-img', body)
     return data
   }
 }

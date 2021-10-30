@@ -7,12 +7,13 @@ import ProductApi from '../../../../http/ProductApi'
 import Spinner from '../../../user/common/Spinner'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
 import config from '../../../../config'
-import { productEditModalState } from '../ShopConfigEditModal/ProductEditModalState'
+import { productEditModalState } from './ProductEditModalState'
 
 type TProductImgButton = {
   img: string
+  preview: 'true' | 'false'
 }
-const ProductImgButton: FC<TProductImgButton> = ({ img }) => {
+const ProductImgButton: FC<TProductImgButton> = ({ img, preview }) => {
   const [hover, setHover] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [newImage, setNewImage] = useState<File | null>(null)
@@ -25,7 +26,7 @@ const ProductImgButton: FC<TProductImgButton> = ({ img }) => {
     e.preventDefault()
     const formData = new FormData()
     formData.append('oldName', img)
-    formData.append('preview', 'true')
+    formData.append('preview', preview)
     if (newImage) formData.append('img', newImage)
 
     await updateImage(formData)

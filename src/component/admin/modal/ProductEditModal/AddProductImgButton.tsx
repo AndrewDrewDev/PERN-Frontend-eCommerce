@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 
 const AddProductImgButton = () => {
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <>
-      <button className="flex items-center justify-center h-32 w-28 border-2 border-gray-600 rounded-xl border-dashed">
+      <button
+        className="flex items-center justify-center h-32 w-28 border-2 border-gray-600 rounded-xl border-dashed"
+        type="button"
+        onClick={() => setShowModal(true)}
+      >
         <div className="text-gray-600 border-blue-600 bg-gray-400 rounded-full">
           <svg
             className="w-20 h-20"
@@ -21,6 +28,13 @@ const AddProductImgButton = () => {
           </svg>
         </div>
       </button>
+      {showModal && (
+        <FlexModalWrapper
+          active={showModal}
+          setActive={() => setShowModal(false)}
+          scale="block"
+        />
+      )}
     </>
   )
 }
