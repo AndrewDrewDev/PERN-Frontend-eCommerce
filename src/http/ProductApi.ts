@@ -62,6 +62,11 @@ class ProductApi {
     const { data } = await $authHost.put('api/product/update/order-img', body)
     return data
   }
+
+  public async addImageById(id: string, formData: FormData) {
+    const { data } = await $authHost.post('api/product/add/img/' + id, formData)
+    return data
+  }
 }
 
 export default new ProductApi()

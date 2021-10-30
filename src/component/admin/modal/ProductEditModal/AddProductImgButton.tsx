@@ -1,8 +1,36 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
-
-const AddProductImgButton = () => {
+import { FormInputFile } from '../../form/FormInputFile'
+import BlueButton from '../../button/BlueButton'
+import { useFetching } from '../../../../hooks/useFetching'
+import ProductApi from '../../../../http/ProductApi'
+import { productEditModalState } from './ProductEditModalState'
+import Spinner from '../../../user/common/Spinner'
+import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
+type TAddProductImgButton = {
+  productId: string
+}
+const AddProductImgButton: FC<TAddProductImgButton> = ({ productId }) => {
   const [showModal, setShowModal] = useState(false)
+  const [newImage, setNewImage] = useState<File | null>(null)
+  const [fetchAddImage, isLoading, error] = useFetching(async args => {
+    const [productId, formData] = args
+    await ProductApi.addImageById(productId, formData)
+  })
+
+  const onSubmitHandler = async (e: any) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+    if (newImage) {
+      formData.append('img', newImage)
+    }
+
+    await fetchAddImage(productId, formData)
+
+    productEditModalState.updating()
+    setShowModal(false)
+  }
 
   return (
     <>
@@ -33,7 +61,22 @@ const AddProductImgButton = () => {
           active={showModal}
           setActive={() => setShowModal(false)}
           scale="block"
-        />
+        >
+          {isLoading && <Spinner />}
+          {error && <SomethingWhenWrong title={error} />}
+          <div>
+            <FormInputFile
+              name="Добавление картинки"
+              setValue={setNewImage}
+              autoFocus={true}
+            />
+            <BlueButton
+              type="button"
+              content="Применить изменения"
+              onClickHandler={onSubmitHandler}
+            />
+          </div>
+        </FlexModalWrapper>
       )}
     </>
   )

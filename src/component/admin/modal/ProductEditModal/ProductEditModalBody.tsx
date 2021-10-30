@@ -76,7 +76,7 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
           <ManageImagesPreview image={product.images.preview} />
         </div>
         <div className="my-5 w-3/4">
-          <ManageImagesBig images={product.images.big} />
+          <ManageImagesBig productId={product.id} images={product.images.big} />
         </div>
         <FormInput
           name="Название"

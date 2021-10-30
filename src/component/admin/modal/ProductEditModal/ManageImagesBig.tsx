@@ -6,9 +6,10 @@ import ProductApi, { TUpdateOrderImagesBody } from '../../../../http/ProductApi'
 import { productEditModalState } from './ProductEditModalState'
 
 type TManageImagesPreview = {
+  productId: string
   images: string[]
 }
-const ManageImagesBig: FC<TManageImagesPreview> = ({ images }) => {
+const ManageImagesBig: FC<TManageImagesPreview> = ({ productId, images }) => {
   const [
     changedImages,
     setChangedImages,
@@ -48,7 +49,7 @@ const ManageImagesBig: FC<TManageImagesPreview> = ({ images }) => {
               </div>
             ))}
           <div className="m-2">
-            <AddProductImgButton />
+            <AddProductImgButton productId={productId} />
           </div>
         </div>
       </div>
