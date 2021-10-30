@@ -21,7 +21,7 @@ const FlexModalWrapper: FC<IFlexModalWrapper> = ({
   }
   return (
     <>
-      <div className={style} onClick={e => setActive(!active)}>
+      <div className={style} onClick={() => setActive(!active)}>
         <div
           className="relative p-5 bg-white rounded-lg ring-8 border-4 border-gray-600 ring-gray-500 overflow-auto"
           style={{
@@ -32,6 +32,7 @@ const FlexModalWrapper: FC<IFlexModalWrapper> = ({
           <button
             className="absolute top-0 right-0 mx-5 my-4 text-red-500"
             onClick={() => setActive(!active)}
+            type="button"
           >
             <svg
               className="w-8 h-8"

@@ -3,9 +3,9 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 
 import { modalStateStore } from '../../../../store/ModalStateStore'
 import { WideModalWrapper } from '../../../user/modal/WideModalWrapper'
-import { ShopConfigEditModalBaseInfoTabBody } from './ShopConfigEditModalBaseInfoTabBody'
-import { ShopConfigEditModalCategoriesTabBody } from './ShopConfigEditModalCategoriesTabBody'
-import { ShopConfigEditModalInfoPagesTabBody } from './ShopConfigEditModalInfoPagesTabBody'
+import { BaseInfoTabBody } from './BaseInfoTabBody'
+import { CategoriesTabBody } from './CategoriesTabBody'
+import { InfoPagesTabBody } from './InfoPagesTabBody'
 
 const ShopConfigEditModal = observer(() => {
   const isShowing = modalStateStore.shopConfigEditModalState.isShowing
@@ -37,7 +37,7 @@ const ShopConfigEditModal = observer(() => {
             className="opacity-0"
           >
             {isShowing ? (
-              <ShopConfigEditModalBaseInfoTabBody />
+              <BaseInfoTabBody />
             ) : (
               <div className="my-5 text-center text-2xl">
                 Что-то пошло не так!
@@ -48,10 +48,10 @@ const ShopConfigEditModal = observer(() => {
             selectedClassName="opacity-100 duration-500"
             className="opacity-0"
           >
-            <ShopConfigEditModalCategoriesTabBody />
+            <CategoriesTabBody />
           </TabPanel>
           <TabPanel>
-            <ShopConfigEditModalInfoPagesTabBody />
+            <InfoPagesTabBody />
           </TabPanel>
         </Tabs>
       </WideModalWrapper>

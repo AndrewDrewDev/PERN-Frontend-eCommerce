@@ -6,7 +6,7 @@ type TAdminFormSelect = {
   selected?: string
   selectedHandle: Dispatch<SetStateAction<any>>
 }
-const AdminFormSelect: FC<TAdminFormSelect> = ({
+const FormSelect: FC<TAdminFormSelect> = ({
   title,
   options,
   selected,
@@ -56,4 +56,4 @@ const AdminFormSelect: FC<TAdminFormSelect> = ({
     </div>
   )
 }
-export { AdminFormSelect }
+export { FormSelect }

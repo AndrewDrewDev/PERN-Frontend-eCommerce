@@ -4,15 +4,15 @@ import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
-import { AdminFormInput } from '../../form/AdminFormInput'
+import { FormInput } from '../../form/FormInput'
 import { useFetching } from '../../../../hooks/useFetching'
 import Spinner from '../../../user/common/Spinner'
 import CategoryApi from '../../../../http/CategoryApi'
-import { AdminFormInputFile } from '../../form/AdminFormInputFile'
+import { FormInputFile } from '../../form/FormInputFile'
 import { observer } from 'mobx-react-lite'
 import { useDragDrop } from '../../../../hooks/useDragDrop'
 
-const ShopConfigEditModalCategoriesTabBody: FC = observer(() => {
+const CategoriesTabBody: FC = observer(() => {
   const [
     categories,
     setCategories,
@@ -186,13 +186,13 @@ const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
         <h3 className="text-center text-xl font-medium border-b-2 border-gray-700">
           Редактирование категории
         </h3>
-        <AdminFormInput
+        <FormInput
           name="Название категории"
           value={name}
           autoFocus
           setValue={setName}
         />
-        <AdminFormInputFile name="Картинка категории" setValue={setImg} />
+        <FormInputFile name="Картинка категории" setValue={setImg} />
         <button
           type="submit"
           className="p-2 mt-5 text-white bg-blue-500"
@@ -205,4 +205,4 @@ const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
   )
 }
 
-export { ShopConfigEditModalCategoriesTabBody }
+export { CategoriesTabBody }

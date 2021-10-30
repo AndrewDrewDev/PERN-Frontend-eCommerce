@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { AdminFormInputWrapper } from './AdminFormInputWrapper'
+import { FormInputWrapper } from './FormInputWrapper'
 
 export type TAdminFormInput = {
   name: string
@@ -7,7 +7,7 @@ export type TAdminFormInput = {
   setValue: (newValue: string) => void
   autoFocus?: boolean
 }
-const AdminFormInput: FC<TAdminFormInput> = ({
+const FormInput: FC<TAdminFormInput> = ({
   name,
   value,
   setValue,
@@ -15,7 +15,7 @@ const AdminFormInput: FC<TAdminFormInput> = ({
 }) => {
   return (
     <>
-      <AdminFormInputWrapper name={name}>
+      <FormInputWrapper name={name}>
         <input
           id={name}
           className="mt-2 w-full px-2 duration-300 py-1 border-2
@@ -28,9 +28,9 @@ const AdminFormInput: FC<TAdminFormInput> = ({
           placeholder="Введите текст"
           autoFocus={autoFocus}
         />
-      </AdminFormInputWrapper>
+      </FormInputWrapper>
     </>
   )
 }
 
-export { AdminFormInput }
+export { FormInput }

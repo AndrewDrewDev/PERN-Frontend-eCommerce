@@ -1,45 +1,12 @@
+import { TProductPageData } from '../../../../types'
 import { FC, FormEvent, useEffect, useState } from 'react'
-import { TProductPageData } from '../../../types'
-import { modalStateStore } from '../../../store/ModalStateStore'
-import ProductApi from '../../../http/ProductApi'
-import { observer } from 'mobx-react-lite'
-import Spinner from '../../user/common/Spinner'
-import { WideModalWrapper } from '../../user/modal/WideModalWrapper'
-import { AdminFormInput } from '../form/AdminFormInput'
-import { AdminFormSelect } from '../form/AdminFormSelect'
-import { AdminFormTextArea } from '../form/AdminFormTextArea'
-
-const ProductEditModal = observer(() => {
-  const [product, setProduct] = useState<TProductPageData | null | undefined>()
-
-  const isShowing = modalStateStore.productEditModalState.isShowing
-  const productId = modalStateStore.productEditModalState.productId
-
-  const close = () => {
-    modalStateStore.productEditModalState = {
-      isShowing: false,
-      productId: '',
-    }
-    setProduct(undefined)
-  }
-
-  useEffect(() => {
-    setProduct(null)
-    if (productId)
-      ProductApi.fetchOneProduct(productId).then(data => setProduct(data))
-  }, [productId])
-
-  if (isShowing)
-    return (
-      <WideModalWrapper active={isShowing} setActive={close}>
-        {isShowing && product ? (
-          <ProductEditModalBody product={product} />
-        ) : null}
-        {product === null ? <Spinner /> : null}
-      </WideModalWrapper>
-    )
-  return <></>
-})
+import ProductApi from '../../../../http/ProductApi'
+import { modalStateStore } from '../../../../store/ModalStateStore'
+import { ManageImagesPreview } from '../ProductEditModal/ManageImagesPreview'
+import { FormInput } from '../../form/FormInput'
+import { FormSelect } from '../../form/FormSelect'
+import { FormTextArea } from '../../form/FormTextArea'
+import BlueButton from '../../button/BlueButton'
 
 type TProductEditModalBody = { product: TProductPageData }
 const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
@@ -71,7 +38,6 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
   const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    // TODO: Remove any after finished work feature
     const data: TProductPageData | any = {
       name,
       price,
@@ -105,64 +71,60 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <AdminFormInput
+        <div className="my-5 w-3/4">
+          <ManageImagesPreview preview={product.images.preview} />
+        </div>
+        <FormInput
           name="Название"
           value={name}
           setValue={setName}
           autoFocus={true}
         />
-        <AdminFormInput name="Цена" value={price} setValue={setPrice} />
-        <AdminFormInput
-          name="Старая цена"
-          value={oldPrice}
-          setValue={setOldPrice}
-        />
-        <AdminFormInput
+        <FormInput name="Цена" value={price} setValue={setPrice} />
+        <FormInput name="Старая цена" value={oldPrice} setValue={setOldPrice} />
+        <FormInput
           name="ID-код поставщика"
           value={vendorId}
           setValue={setVendorId}
         />
-        <AdminFormInput name="Количество" value={amount} setValue={setAmount} />
+        <FormInput name="Количество" value={amount} setValue={setAmount} />
 
-        <AdminFormSelect
+        <FormSelect
           title="Ярлык :: Бирка"
           options={optionsLabels}
           selected={label}
           selectedHandle={setLabel}
         />
 
-        <AdminFormSelect
+        <FormSelect
           title="Статус"
           options={optionsStatuses}
           selected={status}
           selectedHandle={setStatus}
         />
 
-        <AdminFormSelect
+        <FormSelect
           title="Поставщик"
           options={optionsSuppliers}
           selected={supplier}
           selectedHandle={setSupplier}
         />
 
-        <AdminFormSelect
+        <FormSelect
           title="Единица измерения"
           options={optionsUtils}
           selected={unit}
           selectedHandle={setUnit}
         />
 
-        <AdminFormTextArea
+        <FormTextArea
           name="Описание"
           value={description}
           setValue={setDescription}
         />
-        <button type="submit" className=" my-5 p-2 bg-blue-500 text-white">
-          Применить изменения
-        </button>
+        <BlueButton type="submit" content="Применить изменения" />
       </form>
     </>
   )
 }
-
-export { ProductEditModal }
+export { ProductEditModalBody }

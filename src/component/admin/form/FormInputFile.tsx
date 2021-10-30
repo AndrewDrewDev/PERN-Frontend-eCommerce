@@ -1,18 +1,18 @@
 import { FC } from 'react'
-import { AdminFormInputWrapper } from './AdminFormInputWrapper'
+import { FormInputWrapper } from './FormInputWrapper'
 
 type TAdminFormInputFile = {
   name: string
   setValue: (newValue: File | null) => void
   autoFocus?: boolean
 }
-const AdminFormInputFile: FC<TAdminFormInputFile> = ({
+const FormInputFile: FC<TAdminFormInputFile> = ({
   name,
   setValue,
   autoFocus,
 }) => {
   return (
-    <AdminFormInputWrapper name={name}>
+    <FormInputWrapper name={name}>
       <input
         id={name}
         className="mt-2 w-full px-2 duration-300 py-1 border-2
@@ -23,8 +23,8 @@ const AdminFormInputFile: FC<TAdminFormInputFile> = ({
         onChange={e => setValue(e.target.files ? e.target.files[0] : null)}
         autoFocus={autoFocus}
       />
-    </AdminFormInputWrapper>
+    </FormInputWrapper>
   )
 }
 
-export { AdminFormInputFile }
+export { FormInputFile }

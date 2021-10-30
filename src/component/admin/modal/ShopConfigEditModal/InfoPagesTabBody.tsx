@@ -8,13 +8,14 @@ import {
 } from 'react'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import infoApi from '../../../../http/infoApi'
-import { AdminFormInput } from '../../form/AdminFormInput'
-import { AdminFormTextArea } from '../../form/AdminFormTextArea'
+import { FormInput } from '../../form/FormInput'
+import { FormTextArea } from '../../form/FormTextArea'
 import { useFetching } from '../../../../hooks/useFetching'
 import Spinner from '../../../user/common/Spinner'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
+import BlueButton from '../../button/BlueButton'
 
-const ShopConfigEditModalInfoPagesTabBody: FC = () => {
+const InfoPagesTabBody: FC = () => {
   const [selectedCategoryUrl, setSelectedCategoryUrl] = useState('')
   const [showModal, setShowModal] = useState(false)
   const pages = [
@@ -117,21 +118,15 @@ const EditForm: FC<TEditForm> = ({ categoryUrl, closeModal }) => {
         <h3 className="text-center text-xl font-medium border-b-2 border-gray-700">
           Редактирование страницы
         </h3>
-        <AdminFormInput
+        <FormInput
           name="Название страницы"
           value={name}
           setValue={setName}
           autoFocus={true}
         />
-        <AdminFormTextArea
-          name="Контент"
-          value={content}
-          setValue={setContent}
-        />
+        <FormTextArea name="Контент" value={content} setValue={setContent} />
         <div className="flex items-center justify-center">
-          <button type="submit" className="my-2 p-2 bg-blue-500 text-white">
-            Применить изменения
-          </button>
+          <BlueButton type="submit" content="Применить изменения" />
         </div>
       </form>
     </>
@@ -167,4 +162,4 @@ const PageButton: FC<TPageButton> = ({
   )
 }
 
-export { ShopConfigEditModalInfoPagesTabBody }
+export { InfoPagesTabBody }

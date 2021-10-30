@@ -1,6 +1,12 @@
 import { $authHost, $host } from './index'
 import { TProductPageData, TProductSearchByNameResult } from '../types'
 
+export type TUpdateImageById = {
+  oldName: string
+  preview: 'true' | 'false'
+  img: File
+}
+
 class ProductApi {
   public async fetchOneProduct(id: string): Promise<TProductPageData> {
     const { data } = await $host.get('api/product/' + id)
@@ -8,29 +14,29 @@ class ProductApi {
   }
 
   public async fetchLabels(): Promise<string[]> {
-    const { data } = await $host.get('api/product/info/labels')
+    const { data } = await $host.get('api/product/list/info/labels')
     return data
   }
 
   public async fetchStatuses(): Promise<string[]> {
-    const { data } = await $host.get('api/product/info/statuses')
+    const { data } = await $host.get('api/product/list/info/statuses')
     return data
   }
 
   public async fetchSuppliers(): Promise<string[]> {
-    const { data } = await $host.get('api/product/info/suppliers')
+    const { data } = await $host.get('api/product/list/info/suppliers')
     return data
   }
 
   public async fetchUtils(): Promise<string[]> {
-    const { data } = await $host.get('api/product/info/units')
+    const { data } = await $host.get('api/product/list/info/units')
     return data
   }
 
   public async fetchSearchProductsByName(
     name: string
   ): Promise<TProductSearchByNameResult[] | null> {
-    const { data } = await $host.get('api/product/search/' + name)
+    const { data } = await $host.get('api/product/list/search/' + name)
     return data
   }
 
@@ -38,7 +44,12 @@ class ProductApi {
     id: string,
     body: any
   ): Promise<TProductPageData> {
-    const { data } = await $authHost.put('api/product/' + id, body)
+    const { data } = await $authHost.put('api/product/update/info/' + id, body)
+    return data
+  }
+
+  public async updateImage(body: TUpdateImageById) {
+    const { data } = await $authHost.put('api/product/update/img', body)
     return data
   }
 }

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-const AdminFormInputWrapper: FC<{ name: string }> = ({ name, children }) => {
+const FormInputWrapper: FC<{ name: string }> = ({ name, children }) => {
   return (
     <>
       <div className="px-4 py-2 w-3/4 ">
@@ -13,4 +13,4 @@ const AdminFormInputWrapper: FC<{ name: string }> = ({ name, children }) => {
   )
 }
 
-export { AdminFormInputWrapper }
+export { FormInputWrapper }

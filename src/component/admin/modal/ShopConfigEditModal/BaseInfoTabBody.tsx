@@ -3,10 +3,11 @@ import ShopApi from '../../../../http/ShopApi'
 import { modalStateStore } from '../../../../store/ModalStateStore'
 import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
-import { ShopConfigEditModalBaseInfoCustomCategory } from './ShopConfigEditModalBaseInfoCustomCategory'
-import { AdminFormInput } from '../../form/AdminFormInput'
+import { BaseInfoCustomCategory } from './BaseInfoCustomCategory'
+import { FormInput } from '../../form/FormInput'
+import BlueButton from '../../button/BlueButton'
 
-const ShopConfigEditModalBaseInfoTabBody: FC = () => {
+const BaseInfoTabBody: FC = () => {
   // Define base shop config field
   const [title, setTitle] = useState('')
   const [sub_title, setSub_title] = useState('')
@@ -66,56 +67,46 @@ const ShopConfigEditModalBaseInfoTabBody: FC = () => {
         onSubmit={e => handleOnSubmit(e)}
         className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
       >
-        <AdminFormInput
+        <FormInput
           name="Название магазина"
           value={title}
           setValue={setTitle}
           autoFocus={true}
         />
-        <AdminFormInput
+        <FormInput
           name="Манифест магазина"
           value={sub_title}
           setValue={setSub_title}
         />
-        <AdminFormInput
+        <FormInput
           name="Адрес магазина"
           value={address}
           setValue={setAddress}
         />
-        <AdminFormInput
-          name="Телефон магазина"
-          value={phone}
-          setValue={setPhone}
-        />
-        <AdminFormInput
-          name="Email магазина"
-          value={email}
-          setValue={setEmail}
-        />
-        <AdminFormInput
+        <FormInput name="Телефон магазина" value={phone} setValue={setPhone} />
+        <FormInput name="Email магазина" value={email} setValue={setEmail} />
+        <FormInput
           name="Количество товара на странице категории"
           value={pagination_number}
           setValue={setPagination_number}
         />
-        <AdminFormInput name="Валюта" value={currency} setValue={setCurrency} />
-        <AdminFormInput
+        <FormInput name="Валюта" value={currency} setValue={setCurrency} />
+        <FormInput
           name="Copyright | Авторские права"
           value={copyright}
           setValue={setCopyright}
         />
-        <AdminFormInput
+        <FormInput
           name="category_cloud_number"
           value={category_cloud_number}
           setValue={setCategory_cloud_number}
         />
-        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Акции" />
-        <ShopConfigEditModalBaseInfoCustomCategory categoryName="Новинки" />
-        <button type="submit" className=" my-5 p-2 bg-blue-500 text-white">
-          Применить изменения
-        </button>
+        <BaseInfoCustomCategory categoryName="Акции" />
+        <BaseInfoCustomCategory categoryName="Новинки" />
+        <BlueButton type="submit" content="Применить изменения" />
       </form>
     </>
   )
 }
 
-export { ShopConfigEditModalBaseInfoTabBody }
+export { BaseInfoTabBody }

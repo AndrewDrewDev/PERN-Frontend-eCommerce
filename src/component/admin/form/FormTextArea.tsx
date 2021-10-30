@@ -1,15 +1,15 @@
 import { FC } from 'react'
-import { AdminFormInputWrapper } from './AdminFormInputWrapper'
-import { TAdminFormInput } from './AdminFormInput'
+import { FormInputWrapper } from './FormInputWrapper'
+import { TAdminFormInput } from './FormInput'
 
-const AdminFormTextArea: FC<TAdminFormInput> = ({
+const FormTextArea: FC<TAdminFormInput> = ({
   name,
   value,
   setValue,
   autoFocus,
 }) => {
   return (
-    <AdminFormInputWrapper name={name}>
+    <FormInputWrapper name={name}>
       <textarea
         value={value}
         autoFocus={autoFocus}
@@ -19,8 +19,8 @@ const AdminFormTextArea: FC<TAdminFormInput> = ({
             rounded-md focus:ring-4 flex-grow outline-none text-gray-700
             focus:text-blue-700"
       />
-    </AdminFormInputWrapper>
+    </FormInputWrapper>
   )
 }
 
-export { AdminFormTextArea }
+export { FormTextArea }
