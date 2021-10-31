@@ -4,8 +4,6 @@ import { TProductSearchByNameResult } from '../../../types'
 import ProductApi from '../../../http/ProductApi'
 import { Link } from 'react-router-dom'
 import config from '../../../config'
-import { observer } from 'mobx-react-lite'
-import { shopConfigStore } from '../../../store/ShopConfigStore'
 
 const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
   const [products, setProducts] = useState<TProductSearchByNameResult[] | null>(
@@ -28,10 +26,10 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
           <path
             d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </span>
       <input
@@ -41,11 +39,8 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
-      {products ? (
-        <div
-          id="SearctSuggestions"
-          className="absolute z-50 w-full mt-1 bg-white border-2 rounded-md shadow-lg overflow-auto h-96"
-        >
+      {products && query ? (
+        <div className="absolute z-50 w-full mt-1 bg-white border-2 rounded-md shadow-lg overflow-auto h-96">
           {products.map((product, i) => (
             <SearchItem key={i} data={product} customOnClick={closePopup} />
           ))}
