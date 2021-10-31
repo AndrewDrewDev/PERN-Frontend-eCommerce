@@ -107,11 +107,11 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      ></path>
+                      />
                       кажите номер телефона и ожидайте звонка
                     </svg>
                     <span className="ml-1">Быстрый заказ</span>
@@ -150,11 +150,11 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          ></path>
+                          />
                         </svg>
                         <span className="ml-1">Очистить корзину</span>
                       </button>
@@ -268,7 +268,7 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                             setComment(e.target.value)
                           }}
                           value={comment}
-                        ></textarea>
+                        />
                       </div>
                     </div>
                     <div className="flex justify-center mt-2">
@@ -281,13 +281,13 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                           <svg
                             className="h-5 w-5"
                             fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
-                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </button>
                       </div>
@@ -325,11 +325,11 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          ></path>
+                          />
                         </svg>
                         <span className="ml-1">Очистить корзину</span>
                       </button>
@@ -373,11 +373,11 @@ const PaymentCartForm: FC<TPaymentCartForm> = observer(
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                          ></path>
+                          />
                         </svg>
                         <span className="ml-3">Быстрый заказ</span>
                       </button>
@@ -404,6 +404,7 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
             <img
               className="object-contain h-48 w-full"
               src={config.REACT_API_URL + img}
+              alt="Изображение товара"
             />
           </Link>
         </div>
@@ -426,13 +427,13 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
               <svg
                 className="h-5 w-5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </button>
             <div className="text-gray-700 mx-4 text-lg font-medium">
@@ -445,13 +446,13 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
               <svg
                 className="h-5 w-5"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </button>
           </div>

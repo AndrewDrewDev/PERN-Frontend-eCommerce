@@ -53,10 +53,10 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
+                  clipRule="evenodd"
+                />
               </svg>
             </button>
             <div className="text-gray-700 text-3xl title-font font-medium my-1">
@@ -113,7 +113,7 @@ const ProductInfoQuickView: FC<TProductInfoQuickView> = ({
         <ProductInStock status={product.status} />
       </div>
       <ProductPrice price={product.price} />
-      <div className="border"></div>
+      <div className="border" />
       <div className="border rounded max-h-72 overflow-auto">
         {product.description
           ? textToHtml(product.description)
@@ -126,7 +126,7 @@ const ProductInfoQuickView: FC<TProductInfoQuickView> = ({
       >
         Читать больше...
       </Link>
-      <div className="border"></div>
+      <div className="border" />
       <div className="flex items-center">
         <ProductCounter callback={setCount} />
         <div className="flex flex-wrap my-2">

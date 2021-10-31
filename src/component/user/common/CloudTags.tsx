@@ -94,13 +94,13 @@ const CloudTags: FC = observer((): ReactElement => {
             <svg
               className="h-5 w-5 ml-1"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </div>

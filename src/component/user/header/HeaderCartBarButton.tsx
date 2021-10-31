@@ -18,13 +18,13 @@ const HeaderCartBarButton: FC<THeaderCartBarButton> = observer(
           <svg
             className="h-6 w-6"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
           <span className="cursor-pointer rounded-full h-5 w-5 flex items-center justify-center bg-red-600 text-white text-xs">
             {cartStore.getFinalCount}
@@ -40,7 +40,7 @@ const HeaderCartBarButton: FC<THeaderCartBarButton> = observer(
               viewBox="0 0 40 40"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"></path>
+              <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
             </svg>
           </div>
           <div className="-mx-3 py-2 px-4">
