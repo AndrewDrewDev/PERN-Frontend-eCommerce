@@ -67,15 +67,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                     }}
                   />
                 ))}
-                {cartStore.getItems.length === 0 ? (
-                  <div
-                    className="flex items-center justify-center bg-gray-200
-                   border-2 border-blue-500 border-dashed h-20 w-full
-                   rounded-lg text-gray-700 font-medium text-lg"
-                  >
-                    Корзина пуста
-                  </div>
-                ) : null}
+                {cartStore.getItems.length === 0 ? <EmptyItem /> : null}
               </div>
               <button
                 className="block mx-auto border-2 border-blue-600
@@ -131,6 +123,18 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
     )
   }
 )
+
+const EmptyItem = () => {
+  return (
+    <div
+      className="flex items-center justify-center bg-gray-200
+                   border-2 border-blue-500 border-dashed h-20 w-full
+                   rounded-lg text-gray-700 font-medium text-lg"
+    >
+      Корзина пуста
+    </div>
+  )
+}
 
 const CartItem: FC<TItemsCartStore> = ({
   id,

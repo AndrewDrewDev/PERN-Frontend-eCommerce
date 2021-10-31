@@ -1,8 +1,11 @@
 import { ReactElement, useEffect, useState } from 'react'
 import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { useTransition, animated } from 'react-spring'
+import cn from 'classnames'
+
 import { TProductSearchByNameResult } from '../../../types'
 import ProductApi from '../../../http/ProductApi'
-import { Link } from 'react-router-dom'
 import config from '../../../config'
 
 const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
@@ -11,11 +14,17 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
   )
   const [query, setQuery] = useState<string>('')
 
+  const transition = useTransition(query, {
+    from: { x: 0, y: 50, opacity: 0 },
+    enter: { x: 0, y: 0, opacity: 1 },
+    leave: { x: 0, y: 50, opacity: 0 },
+  })
+
   useEffect(() => {
     ProductApi.fetchSearchProductsByName(query).then(data => setProducts(data))
   }, [query])
 
-  const closePopup = (): void => {
+  const closePopup = () => {
     setQuery('')
   }
 
@@ -39,13 +48,36 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
-      {products && query ? (
-        <div className="absolute z-50 w-full mt-1 bg-white border-2 rounded-md shadow-lg overflow-auto h-96">
-          {products.map((product, i) => (
-            <SearchItem key={i} data={product} customOnClick={closePopup} />
-          ))}
-        </div>
-      ) : null}
+      {transition((style, item) => {
+        return item ? (
+          <animated.div
+            className={cn(
+              'absolute z-50 w-full mt-1 bg-white border-2 rounded-md shadow-lg overflow-auto h-20',
+              { 'h-96': products }
+            )}
+            style={style}
+          >
+            {products ? (
+              products.map((product, i) => (
+                <SearchItem key={i} data={product} customOnClick={closePopup} />
+              ))
+            ) : (
+              <EmptyItem />
+            )}
+          </animated.div>
+        ) : null
+      })}
+    </div>
+  )
+}
+
+const EmptyItem = () => {
+  return (
+    <div
+      className="my-3 flex items-center justify-center text-lg text-center
+     font-medium border-2 border-blue-500 bg-blue-100 border-dashed rounded-lg w-full h-10"
+    >
+      С таким названием товары не найдены
     </div>
   )
 }
