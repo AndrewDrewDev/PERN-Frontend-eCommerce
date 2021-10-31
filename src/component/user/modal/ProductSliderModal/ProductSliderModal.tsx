@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../../../../store/ModalStateStore'
 import ProductApi from '../../../../http/ProductApi'
 import { TProductPageDataImages } from '../../../../types'
-import config from '../../../../config'
+import { REACT_API_URL } from '../../../../config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 
@@ -44,7 +44,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
                 <img
                   key={i}
                   className=" items-center object-contain"
-                  src={config.REACT_API_URL + img}
+                  src={REACT_API_URL + img}
                   alt="Изображение товара"
                 />
                 <button

@@ -14,6 +14,7 @@ import {
 import { CloudTags } from '../component/user/common/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
 import { observer } from 'mobx-react-lite'
+import { useTransition, animated } from 'react-spring'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -26,9 +27,7 @@ const CategoryPage: FC = observer((): ReactElement => {
   const [products, setProducts] = useState<
     TMainProductsData[] | null | undefined
   >()
-
   const [page, setPage] = useState(1)
-
   const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
 
   useEffect(() => {

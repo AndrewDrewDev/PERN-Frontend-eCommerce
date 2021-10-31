@@ -1,12 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import config from '../config'
+import { REACT_API_URL } from '../config'
 
 export const $host = axios.create({
-  baseURL: config.REACT_API_URL,
+  baseURL: REACT_API_URL,
 })
 
 export const $authHost = axios.create({
-  baseURL: config.REACT_API_URL,
+  baseURL: REACT_API_URL,
 })
 
 const authInterseptor = (config: AxiosRequestConfig) => {

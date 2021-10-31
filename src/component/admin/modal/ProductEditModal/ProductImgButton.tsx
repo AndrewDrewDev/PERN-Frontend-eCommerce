@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import { FormInputFile } from '../../form/FormInputFile'
-import Button from '../../../../common/button/Button'
+import Button from '../../../common/button/Button'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import Spinner from '../../../user/common/Spinner'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
-import config from '../../../../config'
+import { REACT_API_URL } from '../../../../config'
 import { productEditModalState } from './ProductEditModalState'
 
 type TProductImgButton = {
@@ -78,7 +78,7 @@ const ProductImgButton: FC<TProductImgButton> = ({ img, preview }) => {
         )}
         <img
           className="object-contain"
-          src={config.REACT_API_URL + img}
+          src={REACT_API_URL + img}
           alt="Preview картинка"
         />
       </button>

@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { TAddItemCartStore, TItemsCartStore } from '../types'
+import { modalStateStore } from './ModalStateStore'
 
 class CartStore {
   private _finalTotal: string
@@ -49,6 +50,9 @@ class CartStore {
   }
 
   public set addItem({ id, name, price, img, count }: TAddItemCartStore) {
+    console.log(111)
+    // show notification
+    modalStateStore.showProductToCartNotify()
     count = count ? count : 1
     // add first item if array is empty
     if (this._items.length === 0) {
@@ -61,7 +65,6 @@ class CartStore {
         count,
       })
       this.updateCart()
-      return
     }
 
     // Check if new product id exist

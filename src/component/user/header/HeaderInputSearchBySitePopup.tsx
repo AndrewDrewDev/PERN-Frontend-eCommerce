@@ -6,18 +6,18 @@ import cn from 'classnames'
 
 import { TProductSearchByNameResult } from '../../../types'
 import ProductApi from '../../../http/ProductApi'
-import config from '../../../config'
+import { REACT_API_URL } from '../../../config'
 
 const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
   const [products, setProducts] = useState<TProductSearchByNameResult[] | null>(
     null
   )
-  const [query, setQuery] = useState<string>('')
-
+  const [query, setQuery] = useState('')
   const transition = useTransition(query, {
     from: { x: 0, y: 50, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
     leave: { x: 0, y: 50, opacity: 0 },
+    reset: true,
   })
 
   useEffect(() => {
@@ -42,7 +42,8 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
         </svg>
       </span>
       <input
-        className="w-full duration-300 border-2 border-gray-400 rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
+        className="w-full duration-300 border-2 border-gray-400 rounded-md 
+        pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
         type="text"
         placeholder="Поиск по сайту"
         value={query}
@@ -100,7 +101,7 @@ const SearchItem: FC<TSearchItem> = ({ data, customOnClick }): ReactElement => {
           <div className="h-14 w-14 flex">
             <img
               className="object-contain items-center"
-              src={config.REACT_API_URL + img}
+              src={REACT_API_URL + img}
               alt={name}
             />
           </div>

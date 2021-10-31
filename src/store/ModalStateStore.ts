@@ -10,6 +10,7 @@ export type TProductModalState = {
 }
 
 class ModalStateStore {
+  private _addProductToCartNotifyState = false
   private _productSliderWidgetState: TProductModalState = {
     isShowing: false,
     productId: '',
@@ -49,6 +50,17 @@ class ModalStateStore {
 
   set shopConfigEditModalState(newState) {
     this._shopConfigEditModalState = newState
+  }
+
+  get addProductToCartNotifyState(): boolean {
+    return this._addProductToCartNotifyState
+  }
+
+  public showProductToCartNotify() {
+    this._addProductToCartNotifyState = true
+    setTimeout(() => {
+      this._addProductToCartNotifyState = false
+    }, 3000)
   }
 
   get productEditModalState() {

@@ -10,7 +10,7 @@ import { FlexModalWrapper } from '../../../user/modal/FlexModalWrapper'
 import infoApi from '../../../../http/infoApi'
 import { FormInput } from '../../form/FormInput'
 import { FormTextArea } from '../../form/FormTextArea'
-import Button from '../../../../common/button/Button'
+import Button from '../../../common/button/Button'
 
 const InfoPagesTabBody: FC = () => {
   const [selectedCategoryUrl, setSelectedCategoryUrl] = useState('')

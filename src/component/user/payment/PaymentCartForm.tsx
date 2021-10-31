@@ -10,7 +10,7 @@ import { observer } from 'mobx-react-lite'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TPaymentCheckoutOrderData } from '../../../types'
 import { Link } from 'react-router-dom'
-import config from '../../../config'
+import {REACT_API_URL} from '../../../config'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
@@ -403,7 +403,7 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
           <Link to={'/product/' + id}>
             <img
               className="object-contain h-48 w-full"
-              src={config.REACT_API_URL + img}
+              src={REACT_API_URL + img}
               alt="Изображение товара"
             />
           </Link>

@@ -1,5 +1,5 @@
 import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
-import config from '../../../../config'
+import {REACT_API_URL} from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
@@ -126,7 +126,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
               <img
                 className="transform scale-100 hover:scale-110 duration-500
                 ease-in-out m-auto w-full"
-                src={config.REACT_API_URL + img}
+                src={REACT_API_URL + img}
                 style={{
                   maxHeight: 300 + 'px',
                   maxWidth: 100 + '%',

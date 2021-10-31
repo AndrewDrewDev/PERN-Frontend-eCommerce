@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { PRODUCT_ROUTE } from '../../../routes'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TShowHideComponent } from '../../../types'
-import config from '../../../config'
+import {REACT_API_URL} from '../../../config'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { useTransition, animated } from 'react-spring'
 
@@ -152,7 +152,7 @@ const CartItem: FC<TItemsCartStore> = ({
             <Link className="cursor-pointer" to={PRODUCT_ROUTE + '/' + id}>
               <img
                 alt="Placeholder"
-                src={config.REACT_API_URL + img}
+                src={REACT_API_URL + img}
                 style={{
                   maxHeight: '20mm',
                   minWidth: '20mm',

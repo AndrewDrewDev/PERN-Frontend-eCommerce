@@ -5,7 +5,7 @@ import Slider, { Settings } from 'react-slick'
 import './MainSlider.css'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { observer } from 'mobx-react-lite'
-import config from '../../../config'
+import { REACT_API_URL } from '../../../config'
 
 const MainSlider: FC = observer((): ReactElement => {
   // Slider config
@@ -32,7 +32,7 @@ const MainSlider: FC = observer((): ReactElement => {
                   height: '400px',
                 }}
                 className="w-full object-cover rounded-lg"
-                src={config.REACT_API_URL + slide.img}
+                src={REACT_API_URL + slide.img}
                 alt={`Слайд: ${slide.title}`}
               />
               <p

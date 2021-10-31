@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { TPageData } from '../../../types'
-import config from '../../../config'
+import { REACT_API_URL } from '../../../config'
 import textToHtml from '../../../utils/textToHtml'
 
 const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {
@@ -23,7 +23,7 @@ const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {
             width: '450px',
           }}
           alt="О магазине"
-          src={config.REACT_API_URL + imgFloat}
+          src={REACT_API_URL + imgFloat}
         />
       ) : null}
       {textToHtml(content)}
@@ -31,7 +31,7 @@ const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {
         <img
           className="mx-auto shadow-lg rounded-lg entered loaded w-4/5"
           alt="О нас"
-          src={config.REACT_API_URL + imgBigBottomWFull}
+          src={REACT_API_URL + imgBigBottomWFull}
         />
       ) : null}
     </div>

@@ -8,7 +8,7 @@ import {
   TMainProductsData,
   TMainProductsDataLabel,
 } from '../../../types'
-import config from '../../../config'
+import { REACT_API_URL } from '../../../config'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import { observer } from 'mobx-react-lite'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
@@ -75,7 +75,7 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             <img
               className="object-contain w-full m-auto h-64"
               alt="Loading..."
-              src={config.REACT_API_URL + img}
+              src={REACT_API_URL + img}
             />
           </Link>
           <LabelNewOrDiscount label={label} />

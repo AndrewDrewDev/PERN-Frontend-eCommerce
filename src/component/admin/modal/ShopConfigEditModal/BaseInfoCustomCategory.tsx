@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import ShopApi from '../../../../http/ShopApi'
-import config from '../../../../config'
+import { REACT_API_URL } from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { useDragDrop } from '../../../../hooks/useDragDrop'
 
@@ -147,7 +147,7 @@ const BaseInfoCustomCategory: FC<TEditCustomCategoryProducts> = ({
                 >
                   <img
                     className="h-10 w-10 "
-                    src={config.REACT_API_URL + product.img}
+                    src={REACT_API_URL + product.img}
                     alt={product.name}
                   />
                   <span
