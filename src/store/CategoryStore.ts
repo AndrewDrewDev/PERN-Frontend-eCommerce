@@ -8,6 +8,7 @@ import {
 import CategoryApi from '../http/CategoryApi'
 
 class CategoryStore {
+  private _isLoaded: boolean = false
   private _category1Info: TCategoryInfoByLevel[] | null = []
   private _category2Info: TCategoryInfoByLevel[] | null = []
   private _category3Info: TCategoryInfoByLevel[] | null = []
@@ -56,6 +57,10 @@ class CategoryStore {
       .then(() => (this._infoByUrl = this.joinAllCategory()))
   }
 
+  get isLoaded() {
+    return this._isLoaded
+  }
+
   // Join all category
   private joinAllCategory(): TCSInfoByUrl {
     const result: TCSInfoByUrl = {}
@@ -77,6 +82,7 @@ class CategoryStore {
 
   public async updateFetchData() {
     await this.fetchData()
+    this._isLoaded = true
   }
 
   public infoById(id: string): TCSInfoByUrlData {

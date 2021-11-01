@@ -3,6 +3,7 @@ import { TShopConfig, TShopSlider, TUserAccountData } from '../types'
 import ShopApi from '../http/ShopApi'
 
 class ShopConfigStore {
+  private _isLoaded: boolean = false
   private _userAccount: TUserAccountData | null = null
   private _config: TShopConfig = {} as any
   private _slider: TShopSlider[] = []
@@ -12,13 +13,18 @@ class ShopConfigStore {
     makeAutoObservable(this)
   }
 
-  private fetchData() {
-    ShopApi.fetchConfig().then(data => (this._config = data))
-    ShopApi.fetchSlider().then(data => (this._slider = data))
+  private async fetchData() {
+    await ShopApi.fetchConfig().then(data => (this._config = data))
+    await ShopApi.fetchSlider().then(data => (this._slider = data))
   }
 
-  public updateFetchData() {
-    this.fetchData()
+  public async updateFetchData() {
+    await this.fetchData()
+    this._isLoaded = true
+  }
+
+  get isLoaded() {
+    return this._isLoaded
   }
 
   get userAccount() {

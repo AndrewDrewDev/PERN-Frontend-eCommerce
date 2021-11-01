@@ -7,11 +7,12 @@ import { shopConfigStore } from './store/ShopConfigStore'
 import { BrowserRouter } from 'react-router-dom'
 import Spinner from './component/user/common/Spinner'
 import { CommonModals } from './component/user/modal/CommonModals'
+import { categoriesPageStore } from './store/CategoryStore'
 
 const App: FC = observer((): ReactElement => {
   return (
     <BrowserRouter>
-      {shopConfigStore.config ? (
+      {shopConfigStore.isLoaded && categoriesPageStore.isLoaded ? (
         <>
           <Header />
           <AppRouter />
