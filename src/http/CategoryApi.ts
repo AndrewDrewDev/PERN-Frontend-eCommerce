@@ -36,8 +36,15 @@ class CategoryApi {
     return data
   }
 
-  public async updateCategoryById(id: string, formData: FormData) {
-    const { data } = await $authHost.put('api/category/item/' + id, formData)
+  public async updateCategoryById(
+    oldName: string,
+    newName: string,
+    formData: FormData
+  ) {
+    const { data } = await $authHost.put(
+      `api/category/item/${oldName}/${newName}`,
+      formData
+    )
     return data
   }
 

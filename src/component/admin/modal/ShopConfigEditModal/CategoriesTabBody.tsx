@@ -1,5 +1,5 @@
 import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
-import {REACT_API_URL} from '../../../../config'
+import { REACT_API_URL } from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
@@ -157,19 +157,23 @@ type TEditForm = {
 const EditForm: FC<TEditForm> = ({ categoryName, closeModalCallback }) => {
   const [name, setName] = useState(categoryName)
   const [img, setImg] = useState<File | null>(null)
-  const [fetching, isLoading, error] = useFetching(async formData => {
-    await CategoryApi.updateCategoryById(categoryName, formData)
+  const [fetching, isLoading, error] = useFetching(async args => {
+    const [newCategoryName, formData] = args
+    await CategoryApi.updateCategoryById(
+      categoryName,
+      newCategoryName,
+      formData
+    )
   })
 
   const handleOnSubmit = async (event: MouseEvent) => {
     event.preventDefault()
     // Prepare data for submit
     const formData = new FormData()
-    formData.append('name', name)
     if (img) formData.append('img', img)
 
     // fetch data
-    await fetching(formData)
+    await fetching(name, formData)
 
     // update category view
     await categoriesPageStore.updateFetchData()
