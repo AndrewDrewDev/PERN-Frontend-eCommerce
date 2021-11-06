@@ -1,5 +1,5 @@
 import { FC, ReactElement } from 'react'
-import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
+import { CategoryProductList } from '../component/user/common/CategoryProductList'
 import { CloudTags } from '../component/user/common/CloudTags'
 import { MainSlider } from '../component/user/main/MainSlider'
 import { categoriesPageStore } from '../store/CategoryStore'
@@ -10,7 +10,7 @@ const MainPage: FC = observer((): ReactElement => {
     <>
       <MainSlider />
       {categoriesPageStore.infoById('Aktsii') ? (
-        <CategoryWrapper
+        <CategoryProductList
           name={categoriesPageStore.infoById('Aktsii').name}
           count={categoriesPageStore.infoById('Aktsii').count}
           products={categoriesPageStore.categoryDiscountProducts}
@@ -18,7 +18,7 @@ const MainPage: FC = observer((): ReactElement => {
         />
       ) : null}
       {categoriesPageStore.infoById('Novinki') ? (
-        <CategoryWrapper
+        <CategoryProductList
           name={categoriesPageStore.infoById('Novinki').name}
           count={categoriesPageStore.infoById('Novinki').count}
           products={categoriesPageStore.categoryNewProducts}

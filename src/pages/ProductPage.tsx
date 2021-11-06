@@ -1,13 +1,13 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
+import { CategoryProductList } from '../component/user/common/CategoryProductList'
 import { Breadcrumb } from '../component/user/product/Breadcrumb'
 import { TProductPageData } from '../types'
 import { ProductSlider } from '../component/user/product/ProductSlider'
 import ProductInfo from '../component/user/product/ProductInfo'
 import { TabsPanel } from '../component/user/product/TabsPanel'
 import ProductApi from '../http/ProductApi'
-import Spinner from '../component/user/common/Spinner'
+import Spinner from '../component/common/Spinner'
 import { PageNotFound } from '../pages/PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import { CloudTags } from '../component/user/common/CloudTags'
@@ -76,13 +76,13 @@ const ProductPage: FC = observer((): ReactElement => {
                 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, fugit aliquid assumenda exercitationem doloremque vitae tempore tempora ex sequi! Eos soluta praesentium error neque nesciunt consectetur voluptates quidem. Fuga, laboriosam.'
               }
             />
-            <CategoryWrapper
+            <CategoryProductList
               name={categoriesPageStore.infoById('Aktsii').name}
               count={categoriesPageStore.infoById('Aktsii').count}
               products={categoriesPageStore.categoryDiscountProducts}
               limit={4}
             />
-            <CategoryWrapper
+            <CategoryProductList
               name={categoriesPageStore.infoById('Novinki').name}
               count={categoriesPageStore.infoById('Novinki').count}
               products={categoriesPageStore.categoryNewProducts}

@@ -1,10 +1,10 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import CategoryApi from '../http/CategoryApi'
 import { useLocation, useParams } from 'react-router-dom'
-import { CategoryWrapper } from '../component/user/common/CategoryWrapper'
+import { CategoryProductList } from '../component/user/common/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
-import Spinner from '../component/user/common/Spinner'
+import Spinner from '../component/common/Spinner'
 import { PageNotFound } from './PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import {
@@ -14,7 +14,6 @@ import {
 import { CloudTags } from '../component/user/common/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
 import { observer } from 'mobx-react-lite'
-import { useTransition, animated } from 'react-spring'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -70,7 +69,7 @@ const CategoryPage: FC = observer((): ReactElement => {
     <>
       <div className="container mx-auto">
         {breadcrumb ? <Breadcrumb categories={breadcrumb} /> : null}
-        <CategoryWrapper
+        <CategoryProductList
           name={categoryInfo.name}
           count={categoryInfo.count}
           products={products}

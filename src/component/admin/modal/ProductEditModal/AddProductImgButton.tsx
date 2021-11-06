@@ -5,8 +5,8 @@ import Button from '../../../common/button/Button'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import { productEditModalState } from './ProductEditModalState'
-import Spinner from '../../../user/common/Spinner'
-import { SomethingWhenWrong } from '../../../user/common/SomethingWhenWrong'
+import Spinner from '../../../common/Spinner'
+import { SomethingWhenWrong } from '../../../common/error/SomethingWhenWrong'
 type TAddProductImgButton = {
   productId: string
 }

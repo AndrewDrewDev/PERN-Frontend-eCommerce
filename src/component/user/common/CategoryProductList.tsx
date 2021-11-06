@@ -13,7 +13,7 @@ type TCategoryWrapper = {
   link?: string
 }
 
-const CategoryWrapper: FC<TCategoryWrapper> = ({
+const CategoryProductList: FC<TCategoryWrapper> = ({
   name,
   count,
   products,
@@ -75,4 +75,4 @@ const CategoryWrapper: FC<TCategoryWrapper> = ({
   )
 }
 
-export { CategoryWrapper }
+export { CategoryProductList }
