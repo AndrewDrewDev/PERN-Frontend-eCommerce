@@ -13,12 +13,12 @@ const App: FC = observer((): ReactElement => {
   return (
     <BrowserRouter>
       {shopConfigStore.isLoaded && categoriesPageStore.isLoaded ? (
-        <>
+        <div className="overflow-y-hidden">
           <Header />
           <AppRouter />
           <Footer />
           <CommonModals />
-        </>
+        </div>
       ) : (
         <Spinner />
       )}

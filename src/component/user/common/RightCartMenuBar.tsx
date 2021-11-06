@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { PRODUCT_ROUTE } from '../../../routes'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TShowHideComponent } from '../../../types'
-import {REACT_API_URL} from '../../../config'
+import { REACT_API_URL } from '../../../config'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { useTransition, animated } from 'react-spring'
 
@@ -23,8 +23,8 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
           return item ? (
             <animated.div
               className="fixed z-40 right-0 top-0 max-w-xs w-full h-full px-6
-          py-4 overflow-y-auto bg-white border-l-2 border-gray-300"
-              style={style}
+          py-4 overflow-y-auto pretty-scroll bg-white border-l-2 border-gray-300"
+              style={{ ...style }}
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-medium text-gray-700">

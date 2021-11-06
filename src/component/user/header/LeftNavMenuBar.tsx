@@ -161,8 +161,8 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
         return item ? (
           <animated.div
             className="fixed z-30 left-0 top-0 bg-white max-w-xs w-full
-        h-full px-6 py-4 border-r-2
-        border-gray-300 overflow-auto"
+            h-full px-6 py-4 border-r-2 border-gray-300 overflow-auto
+            pretty-scroll"
             style={style}
           >
             <div className="flex items-center justify-between">

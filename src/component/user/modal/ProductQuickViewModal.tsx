@@ -54,7 +54,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                     item && (
                       <animated.div
                         className="relative text-gray-700 bg-white my-5 py-5 px-5
-                  rounded w-11/12 md:w-4/5 overflow-auto"
+                  rounded-xl w-11/12 md:w-4/5 overflow-auto"
                         onClick={e => e.stopPropagation()}
                         style={{ ...style, maxHeight: '95%' }}
                       >
@@ -64,14 +64,14 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                           onClick={() => close()}
                         >
                           <svg
-                            className="w-8 h-8 "
+                            className="w-10 h-10"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                           >
                             <path
                               fillRule="evenodd"
-                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                               clipRule="evenodd"
                             />
                           </svg>
