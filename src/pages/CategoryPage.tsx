@@ -18,29 +18,37 @@ import { observer } from 'mobx-react-lite'
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
   const location = useLocation()
-  const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>({
-    name: 'Category not found!',
-    url: 'Url not found!',
-    count: '0',
-  })
-  const [products, setProducts] = useState<
-    TMainProductsData[] | null | undefined
-  >()
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>()
+  const [products, setProducts] = useState<TMainProductsData[] | null>(null)
   const [page, setPage] = useState(1)
   const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    modalStateStore.closeAll()
-    CategoryApi.fetchProducts({
-      name: id,
-      limit: 20,
-      page,
-      type: defineTypeOfPageByUrl(location.pathname),
-    })
-      .then(data => setProducts(data))
-      .then(() => setCategoryInfo(categoriesPageStore.infoById(id)))
-    CategoryApi.fetchBreadcrumb(id).then(data => setBreadcrumb(data))
+    ;(async () => {
+      try {
+        window.scrollTo(0, 0)
+        modalStateStore.closeAll()
+
+        const products = await CategoryApi.fetchProducts({
+          name: id,
+          limit: 20,
+          page,
+          type: defineTypeOfPageByUrl(location.pathname),
+        })
+
+        const breadcrumb = await CategoryApi.fetchBreadcrumb(id)
+        setBreadcrumb(breadcrumb)
+
+        setProducts(products)
+
+        setCategoryInfo(categoriesPageStore.infoById(id))
+      } finally {
+        setIsLoading(false)
+      }
+    })()
   }, [page, id, modalStateStore.productEditModalState])
 
   // Get current selected number of pagination
@@ -49,22 +57,11 @@ const CategoryPage: FC = observer((): ReactElement => {
     setPage(selected + 1)
   }
 
-  if (products === null)
-    return (
-      <>
-        <PageNotFound title={'Категория не найдена'} />
-      </>
-    )
-
-  if (products === undefined)
-    return (
-      <>
-        <Spinner />
-      </>
-    )
+  if (isLoading) return <Spinner />
+  if (products === null || !categoryInfo)
+    return <PageNotFound title={'Категория не найдена'} />
 
   const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
-
   return (
     <>
       <div className="container mx-auto">
