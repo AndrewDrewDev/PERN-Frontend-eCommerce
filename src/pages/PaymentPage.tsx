@@ -2,7 +2,7 @@ import { PaymentProgressBar } from '../component/user/payment/PaymentProgressBar
 import { FC, ReactElement, useState } from 'react'
 import { PaymentCartForm } from '../component/user/payment/PaymentCartForm'
 import { PaymentCheckout } from '../component/user/payment/PaymentCheckout'
-import Spinner from '../component/common/Spinner'
+import Spinner from '../component/user/loaders/Spinner'
 import { TPaymentCheckoutOrderData } from '../types'
 
 export type TPaymentPageNames = 'cart' | 'checkout' | 'payment' | 'spinner'

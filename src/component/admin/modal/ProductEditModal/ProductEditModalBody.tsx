@@ -6,7 +6,7 @@ import { ManageImagesPreview } from './ManageImagesPreview'
 import { FormInput } from '../../form/FormInput'
 import { FormSelect } from '../../form/FormSelect'
 import { FormTextArea } from '../../form/FormTextArea'
-import Button from '../../../common/button/Button'
+import Button from '../../../user/button/Button'
 import { ManageImagesBig } from './ManageImagesBig'
 
 type TProductEditModalBody = { product: TProductPageData }

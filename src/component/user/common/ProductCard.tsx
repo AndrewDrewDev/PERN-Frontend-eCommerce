@@ -24,7 +24,6 @@ type TLabelNewOrDiscount = {
 
 const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
   const { name, img, price, id, label, old_price } = product
-
   const cartData: TAddItemCartStore = {
     id,
     name,

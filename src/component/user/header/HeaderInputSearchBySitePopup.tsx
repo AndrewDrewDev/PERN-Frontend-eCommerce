@@ -53,7 +53,8 @@ const HeaderInputSearchBySitePopup: FC = (): ReactElement => {
         return item ? (
           <animated.div
             className={cn(
-              'absolute z-50 w-full mt-1 bg-white border-2 rounded-md shadow-lg overflow-auto h-20',
+              'absolute z-50 w-full mt-1 bg-white border-2 rounded-md ' +
+                'shadow-lg overflow-auto h-20 pretty-scroll',
               { 'h-96': products }
             )}
             style={style}
@@ -97,7 +98,7 @@ const SearchItem: FC<TSearchItem> = ({ data, customOnClick }): ReactElement => {
         onClick={() => customOnClick()}
         className="block pl-3 font-normal truncate hover:underline hover:bg-blue-200 duration-300  hover:font-bold"
       >
-        <div className="flex items-center">
+        <div className="flex items-center px-2">
           <div className="h-14 w-14 flex">
             <img
               className="object-contain items-center"

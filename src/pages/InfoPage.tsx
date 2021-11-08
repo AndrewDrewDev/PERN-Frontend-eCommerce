@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react'
 import { FC } from 'react'
 import { useParams } from 'react-router-dom'
-import Spinner from '../component/common/Spinner'
+import Spinner from '../component/user/loaders/Spinner'
 import { InfoContent } from '../component/user/info/InfoContent'
 import { TInfoPagesData } from '../types'
 import infoApi from '../http/infoApi'

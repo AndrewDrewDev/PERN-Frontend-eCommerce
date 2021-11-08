@@ -7,6 +7,7 @@ type TFetchProducts = {
   limit: number
   page: number
   type: 'custom' | 'common' | 'label' | 'all'
+  filters?: TProductsFiltersQueryParams | null
 }
 
 export type TUpdateOrderValue = {
@@ -18,12 +19,28 @@ export type TUpdateOrder = {
   data: TUpdateOrderValue[]
 }
 
+export type TFetchProductsFiltersByUrlCheckboxes =
+  | { id: number; name: string; selected?: boolean }[]
+  | null
+export type TFetchProductsFiltersByUrl = {
+  price: { min: string; max: string } | null
+  labels: TFetchProductsFiltersByUrlCheckboxes
+  suppliers: TFetchProductsFiltersByUrlCheckboxes
+}
+
+export type TProductsFiltersQueryParams = {
+  price?: string
+  label?: string
+  supplier?: string
+}
+
 class CategoryApi {
   public async fetchProducts({
     name,
     limit,
     page,
     type,
+    filters,
   }: TFetchProducts): Promise<TMainProductsData[]> {
     const { data } = await $host.get('api/category/products', {
       params: {
@@ -31,6 +48,7 @@ class CategoryApi {
         limit,
         page,
         type,
+        ...(filters && filters),
       },
     })
     return data
@@ -76,6 +94,13 @@ class CategoryApi {
     url: string
   ): Promise<TBreadcrumbComponentItem[]> {
     const { data } = await $host.get('api/category/breadcrumb/' + url)
+    return data
+  }
+
+  public async fetchProductsFiltersByUrl(
+    url: string
+  ): Promise<TFetchProductsFiltersByUrl> {
+    const { data } = await $host.get('api/category/info/filters/' + url)
     return data
   }
 }

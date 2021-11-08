@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 import { FC, ReactElement } from 'react'
 import { shopConfigStore } from './store/ShopConfigStore'
 import { BrowserRouter } from 'react-router-dom'
-import Spinner from './component/common/Spinner'
+import Spinner from './component/user/loaders/Spinner'
 import { CommonModals } from './component/user/modal/CommonModals'
 import { categoriesPageStore } from './store/CategoryStore'
 

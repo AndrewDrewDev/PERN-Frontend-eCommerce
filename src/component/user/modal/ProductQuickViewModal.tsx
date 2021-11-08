@@ -135,7 +135,7 @@ const ProductInfoQuickView: FC<TProductInfoQuickView> = ({
       </div>
       <ProductPrice price={product.price} />
       <div className="border" />
-      <div className="border rounded max-h-72 overflow-auto">
+      <div className="border rounded max-h-72 overflow-auto pretty-scroll">
         {product.description
           ? textToHtml(product.description)
           : 'Описание отсутствует'}
