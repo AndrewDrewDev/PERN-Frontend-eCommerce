@@ -30,10 +30,10 @@ const Footer: FC = (): ReactElement => {
           <Link className="mt-2 hover:underline block" to="/catalog">
             Каталог Товаров
           </Link>{' '}
-          <Link className="mt-2 hover:underline block" to="/custom/Aktsii">
+          <Link className="mt-2 hover:underline block" to="/label/Aktsii">
             Акция-Скидки
           </Link>{' '}
-          <Link className="mt-2 hover:underline block" to="/custom/Novinki">
+          <Link className="mt-2 hover:underline block" to="/label/Novinki">
             Новинки
           </Link>
         </div>

@@ -17,7 +17,7 @@ const CatalogPage: FC = observer((): ReactElement => {
             Основные Категории Каталога Товаров
           </h1>
 
-          <div className="border-2 rounded-full border-gray-600 my-2"></div>
+          <div className="border-2 rounded-full border-gray-600 my-2" />
 
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
             {categoriesPageStore.category1Info.map((category, i) => (

@@ -16,10 +16,10 @@ const HeaderNavPanel: FC = (): ReactElement => {
       <Link to="/catalog" className={linkStyle}>
         Каталог
       </Link>
-      <Link to="/custom/Aktsii" className={linkStyle}>
+      <Link to="/label/Aktsii" className={linkStyle}>
         Акции
       </Link>
-      <Link to="/custom/Novinki" className={linkStyle}>
+      <Link to="/label/Novinki" className={linkStyle}>
         Новинки
       </Link>
       <Link to="/info/about" className={linkStyle}>

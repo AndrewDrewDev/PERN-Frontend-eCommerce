@@ -116,7 +116,7 @@ const defineTypeOfPageByUrl = (
 ): 'custom' | 'common' | 'label' | 'all' => {
   const splitLocation = location.split('/')
 
-  if (splitLocation.includes('custom')) return 'label'
+  if (splitLocation.includes('label')) return 'label'
   if (splitLocation.includes('all')) return 'all'
   return 'common'
 }
