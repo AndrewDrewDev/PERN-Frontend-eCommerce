@@ -6,27 +6,24 @@ import { TProductPageDataImages } from '../../../../types'
 import { REACT_API_URL } from '../../../../config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-
 import './ProductSliderModal.css'
 import { useTransition, animated } from 'react-spring'
+import { uuid } from 'uuidv4'
 
 const ProductSliderModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productSliderWidgetState.isShowing
   const productId = modalStateStore.productSliderWidgetState.productId
   const [images, setImages] = useState<TProductPageDataImages>()
-  const [destroyFromDOM, setDestroyFromDOM] = useState(false)
 
   const transitionModal = useTransition(isShowing, {
     from: { y: -50, opacity: 0 },
     enter: { y: 0, opacity: 1 },
     leave: { y: 50, opacity: 0 },
-    onDestroyed: () => setDestroyFromDOM(true),
   })
   const transitionBackground = useTransition(isShowing, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    onDestroyed: () => setDestroyFromDOM(true),
   })
 
   useEffect(() => {
@@ -41,7 +38,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
       productId: '',
     })
 
-  if (destroyFromDOM && images)
+  if (images)
     return (
       <>
         {transitionBackground(
@@ -52,6 +49,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
         inset-0 overflow-hidden flex justify-center items-center bg-black
         bg-opacity-75"
                 onClick={() => close()}
+                key={uuid()}
                 style={style}
               >
                 {transitionModal(
@@ -59,6 +57,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
                     item && (
                       <animated.div
                         style={style}
+                        key={uuid()}
                         onClick={e => e.stopPropagation()}
                       >
                         <Carousel emulateTouch={true} showStatus={false}>

@@ -12,24 +12,22 @@ import { ProductCounter } from '../product/ProductCounter'
 import { cartStore } from '../../../store/CartStateStore'
 import { Link } from 'react-router-dom'
 import { useTransition, animated } from 'react-spring'
+import { uuid } from 'uuidv4'
 
 const ProductQuickViewModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productQuickViewWidgetState.isShowing
   const productId = modalStateStore.productQuickViewWidgetState.productId
 
   const [product, setProduct] = useState<TProductPageData | null | undefined>()
-  const [destroyFromDOM, setDestroyFromDOM] = useState(false)
   const transitionModal = useTransition(isShowing, {
     from: { y: -50, opacity: 0 },
     enter: { y: 0, opacity: 1 },
     leave: { y: 50, opacity: 0 },
-    onDestroyed: () => setDestroyFromDOM(true),
   })
   const transitionBackground = useTransition(isShowing, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    onDestroyed: () => setDestroyFromDOM(true),
   })
 
   useEffect(() => {
@@ -37,7 +35,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
       ProductApi.fetchOneProduct(productId).then(data => setProduct(data))
   }, [productId])
 
-  if (destroyFromDOM && product)
+  if (product)
     return (
       <>
         {transitionBackground(
@@ -47,6 +45,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                 className="fixed inset-0 w-full h-screen flex justify-center
                 items-center z-50 bg-black bg-opacity-50 overflow-y-hidden"
                 onClick={() => close()}
+                key={uuid()}
                 style={style}
               >
                 {transitionModal(
@@ -56,6 +55,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                         className="relative text-gray-700 bg-white my-5 py-5 px-5
                   rounded-xl w-11/12 md:w-4/5 overflow-auto"
                         onClick={e => e.stopPropagation()}
+                        key={uuid()}
                         style={{ ...style, maxHeight: '95%' }}
                       >
                         <button

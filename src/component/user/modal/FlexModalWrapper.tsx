@@ -12,7 +12,7 @@ const FlexModalWrapper: FC<IFlexModalWrapper> = ({
   children,
 }) => {
   let style =
-    'fixed z-50 flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  '
+    'fixed z-50 flex justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
 
   if (scale === 'block') {
     style += 'h-full w-full'
@@ -23,7 +23,8 @@ const FlexModalWrapper: FC<IFlexModalWrapper> = ({
     <>
       <div className={style} onClick={() => setActive(!active)}>
         <div
-          className="relative p-5 bg-white rounded-lg ring-8 border-4 border-gray-600 ring-gray-500 overflow-auto"
+          className="relative p-5 bg-white rounded-lg ring-8 border-4
+          border-gray-600 ring-gray-500 overflow-auto"
           style={{
             maxHeight: '95%',
           }}
