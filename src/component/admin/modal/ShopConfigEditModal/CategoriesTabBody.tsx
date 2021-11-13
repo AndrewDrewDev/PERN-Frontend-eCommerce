@@ -82,7 +82,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
               <div
                 className="absolute cursor-move rounded-lg cursor-pointer
               inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"
-              ></div>
+              />
               <div
                 className="absolute cursor-pointer z-20 top-1/2 left-1/2
               transform -translate-x-1/2 -translate-y-1/2 "

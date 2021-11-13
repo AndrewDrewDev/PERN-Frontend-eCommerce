@@ -54,7 +54,7 @@ const BaseInfoTabBody: FC = () => {
       () => (modalStateStore.shopConfigEditModalState.isShowing = false)
     )
 
-    shopConfigStore.updateFetchData()
+    await shopConfigStore.updateFetchData()
   }
 
   return (
@@ -62,10 +62,9 @@ const BaseInfoTabBody: FC = () => {
       <h3 className="text-center text-3xl">
         <span className="font-bold">Управление магазином</span>
       </h3>
-      <hr className="border-2 rounded-full border-gray-700 my-2" />
       <form
         onSubmit={e => handleOnSubmit(e)}
-        className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
+        className="relative flex flex-col justify-center items-center rounded-lg"
       >
         <FormInput
           name="Название магазина"

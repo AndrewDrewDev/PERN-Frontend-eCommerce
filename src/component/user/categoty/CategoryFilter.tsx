@@ -7,7 +7,7 @@ import { categoryPageState } from '../../../store/category/CategoryPageState'
 const CategoryFilter = observer(() => {
   const { labels, suppliers } = categoryPageState.filters
   return (
-    <section className="w-64 text-gray-600 px-1 py-2">
+    <section className="w-64 text-gray-600 px-1 py-2 border-r mx-1">
       <h3 className="text-center text-xl text-gray-700 font-medium">Фильтры</h3>
       <Divider />
       <PriceFilter />

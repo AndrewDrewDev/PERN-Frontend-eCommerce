@@ -2,7 +2,7 @@ import { FC, ReactElement, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import CategoryApi from '../http/CategoryApi'
 import { useLocation, useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/user/common/CategoryProductList'
+import { CategoryProductList } from '../component/user/categoty/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
 import Spinner from '../component/user/loaders/Spinner'
@@ -12,7 +12,7 @@ import {
   Breadcrumb,
   TBreadcrumbComponentItem,
 } from '../component/user/product/Breadcrumb'
-import { CloudTags } from '../component/user/common/CloudTags'
+import { CloudTags } from '../component/user/CloudTags/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
 import { CategoryFilter } from '../component/user/categoty/CategoryFilter'
 import { categoryPageState } from '../store/category/CategoryPageState'

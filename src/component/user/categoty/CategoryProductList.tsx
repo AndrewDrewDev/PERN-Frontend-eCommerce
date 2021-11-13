@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { TMainProductsData } from '../../../types'
-import { ProductCard } from './ProductCard'
+import { ProductCard } from '../product/ProductCard'
 import { PageNotFound } from '../../../pages/PageNotFound'
 import { Link } from 'react-router-dom'
 

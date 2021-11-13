@@ -5,9 +5,9 @@ import { observer } from 'mobx-react-lite'
 import { FC, ReactElement } from 'react'
 import { shopConfigStore } from './store/ShopConfigStore'
 import { BrowserRouter } from 'react-router-dom'
-import Spinner from './component/user/loaders/Spinner'
 import { CommonModals } from './component/user/modal/CommonModals'
 import { categoriesPageStore } from './store/CategoryStore'
+import { AppLoadingSpinner } from './component/user/loaders/AppLoadingSpinner'
 
 const App: FC = observer((): ReactElement => {
   return (
@@ -20,7 +20,7 @@ const App: FC = observer((): ReactElement => {
           <CommonModals />
         </>
       ) : (
-        <Spinner />
+        <AppLoadingSpinner />
       )}
     </BrowserRouter>
   )
