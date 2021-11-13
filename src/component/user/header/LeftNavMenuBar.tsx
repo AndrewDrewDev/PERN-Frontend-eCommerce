@@ -5,6 +5,7 @@ import { animated, useTransition } from 'react-spring'
 
 import { categoriesPageStore } from '../../../store/CategoryStore'
 import { TCategoryInfoByLevel, TShowHideComponent } from '../../../types'
+import { uuid } from 'uuidv4'
 
 const LeftNavMenuBar: FC<TShowHideComponent> = ({
   show,
@@ -149,73 +150,98 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
       ),
     },
   ]
-  const transition = useTransition(show, {
-    from: { x: -500, opacity: 0 },
+  const modalTransition = useTransition(show, {
+    from: { x: -100, opacity: 0 },
     enter: { x: 0, opacity: 1 },
-    leave: { x: -500, opacity: 0 },
+    leave: { x: -100, opacity: 0 },
+    config: { duration: 500 },
+  })
+
+  const bgTransition = useTransition(show, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
   })
 
   return (
     <>
-      {transition((style, item) => {
-        return item ? (
-          <animated.div
-            className="fixed z-30 left-0 top-0 bg-white max-w-xs w-full
+      {bgTransition(
+        (style, item) =>
+          item && (
+            <animated.div
+              key={uuid()}
+              className="fixed z-50 inset-0 h-screen w-screen bg-black bg-opacity-75"
+              onClick={() => setShow(false)}
+              style={style}
+            >
+              {modalTransition((style, item) => {
+                return (
+                  item && (
+                    <animated.div
+                      key={uuid()}
+                      onClick={e => e.stopPropagation()}
+                      className="fixed z-30 left-0 top-0 bg-white max-w-xs w-full
             h-full px-6 py-4 border-r-2 border-gray-300 overflow-auto
-            pretty-scroll"
-            style={style}
-          >
-            <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-medium text-gray-700">Навигация</h3>
-              <button
-                className="border-2 duration-500 border-white focus:outline-none
+            pretty-scroll "
+                      style={style}
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-2xl font-medium text-gray-700">
+                          Навигация
+                        </h3>
+                        <button
+                          className="border-2 duration-500 border-white focus:outline-none
             hover:border-red-500 p-1 hover:text-white hover:bg-red-400
               rounded-full text-gray-600 focus:outline-none"
-                onClick={() => setShow(false)}
-              >
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <hr className="my-3" />
-            <div className="md:flex flex-col md:flex-row w-full">
-              <nav
-                className="flex-grow md:block px-4 pb-4 md:pb-0
+                          onClick={() => setShow(false)}
+                        >
+                          <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                      <hr className="my-3" />
+                      <div className="md:flex flex-col md:flex-row w-full">
+                        <nav
+                          className="flex-grow md:block px-4 pb-4 md:pb-0
             md:overflow-y-auto block"
-              >
-                {navLinks.map(link => (
-                  <div onClick={() => setShow(false)}>
-                    <NavLinkItem {...link} />
-                  </div>
-                ))}
-                <div className="mt-10 flex flex-col justify-center">
-                  <h3 className="text-xl font-medium text-gray-700">
-                    Основные категории:
-                  </h3>
-                  {categoriesPageStore.category1Info
-                    ? categoriesPageStore.category1Info.map((category, i) => (
-                        <div key={i} onClick={() => setShow(false)}>
-                          <CategoryLinkItem {...category} />
-                        </div>
-                      ))
-                    : null}
-                </div>
-              </nav>
-            </div>
-          </animated.div>
-        ) : (
-          ''
-        )
-      })}
+                        >
+                          {navLinks.map(link => (
+                            <div onClick={() => setShow(false)}>
+                              <NavLinkItem {...link} />
+                            </div>
+                          ))}
+                          <div className="mt-10 flex flex-col justify-center">
+                            <h3 className="text-xl font-medium text-gray-700">
+                              Основные категории:
+                            </h3>
+                            {categoriesPageStore.category1Info
+                              ? categoriesPageStore.category1Info.map(
+                                  (category, i) => (
+                                    <div key={i} onClick={() => setShow(false)}>
+                                      <CategoryLinkItem {...category} />
+                                    </div>
+                                  )
+                                )
+                              : null}
+                          </div>
+                        </nav>
+                      </div>
+                    </animated.div>
+                  )
+                )
+              })}
+            </animated.div>
+          )
+      )}
     </>
   )
 }

@@ -19,7 +19,7 @@ const Header: FC = observer((): ReactElement => {
   return (
     <header>
       {userAccount ? <HeaderLoginStatus {...userAccount} /> : null}
-      <div className="relative container mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="container mx-auto px-6 py-3 flex items-center justify-between">
         <HeaderMenuBarButton
           onClick={() => setShowLeftNavMenuBar(!showLeftNavMenuBar)}
         />
