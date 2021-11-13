@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { PriceFilter } from './PriceFilter'
 import { LabelsFilter } from './LabelsFilter'
 import SuppliersFilter from './SuppliersFilter'
-import { categoryPageState } from './CategoryPageState'
+import { categoryPageState } from '../../../store/category/CategoryPageState'
 
 const CategoryFilter = observer(() => {
   const { labels, suppliers } = categoryPageState.filters

@@ -15,7 +15,7 @@ import {
 import { CloudTags } from '../component/user/common/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
 import { CategoryFilter } from '../component/user/categoty/CategoryFilter'
-import { categoryPageState } from '../component/user/categoty/CategoryPageState'
+import { categoryPageState } from '../store/category/CategoryPageState'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()

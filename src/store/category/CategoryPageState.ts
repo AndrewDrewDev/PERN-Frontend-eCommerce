@@ -3,7 +3,7 @@ import CategoryApi, {
   TFetchProductsFiltersByUrl,
   TFetchProductsFiltersByUrlCheckboxes,
   TProductsFiltersQueryParams,
-} from '../../../http/CategoryApi'
+} from '../../http/CategoryApi'
 
 class CategoryPageState {
   private _filters: TFetchProductsFiltersByUrl

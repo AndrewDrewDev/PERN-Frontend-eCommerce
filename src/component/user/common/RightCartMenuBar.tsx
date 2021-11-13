@@ -8,7 +8,7 @@ import { TItemsCartStore, TShowHideComponent } from '../../../types'
 import { REACT_API_URL } from '../../../config'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { useTransition, animated } from 'react-spring'
-import { uuid } from 'uuidv4'
+import { nanoid } from 'nanoid'
 
 const RightCartMenuBar: FC<TShowHideComponent> = observer(
   ({ show, setShow }): ReactElement => {
@@ -31,7 +31,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
           (style, item) =>
             item && (
               <animated.div
-                key={uuid()}
+                key={nanoid()}
                 className="fixed z-50 inset-0 h-screen w-screen bg-black bg-opacity-75"
                 onClick={() => setShow(false)}
                 style={style}
@@ -42,6 +42,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                       <animated.div
                         className="fixed z-40 right-0 top-0 max-w-xs w-full h-full px-6
           py-4 overflow-y-auto pretty-scroll bg-white border-l-2 border-gray-300"
+                        key={nanoid()}
                         style={{ ...style }}
                         onClick={e => e.stopPropagation()}
                       >

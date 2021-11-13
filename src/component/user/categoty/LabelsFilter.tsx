@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeaderFilter } from './HeaderFilter'
-import { categoryPageState } from './CategoryPageState'
+import { categoryPageState } from '../../../store/category/CategoryPageState'
 import { CheckboxFilter } from './CheckboxFilter'
 import { updateFilterState } from './utils/updateFilterState'
 

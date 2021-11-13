@@ -12,7 +12,7 @@ import { ProductCounter } from '../product/ProductCounter'
 import { cartStore } from '../../../store/CartStateStore'
 import { Link } from 'react-router-dom'
 import { useTransition, animated } from 'react-spring'
-import { uuid } from 'uuidv4'
+import { nanoid } from 'nanoid'
 
 const ProductQuickViewModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productQuickViewWidgetState.isShowing
@@ -45,7 +45,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                 className="fixed inset-0 w-full h-screen flex justify-center
                 items-center z-50 bg-black bg-opacity-50 overflow-y-hidden"
                 onClick={() => close()}
-                key={uuid()}
+                key={nanoid()}
                 style={style}
               >
                 {transitionModal(
@@ -55,7 +55,7 @@ const ProductQuickViewModal: FC = observer((): ReactElement => {
                         className="relative text-gray-700 bg-white my-5 py-5 px-5
                   rounded-xl w-11/12 md:w-4/5 overflow-auto"
                         onClick={e => e.stopPropagation()}
-                        key={uuid()}
+                        key={nanoid()}
                         style={{ ...style, maxHeight: '95%' }}
                       >
                         <button

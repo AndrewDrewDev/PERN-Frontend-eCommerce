@@ -5,7 +5,7 @@ import { animated, useTransition } from 'react-spring'
 
 import { categoriesPageStore } from '../../../store/CategoryStore'
 import { TCategoryInfoByLevel, TShowHideComponent } from '../../../types'
-import { uuid } from 'uuidv4'
+import { nanoid } from 'nanoid'
 
 const LeftNavMenuBar: FC<TShowHideComponent> = ({
   show,
@@ -169,7 +169,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
         (style, item) =>
           item && (
             <animated.div
-              key={uuid()}
+              key={nanoid()}
               className="fixed z-50 inset-0 h-screen w-screen bg-black bg-opacity-75"
               onClick={() => setShow(false)}
               style={style}
@@ -178,7 +178,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                 return (
                   item && (
                     <animated.div
-                      key={uuid()}
+                      key={nanoid()}
                       onClick={e => e.stopPropagation()}
                       className="fixed z-30 left-0 top-0 bg-white max-w-xs w-full
             h-full px-6 py-4 border-r-2 border-gray-300 overflow-auto
@@ -215,7 +215,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
             md:overflow-y-auto block"
                         >
                           {navLinks.map(link => (
-                            <div onClick={() => setShow(false)}>
+                            <div key={link.name} onClick={() => setShow(false)}>
                               <NavLinkItem {...link} />
                             </div>
                           ))}
@@ -226,7 +226,10 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                             {categoriesPageStore.category1Info
                               ? categoriesPageStore.category1Info.map(
                                   (category, i) => (
-                                    <div key={i} onClick={() => setShow(false)}>
+                                    <div
+                                      key={category.url}
+                                      onClick={() => setShow(false)}
+                                    >
                                       <CategoryLinkItem {...category} />
                                     </div>
                                   )

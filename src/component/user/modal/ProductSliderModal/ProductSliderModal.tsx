@@ -8,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import './ProductSliderModal.css'
 import { useTransition, animated } from 'react-spring'
-import { uuid } from 'uuidv4'
+import { nanoid } from 'nanoid'
 
 const ProductSliderModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productSliderWidgetState.isShowing
@@ -49,7 +49,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
         inset-0 overflow-hidden flex justify-center items-center bg-black
         bg-opacity-75"
                 onClick={() => close()}
-                key={uuid()}
+                key={nanoid()}
                 style={style}
               >
                 {transitionModal(
@@ -57,7 +57,7 @@ const ProductSliderModal: FC = observer((): ReactElement => {
                     item && (
                       <animated.div
                         style={style}
-                        key={uuid()}
+                        key={nanoid()}
                         onClick={e => e.stopPropagation()}
                       >
                         <Carousel emulateTouch={true} showStatus={false}>
