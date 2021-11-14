@@ -1,0 +1,11 @@
+/*.spring-item div {*/
+/*  @apply w-96;*/
+/*}*/
+
+/*.spring-list {*/
+/*  display: flex;*/
+/*}*/
+
+.spring-item[data-active='true'] div {
+  transform: scale(1.01);
+}

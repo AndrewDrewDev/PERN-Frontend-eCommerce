@@ -6,7 +6,7 @@ import { cartStore } from '../../../store/CartStateStore'
 import {
   TAddItemCartStore,
   TMainProductsData,
-  TMainProductsDataLabel,
+  TLabelCategoryNames,
 } from '../../../types'
 import { REACT_API_URL } from '../../../config'
 import { modalStateStore } from '../../../store/ModalStateStore'
@@ -19,7 +19,7 @@ type TProductCard = {
 }
 
 type TLabelNewOrDiscount = {
-  label: TMainProductsDataLabel
+  label: TLabelCategoryNames
 }
 
 const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {

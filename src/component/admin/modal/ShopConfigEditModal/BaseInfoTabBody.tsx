@@ -3,7 +3,7 @@ import ShopApi from '../../../../http/ShopApi'
 import { modalStateStore } from '../../../../store/ModalStateStore'
 import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
-import { BaseInfoCustomCategory } from './BaseInfoCustomCategory'
+import { BaseInfoCustomCategory } from './BaseInfoCustomCategory/BaseInfoCustomCategory'
 import { FormInput } from '../../form/FormInput'
 import Button from '../../../user/button/Button'
 
@@ -100,8 +100,12 @@ const BaseInfoTabBody: FC = () => {
           value={category_cloud_number}
           setValue={setCategory_cloud_number}
         />
-        <BaseInfoCustomCategory categoryName="Акции" />
-        <BaseInfoCustomCategory categoryName="Новинки" />
+        <div className="flex justify-center">
+          <div className="grid w-full gap-6 grid-cols-1 lg:grid-cols-2">
+            <BaseInfoCustomCategory categoryName="Акции" />
+            <BaseInfoCustomCategory categoryName="Новинки" />
+          </div>
+        </div>
         <Button type="submit" content="Применить изменения" />
       </form>
     </>

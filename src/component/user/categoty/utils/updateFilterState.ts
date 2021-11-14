@@ -1,4 +1,4 @@
-import { categoryPageState } from '../../../../store/category/CategoryPageState'
+import { categoryPageState } from '../../../../store/CategoryPageState'
 
 const updateFilterState = (checkbox: any, type: 'suppliers' | 'labels') => {
   const value = Number(checkbox.value)

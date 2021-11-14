@@ -50,7 +50,7 @@ export type TProductPageDataImages = {
   preview: string
   big: string[]
 }
-
+export type TLabelCategoryNames = 'Акции' | 'Новинки'
 export type TProductPageData = {
   categories: {
     name: string
@@ -58,7 +58,7 @@ export type TProductPageData = {
   }[]
   images: TProductPageDataImages
   name: string
-  label: 'Акции' | 'Новинки'
+  label: TLabelCategoryNames
   unit: string
   supplier: string
   id: string
@@ -84,11 +84,10 @@ export type TItemsCartStore = {
   count: number
 }
 
-export type TMainProductsDataLabel = 'Новинки' | 'Акции'
 export type TMainProductsData = {
   id: string
   name: string
-  label: TMainProductsDataLabel
+  label: TLabelCategoryNames
   price: string
   old_price: string
   img: string
