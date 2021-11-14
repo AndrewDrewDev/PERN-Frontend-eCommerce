@@ -3,8 +3,9 @@ import { categoryPageState } from '../../../store/CategoryPageState'
 import { HeaderFilter } from './HeaderFilter'
 import { CheckboxFilter } from './CheckboxFilter'
 import { updateFilterState } from './utils/updateFilterState'
+import { observer } from 'mobx-react-lite'
 
-const SuppliersFilter = () => {
+const SuppliersFilter = observer(() => {
   const { suppliers } = categoryPageState.filters
 
   function onClickHandle(event: any) {
@@ -21,10 +22,10 @@ const SuppliersFilter = () => {
           key={item.name + i}
           name={item.name}
           id={item.id}
+          checked={item.selected}
         />
       ))}
     </article>
   )
-}
-
+})
 export default SuppliersFilter

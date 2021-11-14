@@ -16,6 +16,7 @@ import { CloudTags } from '../component/user/CloudTags/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
 import { CategoryFilter } from '../component/user/categoty/CategoryFilter'
 import { categoryPageState } from '../store/CategoryPageState'
+import { ProductsNotFound } from '../component/user/categoty/ProductsNotFound'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -66,45 +67,54 @@ const CategoryPage: FC = observer((): ReactElement => {
   }
 
   if (isLoading) return <Spinner />
+
+  // If category name url is wrong
   if (!categoryInfo) return <PageNotFound title={'Категория не найдена'} />
 
   const pageCount = Math.ceil(Number(categoryInfo.count) / 20)
+
   return (
     <>
       <div className="container mx-auto">
         {breadcrumb ? <Breadcrumb categories={breadcrumb} /> : null}
         <div className="flex w-full">
           {categoryPageState.filterFetched && <CategoryFilter />}
-          <CategoryProductList
-            name={categoryInfo.name}
-            count={categoryInfo.count}
-            products={products}
-          />
+          {products ? (
+            <CategoryProductList
+              name={categoryInfo.name}
+              count={categoryInfo.count}
+              products={products}
+            />
+          ) : (
+            <ProductsNotFound id={id} />
+          )}
         </div>
-        <div className="my-5">
-          <ReactPaginate
-            pageCount={pageCount}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={1}
-            containerClassName={'flex justify-center'}
-            activeClassName={'bg-green-300'}
-            pageClassName="py-1 px-3 text-xl flex items-center rounded
+        {products && (
+          <div className="my-5">
+            <ReactPaginate
+              pageCount={pageCount}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={1}
+              containerClassName={'flex justify-center'}
+              activeClassName={'bg-green-300'}
+              pageClassName="py-1 px-3 text-xl flex items-center rounded
             leading-tight bg-white border border-gray-200 text-blue-700
             border-r-0 hover:bg-blue-500 hover:text-white"
-            previousClassName="py-1 px-3 text-xl flex items-center leading-tight
+              previousClassName="py-1 px-3 text-xl flex items-center leading-tight
             bg-white border border-gray-200 text-blue-700 border-r-0 ml-0
             rounded-l hover:bg-blue-500 hover:text-white"
-            nextClassName="py-1 px-3 text-xl flex items-center leading-tight
+              nextClassName="py-1 px-3 text-xl flex items-center leading-tight
             bg-white border border-gray-200 text-blue-700 border-r-0 ml-0
             rounded-l hover:bg-blue-500 hover:text-white"
-            breakClassName="py-1 px-3 text-xl flex items-center leading-tight
+              breakClassName="py-1 px-3 text-xl flex items-center leading-tight
             bg-white border border-gray-200 text-blue-700 border-r-0
             hover:bg-blue-500 hover:text-white"
-            previousLabel="❮"
-            nextLabel="❯"
-            onPageChange={selectedItem}
-          />
-        </div>
+              previousLabel="❮"
+              nextLabel="❯"
+              onPageChange={selectedItem}
+            />
+          </div>
+        )}
       </div>
       <CloudTags />
     </>

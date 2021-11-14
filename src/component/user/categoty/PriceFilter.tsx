@@ -31,6 +31,7 @@ const PriceFilter = observer(() => {
           className="px-2 py-1 border border-gray-500  rounded-lg w-20
             text-gray-700 focus:border-blue-500 focus:outline-none "
           type="number"
+          inputMode="decimal"
           title="Минимальная цена"
           value={filters.price?.min}
           onChange={e => onMinPriceHandle(e.target.value)}
@@ -41,6 +42,7 @@ const PriceFilter = observer(() => {
           className="px-2 py-1 border border-gray-500  rounded-lg w-20
             text-gray-700 focus:border-blue-500 focus:outline-none "
           type="number"
+          inputMode="decimal"
           title="Максимальная цена"
           onChange={e => onMaxPriceHandle(e.target.value)}
           value={filters.price?.max}

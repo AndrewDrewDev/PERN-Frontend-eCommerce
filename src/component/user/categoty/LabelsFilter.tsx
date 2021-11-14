@@ -3,8 +3,9 @@ import { HeaderFilter } from './HeaderFilter'
 import { categoryPageState } from '../../../store/CategoryPageState'
 import { CheckboxFilter } from './CheckboxFilter'
 import { updateFilterState } from './utils/updateFilterState'
+import { observer } from 'mobx-react-lite'
 
-const LabelsFilter = () => {
+const LabelsFilter = observer(() => {
   const { labels } = categoryPageState.filters
 
   function onClickHandle(event: any) {
@@ -21,10 +22,11 @@ const LabelsFilter = () => {
           key={item.name + i}
           name={item.name}
           id={item.id}
+          checked={item.selected}
         />
       ))}
     </article>
   )
-}
+})
 
 export { LabelsFilter }

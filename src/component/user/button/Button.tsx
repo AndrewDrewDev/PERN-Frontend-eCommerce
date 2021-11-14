@@ -3,12 +3,17 @@ import cn from 'classnames'
 import s from './Button.module.css'
 
 type TButton = {
-  type: 'submit' | 'button'
+  type?: 'submit' | 'button'
   content: string
   onClickHandler?: (e: any) => void
   color?: 'blue' | 'red'
 }
-const Button: FC<TButton> = ({ type, content, onClickHandler, color }) => {
+const Button: FC<TButton> = ({
+  type = 'button',
+  content,
+  onClickHandler,
+  color,
+}) => {
   return (
     <button
       type={type}

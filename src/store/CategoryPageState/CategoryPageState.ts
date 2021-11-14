@@ -81,6 +81,11 @@ class CategoryPageState {
 
     this._filterFetched = true
   }
+
+  public async reloadFilter(url: string) {
+    this._filters = await CategoryApi.fetchProductsFiltersByUrl(url)
+    this.updating()
+  }
 }
 
 const categoryPageState = new CategoryPageState()
