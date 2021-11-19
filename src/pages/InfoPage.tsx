@@ -1,8 +1,8 @@
 import { ReactElement, useEffect, useState } from 'react'
 import { FC } from 'react'
 import { useParams } from 'react-router-dom'
-import Spinner from '../component/user/loaders/Spinner'
-import { InfoContent } from '../component/user/info/InfoContent'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
+import { InfoContent } from '../component/Info'
 import { TInfoPagesData } from '../types'
 import infoApi from '../http/infoApi'
 import { PageNotFound } from './PageNotFound'
@@ -15,7 +15,7 @@ const InfoPage: FC = (): ReactElement => {
     infoApi.fetchInfoPagesData(id).then(data => setData(data))
   }, [id])
 
-  if (data === undefined) return <Spinner />
+  if (data === undefined) return <ContentLoadingSpinner />
   if (data === null) return <PageNotFound title={'Страница не найдена'} />
 
   return (

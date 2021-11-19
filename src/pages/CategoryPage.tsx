@@ -2,21 +2,21 @@ import { FC, ReactElement, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import CategoryApi from '../http/CategoryApi'
 import { useLocation, useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/user/categoty/CategoryProductList'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
-import Spinner from '../component/user/loaders/Spinner'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
 import { PageNotFound } from './PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import {
   Breadcrumb,
   TBreadcrumbComponentItem,
-} from '../component/user/product/Breadcrumb'
-import { CloudTags } from '../component/user/CloudTags/CloudTags'
+} from '../component/Product/Breadcrumb'
+import { CloudTags } from '../component/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
-import { CategoryFilter } from '../component/user/categoty/CategoryFilter'
+import { CategoryFilter } from '../component/Categoty/CategoryFilter'
 import { categoryPageState } from '../store/CategoryPageState'
-import { ProductsNotFound } from '../component/user/categoty/ProductsNotFound'
+import { ProductsNotFound } from '../component/Categoty/ProductsNotFound'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -66,7 +66,7 @@ const CategoryPage: FC = observer((): ReactElement => {
     setPage(selected + 1)
   }
 
-  if (isLoading) return <Spinner />
+  if (isLoading) return <ContentLoadingSpinner />
 
   // If category name url is wrong
   if (!categoryInfo) return <PageNotFound title={'Категория не найдена'} />

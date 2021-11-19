@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react'
-import { CategoryProductList } from '../component/user/categoty/CategoryProductList'
-import { CloudTags } from '../component/user/CloudTags/CloudTags'
-import { MainSlider } from '../component/user/main/MainSlider'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList'
+import { CloudTags } from '../component/CloudTags'
+import { MainSlider } from '../component/Main/MainSlider'
 import { categoriesPageStore } from '../store/CategoryStore'
 import { observer } from 'mobx-react-lite'
 

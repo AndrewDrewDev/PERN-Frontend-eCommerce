@@ -1,8 +1,8 @@
-import { PaymentProgressBar } from '../component/user/payment/PaymentProgressBar'
+import { ProgressBar } from '../component/Payment/ProgressBar'
 import { FC, ReactElement, useState } from 'react'
-import { PaymentCartForm } from '../component/user/payment/PaymentCartForm'
-import { PaymentCheckout } from '../component/user/payment/PaymentCheckout'
-import Spinner from '../component/user/loaders/Spinner'
+import { CartForm } from '../component/Payment/CartForm'
+import { Checkout } from '../component/Payment/Checkout'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
 import { TPaymentCheckoutOrderData } from '../types'
 
 export type TPaymentPageNames = 'cart' | 'checkout' | 'payment' | 'spinner'
@@ -13,20 +13,17 @@ const PaymentPage: FC = (): ReactElement => {
 
   return (
     <>
-      {pageName === 'spinner' ? <Spinner /> : null}
+      {pageName === 'spinner' ? <ContentLoadingSpinner /> : null}
       {pageName === 'cart' ? (
         <>
-          <PaymentProgressBar step={1} />
-          <PaymentCartForm
-            handleSetPageName={setPageName}
-            handleSetOrder={setOrder}
-          />
+          <ProgressBar step={1} />
+          <CartForm handleSetPageName={setPageName} handleSetOrder={setOrder} />
         </>
       ) : null}
       {pageName === 'checkout' ? (
         <>
-          <PaymentProgressBar step={2} />
-          <PaymentCheckout handleSetPageName={setPageName} orderData={order} />
+          <ProgressBar step={2} />
+          <Checkout handleSetPageName={setPageName} orderData={order} />
         </>
       ) : null}
       {pageName === 'payment' ? (

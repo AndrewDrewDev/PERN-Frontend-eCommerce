@@ -1,6 +1,6 @@
 import { $authHost, $host } from './index'
 import { TCategoryInfoByLevel, TMainProductsData } from '../types'
-import { TBreadcrumbComponentItem } from '../component/user/product/Breadcrumb'
+import { TBreadcrumbComponentItem } from '../component/Product/Breadcrumb'
 
 type TFetchProducts = {
   name: string

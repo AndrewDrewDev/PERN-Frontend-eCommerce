@@ -1,19 +1,19 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/user/categoty/CategoryProductList'
-import { Breadcrumb } from '../component/user/product/Breadcrumb'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList'
+import { Breadcrumb } from '../component/Product/Breadcrumb'
 import { TProductPageData } from '../types'
-import { ProductSlider } from '../component/user/product/ProductSlider'
-import ProductInfo from '../component/user/product/ProductInfo'
-import { TabsPanel } from '../component/user/product/TabsPanel'
+import { ProductSlider } from '../component/Product/ProductSlider'
+import ProductInfo from '../component/Product/ProductInfo'
+import { TabsPanel } from '../component/Product/TabsPanel'
 import ProductApi from '../http/ProductApi'
-import Spinner from '../component/user/loaders/Spinner'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
 import { PageNotFound } from '../pages/PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
-import { CloudTags } from '../component/user/CloudTags/CloudTags'
+import { CloudTags } from '../component/CloudTags'
 import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../store/ModalStateStore'
-import { AdminEditBotton } from '../component/admin/button/AdminEditBotton'
+import { AdminEditButton } from '../component/Admin/button/AdminEditButton'
 import { animated, useTransition } from 'react-spring'
 
 const ProductPage: FC = observer((): ReactElement => {
@@ -35,7 +35,7 @@ const ProductPage: FC = observer((): ReactElement => {
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
   }, [id, modalStateStore.productEditModalState])
 
-  if (product === undefined) return <Spinner />
+  if (product === undefined) return <ContentLoadingSpinner />
   if (product === null) return <PageNotFound title={'Продукт не найден'} />
 
   return (
@@ -46,7 +46,7 @@ const ProductPage: FC = observer((): ReactElement => {
             <h1 className="flex text-gray-700 text-3xl title-font font-medium mb-1">
               {product.name}
               <div className="ml-5">
-                <AdminEditBotton
+                <AdminEditButton
                   onClickHandler={() =>
                     (modalStateStore.productEditModalState = {
                       isShowing: true,
