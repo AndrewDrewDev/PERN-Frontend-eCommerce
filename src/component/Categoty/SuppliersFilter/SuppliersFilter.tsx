@@ -1,12 +1,12 @@
 import React from 'react'
-import { categoryPageState } from '../../store/CategoryPageState'
-import { HeaderFilter } from './HeaderFilter'
-import { CheckboxFilter } from './CheckboxFilter'
-import { updateFilterState } from '../../utils/updateFilterState'
+import { categoryState } from '../../../store/CategoryState'
+import { HeaderFilter } from '../HeaderFilter/HeaderFilter'
+import { CheckboxFilter } from '../CheckboxFilter/CheckboxFilter'
+import { updateFilterState } from '../../../utils/updateFilterState'
 import { observer } from 'mobx-react-lite'
 
 const SuppliersFilter = observer(() => {
-  const { suppliers } = categoryPageState.filters
+  const { suppliers } = categoryState.filters
 
   function onClickHandle(event: any) {
     const checkbox = event.target

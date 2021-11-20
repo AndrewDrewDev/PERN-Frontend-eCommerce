@@ -5,17 +5,27 @@ import CategoryApi, {
   TProductsFiltersQueryParams,
 } from '../../http/CategoryApi'
 
-class CategoryPageState {
+class CategoryState {
   private _filters: TFetchProductsFiltersByUrl
   private _filterFetched: boolean
+  private _showFilters: boolean
   private _urlState: string
   private _update: boolean
   constructor() {
     this._filterFetched = false
-    this._filters = {} as any
+    this._showFilters = window.innerWidth >= 1000 // if mobile size filter hide
+    this._filters = {} as TFetchProductsFiltersByUrl
     this._urlState = ''
     this._update = false
     makeAutoObservable(this)
+  }
+
+  get showFilters() {
+    return this._showFilters
+  }
+
+  set showFilters(newValue) {
+    this._showFilters = newValue
   }
 
   get update(): boolean {
@@ -26,16 +36,16 @@ class CategoryPageState {
     return this._filterFetched
   }
 
-  public updating() {
-    this._update = !this._update
-  }
-
   get filters() {
     return this._filters
   }
 
   set filters(newValue) {
     this._filters = newValue
+  }
+
+  public updating() {
+    this._update = !this._update
   }
 
   public getQueryString(): TProductsFiltersQueryParams {
@@ -88,6 +98,6 @@ class CategoryPageState {
   }
 }
 
-const categoryPageState = new CategoryPageState()
+const categoryState = new CategoryState()
 
-export { categoryPageState }
+export { categoryState }

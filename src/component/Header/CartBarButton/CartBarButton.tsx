@@ -42,13 +42,16 @@ const CartBarButton: FC<THeaderCartBarButton> = observer(
           >
             <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-          <span className="cursor-pointer rounded-full h-5 w-5 flex items-center justify-center bg-red-600 text-white text-xs">
+          <span
+            className="cursor-pointer rounded-full h-5 w-5 flex items-center
+           justify-center bg-red-600 text-white p-1 text-sm"
+          >
             {cartStore.getFinalCount}
           </span>
         </button>
         <div
-          id="addToCardNotification"
-          className="fixed hidden top-0 right-0 my-6 xl:mx-5 lg:mx-15 z-50 ml-10 flex max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden"
+          className="fixed hidden top-0 right-0 my-6 xl:mx-5 lg:mx-15 z-50 ml-10
+           flex max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden"
         >
           <div className="flex justify-center items-center w-12 bg-green-500">
             <svg
@@ -73,7 +76,8 @@ const CartBarButton: FC<THeaderCartBarButton> = observer(
         {transition((style, item) =>
           item ? (
             <animated.div
-              className="fixed bg-white shadow-md rounded-lg flex max-w-sm overflow-hidden z-50"
+              className="fixed bg-white shadow-md rounded-lg flex max-w-sm
+              overflow-hidden z-50"
               style={style}
             >
               <div className="flex justify-center items-center w-12 bg-green-500">

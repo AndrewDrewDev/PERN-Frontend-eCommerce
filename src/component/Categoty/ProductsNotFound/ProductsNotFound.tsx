@@ -1,10 +1,10 @@
-import Button from '../Buttons'
+import Button from '../../Buttons/Buttons'
 import { FC } from 'react'
-import { categoryPageState } from '../../store/CategoryPageState'
+import { categoryState } from '../../../store/CategoryState'
 
 const ProductsNotFound: FC<{ id: string }> = ({ id }) => {
   const updateFilterHandler = async () => {
-    await categoryPageState.reloadFilter(id)
+    await categoryState.reloadFilter(id)
   }
 
   return (

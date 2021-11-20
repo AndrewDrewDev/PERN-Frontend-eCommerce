@@ -5,7 +5,7 @@ import { shopConfigStore } from '../../../../store/ShopConfigStore'
 import { TShopConfig } from '../../../../types'
 import { BaseInfoCustomCategory } from './BaseInfoCustomCategory/BaseInfoCustomCategory'
 import { Input } from '../../form/Input'
-import Button from '../../../Buttons'
+import Button from '../../../Buttons/Buttons'
 
 const BaseInfoTabBody: FC = () => {
   // Define base shop config field

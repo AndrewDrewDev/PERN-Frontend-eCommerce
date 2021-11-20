@@ -1,20 +1,21 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/Categoty/CategoryProductList'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList/CategoryProductList'
 import { Breadcrumb } from '../component/Product/Breadcrumb'
 import { TProductPageData } from '../types'
 import { ProductSlider } from '../component/Product/ProductSlider'
 import ProductInfo from '../component/Product/ProductInfo'
 import { TabsPanel } from '../component/Product/TabsPanel'
 import ProductApi from '../http/ProductApi'
-import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 import { PageNotFound } from '../pages/PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
-import { CloudTags } from '../component/CloudTags'
+import { CloudTags } from '../component/CloudTags/CloudTags'
 import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../store/ModalStateStore'
 import { AdminEditButton } from '../component/Admin/button/AdminEditButton'
 import { animated, useTransition } from 'react-spring'
+import { scrollToBeginPage } from '../utils/scrollToBeginPage'
 
 const ProductPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -30,7 +31,7 @@ const ProductPage: FC = observer((): ReactElement => {
   })
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    scrollToBeginPage()
     setProduct(undefined)
     ProductApi.fetchOneProduct(id).then(data => setProduct(data))
   }, [id, modalStateStore.productEditModalState])

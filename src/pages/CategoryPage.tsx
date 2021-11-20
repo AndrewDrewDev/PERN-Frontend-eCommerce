@@ -2,21 +2,23 @@ import { FC, ReactElement, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import CategoryApi from '../http/CategoryApi'
 import { useLocation, useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/Categoty/CategoryProductList'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
-import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 import { PageNotFound } from './PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import {
   Breadcrumb,
   TBreadcrumbComponentItem,
 } from '../component/Product/Breadcrumb'
-import { CloudTags } from '../component/CloudTags'
+import { CloudTags } from '../component/CloudTags/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
-import { CategoryFilter } from '../component/Categoty/CategoryFilter'
-import { categoryPageState } from '../store/CategoryPageState'
-import { ProductsNotFound } from '../component/Categoty/ProductsNotFound'
+import { CategoryFilter } from '../component/Categoty/CategoryFilter/CategoryFilter'
+import { categoryState } from '../store/CategoryState'
+import { ProductsNotFound } from '../component/Categoty/ProductsNotFound/ProductsNotFound'
+import { TransitionWrapper } from '../component/Animations/TransitionWrapper/TransitionWrapper'
+import { scrollToBeginPage } from '../utils/scrollToBeginPage'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -32,17 +34,17 @@ const CategoryPage: FC = observer((): ReactElement => {
   useEffect(() => {
     ;(async () => {
       try {
-        window.scrollTo(0, 0)
+        scrollToBeginPage()
         modalStateStore.closeAll()
 
-        await categoryPageState.fetchFilter(id)
+        await categoryState.fetchFilter(id)
 
         const products = await CategoryApi.fetchProducts({
           name: id,
           limit: 20,
           page,
           type: defineTypeOfPageByUrl(location.pathname),
-          filters: categoryPageState.getQueryString(),
+          filters: categoryState.getQueryString(),
         })
         setProducts(products)
 
@@ -54,12 +56,7 @@ const CategoryPage: FC = observer((): ReactElement => {
         setIsLoading(false)
       }
     })()
-  }, [
-    page,
-    id,
-    modalStateStore.productEditModalState,
-    categoryPageState.update,
-  ])
+  }, [page, id, modalStateStore.productEditModalState, categoryState.update])
 
   // Get current selected number of pagination
   function selectedItem({ selected }: { selected: number }) {
@@ -78,12 +75,24 @@ const CategoryPage: FC = observer((): ReactElement => {
       <div className="container mx-auto">
         {breadcrumb ? <Breadcrumb categories={breadcrumb} /> : null}
         <div className="flex w-full">
-          {categoryPageState.filterFetched && <CategoryFilter />}
+          {categoryState.filterFetched && (
+            <TransitionWrapper
+              state={categoryState.showFilters}
+              props={{
+                from: { opacity: 0, width: '0' },
+                enter: { opacity: 1, width: '16rem' },
+                leave: { opacity: 0, width: '0' },
+              }}
+            >
+              <CategoryFilter />
+            </TransitionWrapper>
+          )}
           {products ? (
             <CategoryProductList
               name={categoryInfo.name}
               count={categoryInfo.count}
               products={products}
+              filterButton={true}
             />
           ) : (
             <ProductsNotFound id={id} />

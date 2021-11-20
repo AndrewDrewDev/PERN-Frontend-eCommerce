@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { shopConfigStore } from '../../store/ShopConfigStore'
 
-const Index: FC = (): ReactElement => {
+const Footer: FC = (): ReactElement => {
   const { config } = shopConfigStore
 
   return (
@@ -198,4 +198,4 @@ const Index: FC = (): ReactElement => {
   )
 }
 
-export { Index }
+export { Footer }

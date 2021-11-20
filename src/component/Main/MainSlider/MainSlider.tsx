@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import Slider, { Settings } from 'react-slick'
 
-import './style.css'
+import './MainSlider.css'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { observer } from 'mobx-react-lite'
 import { REACT_API_URL } from '../../../config'
@@ -23,7 +23,7 @@ const MainSlider: FC = observer((): ReactElement => {
 
   return (
     <>
-      {shopConfigStore.slider ? (
+      {shopConfigStore.slider && (
         <Slider className={'relative w-full my-4'} {...settings}>
           {shopConfigStore.slider.map(slide => (
             <div className={'relative'}>
@@ -44,7 +44,7 @@ const MainSlider: FC = observer((): ReactElement => {
             </div>
           ))}
         </Slider>
-      ) : null}
+      )}
     </>
   )
 })

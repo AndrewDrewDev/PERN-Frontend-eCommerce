@@ -1,8 +1,8 @@
-import { ProgressBar } from '../component/Payment/ProgressBar'
+import { ProgressBar } from '../component/Payment/ProgressBar/ProgressBar'
 import { FC, ReactElement, useState } from 'react'
-import { CartForm } from '../component/Payment/CartForm'
-import { Checkout } from '../component/Payment/Checkout'
-import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner'
+import { CartForm } from '../component/Payment/CartForm/CartForm'
+import { Checkout } from '../component/Payment/Checkout/Checkout'
+import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 import { TPaymentCheckoutOrderData } from '../types'
 
 export type TPaymentPageNames = 'cart' | 'checkout' | 'payment' | 'spinner'

@@ -1,26 +1,26 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { categoryPageState } from '../../store/CategoryPageState'
-import { HeaderFilter } from './HeaderFilter'
+import { categoryState } from '../../../store/CategoryState'
+import { HeaderFilter } from '../HeaderFilter/HeaderFilter'
 
 const PriceFilter = observer(() => {
-  const filters = categoryPageState.filters
+  const filters = categoryState.filters
 
   function onMinPriceHandle(value: string) {
-    const newFilters: any = categoryPageState.copyFilters()
+    const newFilters: any = categoryState.copyFilters()
     newFilters.price.min = value
-    categoryPageState.filters = newFilters
+    categoryState.filters = newFilters
   }
 
   function onMaxPriceHandle(value: string) {
-    const newFilters: any = categoryPageState.copyFilters()
+    const newFilters: any = categoryState.copyFilters()
     newFilters.price.max = value
-    categoryPageState.filters = newFilters
+    categoryState.filters = newFilters
   }
 
   function onSubmitHandle(e: any) {
     e.preventDefault()
-    categoryPageState.updating()
+    categoryState.updating()
   }
 
   return (

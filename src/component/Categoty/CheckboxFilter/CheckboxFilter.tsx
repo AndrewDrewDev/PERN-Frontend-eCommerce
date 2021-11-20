@@ -14,6 +14,7 @@ const CheckboxFilter: FC<{
         type="checkbox"
         value={id}
         checked={checked}
+        onChange={() => {}}
       />
       <span className="ml-2 font-medium text-lg">{name}</span>
     </label>

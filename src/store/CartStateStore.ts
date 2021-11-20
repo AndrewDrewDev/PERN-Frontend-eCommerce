@@ -50,7 +50,6 @@ class CartStore {
   }
 
   public set addItem({ id, name, price, img, count }: TAddItemCartStore) {
-    console.log(111)
     // show notification
     modalStateStore.showProductToCartNotify()
     count = count ? count : 1

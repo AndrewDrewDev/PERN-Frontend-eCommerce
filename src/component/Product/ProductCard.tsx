@@ -30,7 +30,6 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
     img,
     price,
   }
-
   const LabelNewOrDiscount: FC<TLabelNewOrDiscount> = ({
     label,
   }): ReactElement | null => {

@@ -2,9 +2,9 @@ import { FC, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import cn from 'classnames'
 
-import { NavPanelCartButton } from '../NavPanelCartButton'
+import { NavPanelCartButton } from '../NavPanelCartButton/NavPanelCartButton'
 
-import s from './style.module.css'
+import s from './NavPanel.module.css'
 
 const NavPanel: FC = (): ReactElement => {
   const linkStyle = cn(s.animate_underline, 'mt-1 mx-2')

@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../Modal/FlexModalWrapper'
 import { InputFile } from '../../form/InputFile'
-import Button from '../../../Buttons'
+import Button from '../../../Buttons/Buttons'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import { productEditModalState } from './ProductEditModalState'
-import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner'
-import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong'
+import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
+import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
 type TAddProductImgButton = {
   productId: string
 }

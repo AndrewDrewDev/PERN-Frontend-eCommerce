@@ -4,12 +4,11 @@ import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
 import { Link } from 'react-router-dom'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
-import cn from 'classnames'
 
 const NavPanelCartButton: FC = observer((): ReactElement => {
   return (
     <>
-      <Link to="/payment" className={cn('flex items-center justify-center')}>
+      <Link to="/payment" className="flex items-center justify-center">
         <div>
           <svg
             className="w-6 h-6"

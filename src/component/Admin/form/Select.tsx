@@ -19,7 +19,8 @@ const Select: FC<TAdminFormSelect> = ({
       </label>
       <div className="relative mt-1 flex ">
         <svg
-          className="w-7 h-7 text-white bg-blue-700 absolute top-0 ml-56 pointer-events-none p-1 rounded-r"
+          className="w-7 h-7 text-white bg-blue-700 absolute top-0 ml-56
+          pointer-events-none p-1 rounded-r"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -35,7 +36,7 @@ const Select: FC<TAdminFormSelect> = ({
         <select
           id={title}
           className="font-bold rounded border-2 border-blue-700
-          text-gray-600 w-60 px-2 pr-10 bg-white hover:border-gray-400
+          text-gray-600 w-60 px-2 pr-10 bg-white
           focus:outline-none appearance-none"
           onChange={e => selectedHandle(e.target.value)}
         >

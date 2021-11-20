@@ -4,7 +4,7 @@ import { TCategoryInfoByLevel } from '../types'
 import { Link } from 'react-router-dom'
 import { REACT_API_URL } from '../config'
 import { Breadcrumb } from '../component/Product/Breadcrumb'
-import { CloudTags } from '../component/CloudTags'
+import { CloudTags } from '../component/CloudTags/CloudTags'
 import { observer } from 'mobx-react-lite'
 
 const CatalogPage: FC = observer((): ReactElement => {

@@ -10,7 +10,7 @@ import { FlexModalWrapper } from '../../../Modal/FlexModalWrapper'
 import infoApi from '../../../../http/infoApi'
 import { Input } from '../../form/Input'
 import { TextArea } from '../../form/TextArea'
-import Button from '../../../Buttons'
+import Button from '../../../Buttons/Buttons'
 
 const InfoPagesTabBody: FC = () => {
   const [selectedCategoryUrl, setSelectedCategoryUrl] = useState('')
@@ -45,7 +45,7 @@ const InfoPagesTabBody: FC = () => {
           <span className="font-bold">Редактирование Info Pages</span>
         </h3>
         <hr className="border-2 rounded-full border-gray-700 my-2" />
-        <div className="py-48 flex flex-col justify-center items-center bg-gray-300 rounded-lg">
+        <div className="py-48 flex flex-col justify-center items-center rounded-lg">
           {pages.map(i => (
             <PageButton
               name={i.name}

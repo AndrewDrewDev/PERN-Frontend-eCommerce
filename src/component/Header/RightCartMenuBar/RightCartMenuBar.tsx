@@ -32,7 +32,8 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
             item && (
               <animated.div
                 key={nanoid()}
-                className="fixed z-50 inset-0 h-screen w-screen bg-black bg-opacity-75"
+                className="fixed z-50 inset-0 h-screen w-screen bg-black
+                bg-opacity-75"
                 onClick={() => setShow(false)}
                 style={style}
               >
@@ -40,10 +41,11 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                   return (
                     item && (
                       <animated.div
-                        className="fixed z-40 right-0 top-0 max-w-xs w-full h-full px-6
-          py-4 overflow-y-auto pretty-scroll bg-white border-l-2 border-gray-300"
+                        className="fixed z-40 right-0 top-0 max-w-xs w-full
+                        h-full px-6 py-4 overflow-y-auto pretty-scroll bg-white
+                        border-l-2 border-gray-300"
                         key={nanoid()}
-                        style={{ ...style }}
+                        style={style}
                         onClick={e => e.stopPropagation()}
                       >
                         <div className="flex items-center justify-between">
@@ -77,6 +79,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                           </div>
                           {cartStore.getItems.map(item => (
                             <CartItem
+                              key={nanoid()}
                               {...{
                                 id: item.id,
                                 name: item.name,
@@ -118,11 +121,12 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
                         <div onClick={() => setShow(false)}>
                           <Link
                             to="/payment"
-                            className="flex border-2 border-blue-600 hover:border-blue-700
-               shadow hover:shadow-lg duration-500 mb-5 text-lg items-center
-                justify-center mt-4 px-3 py-1 bg-blue-600 text-white text-sm
-                 font-medium rounded hover:bg-blue-500 focus:outline-none
-                  focus:bg-blue-500"
+                            className="flex border-2 border-blue-600
+                            shadow hover:shadow-lg duration-500 mb-5 text-lg
+                            justify-center mt-4 px-3 py-1 bg-blue-600 text-white
+                            font-medium rounded hover:bg-blue-500
+                            focus:bg-blue-500 hover:border-blue-700 items-center
+                            text-sm focus:outline-none"
                           >
                             <span>Перейти к Оплате</span>
                             <svg
@@ -215,8 +219,7 @@ const CartItem: FC<TItemsCartStore> = ({
             </button>
             <span className="text-gray-700 mx-2">{count}</span>
             <button
-              className=" text-gray-600 focus:outline-none
-                  focus:text-gray-600"
+              className=" text-gray-600 focus:outline-none focus:text-gray-600"
               onClick={() => (cartStore.decreaseItem = id)}
             >
               <svg

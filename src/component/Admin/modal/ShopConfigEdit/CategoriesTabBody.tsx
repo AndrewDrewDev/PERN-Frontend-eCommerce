@@ -2,11 +2,11 @@ import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
 import { REACT_API_URL } from '../../../../config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
-import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong'
+import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
 import { FlexModalWrapper } from '../../../Modal/FlexModalWrapper'
 import { Input } from '../../form/Input'
 import { useFetching } from '../../../../hooks/useFetching'
-import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner'
+import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 import CategoryApi from '../../../../http/CategoryApi'
 import { InputFile } from '../../form/InputFile'
 import { observer } from 'mobx-react-lite'
@@ -36,7 +36,7 @@ const CategoriesTabBody: FC = observer(() => {
       <hr className="border-2 rounded-full border-gray-700 my-2" />
       <div
         className="relative flex flex-col justify-center items-center
-      bg-gray-300 rounded-lg"
+      rounded-lg"
       >
         <div
           className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
@@ -80,8 +80,8 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
           {showEdit ? (
             <>
               <div
-                className="absolute cursor-move rounded-lg cursor-pointer
-              inset-0 z-10 duration-1000 transition ease-in-out bg-black opacity-70 z-20"
+                className="absolute cursor-move rounded-lg cursor-pointer inset-0
+                duration-1000 transition ease-in-out bg-black opacity-70 z-20"
               />
               <div
                 className="absolute cursor-pointer z-20 top-1/2 left-1/2

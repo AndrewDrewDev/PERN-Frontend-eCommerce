@@ -6,7 +6,7 @@ import { ManageImagesPreview } from './ManageImagesPreview'
 import { Input } from '../../form/Input'
 import { Select } from '../../form/Select'
 import { TextArea } from '../../form/TextArea'
-import Button from '../../../Buttons'
+import Button from '../../../Buttons/Buttons'
 import { ManageImagesBig } from './ManageImagesBig'
 
 type TProductEditModalBody = { product: TProductPageData }
@@ -70,7 +70,7 @@ const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
       <hr className="border-2 rounded-full border-gray-700 my-2" />
       <form
         onSubmit={e => handleOnSubmit(e)}
-        className="relative flex flex-col justify-center items-center bg-gray-300 rounded-lg"
+        className="relative flex flex-col justify-center items-center rounded-lg"
       >
         <div className="my-5 w-3/4">
           <ManageImagesPreview image={product.images.preview} />
