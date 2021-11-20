@@ -182,9 +182,9 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
           </button>
         </div>
         <div className="px-5 py-3 bg-white relative z-10">
-          <a href="#">
+          <div>
             <h3 className="text-gray-700">{name}</h3>
-          </a>
+          </div>
           <span className="font-bold text-gray-800 mt-2">
             {price} {shopConfigStore.config.currency}
           </span>
