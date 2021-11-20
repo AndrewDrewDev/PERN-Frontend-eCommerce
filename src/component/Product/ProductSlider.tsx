@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import { FC } from 'react'
 import Slider, { Settings } from 'react-slick'
 import './ProductSlider.css'
-import { REACT_API_URL } from '../../config'
+import { REACT_API_URL } from '../../config/config'
 
 type TProductSlider = {
   images: string[]

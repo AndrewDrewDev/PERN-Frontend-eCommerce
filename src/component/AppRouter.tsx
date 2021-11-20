@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import { PageNotFound } from '../pages/PageNotFound'
-import { publicRoutes } from '../routes'
+import { publicRoutes } from '../routes/routes'
 import { TRoutes } from '../types'
 
 const AppRouter: FC = (): ReactElement => {

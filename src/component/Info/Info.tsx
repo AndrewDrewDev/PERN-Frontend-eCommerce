@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { TPageData } from '../../types'
-import { REACT_API_URL } from '../../config'
+import { REACT_API_URL } from '../../config/config'
 import textToHtml from '../../utils/textToHtml'
 
 const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {

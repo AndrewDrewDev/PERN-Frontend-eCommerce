@@ -3,9 +3,16 @@ import { PriceFilter } from '../PriceFilter/PriceFilter'
 import { LabelsFilter } from '../LabelsFilter/LabelsFilter'
 import SuppliersFilter from '../SuppliersFilter/SuppliersFilter'
 import { categoryState } from '../../../store/CategoryState'
+import { useEffect } from 'react'
+import { scrollToBeginPage } from '../../../utils/scrollToBeginPage'
 
 const CategoryFilter = observer(() => {
   const { labels, suppliers } = categoryState.filters
+
+  useEffect(() => {
+    if (categoryState.showFilters) scrollToBeginPage()
+  }, [])
+
   return (
     <section className="w-64 text-gray-600 px-1 py-2 border-r mr-10">
       <div className="relative">

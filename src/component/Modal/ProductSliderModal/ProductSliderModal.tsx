@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import ProductApi from '../../../http/ProductApi'
 import { TProductPageDataImages } from '../../../types'
-import { REACT_API_URL } from '../../../config'
+import { REACT_API_URL } from '../../../config/config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import './ProductSliderModal.css'

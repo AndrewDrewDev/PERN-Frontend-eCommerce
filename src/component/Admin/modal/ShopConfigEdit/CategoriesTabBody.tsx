@@ -1,5 +1,5 @@
 import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
-import { REACT_API_URL } from '../../../../config'
+import { REACT_API_URL } from '../../../../config/config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'

@@ -1,6 +1,6 @@
 // @ts-ignore
 import SpringList from 'react-spring-dnd'
-import { REACT_API_URL } from '../../../../../config'
+import { REACT_API_URL } from '../../../../../config/config'
 import ShopApi from '../../../../../http/ShopApi'
 import { categoriesPageStore } from '../../../../../store/CategoryStore'
 import { shopConfigEditModalState } from '../../../../../store/ShopConfigEditModalState'

@@ -1,7 +1,7 @@
 import { FC, FormEvent, ReactElement, useState } from 'react'
 import { login, registration } from '../http/userApi'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../routes'
+import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../routes/routes'
 import { shopConfigStore } from '../store/ShopConfigStore'
 
 const AuthPage: FC = (): ReactElement => {

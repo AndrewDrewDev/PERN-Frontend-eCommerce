@@ -5,7 +5,7 @@ import Slider, { Settings } from 'react-slick'
 import './MainSlider.css'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { observer } from 'mobx-react-lite'
-import { REACT_API_URL } from '../../../config'
+import { REACT_API_URL } from '../../../config/config'
 
 const MainSlider: FC = observer((): ReactElement => {
   // Slider config

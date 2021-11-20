@@ -6,7 +6,7 @@ import cn from 'classnames'
 
 import { TProductSearchByNameResult } from '../../../types'
 import ProductApi from '../../../http/ProductApi'
-import { REACT_API_URL } from '../../../config'
+import { REACT_API_URL } from '../../../config/config'
 
 const InputSearchBySitePopup: FC = (): ReactElement => {
   const [products, setProducts] = useState<TProductSearchByNameResult[] | null>(

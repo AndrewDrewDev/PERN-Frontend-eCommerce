@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { REACT_API_URL } from '../config'
+import { REACT_API_URL } from '../config/config'
 
 export const $host = axios.create({
   baseURL: REACT_API_URL,

@@ -1,14 +1,14 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { PRODUCT_ROUTE } from '../../routes'
+import { PRODUCT_ROUTE } from '../../routes/routes'
 import { cartStore } from '../../store/CartStateStore'
 import {
   TAddItemCartStore,
   TMainProductsData,
   TLabelCategoryNames,
 } from '../../types'
-import { REACT_API_URL } from '../../config'
+import { REACT_API_URL } from '../../config/config'
 import { modalStateStore } from '../../store/ModalStateStore'
 import { observer } from 'mobx-react-lite'
 import { shopConfigStore } from '../../store/ShopConfigStore'
