@@ -1,10 +1,19 @@
 import Button from '../../Buttons/Buttons'
 import { FC } from 'react'
 import { categoryState } from '../../../store/CategoryState'
+import { CategoryTypeEnum } from '../../../hooks/useCategoryType/types'
 
-const ProductsNotFound: FC<{ id: string }> = ({ id }) => {
+interface ProductsNotFoundProps {
+  categoryUrl: string
+  categoryType: CategoryTypeEnum
+}
+
+const ProductsNotFound: FC<ProductsNotFoundProps> = ({
+  categoryType,
+  categoryUrl,
+}) => {
   const updateFilterHandler = async () => {
-    await categoryState.reloadFilter(id)
+    await categoryState.reloadFilter(categoryType, categoryUrl)
   }
 
   return (

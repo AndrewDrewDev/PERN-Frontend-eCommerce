@@ -11,7 +11,7 @@ const NameOfCategory: FC<TNameOfCategory> = ({ name, link, filterButton }) => {
   const CategoryName = () => {
     return (
       <div className="flex items-center">
-        <h1 className="text-gray-700 text-2xl font-medium truncate">
+        <h1 className="text-gray-700 text-2xl font-medium">
           {name ? name : 'Название не определено'}
         </h1>
         {filterButton && <FilterButton />}

@@ -90,7 +90,7 @@ const CloudTags: FC = observer((): ReactElement => {
             to="/category/all"
             className="flex text-lg items-center px-4 py-2 bg-blue-500 text-white text-sm font-medium border-2 border-blue-600 hover:border-blue-700 shadow hover:shadow-lg duration-500 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           >
-            <span className="ml-1">Каталог :: Все категории :: Все товары</span>
+            <span className="ml-1">Все категории :: Все товары</span>
             <svg
               className="h-5 w-5 ml-1"
               fill="none"

@@ -1,7 +1,7 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import CategoryApi from '../http/CategoryApi'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { CategoryProductList } from '../component/Categoty/CategoryProductList/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
@@ -19,10 +19,11 @@ import { categoryState } from '../store/CategoryState'
 import { ProductsNotFound } from '../component/Categoty/ProductsNotFound/ProductsNotFound'
 import { TransitionWrapper } from '../component/Animations/TransitionWrapper/TransitionWrapper'
 import { scrollToBeginPage } from '../utils/scrollToBeginPage'
+import { useCategoryType } from '../hooks/useCategoryType/useCategoryType'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
-  const location = useLocation()
+  const categoryType = useCategoryType()
 
   const [isLoading, setIsLoading] = useState(true)
 
@@ -37,13 +38,13 @@ const CategoryPage: FC = observer((): ReactElement => {
         scrollToBeginPage()
         modalStateStore.closeAll()
 
-        await categoryState.fetchFilter(id)
+        await categoryState.fetchFilter(categoryType, id)
 
         const products = await CategoryApi.fetchProducts({
           name: id,
           limit: 20,
           page,
-          type: defineTypeOfPageByUrl(location.pathname),
+          type: categoryType,
           filters: categoryState.getQueryString(),
         })
         setProducts(products)
@@ -95,7 +96,7 @@ const CategoryPage: FC = observer((): ReactElement => {
               filterButton={true}
             />
           ) : (
-            <ProductsNotFound id={id} />
+            <ProductsNotFound categoryType={categoryType} categoryUrl={id} />
           )}
         </div>
         {products && (
@@ -129,15 +130,5 @@ const CategoryPage: FC = observer((): ReactElement => {
     </>
   )
 })
-
-const defineTypeOfPageByUrl = (
-  location: string
-): 'custom' | 'common' | 'label' | 'all' => {
-  const splitLocation = location.split('/')
-
-  if (splitLocation.includes('label')) return 'label'
-  if (splitLocation.includes('all')) return 'all'
-  return 'common'
-}
 
 export { CategoryPage }

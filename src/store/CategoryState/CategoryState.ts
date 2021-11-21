@@ -4,6 +4,7 @@ import CategoryApi, {
   TFetchProductsFiltersByUrlCheckboxes,
   TProductsFiltersQueryParams,
 } from '../../http/CategoryApi'
+import { CategoryTypeEnum } from '../../hooks/useCategoryType/types'
 
 class CategoryState {
   private _filters: TFetchProductsFiltersByUrl
@@ -81,19 +82,19 @@ class CategoryState {
   }
 
   // Update if category url changed through urlState
-  public async fetchFilter(url: string) {
+  public async fetchFilter(type: CategoryTypeEnum, url: string) {
     this._filterFetched = false
 
     if (url !== this._urlState) {
       this._urlState = url
-      this._filters = await CategoryApi.fetchProductsFiltersByUrl(url)
+      this._filters = await CategoryApi.fetchProductsFiltersByUrl(type, url)
     }
 
     this._filterFetched = true
   }
 
-  public async reloadFilter(url: string) {
-    this._filters = await CategoryApi.fetchProductsFiltersByUrl(url)
+  public async reloadFilter(type: CategoryTypeEnum, url: string) {
+    this._filters = await CategoryApi.fetchProductsFiltersByUrl(type, url)
     this.updating()
   }
 }
