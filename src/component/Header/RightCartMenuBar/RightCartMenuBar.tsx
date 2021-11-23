@@ -7,7 +7,7 @@ import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TShowHideComponent } from '../../../types'
 import { REACT_API_URL } from '../../../config/config'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated, config } from 'react-spring'
 import { nanoid } from 'nanoid'
 
 const RightCartMenuBar: FC<TShowHideComponent> = observer(
@@ -16,7 +16,7 @@ const RightCartMenuBar: FC<TShowHideComponent> = observer(
       from: { x: 100, opacity: 0 },
       enter: { x: 0, opacity: 1 },
       leave: { x: 100, opacity: 0 },
-      config: { duration: 500 },
+      config: config.gentle,
     })
 
     const bgTransition = useTransition(show, {

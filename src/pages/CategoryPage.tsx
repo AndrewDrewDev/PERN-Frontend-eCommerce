@@ -20,6 +20,7 @@ import { ProductsNotFound } from '../component/Categoty/ProductsNotFound/Product
 import { TransitionWrapper } from '../component/Animations/TransitionWrapper/TransitionWrapper'
 import { scrollToBeginPage } from '../utils/scrollToBeginPage'
 import { useCategoryType } from '../hooks/useCategoryType/useCategoryType'
+import cn from 'classnames'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -88,17 +89,24 @@ const CategoryPage: FC = observer((): ReactElement => {
               <CategoryFilter />
             </TransitionWrapper>
           )}
-          {products ? (
-            <CategoryProductList
-              name={categoryInfo.name}
-              count={categoryInfo.count}
-              products={products}
-              filterButton={true}
-            />
-          ) : (
-            <ProductsNotFound categoryType={categoryType} categoryUrl={id} />
-          )}
+          <div
+            className={cn('w-full', {
+              'flex-none': !categoryState.showFilters,
+            })}
+          >
+            {products ? (
+              <CategoryProductList
+                name={categoryInfo.name}
+                count={categoryInfo.count}
+                products={products}
+                filterButton={true}
+              />
+            ) : (
+              <ProductsNotFound categoryType={categoryType} categoryUrl={id} />
+            )}
+          </div>
         </div>
+
         {products && (
           <div className="my-5">
             <ReactPaginate

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { animated, useTransition } from 'react-spring'
+import { animated, config, useTransition } from 'react-spring'
 
 import { categoriesPageStore } from '../../../store/CategoryStore'
 import { TCategoryInfoByLevel, TShowHideComponent } from '../../../types'
@@ -154,7 +154,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
     from: { x: -100, opacity: 0 },
     enter: { x: 0, opacity: 1 },
     leave: { x: -100, opacity: 0 },
-    config: { duration: 500 },
+    config: config.gentle,
   })
 
   const bgTransition = useTransition(show, {
@@ -225,7 +225,7 @@ const LeftNavMenuBar: FC<TShowHideComponent> = ({
                             </h3>
                             {categoriesPageStore.category1Info
                               ? categoriesPageStore.category1Info.map(
-                                  (category, i) => (
+                                  category => (
                                     <div
                                       key={category.url}
                                       onClick={() => setShow(false)}
