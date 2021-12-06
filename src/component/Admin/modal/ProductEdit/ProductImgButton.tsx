@@ -6,7 +6,6 @@ import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
-import { REACT_API_URL } from '../../../../config/config'
 import { productEditModalState } from './ProductEditModalState'
 
 type TProductImgButton = {
@@ -78,7 +77,7 @@ const ProductImgButton: FC<TProductImgButton> = ({ img, preview }) => {
         )}
         <img
           className="object-contain"
-          src={REACT_API_URL + img}
+          src={process.env.REACT_APP_API_URL + img}
           alt="Preview картинка"
         />
       </button>

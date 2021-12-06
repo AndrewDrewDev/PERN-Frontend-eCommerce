@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite'
 import { modalStateStore } from '../../../store/ModalStateStore'
 import ProductApi from '../../../http/ProductApi'
 import { TProductPageDataImages } from '../../../types'
-import { REACT_API_URL } from '../../../config/config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import './ProductSliderModal.css'
@@ -61,34 +60,17 @@ const ProductSliderModal: FC = observer((): ReactElement => {
                         onClick={e => e.stopPropagation()}
                       >
                         <Carousel emulateTouch={true} showStatus={false}>
-                          {images.big.map((img, i) => (
+                          {images.big.map(img => (
                             <div
                               className="w-full flex justify-center"
                               style={{ maxHeight: '500px' }}
                             >
                               <img
-                                key={i}
+                                key={img}
                                 className=" items-center object-contain"
-                                src={REACT_API_URL + img}
+                                src={process.env.REACT_APP_API_URL + img}
                                 alt="Изображение товара"
                               />
-                              <button
-                                className="absolute mr-10 z-50 absolute top-0 right-0 bg-white rounded-full text-red-600"
-                                onClick={() => close()}
-                              >
-                                <svg
-                                  className="w-10 h-10"
-                                  fill="currentColor"
-                                  viewBox="0 0 20 20"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
-                              </button>
                             </div>
                           ))}
                         </Carousel>

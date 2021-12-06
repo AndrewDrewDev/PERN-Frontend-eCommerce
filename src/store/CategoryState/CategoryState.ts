@@ -5,6 +5,7 @@ import CategoryApi, {
   TProductsFiltersQueryParams,
 } from '../../http/CategoryApi'
 import { CategoryTypeEnum } from '../../hooks/useCategoryType/types'
+import { shopConfigStore } from '../ShopConfigStore'
 
 class CategoryState {
   private _filters: TFetchProductsFiltersByUrl
@@ -14,7 +15,7 @@ class CategoryState {
   private _update: boolean
   constructor() {
     this._filterFetched = false
-    this._showFilters = window.innerWidth >= 1000 // if mobile size filter hide
+    this._showFilters = shopConfigStore.isMobile // if mobile size filter hide
     this._filters = {} as TFetchProductsFiltersByUrl
     this._urlState = ''
     this._update = false

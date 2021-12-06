@@ -7,8 +7,10 @@ class ShopConfigStore {
   private _userAccount: TUserAccountData | null = null
   private _config: TShopConfig = {} as any
   private _slider: TShopSlider[] = []
+  private _isMobile: boolean
 
   constructor() {
+    this._isMobile = window.innerWidth >= 1024
     this.updateFetchData()
     makeAutoObservable(this)
   }
@@ -21,6 +23,10 @@ class ShopConfigStore {
   public async updateFetchData() {
     await this.fetchData()
     this._isLoaded = true
+  }
+
+  get isMobile() {
+    return this._isMobile
   }
 
   get isLoaded() {

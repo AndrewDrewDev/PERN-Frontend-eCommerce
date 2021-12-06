@@ -21,7 +21,7 @@ const ProductsNotFound: FC<ProductsNotFoundProps> = ({
       <div className="text-4xl font-bold">
         Товар по указанным фильтрам не найден!
       </div>
-      <div className="">
+      <div>
         <Button
           content="Сбросить фильтры"
           onClickHandler={() => updateFilterHandler()}

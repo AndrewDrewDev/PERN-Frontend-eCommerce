@@ -1,6 +1,10 @@
+.animate_underline {
+  @apply relative;
+}
+
 .animate_underline:after {
   content: '';
-  @apply bg-gray-700 w-0 bottom-0 h-0.5 block transition-all ease-in-out duration-300;
+  @apply absolute bg-gray-700 left-1/2 right-1/2 w-0 bottom-0 h-0.5 block transition-all ease-in-out duration-500;
 }
 
 .animate_underline:hover:after {

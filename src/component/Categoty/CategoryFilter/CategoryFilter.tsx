@@ -5,6 +5,7 @@ import SuppliersFilter from '../SuppliersFilter/SuppliersFilter'
 import { categoryState } from '../../../store/CategoryState'
 import { useEffect } from 'react'
 import { scrollToBeginPage } from '../../../utils/scrollToBeginPage'
+import Button from '../../Buttons/Buttons'
 
 const CategoryFilter = observer(() => {
   const { labels, suppliers } = categoryState.filters
@@ -12,6 +13,11 @@ const CategoryFilter = observer(() => {
   useEffect(() => {
     if (categoryState.showFilters) scrollToBeginPage()
   }, [])
+
+  const applyAndHideFilter = () => {
+    categoryState.showFilters = false
+    categoryState.updating()
+  }
 
   return (
     <section className="w-64 text-gray-600 px-1 py-2 border-r mr-10">
@@ -50,6 +56,21 @@ const CategoryFilter = observer(() => {
             <SuppliersFilter />
           </>
         )}
+      </div>
+      <div className="flex justify-center">
+        <Button
+          content="Сбросить фильтры"
+          type="button"
+          color="red"
+          onClickHandler={() => applyAndHideFilter()}
+        />
+      </div>
+      <div className="flex lg:hidden justify-center">
+        <Button
+          content="Применить фильтры"
+          type="button"
+          onClickHandler={() => applyAndHideFilter()}
+        />
       </div>
     </section>
   )

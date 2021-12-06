@@ -48,6 +48,7 @@ const InfoPagesTabBody: FC = () => {
         <div className="py-48 flex flex-col justify-center items-center rounded-lg">
           {pages.map(i => (
             <PageButton
+              key={i.name + i.url}
               name={i.name}
               url={i.url}
               setSelectCategoryUrl={setSelectedCategoryUrl}

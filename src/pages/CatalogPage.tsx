@@ -2,10 +2,10 @@ import { FC, ReactElement } from 'react'
 import { categoriesPageStore } from '../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../types'
 import { Link } from 'react-router-dom'
-import { REACT_API_URL } from '../config/config'
 import { Breadcrumb } from '../component/Product/Breadcrumb'
 import { CloudTags } from '../component/CloudTags/CloudTags'
 import { observer } from 'mobx-react-lite'
+import getEnvVariable from '../utils/getEnvVariable'
 
 const CatalogPage: FC = observer((): ReactElement => {
   return (
@@ -54,7 +54,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = (props): ReactElement => {
           <Link to={'/category/' + url}>
             <img
               className="transform scale-100 hover:scale-110 duration-500 ease-in-out m-auto w-full"
-              src={REACT_API_URL + img}
+              src={getEnvVariable('REACT_APP_API_URL') + img}
               style={{
                 maxHeight: 300 + 'px',
                 maxWidth: 100 + '%',

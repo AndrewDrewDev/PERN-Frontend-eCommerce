@@ -10,7 +10,6 @@ import { observer } from 'mobx-react-lite'
 import { cartStore } from '../../../store/CartStateStore'
 import { TItemsCartStore, TPaymentCheckoutOrderData } from '../../../types'
 import { Link } from 'react-router-dom'
-import { REACT_API_URL } from '../../../config/config'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
@@ -73,8 +72,12 @@ const CartForm: FC<TPaymentCartForm> = observer(
           {cartStore.getItems.length !== 0 ? (
             cartStore.getItems.map((item, i) => <CartItem key={i} {...item} />)
           ) : (
-            <div className="text-center text-gray-700 font-medium text-3xl my-20">
-              Ваша корзина пуста, может ты что-то добавишь еблан?
+            <div
+              className="flex items-center justify-center
+            bg-gray-200 border-2 border-blue-500 border-dashed h-48
+            text-gray-700 font-medium text-3xl my-20 rounded-lg mx-10"
+            >
+              Ваша корзина пустая
             </div>
           )}
           <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
@@ -403,7 +406,7 @@ const CartItem: FC<TItemsCartStore> = (props): ReactElement => {
           <Link to={'/product/' + id}>
             <img
               className="object-contain h-48 w-full"
-              src={REACT_API_URL + img}
+              src={process.env.REACT_APP_API_URL + img}
               alt="Изображение товара"
             />
           </Link>

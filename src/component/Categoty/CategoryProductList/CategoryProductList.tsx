@@ -3,6 +3,7 @@ import { TMainProductsData } from '../../../types'
 import { ProductCard } from '../../Product/ProductCard'
 import { PageNotFound } from '../../../pages/PageNotFound'
 import { NameOfCategory } from '../NameOfCategory/NameOfCategory'
+import { nanoid } from 'nanoid'
 
 interface TCategoryWrapper {
   name: string
@@ -40,8 +41,8 @@ const CategoryProductList: FC<TCategoryWrapper> = ({
         >
           {products.map((product, index) => {
             const count = ++index
-            if (limit && count > limit) return <></>
-            return <ProductCard key={index} product={product} />
+            if (limit && count > limit) return null
+            return <ProductCard key={nanoid()} product={product} />
           })}
         </div>
       </div>

@@ -1,6 +1,5 @@
 // @ts-ignore
 import SpringList from 'react-spring-dnd'
-import { REACT_API_URL } from '../../../../../config/config'
 import ShopApi from '../../../../../http/ShopApi'
 import { categoriesPageStore } from '../../../../../store/CategoryStore'
 import { shopConfigEditModalState } from '../../../../../store/ShopConfigEditModalState'
@@ -44,7 +43,7 @@ const CustomCategoryList: FC<{
           >
             <img
               className="h-10 w-10 "
-              src={REACT_API_URL + product.img}
+              src={process.env.REACT_APP_API_URL + product.img}
               alt={product.name}
             />
             <div className="text-center px-2 truncate w-full">

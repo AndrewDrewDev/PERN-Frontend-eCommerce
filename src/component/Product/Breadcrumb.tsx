@@ -1,6 +1,7 @@
 import { ReactElement } from 'react'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+import { nanoid } from 'nanoid'
 
 export type TBreadcrumbComponent = {
   categories?: { name: string; url: string }[]
@@ -87,7 +88,7 @@ const Breadcrumb: FC<TBreadcrumbComponent> = ({
             categories.map((c, i) => {
               if (!lastName && ++i === categories.length)
                 return LastNameItem({ name: c.name })
-              return <BreadcrumbItem key={i} name={c.name} url={c.url} />
+              return <BreadcrumbItem key={nanoid()} name={c.name} url={c.url} />
             })}
           {lastName ? LastNameItem({ name: lastName }) : null}
         </ol>

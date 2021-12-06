@@ -6,7 +6,6 @@ import cn from 'classnames'
 
 import { TProductSearchByNameResult } from '../../../types'
 import ProductApi from '../../../http/ProductApi'
-import { REACT_API_URL } from '../../../config/config'
 
 const InputSearchBySitePopup: FC = (): ReactElement => {
   const [products, setProducts] = useState<TProductSearchByNameResult[] | null>(
@@ -42,33 +41,39 @@ const InputSearchBySitePopup: FC = (): ReactElement => {
         </svg>
       </span>
       <input
-        className="w-full duration-300 border-2 border-gray-400 rounded-md 
+        className="w-full duration-300 border-2 border-gray-400 rounded-md
         pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
         type="text"
         placeholder="Поиск по сайту"
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
-      {transition((style, item) => {
-        return item ? (
-          <animated.div
-            className={cn(
-              'absolute z-50 w-full mt-1 bg-white border-2 rounded-md ' +
-                'shadow-lg overflow-auto h-20 pretty-scroll',
-              { 'h-96': products }
-            )}
-            style={style}
-          >
-            {products ? (
-              products.map((product, i) => (
-                <SearchItem key={i} data={product} customOnClick={closePopup} />
-              ))
-            ) : (
-              <EmptyItem />
-            )}
-          </animated.div>
-        ) : null
-      })}
+      {transition(
+        (style, item) =>
+          item && (
+            <animated.div
+              className={cn(
+                'absolute z-50 w-full mt-1 bg-white border-2 rounded-md ' +
+                  'shadow-lg overflow-auto pretty-scroll',
+                { 'h-96': products }
+              )}
+              style={style}
+            >
+              {products ? (
+                products.map((product, i) => (
+                  <SearchItem
+                    key={i}
+                    data={product}
+                    customOnClick={closePopup}
+                    tabIndex={i}
+                  />
+                ))
+              ) : (
+                <EmptyItem />
+              )}
+            </animated.div>
+          )
+      )}
     </div>
   )
 }
@@ -87,32 +92,36 @@ const EmptyItem = () => {
 type TSearchItem = {
   data: TProductSearchByNameResult
   customOnClick: () => void
+  tabIndex: number
 }
 
-const SearchItem: FC<TSearchItem> = ({ data, customOnClick }): ReactElement => {
+const SearchItem: FC<TSearchItem> = ({
+  data,
+  customOnClick,
+  tabIndex,
+}): ReactElement => {
   const { name, img, price, id } = data
   return (
-    <>
-      <Link
-        to={'/product/' + id}
-        onClick={() => customOnClick()}
-        className="block pl-3 font-normal truncate hover:underline hover:bg-blue-200 duration-300  hover:font-bold"
-      >
-        <div className="flex items-center px-2">
-          <div className="h-14 w-14 flex">
-            <img
-              className="object-contain items-center"
-              src={REACT_API_URL + img}
-              alt={name}
-            />
-          </div>
-          <div className="justify-center w-full mx-2 truncate text-gray-700 font-medium">
-            {name}
-          </div>
-          <div className="text-lg text-red-500">{price}</div>
+    <Link
+      to={'/product/' + id}
+      onClick={() => customOnClick()}
+      className="block pl-3 font-normal truncate hover:underline hover:bg-blue-200 duration-300  hover:font-bold"
+      tabIndex={tabIndex}
+    >
+      <div className="flex items-center px-2">
+        <div className="h-14 w-14 flex">
+          <img
+            className="object-contain items-center"
+            src={process.env.REACT_APP_API_URL + img}
+            alt={name}
+          />
         </div>
-      </Link>
-    </>
+        <div className="justify-center w-full mx-2 truncate text-gray-700 font-medium">
+          {name}
+        </div>
+        <div className="text-lg text-red-500">{price}</div>
+      </div>
+    </Link>
   )
 }
 

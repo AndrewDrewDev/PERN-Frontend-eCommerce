@@ -1,5 +1,4 @@
 import { Dispatch, FC, MouseEvent, SetStateAction, useState } from 'react'
-import { REACT_API_URL } from '../../../../config/config'
 import { categoriesPageStore } from '../../../../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../../../../types'
 import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
@@ -11,6 +10,7 @@ import CategoryApi from '../../../../http/CategoryApi'
 import { InputFile } from '../../form/InputFile'
 import { observer } from 'mobx-react-lite'
 import { useDragDrop } from '../../../../hooks/useDragDrop'
+import getEnvVariable from '../../../../utils/getEnvVariable'
 
 const CategoriesTabBody: FC = observer(() => {
   const [
@@ -126,7 +126,7 @@ const CategoryCard: FC<TCategoryInfoByLevel> = ({ name, count, img, url }) => {
               <img
                 className="transform scale-100 hover:scale-110 duration-500
                 ease-in-out m-auto w-full"
-                src={REACT_API_URL + img}
+                src={getEnvVariable('REACT_APP_API_URL') + img}
                 style={{
                   maxHeight: 300 + 'px',
                   maxWidth: 100 + '%',
