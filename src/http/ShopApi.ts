@@ -8,17 +8,17 @@ import {
 
 class ShopApi {
   public async fetchConfig(): Promise<TShopConfig> {
-    const { data } = await $host.get('/api/shop/config')
+    const { data } = await $host.get('api/shop/config')
     return data
   }
 
   public async updateConfig(body: TShopConfig): Promise<TShopConfig> {
-    const { data } = await $authHost.put('/api/shop/config', body)
+    const { data } = await $authHost.put('api/shop/config', body)
     return data
   }
 
   public async fetchSlider(): Promise<TShopSlider[]> {
-    const { data } = await $host.get('/api/shop/slider')
+    const { data } = await $host.get('api/shop/slider')
     return data
   }
 
@@ -26,7 +26,7 @@ class ShopApi {
     name: string
   ): Promise<TShopCustomCategoryProducts> {
     const { data } = await $host.get(
-      '/api/shop/custom_category_products/' + name
+      'api/shop/custom_category_products/' + name
     )
     return data
   }
@@ -36,7 +36,7 @@ class ShopApi {
     body: TUpdateCustomCategoryProductsBody
   ): Promise<TShopCustomCategoryProducts> {
     const { data } = await $authHost.post(
-      '/api/shop/custom_category_products/' + name,
+      'api/shop/custom_category_products/' + name,
       body
     )
     return data
@@ -47,7 +47,7 @@ class ShopApi {
     body: TUpdateCustomCategoryProductsBody
   ): Promise<TShopCustomCategoryProducts> {
     const { data } = await $authHost.delete(
-      '/api/shop/custom_category_products/' + name,
+      'api/shop/custom_category_products/' + name,
       { data: body }
     )
     return data
@@ -58,7 +58,7 @@ class ShopApi {
     body: string[]
   ): Promise<TShopCustomCategoryProducts> {
     const { data } = await $authHost.put(
-      '/api/shop/custom_category_products/' + name,
+      'api/shop/custom_category_products/' + name,
       { data: body }
     )
     return data
