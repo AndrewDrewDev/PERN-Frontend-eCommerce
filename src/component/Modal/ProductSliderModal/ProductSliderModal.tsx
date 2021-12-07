@@ -8,11 +8,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loa
 import './ProductSliderModal.css'
 import { useTransition, animated } from 'react-spring'
 import { nanoid } from 'nanoid'
+import ContentLoadingSpinner from '../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 
 const ProductSliderModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productSliderWidgetState.isShowing
   const productId = modalStateStore.productSliderWidgetState.productId
-  const [images, setImages] = useState<TProductPageDataImages>()
+  const [images, setImages] = useState<TProductPageDataImages | null>(null)
 
   const transitionModal = useTransition(isShowing, {
     from: { y: -50, opacity: 0 },
@@ -26,39 +27,41 @@ const ProductSliderModal: FC = observer((): ReactElement => {
   })
 
   useEffect(() => {
-    if (productId) {
-      ProductApi.fetchOneProduct(productId).then(data => setImages(data.images))
-    }
+    ;(async () => {
+      const data = await ProductApi.fetchOneProduct(productId)
+      setImages(data.images)
+    })()
   }, [productId])
 
-  const close = () =>
-    (modalStateStore.productSliderWidgetState = {
+  const close = () => {
+    modalStateStore.productSliderWidgetState = {
       isShowing: false,
       productId: '',
-    })
+    }
+  }
 
-  if (images)
-    return (
-      <>
-        {transitionBackground(
-          (style, item) =>
-            item && (
-              <animated.div
-                className="md:px-20 lg:px-32 xl:px-64 z-40 fixed w-screen h-screen
+  return (
+    <>
+      {transitionBackground(
+        (style, item) =>
+          item && (
+            <animated.div
+              className="md:px-20 lg:px-32 xl:px-64 z-40 fixed w-screen h-screen
         inset-0 overflow-hidden flex justify-center items-center bg-black
         bg-opacity-75"
-                onClick={() => close()}
-                key={nanoid()}
-                style={style}
-              >
-                {transitionModal(
-                  (style, item) =>
-                    item && (
-                      <animated.div
-                        style={style}
-                        key={nanoid()}
-                        onClick={e => e.stopPropagation()}
-                      >
+              onClick={() => close()}
+              key={nanoid()}
+              style={style}
+            >
+              {transitionModal(
+                (style, item) =>
+                  item && (
+                    <animated.div
+                      style={style}
+                      key={nanoid()}
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {images && (
                         <Carousel emulateTouch={true} showStatus={false}>
                           {images.big.map(img => (
                             <div
@@ -74,16 +77,15 @@ const ProductSliderModal: FC = observer((): ReactElement => {
                             </div>
                           ))}
                         </Carousel>
-                      </animated.div>
-                    )
-                )}
-              </animated.div>
-            )
-        )}
-      </>
-    )
-
-  return <></>
+                      )}
+                    </animated.div>
+                  )
+              )}
+            </animated.div>
+          )
+      )}
+    </>
+  )
 })
 
 export { ProductSliderModal }

@@ -56,7 +56,7 @@ const Footer: FC = (): ReactElement => {
             Соц. сети
           </div>
           <div className="mt-4 grid grid-cols-4 gap-1 fill-current text-gray-600 items-center">
-            <a className="cursor-pointer hover:text-gray-400" href="#">
+            <span className="cursor-pointer hover:text-gray-400">
               <svg
                 width="20pt"
                 height="20pt"
@@ -64,7 +64,7 @@ const Footer: FC = (): ReactElement => {
               >
                 <path d="M28.6.6L.9 11.6c-.9.3-.8 1.6.1 1.9l7 2.2 2.8 8.8c.2.7 1.1.9 1.6.4l4.1-3.8 7.8 5.7c.6.4 1.4.1 1.6-.6L31.3 3c.3-1.7-1.2-3-2.7-2.4zM12.4 17.4l-.9 5.2-2-7.2L29 2.6 12.4 17.4z" />
               </svg>{' '}
-            </a>
+            </span>
             <svg width="20pt" height="20pt" viewBox="0 0 576 512">
               <path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z" />
             </svg>{' '}
@@ -138,9 +138,9 @@ const Footer: FC = (): ReactElement => {
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
             </svg>{' '}
-            <a className="mx-6 text-md whitespace-nowrap" href="#">
+            <span className="mx-6 text-md whitespace-nowrap">
               {shopConfigStore.config.email}
-            </a>
+            </span>
           </div>
           <div className="relative mt-2">
             <svg

@@ -3,49 +3,15 @@ import { FC } from 'react'
 import Slider, { Settings } from 'react-slick'
 import './ProductSlider.css'
 
-type TProductSlider = {
+interface IProductSliderProps {
+  productName: string
   images: string[]
 }
 
-const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
-  const PrevArrow: ReactElement = (
-    <div>
-      <svg
-        className="w-14 h-14 text-gray-700"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
-    </div>
-  )
-
-  const NextArrow: ReactElement = (
-    <div>
-      <svg
-        className="w-14 h-14 text-gray-700"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-    </div>
-  )
-
+const ProductSlider: FC<IProductSliderProps> = ({
+  productName,
+  images,
+}): ReactElement => {
   const settings: Settings = {
     dots: true,
     infinite: true,
@@ -76,16 +42,55 @@ const ProductSlider: FC<TProductSlider> = ({ images }): ReactElement => {
       <Slider className="rounded-lg  mb-4 border shadow-lg" {...settings}>
         {images.map((img, i) => (
           <img
-            key={i}
+            key={img}
             id={img}
             className="h-64 md:h-80 object-contain"
             src={process.env.REACT_APP_API_URL + img}
-            alt=""
+            alt={productName}
+            loading={'lazy'}
           />
         ))}
       </Slider>
     </div>
   )
 }
+
+const PrevArrow: ReactElement = (
+  <div>
+    <svg
+      className="w-14 h-14 text-gray-700"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M15 19l-7-7 7-7"
+      />
+    </svg>
+  </div>
+)
+
+const NextArrow: ReactElement = (
+  <div>
+    <svg
+      className="w-14 h-14 text-gray-700"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9 5l7 7-7 7"
+      />
+    </svg>
+  </div>
+)
 
 export { ProductSlider }

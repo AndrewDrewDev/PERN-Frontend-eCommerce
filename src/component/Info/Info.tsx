@@ -15,24 +15,25 @@ const InfoContent: FC<TPageData> = ({ title, content, img }): ReactElement => {
         {title}
       </h1>
       <hr className="mb-3" />
-      {imgFloat ? (
+      {imgFloat && (
         <img
-          className="lazy border w-full shadow-lg rounded-lg mx-auto lg:float-left pr-4 pb-4 entered loaded"
-          style={{
-            width: '450px',
-          }}
+          className="border p-2 w-96 max-w-max border-2 rounded-lg mx-auto lg:float-left"
           alt="О магазине"
+          height={400}
+          width={230}
           src={process.env.REACT_APP_API_URL + imgFloat}
         />
-      ) : null}
+      )}
       {textToHtml(content)}
-      {imgBigBottomWFull ? (
+      {imgBigBottomWFull && (
         <img
           className="mx-auto shadow-lg rounded-lg entered loaded w-4/5"
           alt="О нас"
+          height={1190}
+          width={800}
           src={process.env.REACT_APP_API_URL + imgBigBottomWFull}
         />
-      ) : null}
+      )}
     </div>
   )
 }

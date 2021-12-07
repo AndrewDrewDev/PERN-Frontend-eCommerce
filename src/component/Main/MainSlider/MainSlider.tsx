@@ -30,6 +30,7 @@ const MainSlider: FC = observer((): ReactElement => {
                 className="w-full h-96 object-cover rounded-lg"
                 src={process.env.REACT_APP_API_URL + slide.img}
                 alt={`Слайд: ${slide.title}`}
+                loading={'lazy'}
               />
               <p
                 className="absolute top-0 right-0 w-full text-right

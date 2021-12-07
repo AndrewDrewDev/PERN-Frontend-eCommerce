@@ -17,9 +17,11 @@ const Title: FC<TProps> = ({
   phone,
 }: TProps): ReactElement => {
   return (
-    <div className="block">
-      <div className="flex justify-center items-center w-full text-gray-700 text-center text-2xl md:text-3xl font-semibold">
-        <Link to="/">{title}</Link>
+    <div className="block text-gray-700">
+      <div className="flex justify-center items-center w-full text-center text-2xl md:text-3xl font-semibold">
+        <div className="text-gray-800">
+          <Link to="/">{title}</Link>
+        </div>
         <div className="ml-3">
           <AdminEditButton
             onClickHandler={() =>
@@ -31,7 +33,7 @@ const Title: FC<TProps> = ({
       <div className="w-full text-gray-700 text-center text-lg md:text-xl font-oswald md:whitespace-nowrap">
         {subtitle}
       </div>
-      <div className="w-full text-gray-600 text-xs flex md:text-sm md:flex md:items-center justify-center">
+      <div className="w-full text-xs flex md:text-sm md:flex md:items-center justify-center">
         <svg
           className="h-5 w-5 mt-2"
           viewBox="0 0 24 24"

@@ -9,7 +9,7 @@ import s from './NavPanel.module.css'
 const NavPanel: FC = (): ReactElement => {
   const linkStyle = cn(s.animate_underline, 'mt-1 mx-2')
   return (
-    <nav className="relative hidden md:flex justify-center items-center whitespace-nowrap font-semibold text-gray-600">
+    <nav className="relative hidden md:flex justify-center items-center whitespace-nowrap font-semibold text-gray-700">
       <Link to="/" className={linkStyle}>
         Главная
       </Link>

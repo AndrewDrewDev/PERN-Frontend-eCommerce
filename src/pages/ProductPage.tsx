@@ -62,7 +62,10 @@ const ProductPage: FC = observer((): ReactElement => {
               lastName={product.name}
             />
             <div className="mx-auto flex flex-wrap">
-              <ProductSlider images={product.images.big} />
+              <ProductSlider
+                productName={product.name}
+                images={product.images.big}
+              />
               <ProductInfo data={product} />
             </div>
             <TabsPanel

@@ -230,7 +230,7 @@ const ProgressBar: FC<TPaymentProgressBar> = ({ step }): ReactElement => {
           <div className="flex">
             <div className="w-1/3">
               <div className="relative mb-2">
-                <a href="cart1.html">
+                <span>
                   <div className="w-10 h-10 mx-auto bg-blue-500 rounded-full text-lg text-white flex items-center">
                     <span className="text-center text-white w-full">
                       <svg
@@ -249,13 +249,13 @@ const ProgressBar: FC<TPaymentProgressBar> = ({ step }): ReactElement => {
                       </svg>
                     </span>
                   </div>
-                </a>
+                </span>
               </div>
-              <a href="cart1.html">
+              <span>
                 <div className="text-xs text-gray-700 text-center md:text-base hover:underline">
                   Корзина
                 </div>
-              </a>
+              </span>
             </div>
             <div className="w-1/3">
               <div className="relative mb-2">
@@ -274,7 +274,7 @@ const ProgressBar: FC<TPaymentProgressBar> = ({ step }): ReactElement => {
                     />
                   </div>
                 </div>
-                <a href="order1.html">
+                <span>
                   <div className="w-10 h-10 mx-auto bg-blue-500 rounded-full text-lg text-white flex items-center">
                     <span className="text-center text-white w-full">
                       <svg
@@ -293,13 +293,13 @@ const ProgressBar: FC<TPaymentProgressBar> = ({ step }): ReactElement => {
                       </svg>
                     </span>
                   </div>
-                </a>
+                </span>
               </div>
-              <a href="oreder1.html">
+              <span>
                 <div className="text-xs text-gray-700 text-center md:text-base hover:underline">
                   Оформление заказа
                 </div>
-              </a>
+              </span>
             </div>
             <div className="w-1/3">
               <div className="relative mb-2">

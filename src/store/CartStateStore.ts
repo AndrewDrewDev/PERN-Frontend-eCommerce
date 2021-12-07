@@ -64,6 +64,7 @@ class CartStore {
         count,
       })
       this.updateCart()
+      return
     }
 
     // Check if new product id exist

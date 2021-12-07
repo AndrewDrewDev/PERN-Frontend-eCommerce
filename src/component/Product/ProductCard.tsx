@@ -35,7 +35,7 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
     if (label === 'Акции') {
       return (
         <div
-          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform
+          className="absolute top-0 left-0 -mx-12 my-6 px-16 transform
         -rotate-45 bg-red-500 text-sm whitespace-no-wrap text-white
         uppercase font-medium border-2 border-red-800"
         >
@@ -61,7 +61,8 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
     <>
       <div
         className="container mx-auto max-w-xs rounded-lg overflow-hidden
-      shadow-lg bg-white"
+        shadow-lg bg-white"
+        tabIndex={1}
       >
         <div className="relative flex items-end justify-center min-h-64 h-64">
           <Link
@@ -72,6 +73,7 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             <img
               className="object-contain w-full m-auto h-64"
               alt={name}
+              loading={'lazy'}
               src={process.env.REACT_APP_API_URL + img}
             />
           </Link>
@@ -94,6 +96,8 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
           </div>
 
           <button
+            name={'Быстрый просмотр'}
+            title={'Быстрый просмотр'}
             className="shadow hover:shadow-lg duration-500
             absolute z-20 bottom-0 right-0 -mb-4 p-2 rounded-full
           bg-blue-600 text-white hover:bg-blue-500 focus:outline-none
@@ -130,6 +134,8 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             </svg>
           </button>
           <button
+            name={'Слайдер'}
+            title={'Слайдер'}
             className="absolute shadow hover:shadow-lg duration-500 z-20
              bottom-0 right-0 -mb-4 p-2 rounded-full bg-blue-600 text-white
               hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
@@ -165,6 +171,8 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             style={{
               marginRight: '1rem',
             }}
+            name={'Добавить в корзину'}
+            title={'Добавить в корзину'}
             onClick={() => (cartStore.addItem = cartData)}
           >
             <svg
@@ -182,7 +190,7 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
         </div>
         <div className="px-5 py-3 bg-white relative z-10">
           <div>
-            <h3 className="text-gray-700">{name}</h3>
+            <h2 className="text-gray-700">{name}</h2>
           </div>
           <span className="font-bold text-gray-800 mt-2">
             {price} {shopConfigStore.config.currency}
