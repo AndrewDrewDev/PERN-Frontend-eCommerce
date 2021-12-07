@@ -1,19 +1,11 @@
 import Button from '../../Buttons/Buttons'
 import { FC } from 'react'
 import { categoryState } from '../../../store/CategoryState'
-import { CategoryTypeEnum } from '../../../hooks/useCategoryType/types'
+import { observer } from 'mobx-react-lite'
 
-interface ProductsNotFoundProps {
-  categoryUrl: string
-  categoryType: CategoryTypeEnum
-}
-
-const ProductsNotFound: FC<ProductsNotFoundProps> = ({
-  categoryType,
-  categoryUrl,
-}) => {
-  const updateFilterHandler = async () => {
-    await categoryState.reloadFilter(categoryType, categoryUrl)
+const ProductsNotFound: FC = observer(() => {
+  const resetFilterHandler = async () => {
+    await categoryState.resetFilters()
   }
 
   return (
@@ -24,10 +16,10 @@ const ProductsNotFound: FC<ProductsNotFoundProps> = ({
       <div>
         <Button
           content="Сбросить фильтры"
-          onClickHandler={() => updateFilterHandler()}
+          onClickHandler={() => resetFilterHandler()}
         />
       </div>
     </div>
   )
-}
+})
 export { ProductsNotFound }

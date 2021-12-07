@@ -8,18 +8,38 @@ import { CategoryTypeEnum } from '../../hooks/useCategoryType/types'
 import { shopConfigStore } from '../ShopConfigStore'
 
 class CategoryState {
+  private _categoryType: CategoryTypeEnum
+  private _categoryUrl: string
   private _filters: TFetchProductsFiltersByUrl
   private _filterFetched: boolean
   private _showFilters: boolean
   private _urlState: string
   private _update: boolean
   constructor() {
+    this._categoryType = CategoryTypeEnum.COMMON
+    this._categoryUrl = ''
     this._filterFetched = false
-    this._showFilters = shopConfigStore.isMobile // if mobile size filter hide
+    this._showFilters = !shopConfigStore.isMobile // if mobile size filter hide
     this._filters = {} as TFetchProductsFiltersByUrl
     this._urlState = ''
     this._update = false
     makeAutoObservable(this)
+  }
+
+  get categoryType(): CategoryTypeEnum {
+    return this._categoryType
+  }
+
+  set categoryType(value: CategoryTypeEnum) {
+    this._categoryType = value
+  }
+
+  get categoryUrl(): string {
+    return this._categoryUrl
+  }
+
+  set categoryUrl(value: string) {
+    this._categoryUrl = value
   }
 
   get showFilters() {
@@ -48,6 +68,10 @@ class CategoryState {
 
   public updating() {
     this._update = !this._update
+  }
+
+  public async resetFilters() {
+    await categoryState.reloadFilter(this.categoryType, this.categoryUrl)
   }
 
   public getQueryString(): TProductsFiltersQueryParams {

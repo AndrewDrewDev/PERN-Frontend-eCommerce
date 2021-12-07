@@ -10,7 +10,8 @@ class ShopConfigStore {
   private _isMobile: boolean
 
   constructor() {
-    this._isMobile = window.innerWidth >= 1024
+    this._isMobile = !(window.innerWidth >= 1024)
+    console.log(this._isMobile)
     this.updateFetchData()
     makeAutoObservable(this)
   }

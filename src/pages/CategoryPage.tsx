@@ -21,6 +21,9 @@ import { TransitionWrapper } from '../component/Animations/TransitionWrapper/Tra
 import { scrollToBeginPage } from '../utils/scrollToBeginPage'
 import { useCategoryType } from '../hooks/useCategoryType/useCategoryType'
 import cn from 'classnames'
+import { RightSideBarModal } from '../component/Modal/RightSideBarModal/RightSideBarModal'
+import { shopConfigStore } from '../store/ShopConfigStore'
+import { CategoryFilterBody } from '../component/Categoty/CategoryFilterBody/CategoryFilterBody'
 
 const CategoryPage: FC = observer((): ReactElement => {
   const { id }: { id: string } = useParams()
@@ -36,6 +39,9 @@ const CategoryPage: FC = observer((): ReactElement => {
   useEffect(() => {
     ;(async () => {
       try {
+        categoryState.categoryType = categoryType
+        categoryState.categoryUrl = id
+
         scrollToBeginPage()
         modalStateStore.closeAll()
 
@@ -78,16 +84,28 @@ const CategoryPage: FC = observer((): ReactElement => {
         {breadcrumb ? <Breadcrumb categories={breadcrumb} /> : null}
         <div className="flex w-full">
           {categoryState.filterFetched && (
-            <TransitionWrapper
-              state={categoryState.showFilters}
-              props={{
-                from: { opacity: 0, width: '0' },
-                enter: { opacity: 1, width: '16rem' },
-                leave: { opacity: 0, width: '0' },
-              }}
-            >
-              <CategoryFilter />
-            </TransitionWrapper>
+            <>
+              {shopConfigStore.isMobile ? (
+                <RightSideBarModal
+                  show={categoryState.showFilters}
+                  setShow={() => (categoryState.showFilters = false)}
+                  title={'Фильтры'}
+                >
+                  <CategoryFilterBody />
+                </RightSideBarModal>
+              ) : (
+                <TransitionWrapper
+                  state={categoryState.showFilters}
+                  props={{
+                    from: { opacity: 1, width: '16rem' },
+                    enter: { opacity: 1, width: '16rem' },
+                    leave: { opacity: 0, width: '0' },
+                  }}
+                >
+                  <CategoryFilter />
+                </TransitionWrapper>
+              )}
+            </>
           )}
           <div
             className={cn('w-full', {
@@ -102,7 +120,7 @@ const CategoryPage: FC = observer((): ReactElement => {
                 filterButton={true}
               />
             ) : (
-              <ProductsNotFound categoryType={categoryType} categoryUrl={id} />
+              <ProductsNotFound />
             )}
           </div>
         </div>

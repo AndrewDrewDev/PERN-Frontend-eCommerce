@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { TMainProductsData } from '../../../types'
 import { ProductCard } from '../../Product/ProductCard'
 import { PageNotFound } from '../../../pages/PageNotFound'
 import { NameOfCategory } from '../NameOfCategory/NameOfCategory'
 import { nanoid } from 'nanoid'
+import { categoryState } from '../../../store/CategoryState'
 
 interface TCategoryWrapper {
   name: string

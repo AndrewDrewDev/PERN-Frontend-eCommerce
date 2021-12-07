@@ -1,5 +1,5 @@
 .btn {
-  @apply flex items-center justify-center my-3 font-medium px-2 py-1 text-white duration-500 rounded-lg border;
+  @apply flex items-center justify-center font-medium px-2 py-1 text-white duration-500 rounded-lg border;
 }
 
 .btn__red {
