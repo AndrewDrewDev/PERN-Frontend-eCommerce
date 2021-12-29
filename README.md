@@ -1,4 +1,4 @@
-# JAM stack eCommerce static site generator
+# Frontend PERN-stack Store
 
 This repository stores the client code of an demo online store created by technology PERN-stack.
 
