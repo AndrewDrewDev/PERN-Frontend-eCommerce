@@ -6,11 +6,10 @@ import { ManageImagesPreview } from './ManageImagesPreview'
 import { Input } from '../../form/Input'
 import { Select } from '../../form/Select'
 import { TextArea } from '../../form/TextArea'
-import Button from '../../../Buttons/Buttons'
+import { Button } from '../../../Buttons'
 import { ManageImagesBig } from './ManageImagesBig'
 
-type TProductEditModalBody = { product: TProductPageData }
-const ProductEditModalBody: FC<TProductEditModalBody> = ({ product }) => {
+const ProductEditModalBody: FC<{ product: TProductPageData }> = ({ product }) => {
   // Store product data for submit
   const [name, setName] = useState(product.name)
   const [price, setPrice] = useState(product.price)

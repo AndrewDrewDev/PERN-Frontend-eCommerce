@@ -8,7 +8,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loa
 import './ProductSliderModal.css'
 import { useTransition, animated } from 'react-spring'
 import { nanoid } from 'nanoid'
-import ContentLoadingSpinner from '../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 
 const ProductSliderModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productSliderWidgetState.isShowing

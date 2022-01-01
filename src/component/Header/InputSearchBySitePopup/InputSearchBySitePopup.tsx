@@ -42,7 +42,8 @@ const InputSearchBySitePopup: FC = (): ReactElement => {
       </span>
       <input
         className="w-full duration-300 border-2 border-gray-400 rounded-md
-        pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline focus:ring-4"
+        pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none
+        focus:shadow-outline focus:ring-4"
         type="text"
         placeholder="Поиск по сайту"
         value={query}
@@ -82,19 +83,19 @@ const EmptyItem = () => {
   return (
     <div
       className="my-3 flex items-center justify-center text-lg text-center
-     font-medium border-2 border-blue-500 bg-blue-100 border-dashed rounded-lg w-full h-10"
+     font-medium border-2 border-blue-500 bg-blue-100 border-dashed rounded-lg
+     w-full h-10"
     >
       С таким названием товары не найдены
     </div>
   )
 }
 
-type TSearchItem = {
+interface TSearchItem {
   data: TProductSearchByNameResult
   customOnClick: () => void
   tabIndex: number
 }
-
 const SearchItem: FC<TSearchItem> = ({
   data,
   customOnClick,
@@ -105,7 +106,8 @@ const SearchItem: FC<TSearchItem> = ({
     <Link
       to={'/product/' + id}
       onClick={() => customOnClick()}
-      className="block pl-3 font-normal truncate hover:underline hover:bg-blue-200 duration-300  hover:font-bold"
+      className="block pl-3 font-normal truncate hover:underline
+      hover:bg-blue-200 duration-300  hover:font-bold"
       tabIndex={tabIndex}
     >
       <div className="flex items-center px-2">

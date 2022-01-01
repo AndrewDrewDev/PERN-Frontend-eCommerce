@@ -3,12 +3,11 @@ import { ReactElement } from 'react'
 import { shopConfigStore } from '../../store/ShopConfigStore'
 import { observer } from 'mobx-react-lite'
 
-type TProductOldPrice = {
+const ProductOldPrice: FC<{
   price: string
 }
-
-const ProductOldPrice: FC<TProductOldPrice> = observer(
-  ({ price }): ReactElement => {
+  > = observer(
+  ({ price }) => {
     return (
       <div className="mx-auto mt-1">
         <div className="text-lg text-gray-700">

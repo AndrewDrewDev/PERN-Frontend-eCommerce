@@ -2,11 +2,8 @@ import { FC } from 'react'
 import { ReactElement } from 'react'
 import { TProductPageDataStatus } from '../../types'
 
-// TODO: Stopped this
-type TProductInStock = { status: TProductPageDataStatus }
-
-const ProductInStock: FC<TProductInStock> = ({ status }): ReactElement => {
-  // if prodcut allow by default
+const ProductInStock: FC<{ status: TProductPageDataStatus }> = ({ status }) => {
+  // if product allow by default
   let style: string = 'flex px-1 rounded border border-green-400 bg-green-200'
   let name: string = 'Товар в наличии'
   let svg: ReactElement = (

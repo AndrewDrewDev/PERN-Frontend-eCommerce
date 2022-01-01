@@ -1,21 +1,21 @@
 import { FC, ReactElement } from 'react'
 import { Link } from 'react-router-dom'
-import { AdminEditButton } from '../../Admin/button/AdminEditButton'
+import { AdminEditButton } from '../../Admin/button'
 import { modalStateStore } from '../../../store/ModalStateStore'
 
-type TProps = {
+interface TitleProps {
   title: string
   subtitle: string
   address: string
   phone: string
 }
 
-const Title: FC<TProps> = ({
+const Title: FC<TitleProps> = ({
   title,
   subtitle,
   address,
   phone,
-}: TProps): ReactElement => {
+}): ReactElement => {
   return (
     <div className="block text-gray-700">
       <div className="flex justify-center items-center w-full text-center text-2xl md:text-3xl font-semibold">

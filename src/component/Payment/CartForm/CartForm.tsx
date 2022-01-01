@@ -14,14 +14,14 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 
-type TPaymentCartForm = {
+interface IPaymentCartFormProps {
   handleSetPageName: Dispatch<SetStateAction<TPaymentPageNames>>
   handleSetOrder: Dispatch<
     SetStateAction<TPaymentCheckoutOrderData | undefined>
   >
 }
 
-const CartForm: FC<TPaymentCartForm> = observer(
+const CartForm: FC<IPaymentCartFormProps> = observer(
   ({ handleSetPageName, handleSetOrder }): ReactElement => {
     const [fullName, setFullName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -125,7 +125,8 @@ const CartForm: FC<TPaymentCartForm> = observer(
             <div className="mt-10 bg-white text-sm rounded-b p-4">
               <TabPanel>
                 <div>
-                  <div className="flex flex-col text-xl block md:float-right text-lg text-center md:text-right text-gray-600">
+                  <div className="flex flex-col text-xl block md:float-right
+                  text-lg text-center md:text-right text-gray-600">
                     <div>
                       <span>Количество: </span>
                       <span className="text-red-600">
@@ -142,7 +143,9 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex justify-center md:justify-end mt-2">
                       <button
-                        className="flex duration-500 focus:outline-none text-white text-sm p-2 rounded-md bg-blue-600 hover:bg-blue-500 hover:shadow-lg"
+                        className="flex duration-500 focus:outline-none
+                        text-white text-sm p-2 rounded-md bg-blue-600
+                        hover:bg-blue-500 hover:shadow-lg"
                         onClick={() => cartStore.removeAll()}
                       >
                         <svg
@@ -163,7 +166,8 @@ const CartForm: FC<TPaymentCartForm> = observer(
                       </button>
                     </div>
                   </div>
-                  <div className="text-lg font-light text-left text-gray-600 w-full max-w-lg mt-3 md:mt-0">
+                  <div className="text-lg font-light text-left text-gray-600
+                  w-full max-w-lg mt-3 md:mt-0">
                     <p>
                       Укажите необходимую информацию для оформления обычного
                       заказа, или воспользуйтесь формой "
@@ -177,11 +181,15 @@ const CartForm: FC<TPaymentCartForm> = observer(
                   >
                     <div className="flex flex-wrap -mx-3 mb-6">
                       <div className="w-full px-3 md:px-0">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <label className="block uppercase tracking-wide
+                        text-gray-700 text-xs font-bold mb-2">
                           Ваши ФИО
                         </label>
                         <input
-                          className="appearance-none block w-full max-w-lg bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full max-w-lg
+                          bg-gray-200 text-gray-700 border border-gray-200
+                          rounded py-3 px-4 mb-3 leading-tight focus:outline-none
+                           focus:bg-white focus:border-gray-500"
                           name="full_name"
                           type="text"
                           placeholder="ФИО"
@@ -198,11 +206,15 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                       <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <label className="block uppercase tracking-wide
+                        text-gray-700 text-xs font-bold mb-2">
                           Ваш телефон
                         </label>
                         <input
-                          className="appearance-none block w-full max-w-lg bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full max-w-lg
+                          bg-gray-200 text-gray-700 border border-gray-200
+                          rounded py-3 px-4 mb-3 leading-tight focus:outline-none
+                          focus:bg-white focus:border-gray-500"
                           name="phone"
                           type="text"
                           placeholder="+380449999999"
@@ -219,11 +231,15 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                       <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <label className="block uppercase tracking-wide
+                        text-gray-700 text-xs font-bold mb-2">
                           E-mail
                         </label>
                         <input
-                          className="appearance-none block w-full max-w-lg bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full max-w-lg
+                          bg-gray-200 text-gray-700 border border-gray-200
+                           rounded py-3 px-4 mb-3 leading-tight
+                           focus:outline-none focus:bg-white focus:border-gray-500"
                           name="email"
                           type="email"
                           placeholder="your.email@gmail.com"
@@ -240,11 +256,15 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                       <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <label className="block uppercase tracking-wide
+                        text-gray-700 text-xs font-bold mb-2">
                           Адрес доставки
                         </label>
                         <input
-                          className="appearance-none block w-full max-w-lg bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          className="appearance-none block w-full max-w-lg
+                          bg-gray-200 text-gray-700 border border-gray-200
+                          rounded py-3 px-4 mb-3 leading-tight focus:outline-none
+                           focus:bg-white focus:border-gray-500"
                           name="address"
                           type="text"
                           placeholder="г.Киев, ул.Любая 8"
@@ -261,11 +281,15 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex flex-wrap -mx-3">
                       <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        <label className="block uppercase tracking-wide
+                        text-gray-700 text-xs font-bold mb-2">
                           Коментарии к заказу
                         </label>
                         <textarea
-                          className="no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
+                          className="no-resize appearance-none block w-full
+                          bg-gray-200 text-gray-700 border border-gray-200
+                          rounded py-3 px-4 mb-3 leading-tight focus:outline-none
+                           focus:bg-white focus:border-gray-500 h-48 resize-none"
                           name="message"
                           onChange={e => {
                             setComment(e.target.value)
@@ -278,7 +302,10 @@ const CartForm: FC<TPaymentCartForm> = observer(
                       <div className="flex">
                         <button
                           type="submit"
-                          className="flex duration-500 items-center p-2 px-10 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500 cursor-pointer"
+                          className="flex duration-500 items-center p-2 px-10
+                          bg-blue-600 text-white text-sm font-medium rounded
+                          hover:bg-blue-500 focus:outline-none focus:bg-blue-500
+                           cursor-pointer"
                         >
                           <span className="mr-1">Оформить заказ</span>
                           <svg
@@ -300,7 +327,8 @@ const CartForm: FC<TPaymentCartForm> = observer(
               </TabPanel>
               <TabPanel>
                 <div>
-                  <div className="flex flex-col text-xl block md:float-right text-lg text-center md:text-right text-gray-600">
+                  <div className="flex flex-col text-xl block md:float-right
+                  text-lg text-center md:text-right text-gray-600">
                     <div>
                       <span>Количество: </span>
                       <span className="text-red-600">
@@ -317,7 +345,9 @@ const CartForm: FC<TPaymentCartForm> = observer(
                     </div>
                     <div className="flex justify-center md:justify-end mt-2">
                       <button
-                        className="flex duration-500 focus:outline-none text-white text-sm p-2 rounded-md bg-blue-600 hover:bg-blue-500 hover:shadow-lg"
+                        className="flex duration-500 focus:outline-none
+                        text-white text-sm p-2 rounded-md bg-blue-600
+                        hover:bg-blue-500 hover:shadow-lg"
                         onClick={() => cartStore.removeAll()}
                       >
                         <svg

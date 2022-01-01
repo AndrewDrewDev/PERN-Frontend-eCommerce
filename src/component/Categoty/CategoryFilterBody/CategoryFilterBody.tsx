@@ -1,9 +1,9 @@
 import React from 'react'
-import { PriceFilter } from '../PriceFilter/PriceFilter'
+import { PriceFilter } from '../PriceFilter'
 import { categoryState } from '../../../store/CategoryState'
-import { LabelsFilter } from '../LabelsFilter/LabelsFilter'
-import SuppliersFilter from '../SuppliersFilter/SuppliersFilter'
-import Button from '../../Buttons/Buttons'
+import { LabelsFilter } from '../LabelsFilter'
+import { SuppliersFilter } from '../SuppliersFilter'
+import { Button } from '../../Buttons'
 
 const CategoryFilterBody = () => {
   const { labels, suppliers } = categoryState.filters

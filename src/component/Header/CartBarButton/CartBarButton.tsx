@@ -6,7 +6,7 @@ import { FC } from 'react'
 import { cartStore } from '../../../store/CartStateStore'
 import { modalStateStore } from '../../../store/ModalStateStore'
 
-type THeaderCartBarButton = {
+interface THeaderCartBarButton {
   onClick: MouseEventHandler
 }
 

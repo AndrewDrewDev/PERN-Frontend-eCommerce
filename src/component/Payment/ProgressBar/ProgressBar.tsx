@@ -1,8 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 
-type TPaymentProgressBar = { step: 1 | 2 | 3 }
-
-const ProgressBar: FC<TPaymentProgressBar> = ({ step }): ReactElement => {
+const ProgressBar: FC<{ step: 1 | 2 | 3 }> = ({ step }): ReactElement => {
   return (
     <>
       {step === 1 ? (

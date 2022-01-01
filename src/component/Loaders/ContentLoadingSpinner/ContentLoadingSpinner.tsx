@@ -27,4 +27,4 @@ const ContentLoadingSpinner: FC<IContentLoadingSpinnerProps> = ({
   )
 }
 
-export default ContentLoadingSpinner
+export { ContentLoadingSpinner }

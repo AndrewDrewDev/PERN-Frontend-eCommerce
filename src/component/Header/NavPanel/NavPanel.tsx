@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import cn from 'classnames'
 
@@ -6,7 +6,7 @@ import { NavPanelCartButton } from '../NavPanelCartButton/NavPanelCartButton'
 
 import s from './NavPanel.module.css'
 
-const NavPanel: FC = (): ReactElement => {
+const NavPanel: FC = () => {
   const linkStyle = cn(s.animate_underline, 'mt-1 mx-2')
   return (
     <nav className="relative hidden md:flex justify-center items-center whitespace-nowrap font-semibold text-gray-700">

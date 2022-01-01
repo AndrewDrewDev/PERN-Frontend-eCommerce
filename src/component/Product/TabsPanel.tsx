@@ -4,26 +4,26 @@ import { FC } from 'react'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import textToHtml from '../../utils/textToHtml'
 
-type TTabsPanel = {
+interface ITabsPanelProps {
   description: string
   info: string
   paymentDelivery: string
   reviews: string
 }
 
-const TabsPanel: FC<TTabsPanel> = ({
+const tabStyle =
+  'text-gray-600 py-4 px-6 block hover:text-blue-500 border-b-2 border-white focus:outline-none'
+
+const selectedTabStyle =
+  'text-blue-500 font-medium border-blue-500 duration-500'
+
+const TabsPanel: FC<ITabsPanelProps> = ({
   info,
   description,
   paymentDelivery,
   reviews,
 }): ReactElement => {
   const [tabIndex, setTabIndex] = useState(0)
-
-  const tabStyle: string =
-    'text-gray-600 py-4 px-6 block hover:text-blue-500 border-b-2 border-white focus:outline-none'
-
-  const selectedTabStyle: string =
-    'text-blue-500 font-medium border-blue-500 duration-500'
 
   return (
     <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>

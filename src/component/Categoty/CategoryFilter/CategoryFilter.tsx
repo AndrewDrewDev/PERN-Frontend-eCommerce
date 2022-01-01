@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { categoryState } from '../../../store/CategoryState'
 import { useEffect } from 'react'
 import { scrollToBeginPage } from '../../../utils/scrollToBeginPage'
-import { CategoryFilterBody } from '../CategoryFilterBody/CategoryFilterBody'
+import { CategoryFilterBody } from '../CategoryFilterBody'
 
 const CategoryFilter = observer(() => {
   useEffect(() => {

@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import { ReactElement } from 'react'
 
-type TProductCounter = {
+interface IProductCounterProps {
   callback: (value: number) => void
 }
 
-const ProductCounter: FC<TProductCounter> = ({ callback }): ReactElement => {
+const ProductCounter: FC<IProductCounterProps> = ({ callback }) => {
   const [value, setValue] = useState(1)
 
   useEffect(() => {

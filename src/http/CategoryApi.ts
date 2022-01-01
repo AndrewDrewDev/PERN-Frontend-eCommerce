@@ -1,6 +1,6 @@
 import { $authHost, $host } from './index'
 import { TCategoryInfoByLevel, TMainProductsData } from '../types'
-import { TBreadcrumbComponentItem } from '../component/Product/Breadcrumb'
+import { IBreadcrumbComponentItemProps } from '../component/Product/Breadcrumb'
 import { CategoryTypeEnum } from '../hooks/useCategoryType/types'
 
 type TFetchProducts = {
@@ -93,7 +93,7 @@ class CategoryApi {
 
   public async fetchBreadcrumb(
     url: string
-  ): Promise<TBreadcrumbComponentItem[]> {
+  ): Promise<IBreadcrumbComponentItemProps[]> {
     const { data } = await $host.get('api/category/breadcrumb/' + url)
     return data
   }

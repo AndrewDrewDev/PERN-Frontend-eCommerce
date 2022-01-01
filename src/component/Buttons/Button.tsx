@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import cn from 'classnames'
-import s from './Buttons.module.css'
+import s from './Button.module.css'
 
 type TButton = {
   type?: 'submit' | 'button'
@@ -29,4 +29,4 @@ const Button: FC<TButton> = ({
   )
 }
 
-export default Button
+export {Button}

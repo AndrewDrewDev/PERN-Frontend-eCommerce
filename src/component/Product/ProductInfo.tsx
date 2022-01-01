@@ -1,28 +1,26 @@
-import { ReactElement, useState } from 'react'
-import { FC } from 'react'
-import { cartStore } from '../../store/CartStateStore'
-import { TAddItemCartStore, TProductPageData } from '../../types'
-import { ProductCounter } from './ProductCounter'
-import { ProductInStock } from './ProductInStock'
-import { ProductOldPrice } from './ProductOldPrice'
-import { ProductPrice } from './ProductPrice'
+import { useState } from "react";
+import { FC } from "react";
+import { cartStore } from "../../store/CartStateStore";
+import { TAddItemCartStore, TProductPageData } from "../../types";
+import { ProductCounter } from "./ProductCounter";
+import { ProductInStock } from "./ProductInStock";
+import { ProductOldPrice } from "./ProductOldPrice";
+import { ProductPrice } from "./ProductPrice";
 
-type TProductInfo = { data: TProductPageData }
-
-const ProductInfo: FC<TProductInfo> = ({ data }): ReactElement => {
+const ProductInfo: FC<{ data: TProductPageData }> = ({ data }) => {
   const [cartData, setCartData] = useState<TAddItemCartStore>({
     id: data.id,
     name: data.name,
     img: data.images.preview,
     price: data.price,
-    count: 1,
-  })
+    count: 1
+  });
 
   const setCount = (value: number): void => {
-    const newObj = { ...cartData }
-    newObj.count = value
-    setCartData(newObj)
-  }
+    const newObj = { ...cartData };
+    newObj.count = value;
+    setCartData(newObj);
+  };
 
   return (
     <div className="lg:w-1/2 w-full lg:pl-10 mt-6 lg:mt-0 text-gray-600">
@@ -61,12 +59,13 @@ const ProductInfo: FC<TProductInfo> = ({ data }): ReactElement => {
             className="w-5 h-5"
             viewBox="0 0 24 24"
           >
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            <path
+              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
           </svg>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductInfo
+export default ProductInfo;

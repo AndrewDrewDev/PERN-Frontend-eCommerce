@@ -13,7 +13,6 @@ import { cartStore } from '../../store/CartStateStore'
 import { Link } from 'react-router-dom'
 import { useTransition, animated } from 'react-spring'
 import { nanoid } from 'nanoid'
-import ContentLoadingSpinner from '../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
 
 const ProductQuickViewModal: FC = observer((): ReactElement => {
   const isShowing = modalStateStore.productQuickViewWidgetState.isShowing

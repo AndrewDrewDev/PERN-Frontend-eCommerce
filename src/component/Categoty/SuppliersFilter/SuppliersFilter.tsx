@@ -1,7 +1,7 @@
 import React from 'react'
 import { categoryState } from '../../../store/CategoryState'
-import { HeaderFilter } from '../HeaderFilter/HeaderFilter'
-import { CheckboxFilter } from '../CheckboxFilter/CheckboxFilter'
+import { HeaderFilter } from '../HeaderFilter'
+import { CheckboxFilter } from '../CheckboxFilter'
 import { updateFilterState } from '../../../utils/updateFilterState'
 import { observer } from 'mobx-react-lite'
 
@@ -28,4 +28,4 @@ const SuppliersFilter = observer(() => {
     </article>
   )
 })
-export default SuppliersFilter
+export {SuppliersFilter}

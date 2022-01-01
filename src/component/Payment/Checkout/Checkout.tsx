@@ -4,12 +4,12 @@ import { SuccessAlertModal } from '../../Modal/SuccessAlertModal'
 import { TPaymentPageNames } from '../../../pages/PaymentPage'
 import { Link } from 'react-router-dom'
 
-type TPaymentCheckout = {
+interface IPaymentCheckoutProps {
   handleSetPageName: Dispatch<SetStateAction<TPaymentPageNames>>
   orderData: TPaymentCheckoutOrderData | undefined
 }
 
-const Checkout: FC<TPaymentCheckout> = ({
+const Checkout: FC<IPaymentCheckoutProps> = ({
   handleSetPageName,
   orderData,
 }): ReactElement => {

@@ -1,4 +1,4 @@
-import Button from '../../Buttons/Buttons'
+import { Button } from '../../Buttons'
 import { FC } from 'react'
 import { categoryState } from '../../../store/CategoryState'
 import { observer } from 'mobx-react-lite'

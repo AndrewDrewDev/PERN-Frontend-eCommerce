@@ -4,14 +4,10 @@ import { observer } from 'mobx-react-lite'
 import { TCategoryInfoByLevel } from '../../types'
 import { Link } from 'react-router-dom'
 
-type TCloudTagsItem = {
-  item: TCategoryInfoByLevel
-}
-
 const CloudTags: FC = observer((): ReactElement => {
   return (
     <>
-      {categoriesPageStore.category1Info ? (
+      {categoriesPageStore.category1Info && (
         <div
           className="hidden md:block mt-5 bg-cover bg-opacity-50
         bg-gray-200 bg-center rounded-md shadow-lg"
@@ -34,8 +30,8 @@ const CloudTags: FC = observer((): ReactElement => {
             </ul>
           </div>
         </div>
-      ) : null}
-      {categoriesPageStore.category2Info ? (
+      ) }
+      {categoriesPageStore.category2Info && (
         <div
           className="hidden md:block mt-5 bg-cover bg-opacity-50
         bg-gray-200 bg-center rounded-md shadow-lg"
@@ -58,8 +54,8 @@ const CloudTags: FC = observer((): ReactElement => {
             </ul>
           </div>
         </div>
-      ) : null}
-      {categoriesPageStore.category3Info ? (
+      )}
+      {categoriesPageStore.category3Info && (
         <div
           className="hidden md:block mt-5 bg-cover bg-opacity-50
          bg-gray-200 bg-center rounded-md shadow-lg"
@@ -82,7 +78,7 @@ const CloudTags: FC = observer((): ReactElement => {
             </ul>
           </div>
         </div>
-      ) : null}
+      ) }
 
       <div className="flex justify-center my-5">
         <div className="flex">
@@ -109,7 +105,11 @@ const CloudTags: FC = observer((): ReactElement => {
   )
 })
 
-const CloudTagsItem: FC<TCloudTagsItem> = ({ item }): ReactElement => {
+interface CloudTagsItemProps {
+  item: TCategoryInfoByLevel
+}
+
+const CloudTagsItem: FC<CloudTagsItemProps> = ({ item }): ReactElement => {
   const { name, url, count } = item
 
   const getRandomValue = (max: number): number => {

@@ -6,20 +6,20 @@ import './MainSlider.css'
 import { shopConfigStore } from '../../../store/ShopConfigStore'
 import { observer } from 'mobx-react-lite'
 
-const MainSlider: FC = observer((): ReactElement => {
-  // Slider config
-  const settings: Settings = {
-    infinite: true,
-    speed: 2000,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    fade: true,
-    cssEase: 'linear',
-  }
+// Slider config
+const settings: Settings = {
+  infinite: true,
+  speed: 2000,
+  arrows: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  fade: true,
+  cssEase: 'linear',
+}
 
+const MainSlider: FC = observer((): ReactElement => {
   return (
     <>
       {shopConfigStore.slider && (

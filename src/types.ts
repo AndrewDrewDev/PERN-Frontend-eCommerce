@@ -70,11 +70,6 @@ export type TProductPageData = {
   status: TProductPageDataStatus
 }
 
-export type TShowHideComponent = {
-  show: boolean
-  setShow: Dispatch<SetStateAction<boolean>>
-}
-
 export type TItemsCartStore = {
   id: string
   name: string

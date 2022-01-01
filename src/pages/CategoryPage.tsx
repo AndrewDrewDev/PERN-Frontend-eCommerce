@@ -1,31 +1,31 @@
-import { FC, ReactElement, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import CategoryApi from '../http/CategoryApi'
 import { useParams } from 'react-router-dom'
-import { CategoryProductList } from '../component/Categoty/CategoryProductList/CategoryProductList'
+import { CategoryProductList } from '../component/Categoty/CategoryProductList'
 import { TCSInfoByUrlData, TMainProductsData } from '../types'
 import ReactPaginate from 'react-paginate'
-import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
+import { ContentLoadingSpinner } from '../component/Loaders/ContentLoadingSpinner'
 import { PageNotFound } from './PageNotFound'
 import { categoriesPageStore } from '../store/CategoryStore'
 import {
   Breadcrumb,
-  TBreadcrumbComponentItem,
+  IBreadcrumbComponentItemProps,
 } from '../component/Product/Breadcrumb'
-import { CloudTags } from '../component/CloudTags/CloudTags'
+import { CloudTags } from '../component/CloudTags'
 import { modalStateStore } from '../store/ModalStateStore'
-import { CategoryFilter } from '../component/Categoty/CategoryFilter/CategoryFilter'
+import { CategoryFilter } from '../component/Categoty/CategoryFilter'
 import { categoryState } from '../store/CategoryState'
-import { ProductsNotFound } from '../component/Categoty/ProductsNotFound/ProductsNotFound'
-import { TransitionWrapper } from '../component/Animations/TransitionWrapper/TransitionWrapper'
+import { ProductsNotFound } from '../component/Categoty/ProductsNotFound'
+import { TransitionWrapper } from '../component/Animations/TransitionWrapper'
 import { scrollToBeginPage } from '../utils/scrollToBeginPage'
 import { useCategoryType } from '../hooks/useCategoryType/useCategoryType'
 import cn from 'classnames'
-import { RightSideBarModal } from '../component/Modal/RightSideBarModal/RightSideBarModal'
+import { RightSideBarModal } from '../component/Modal/RightSideBarModal'
 import { shopConfigStore } from '../store/ShopConfigStore'
-import { CategoryFilterBody } from '../component/Categoty/CategoryFilterBody/CategoryFilterBody'
+import { CategoryFilterBody } from '../component/Categoty/CategoryFilterBody'
 
-const CategoryPage: FC = observer((): ReactElement => {
+const CategoryPage: FC = observer(() => {
   const { id }: { id: string } = useParams()
   const categoryType = useCategoryType()
 
@@ -34,7 +34,7 @@ const CategoryPage: FC = observer((): ReactElement => {
   const [categoryInfo, setCategoryInfo] = useState<TCSInfoByUrlData>()
   const [products, setProducts] = useState<TMainProductsData[] | null>(null)
   const [page, setPage] = useState(1)
-  const [breadcrumb, setBreadcrumb] = useState<TBreadcrumbComponentItem[]>()
+  const [breadcrumb, setBreadcrumb] = useState<IBreadcrumbComponentItemProps[]>()
 
   useEffect(() => {
     ;(async () => {

@@ -1,0 +1,2 @@
+export { CategoryFilterBody } from "./CategoryFilterBody";
+

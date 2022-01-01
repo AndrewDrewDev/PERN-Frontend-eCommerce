@@ -1,61 +1,28 @@
-import { ReactElement } from 'react'
-import { FC } from 'react'
-import { Link } from 'react-router-dom'
-import { PRODUCT_ROUTE } from '../../routes/routes'
-import { cartStore } from '../../store/CartStateStore'
+import { ReactElement } from "react";
+import { FC } from "react";
+import { Link } from "react-router-dom";
+import { PRODUCT_ROUTE } from "../../routes/routes";
+import { cartStore } from "../../store/CartStateStore";
 import {
   TAddItemCartStore,
   TMainProductsData,
-  TLabelCategoryNames,
-} from '../../types'
-import { modalStateStore } from '../../store/ModalStateStore'
-import { observer } from 'mobx-react-lite'
-import { shopConfigStore } from '../../store/ShopConfigStore'
-import { AdminEditButton } from '../Admin/button/AdminEditButton'
+  TLabelCategoryNames
+} from "../../types";
+import { modalStateStore } from "../../store/ModalStateStore";
+import { observer } from "mobx-react-lite";
+import { shopConfigStore } from "../../store/ShopConfigStore";
+import { AdminEditButton } from "../Admin/button";
 
-type TProductCard = {
+const ProductCard: FC<{
   product: TMainProductsData
-}
-
-type TLabelNewOrDiscount = {
-  label: TLabelCategoryNames
-}
-
-const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
-  const { name, img, price, id, label, old_price } = product
+}> = observer(({ product }) => {
+  const { name, img, price, id, label, old_price } = product;
   const cartData: TAddItemCartStore = {
     id,
     name,
     img,
-    price,
-  }
-  const LabelNewOrDiscount: FC<TLabelNewOrDiscount> = ({
-    label,
-  }): ReactElement | null => {
-    if (label === 'Акции') {
-      return (
-        <div
-          className="absolute top-0 left-0 -mx-12 my-6 px-16 transform
-        -rotate-45 bg-red-500 text-sm whitespace-no-wrap text-white
-        uppercase font-medium border-2 border-red-800"
-        >
-          акция
-        </div>
-      )
-    } else if (label === 'Новинки') {
-      return (
-        <div
-          className="absolute top-0 left-0 -mx-8 my-8 px-12 transform
-        -rotate-45 bg-blue-500 text-sm whitespace-no-wrap text-white
-         uppercase font-medium border-2 border-blue-800"
-        >
-          новинка
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
+    price
+  };
 
   return (
     <>
@@ -68,12 +35,12 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
           <Link
             className="transform scale-100 hover:scale-110 duration-500
             ease-in-out"
-            to={PRODUCT_ROUTE + '/' + id}
+            to={PRODUCT_ROUTE + "/" + id}
           >
             <img
               className="object-contain w-full m-auto h-64"
               alt={name}
-              loading={'lazy'}
+              loading={"lazy"}
               src={process.env.REACT_APP_API_URL + img}
             />
           </Link>
@@ -82,33 +49,33 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
           <div
             className="absolute z-20 bottom-0 right-0 -mb-4"
             style={{
-              marginRight: '8.5rem',
+              marginRight: "8.5rem"
             }}
           >
             <AdminEditButton
               onClickHandler={() =>
                 (modalStateStore.productEditModalState = {
                   isShowing: true,
-                  productId: id,
+                  productId: id
                 })
               }
             />
           </div>
 
           <button
-            name={'Быстрый просмотр'}
-            title={'Быстрый просмотр'}
+            name={"Быстрый просмотр"}
+            title={"Быстрый просмотр"}
             className="shadow hover:shadow-lg duration-500
             absolute z-20 bottom-0 right-0 -mb-4 p-2 rounded-full
           bg-blue-600 text-white hover:bg-blue-500 focus:outline-none
           focus:bg-blue-500"
             style={{
-              marginRight: '6rem',
+              marginRight: "6rem"
             }}
             onClick={() =>
               (modalStateStore.productQuickViewWidgetState = {
                 isShowing: true,
-                productId: id,
+                productId: id
               })
             }
           >
@@ -134,18 +101,18 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             </svg>
           </button>
           <button
-            name={'Слайдер'}
-            title={'Слайдер'}
+            name={"Слайдер"}
+            title={"Слайдер"}
             className="absolute shadow hover:shadow-lg duration-500 z-20
              bottom-0 right-0 -mb-4 p-2 rounded-full bg-blue-600 text-white
               hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
             style={{
-              marginRight: '3.5rem',
+              marginRight: "3.5rem"
             }}
             onClick={() =>
               (modalStateStore.productSliderWidgetState = {
                 isShowing: true,
-                productId: id,
+                productId: id
               })
             }
           >
@@ -169,10 +136,10 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
             bottom-0 right-0 -mb-4 p-2 rounded-full bg-blue-600 text-white
           hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
             style={{
-              marginRight: '1rem',
+              marginRight: "1rem"
             }}
-            name={'Добавить в корзину'}
-            title={'Добавить в корзину'}
+            name={"Добавить в корзину"}
+            title={"Добавить в корзину"}
             onClick={() => (cartStore.addItem = cartData)}
           >
             <svg
@@ -184,7 +151,8 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </button>
         </div>
@@ -203,7 +171,37 @@ const ProductCard: FC<TProductCard> = observer(({ product }): ReactElement => {
         </div>
       </div>
     </>
-  )
-})
+  );
+});
 
-export { ProductCard }
+const LabelNewOrDiscount: FC<{
+  label: TLabelCategoryNames
+}> = ({
+        label
+      }): ReactElement | null => {
+  if (label === "Акции") {
+    return (
+      <div
+        className="absolute top-0 left-0 -mx-12 my-6 px-16 transform
+        -rotate-45 bg-red-500 text-sm whitespace-no-wrap text-white
+        uppercase font-medium border-2 border-red-800"
+      >
+        акция
+      </div>
+    );
+  } else if (label === "Новинки") {
+    return (
+      <div
+        className="absolute top-0 left-0 -mx-8 my-8 px-12 transform
+        -rotate-45 bg-blue-500 text-sm whitespace-no-wrap text-white
+         uppercase font-medium border-2 border-blue-800"
+      >
+        новинка
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
+
+export { ProductCard };

@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { shopConfigStore } from '../../store/ShopConfigStore'
 
+// TODO: will make done
 const Footer: FC = (): ReactElement => {
   const { config } = shopConfigStore
 

@@ -1,10 +1,10 @@
 import { FC, MouseEventHandler, ReactElement } from 'react'
 
-type THeaderMenuBarButton = {
+interface HeaderMenuBarButtonProps {
   onClick: MouseEventHandler
 }
 
-const MenuBarButton: FC<THeaderMenuBarButton> = ({ onClick }): ReactElement => {
+const MenuBarButton: FC<HeaderMenuBarButtonProps> = ({ onClick }): ReactElement => {
   return (
     <div className="w-full text-gray-600 md:flex md:items-center">
       <div className="flex">

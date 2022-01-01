@@ -1,0 +1,2 @@
+export { CategoryProductList } from "./CategoryProductList";
+

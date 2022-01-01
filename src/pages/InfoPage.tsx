@@ -1,13 +1,13 @@
-import { ReactElement, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FC } from 'react'
 import { useParams } from 'react-router-dom'
-import ContentLoadingSpinner from '../component/Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
-import { InfoContent } from '../component/Info/Info'
+import { ContentLoadingSpinner } from '../component/Loaders/ContentLoadingSpinner'
+import { InfoContent } from '../component/Info'
 import { TInfoPagesData } from '../types'
 import infoApi from '../http/infoApi'
 import { PageNotFound } from './PageNotFound'
 
-const InfoPage: FC = (): ReactElement => {
+const InfoPage: FC = () => {
   const { id }: { id: string } = useParams()
   const [data, setData] = useState<TInfoPagesData | null | undefined>()
 

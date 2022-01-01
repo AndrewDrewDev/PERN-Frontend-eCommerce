@@ -1,7 +1,7 @@
 import React from 'react'
 import { HeaderFilter } from '../HeaderFilter/HeaderFilter'
 import { categoryState } from '../../../store/CategoryState'
-import { CheckboxFilter } from '../CheckboxFilter/CheckboxFilter'
+import { CheckboxFilter } from '../CheckboxFilter'
 import { updateFilterState } from '../../../utils/updateFilterState'
 import { observer } from 'mobx-react-lite'
 

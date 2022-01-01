@@ -1,16 +1,17 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../Modal/FlexModalWrapper'
 import { InputFile } from '../../form/InputFile'
-import Button from '../../../Buttons/Buttons'
+import { Button } from '../../../Buttons'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
 import { productEditModalState } from './ProductEditModalState'
-import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
-import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
-type TAddProductImgButton = {
+import { ContentLoadingSpinner } from '../../../Loaders/ContentLoadingSpinner'
+import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong'
+
+const AddProductImgButton: FC<{
   productId: string
 }
-const AddProductImgButton: FC<TAddProductImgButton> = ({ productId }) => {
+  > = ({ productId }) => {
   const [showModal, setShowModal] = useState(false)
   const [newImage, setNewImage] = useState<File | null>(null)
   const [fetchAddImage, isLoading, error] = useFetching(async args => {

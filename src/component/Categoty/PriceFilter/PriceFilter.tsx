@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
 import { categoryState } from '../../../store/CategoryState'
-import { HeaderFilter } from '../HeaderFilter/HeaderFilter'
+import { HeaderFilter } from '../HeaderFilter'
 
 const PriceFilter = observer(() => {
   const filters = categoryState.filters

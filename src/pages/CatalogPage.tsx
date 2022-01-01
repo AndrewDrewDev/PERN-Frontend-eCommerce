@@ -3,11 +3,11 @@ import { categoriesPageStore } from '../store/CategoryStore'
 import { TCategoryInfoByLevel } from '../types'
 import { Link } from 'react-router-dom'
 import { Breadcrumb } from '../component/Product/Breadcrumb'
-import { CloudTags } from '../component/CloudTags/CloudTags'
+import { CloudTags } from '../component/CloudTags'
 import { observer } from 'mobx-react-lite'
 import getEnvVariable from '../utils/getEnvVariable'
 
-const CatalogPage: FC = observer((): ReactElement => {
+const CatalogPage: FC = observer(() => {
   return (
     <>
       {categoriesPageStore.category1Info ? (
@@ -19,7 +19,8 @@ const CatalogPage: FC = observer((): ReactElement => {
 
           <div className="border-2 rounded-full border-gray-600 my-2" />
 
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-4">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+          xl:grid-cols-4 my-4">
             {categoriesPageStore.category1Info.map((category, i) => (
               <CategoryCard key={i} {...category} />
             ))}
@@ -35,15 +36,18 @@ const CategoryCard: FC<TCategoryInfoByLevel> = (props): ReactElement => {
   const { name, count, img, url } = props
   return (
     <>
-      <div className="flex relative flex-col max-w-xs bg-white shadow-lg rounded-lg overflow-hidden mx-auto w-full">
+      <div className="flex relative flex-col max-w-xs bg-white shadow-lg
+      rounded-lg overflow-hidden mx-auto w-full">
         <Link
           to={'/category/' + url}
           className="px-4 py-2 bg-blue-500 flex-auto relative z-10"
         >
-          <h2 className="font-bold text-white text-xl text-center hover:underline">
+          <h2 className="font-bold text-white text-xl text-center
+          hover:underline">
             {name}
           </h2>
-          <div className="font-bold text-white text-sm text-center hover:underline">
+          <div className="font-bold text-white text-sm text-center
+          hover:underline">
             {count}+ Единиц Товара
           </div>
         </Link>
@@ -53,7 +57,8 @@ const CategoryCard: FC<TCategoryInfoByLevel> = (props): ReactElement => {
         >
           <Link to={'/category/' + url}>
             <img
-              className="transform scale-100 hover:scale-110 duration-500 ease-in-out m-auto w-full"
+              className="transform scale-100 hover:scale-110 duration-500
+              ease-in-out m-auto w-full"
               src={getEnvVariable('REACT_APP_API_URL') + img}
               style={{
                 maxHeight: 300 + 'px',

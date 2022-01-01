@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 
-const CheckboxFilter: FC<{
+interface CheckboxFilterProps {
   id: number
   name: string
   onClickHandler: (event: any) => any
   checked?: boolean
-}> = ({ id, name, onClickHandler, checked = false }) => {
+}
+
+const CheckboxFilter: FC<CheckboxFilterProps> = ({ id, name, onClickHandler, checked = false }) => {
   return (
     <label className="flex items-center">
       <input

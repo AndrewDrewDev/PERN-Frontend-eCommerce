@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react'
 import { FlexModalWrapper } from '../../../Modal/FlexModalWrapper'
 import { InputFile } from '../../form/InputFile'
-import Button from '../../../Buttons/Buttons'
+import { Button } from '../../../Buttons'
 import { useFetching } from '../../../../hooks/useFetching'
 import ProductApi from '../../../../http/ProductApi'
-import ContentLoadingSpinner from '../../../Loaders/ContentLoadingSpinner/ContentLoadingSpinner'
-import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong/SomethingWhenWrong'
+import { ContentLoadingSpinner } from '../../../Loaders/ContentLoadingSpinner'
+import { SomethingWhenWrong } from '../../../Error/SomethingWhenWrong'
 import { productEditModalState } from './ProductEditModalState'
 
 type TProductImgButton = {

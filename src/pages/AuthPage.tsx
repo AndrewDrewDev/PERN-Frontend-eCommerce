@@ -38,7 +38,8 @@ const AuthPage: FC = (): ReactElement => {
   return (
     <>
       <div className="w-full lg:w-4/12 px-4 mx-auto pt-6 text-blue-600">
-        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-2">
+        <div className="relative flex flex-col min-w-0 break-words w-full mb-6
+        shadow-lg rounded-lg border-2">
           <div className="rounded-t mb-0 px-6 py-6">
             <div className="text-center mb-3">
               <h1 className="text-blue-500 text-xl font-bold">
@@ -60,7 +61,10 @@ const AuthPage: FC = (): ReactElement => {
                   type="text"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  className="border-0 px-3 py-3 placeholder-blue-300 text-blue-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  className="border-0 px-3 py-3 placeholder-blue-300
+                  text-blue-600 bg-white rounded text-sm shadow
+                  focus:outline-none focus:ring w-full ease-linear
+                  transition-all duration-150"
                   placeholder="Email"
                 />
               </div>
@@ -74,7 +78,10 @@ const AuthPage: FC = (): ReactElement => {
                 <input
                   type="password"
                   value={password}
-                  className="border-0 px-3 py-3 placeholder-blue-300 text-blue-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  className="border-0 px-3 py-3 placeholder-blue-300
+                  text-blue-600 bg-white rounded text-sm shadow
+                  focus:outline-none focus:ring w-full ease-linear
+                  transition-all duration-150"
                   placeholder="Password"
                   onChange={e => setPassword(e.target.value)}
                 />
@@ -98,7 +105,10 @@ const AuthPage: FC = (): ReactElement => {
               </div>
               <div className="text-center mt-6">
                 <button
-                  className="bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                  className="bg-blue-600 text-white hover:bg-blue-700
+                  active:bg-blue-800 text-sm font-bold uppercase px-6 py-3
+                  rounded shadow hover:shadow-lg outline-none focus:outline-none
+                  mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="submit"
                 >
                   {isLogin ? 'Войти' : 'Регистрация'}
